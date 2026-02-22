@@ -1676,6 +1676,70 @@ html {
 	}
 }
 
+// Service Block (Services page)
+.service-block {
+	&__title {
+		font-size: clamp(1.75rem, 4vw, 2.25rem);
+		margin-bottom: $space-md;
+	}
+
+	&__body {
+		font-size: 1.0625rem;
+		line-height: 1.7;
+		margin-bottom: $space-lg;
+	}
+
+	&__link {
+		font-family: $font-family-base;
+		font-size: 0.875rem;
+		font-weight: 600;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		text-decoration: none;
+		transition: opacity 0.2s ease;
+
+		span {
+			margin-left: $space-xs;
+		}
+
+		&:hover {
+			opacity: 0.7;
+		}
+	}
+
+	// Color overrides for dark sections.
+	.section-dark & {
+		&__title {
+			color: $bmg-white;
+		}
+
+		&__body {
+			color: $bmg-platinum;
+		}
+
+		&__link {
+			color: $bmg-silver;
+		}
+	}
+
+	// Color overrides for light sections.
+	.section-light & {
+		&__body {
+			color: var(--us-text-secondary);
+		}
+
+		&__link {
+			color: $bmg-obsidian;
+		}
+	}
+}
+
+// Left-aligned silver rule variant.
+.silver-rule--left {
+	margin-left: 0;
+	margin-right: auto;
+}
+
 // Contact sections
 .contact-info-section {
 	.contact-details {
