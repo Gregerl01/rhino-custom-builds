@@ -123,6 +123,7 @@ $bmg_includes = array(
 	'/customizer-hero.php',          // Hero section Customizer settings.
 	'/customizer-about.php',         // About section Customizer settings.
 	'/dark-mode.php',                // Dark mode FOUC prevention and data-bs-theme attribute.
+	'/seo-metadata.php',             // SEO title tags and meta descriptions (CONTENT.md Section 12).
 );
 
 foreach ( $bmg_includes as $file ) {
