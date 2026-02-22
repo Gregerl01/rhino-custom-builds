@@ -1,122 +1,103 @@
 <?php
 /**
- * FAQ Section
+ * FAQ Section — Full FAQ Page
  *
- * Bootstrap Accordion-based FAQ section.
+ * Bootstrap Accordion with all 10 questions from CONTENT.md Section 7.2.
+ * Q8 uses dynamic bmg_phone variable.
  *
  * @package BMG_Theme
  */
 
 defined( 'ABSPATH' ) || exit;
 
-// FAQ data - placeholder content.
-$faq_categories = array(
-	'membership' => array(
-		'title' => __( 'Membership & Enrollment', 'bmg-theme' ),
-		'items' => array(
-			array(
-				'question' => __( 'What is concierge medicine?', 'bmg-theme' ),
-				'answer'   => __( 'Concierge medicine is a healthcare model where patients pay an annual or monthly membership fee for enhanced access to their physician. This allows doctors to limit their patient panels, providing more time and attention to each patient, same-day appointments, and direct communication with your doctor.', 'bmg-theme' ),
-			),
-			array(
-				'question' => __( 'How do I enroll in a membership plan?', 'bmg-theme' ),
-				'answer'   => __( 'Enrollment is simple. Visit our Plans page to compare options, then complete our online enrollment form. You\'ll be contacted within 24 hours to schedule your initial consultation and complete the onboarding process.', 'bmg-theme' ),
-			),
-			array(
-				'question' => __( 'Can I cancel my membership?', 'bmg-theme' ),
-				'answer'   => __( 'Yes, you may cancel your membership at any time with 30 days written notice. We believe in the value of our care and don\'t require long-term contracts. Refunds are prorated for annual memberships.', 'bmg-theme' ),
-			),
+// Dynamic variable for Q8.
+$phone_display = get_theme_mod( 'bmg_phone', '(000) 000-0000' );
+
+// FAQ data — CONTENT.md Section 7.2.
+$faq_items = array(
+	array(
+		'question' => __( 'What is concierge medicine and how does it differ from traditional primary care?', 'bmg-theme' ),
+		'answer'   => __( 'Concierge medicine is a membership-based model where patients pay an annual or monthly fee for enhanced physician access, longer appointments, and comprehensive care coordination. The core difference is panel size. A traditional primary care physician manages 2,000 to 2,500 patients. A concierge physician maintains a deliberately small panel — typically a few hundred — which allows for longer visits, same-day access, and a deeper physician-patient relationship built on continuity.', 'bmg-theme' ),
+	),
+	array(
+		'question' => __( 'Will my health insurance still apply?', 'bmg-theme' ),
+		'answer'   => __( 'Yes. Your existing health insurance continues to function as it does now. Insurance covers eligible services such as labs, imaging, specialist visits, hospitalizations, and prescriptions. The concierge membership fee covers enhanced access, coordination, and services that fall outside standard insurance billing — such as extended appointments, direct physician communication, and wellness programming.', 'bmg-theme' ),
+	),
+	array(
+		'question' => __( 'How quickly can I reach Dr. Baig?', 'bmg-theme' ),
+		'answer'   => __( 'All members have direct phone and secure messaging access to Dr. Baig. Same-day and next-day appointments are standard across every membership tier. Premium and Concierge Elite members have extended-hours and after-hours access. Concierge Elite members have 24/7 direct physician availability.', 'bmg-theme' ),
+	),
+	array(
+		'question' => __( 'What happens if I need a specialist?', 'bmg-theme' ),
+		'answer'   => __( 'Dr. Baig personally coordinates referrals, shares relevant records, and follows up on specialist findings. The level of coordination depends on your tier — Essential members receive standard coordination, Premium members receive priority scheduling and follow-up, and Concierge Elite members receive expedited scheduling and multi-specialist case management.', 'bmg-theme' ),
+	),
+	array(
+		'question' => __( 'What does the annual comprehensive evaluation include?', 'bmg-theme' ),
+		'answer'   => __( 'Every member receives a thorough annual evaluation including a detailed health history review, physical examination, age-appropriate screenings, and laboratory work. Premium and Concierge Elite members receive an executive-level physical with advanced diagnostic panels, cardiovascular screening, and additional biomarkers. Results are reviewed in a dedicated follow-up appointment with Dr. Baig — not via a portal message.', 'bmg-theme' ),
+	),
+	array(
+		'question' => __( 'Can family members join my plan?', 'bmg-theme' ),
+		'answer'   => __( 'Premium and Concierge Elite memberships include the option to add eligible family members. Each additional member receives full plan benefits. Family enrollment details and pricing are covered during your enrollment consultation.', 'bmg-theme' ),
+	),
+	array(
+		'question' => __( 'Is there a contract or long-term commitment?', 'bmg-theme' ),
+		'answer'   => __( 'Memberships are offered on a month-to-month or annual basis. Annual memberships include a preferred rate. There are no multi-year contracts. We ask for 30 days\' written notice for cancellation.', 'bmg-theme' ),
+	),
+	array(
+		'question' => __( 'How do I enroll?', 'bmg-theme' ),
+		'answer'   => sprintf(
+			/* translators: %s: phone number */
+			__( 'Start by submitting an enrollment application through our website or calling the office directly at %s. After submission, a member of our team will schedule an enrollment consultation where we discuss your health priorities, review plan options, and finalize your membership. You are not charged until enrollment is confirmed.', 'bmg-theme' ),
+			$phone_display
 		),
 	),
-	'services' => array(
-		'title' => __( 'Services & Access', 'bmg-theme' ),
-		'items' => array(
-			array(
-				'question' => __( 'Does my membership replace health insurance?', 'bmg-theme' ),
-				'answer'   => __( 'No. Your membership covers primary care services and enhanced physician access, but you should maintain health insurance for hospitalizations, specialists, prescriptions, and other medical services outside our practice.', 'bmg-theme' ),
-			),
-			array(
-				'question' => __( 'What services are included in my membership?', 'bmg-theme' ),
-				'answer'   => __( 'All memberships include comprehensive primary care, annual wellness exams, same-day/next-day appointments, extended visit times, and direct physician communication. Premium and VIP plans include additional benefits like after-hours access and priority specialist referrals.', 'bmg-theme' ),
-			),
-			array(
-				'question' => __( 'How quickly can I get an appointment?', 'bmg-theme' ),
-				'answer'   => __( 'Most appointments are available same-day or next-day. Because we limit our patient panel, we maintain appointment availability that traditional practices cannot offer.', 'bmg-theme' ),
-			),
-		),
+	array(
+		'question' => __( 'Is my personal health information protected?', 'bmg-theme' ),
+		'answer'   => __( 'Baig Medical Group operates in full compliance with HIPAA (Health Insurance Portability and Accountability Act) regulations. All patient data is encrypted, transmitted securely, and accessible only to authorized care team members. Our complete Notice of Privacy Practices is available on our Privacy Policy page.', 'bmg-theme' ),
 	),
-	'billing' => array(
-		'title' => __( 'Billing & Insurance', 'bmg-theme' ),
-		'items' => array(
-			array(
-				'question' => __( 'Do you accept insurance?', 'bmg-theme' ),
-				'answer'   => __( 'We do not bill insurance for membership fees, as this is not typically a covered benefit. However, we can provide documentation for HSA/FSA accounts, and certain services may be submitted to your insurance for reimbursement.', 'bmg-theme' ),
-			),
-			array(
-				'question' => __( 'What payment methods do you accept?', 'bmg-theme' ),
-				'answer'   => __( 'We accept all major credit cards for monthly payments, as well as ACH bank transfers for annual memberships. HSA and FSA cards are also accepted.', 'bmg-theme' ),
-			),
-		),
+	array(
+		'question' => __( 'What if I\'m traveling or away from the area?', 'bmg-theme' ),
+		'answer'   => __( 'All members can reach Dr. Baig by phone or secure message regardless of location. Concierge Elite members receive dedicated travel medicine support, including pre-travel consultations, global care coordination, and assistance locating vetted providers in other cities or countries.', 'bmg-theme' ),
 	),
 );
 
 $accordion_id = 'faqAccordion';
-$item_count   = 0;
 ?>
 
-<section id="faq" class="section section-light faq-section">
+<section id="faq" class="section section-light faq-section reveal-on-scroll">
 	<div class="container">
-
-		<div class="row justify-content-center mb-5">
-			<div class="col-lg-8 text-center">
-				<h2 class="display-text h1 mb-3">
-					<?php esc_html_e( 'Frequently Asked Questions', 'bmg-theme' ); ?>
-				</h2>
-				<p class="lead text-muted">
-					<?php esc_html_e( 'Find answers to common questions about our practice and membership plans.', 'bmg-theme' ); ?>
-				</p>
-			</div>
-		</div>
 
 		<div class="row justify-content-center">
 			<div class="col-lg-8">
 
-				<?php foreach ( $faq_categories as $cat_key => $category ) : ?>
-					<div class="faq-category mb-5">
-						<h3 class="faq-category__title h5 mb-4">
-							<?php echo esc_html( $category['title'] ); ?>
-						</h3>
-
-						<div class="accordion" id="<?php echo esc_attr( $accordion_id . '-' . $cat_key ); ?>">
-							<?php foreach ( $category['items'] as $index => $item ) :
-								$item_count++;
-								$collapse_id = 'faq-collapse-' . $item_count;
-								$heading_id  = 'faq-heading-' . $item_count;
-							?>
-								<div class="accordion-item">
-									<h4 class="accordion-header" id="<?php echo esc_attr( $heading_id ); ?>">
-										<button class="accordion-button collapsed"
-												type="button"
-												data-bs-toggle="collapse"
-												data-bs-target="#<?php echo esc_attr( $collapse_id ); ?>"
-												aria-expanded="false"
-												aria-controls="<?php echo esc_attr( $collapse_id ); ?>">
-											<?php echo esc_html( $item['question'] ); ?>
-										</button>
-									</h4>
-									<div id="<?php echo esc_attr( $collapse_id ); ?>"
-										 class="accordion-collapse collapse"
-										 aria-labelledby="<?php echo esc_attr( $heading_id ); ?>"
-										 data-bs-parent="#<?php echo esc_attr( $accordion_id . '-' . $cat_key ); ?>">
-										<div class="accordion-body">
-											<?php echo wp_kses_post( wpautop( $item['answer'] ) ); ?>
-										</div>
-									</div>
+				<div class="accordion" id="<?php echo esc_attr( $accordion_id ); ?>">
+					<?php foreach ( $faq_items as $index => $item ) :
+						$item_num    = $index + 1;
+						$collapse_id = 'faq-collapse-' . $item_num;
+						$heading_id  = 'faq-heading-' . $item_num;
+					?>
+						<div class="accordion-item">
+							<h3 class="accordion-header" id="<?php echo esc_attr( $heading_id ); ?>">
+								<button class="accordion-button collapsed"
+										type="button"
+										data-bs-toggle="collapse"
+										data-bs-target="#<?php echo esc_attr( $collapse_id ); ?>"
+										aria-expanded="false"
+										aria-controls="<?php echo esc_attr( $collapse_id ); ?>">
+									<?php echo esc_html( $item['question'] ); ?>
+								</button>
+							</h3>
+							<div id="<?php echo esc_attr( $collapse_id ); ?>"
+								 class="accordion-collapse collapse"
+								 aria-labelledby="<?php echo esc_attr( $heading_id ); ?>"
+								 data-bs-parent="#<?php echo esc_attr( $accordion_id ); ?>">
+								<div class="accordion-body">
+									<?php echo wp_kses_post( wpautop( $item['answer'] ) ); ?>
 								</div>
-							<?php endforeach; ?>
+							</div>
 						</div>
-					</div>
-				<?php endforeach; ?>
+					<?php endforeach; ?>
+				</div>
 
 				<div class="faq-contact text-center mt-5 pt-4">
 					<p class="mb-3">

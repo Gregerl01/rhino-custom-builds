@@ -21,13 +21,11 @@ get_header();
 			<div class="row justify-content-center">
 				<div class="col-lg-8 text-center">
 					<h1 class="display-text display-4 mb-3">
-						<?php the_title(); ?>
+						<?php esc_html_e( 'Frequently Asked Questions', 'bmg-theme' ); ?>
 					</h1>
-					<?php if ( has_excerpt() ) : ?>
-						<p class="lead mb-0">
-							<?php echo esc_html( get_the_excerpt() ); ?>
-						</p>
-					<?php endif; ?>
+					<p class="lead mb-0">
+						<?php esc_html_e( 'Answers to common questions about concierge medicine, our membership plans, and how Baig Medical Group operates.', 'bmg-theme' ); ?>
+					</p>
 				</div>
 			</div>
 		</div>
