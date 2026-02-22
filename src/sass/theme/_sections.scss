@@ -1,0 +1,1753 @@
+// ==========================================================================
+// BMG Section Styles — Refined Luxury Editorial
+// ==========================================================================
+// "Black Card" aesthetic: Aman Resorts, Net-a-Porter, private banking.
+// Timeless, quiet confidence. Restrained material richness.
+// ==========================================================================
+
+// ==========================================================================
+// Global Visual Treatments
+// ==========================================================================
+
+// Smooth scroll
+html {
+	scroll-behavior: smooth;
+}
+
+// Decorative silver rule — reusable motif
+.silver-rule {
+	width: 60px;
+	height: 1px;
+	background-color: $bmg-silver;
+	margin: 1.5rem auto;
+}
+
+// Text links in body content
+.text-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5em;
+	color: var(--us-text-primary);
+	text-decoration: none;
+	padding-bottom: 2px;
+	border-bottom: 1px solid $bmg-silver;
+	transition: border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+	&:hover {
+		border-color: var(--us-text-primary);
+	}
+
+	.section-dark &,
+	.section-charcoal & {
+		color: $bmg-platinum;
+		border-color: rgba($bmg-silver, 0.5);
+
+		&:hover {
+			color: $bmg-white;
+			border-color: $bmg-white;
+		}
+	}
+}
+
+// Scroll reveal animation
+.reveal-on-scroll {
+	opacity: 0;
+	transform: translateY(30px);
+	transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+				transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+
+	&.revealed {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.reveal-on-scroll {
+		opacity: 1;
+		transform: none;
+		transition: none;
+	}
+
+	html {
+		scroll-behavior: auto;
+	}
+}
+
+// ==========================================================================
+// Base Section
+// ==========================================================================
+.section {
+	padding-top: $space-4xl;
+	padding-bottom: $space-4xl;
+
+	@media (max-width: 767.98px) {
+		padding-top: 5rem;
+		padding-bottom: 5rem;
+	}
+
+	&--compact {
+		padding-top: $space-3xl;
+		padding-bottom: $space-3xl;
+
+		@media (max-width: 767.98px) {
+			padding-top: $space-2xl;
+			padding-bottom: $space-2xl;
+		}
+	}
+}
+
+// ==========================================================================
+// Section Color Variants
+// ==========================================================================
+
+// Light section with warm radial gradient background
+.section-light {
+	background: radial-gradient(ellipse at center, #FEFEFE 0%, #FAFAFA 50%, #F7F6F4 100%);
+	color: var(--us-text-primary);
+	position: relative;
+
+	// Subtle bottom gradient separator
+	&::after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 40px;
+		background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.02));
+		pointer-events: none;
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		color: var(--us-text-primary);
+	}
+
+	p, li {
+		color: var(--us-text-secondary);
+	}
+
+	.text-muted {
+		color: var(--us-text-secondary) !important;
+	}
+
+	a:not(.btn):not(.text-link):not(.plan-card-home__btn):not(.btn-compare) {
+		color: var(--us-text-primary);
+
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+
+	// Dark mode
+	[data-bs-theme="dark"] & {
+		background: radial-gradient(ellipse at center, #{$bmg-charcoal} 0%, #{$bmg-obsidian} 100%);
+
+		&::after {
+			background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.02));
+		}
+	}
+}
+
+// Light section with warm background (pillars)
+.section-light-warm {
+	background: radial-gradient(ellipse at center, #FEFEFE 0%, #FAFAFA 50%, #F7F6F4 100%);
+	color: var(--us-text-primary);
+
+	h1, h2, h3, h4, h5, h6 {
+		color: var(--us-text-primary);
+	}
+
+	p, li {
+		color: var(--us-text-secondary);
+	}
+
+	[data-bs-theme="dark"] & {
+		background: radial-gradient(ellipse at center, #{$bmg-charcoal} 0%, #{$bmg-obsidian} 100%);
+
+		h1, h2, h3, h4, h5, h6 {
+			color: $bmg-white;
+		}
+
+		p, li {
+			color: $bmg-platinum;
+		}
+	}
+}
+
+// Dark section with subtle gradient
+.section-dark {
+	background: linear-gradient(135deg, #0A0A0A 0%, #141414 50%, #0A0A0A 100%);
+	color: $bmg-white;
+
+	h1, h2, h3, h4, h5, h6 {
+		color: $bmg-white;
+	}
+
+	p, li {
+		color: $bmg-platinum;
+	}
+
+	.text-muted {
+		color: $bmg-warm-gray !important;
+	}
+
+	a:not(.btn):not(.text-link) {
+		color: $bmg-platinum;
+
+		&:hover {
+			color: $bmg-white;
+		}
+	}
+}
+
+// Charcoal section
+.section-charcoal {
+	background-color: $bmg-charcoal;
+	color: $bmg-white;
+
+	h1, h2, h3, h4, h5, h6 {
+		color: $bmg-white;
+	}
+
+	p, li {
+		color: $bmg-platinum;
+	}
+
+	.text-muted {
+		color: $bmg-warm-gray !important;
+	}
+
+	a:not(.btn):not(.text-link) {
+		color: $bmg-platinum;
+
+		&:hover {
+			color: $bmg-white;
+		}
+	}
+}
+
+// ==========================================================================
+// Content Width Utilities
+// ==========================================================================
+.content-narrow {
+	max-width: $content-max;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+// ==========================================================================
+// Display Typography
+// ==========================================================================
+.display-text {
+	font-family: $font-family-display;
+	font-weight: 300;
+	letter-spacing: 0.02em;
+	line-height: 1.2;
+}
+
+// ==========================================================================
+// SECTION 1: Hero
+// ==========================================================================
+.section-hero {
+	position: relative;
+	min-height: 80vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: $bmg-obsidian;
+	overflow: hidden;
+
+	&__overlay {
+		position: absolute;
+		inset: 0;
+		background: radial-gradient(ellipse at center, #{$bmg-charcoal} 0%, #{$bmg-obsidian} 70%);
+		pointer-events: none;
+	}
+
+	&__headline {
+		font-family: $font-family-display;
+		font-weight: 300;
+		font-size: clamp(2.5rem, 6vw, 4.5rem);
+		line-height: 1.1;
+		letter-spacing: 0.02em;
+		color: $bmg-white;
+		margin-bottom: 0;
+	}
+
+	&__subtitle {
+		font-family: $font-family-base;
+		font-size: clamp(1rem, 2vw, 1.25rem);
+		font-weight: 400;
+		letter-spacing: 0.04em;
+		color: $bmg-platinum;
+		margin-bottom: 0;
+		max-width: 600px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.silver-rule {
+		margin: 2rem auto;
+	}
+}
+
+// Hero animations
+.hero-animate {
+	opacity: 0;
+	transform: translateY(20px);
+	animation: heroFadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+
+	&--delay-1 {
+		animation-delay: 0.3s;
+	}
+
+	&--delay-2 {
+		animation-delay: 0.5s;
+	}
+}
+
+@keyframes heroFadeUp {
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.hero-animate {
+		opacity: 1;
+		transform: none;
+		animation: none;
+	}
+}
+
+// ==========================================================================
+// SECTION 2: Explainer
+// ==========================================================================
+.explainer__heading {
+	font-size: clamp(1.75rem, 4vw, 2.5rem);
+	margin-bottom: 0;
+}
+
+.explainer__text {
+	font-size: 1.125rem;
+	line-height: 1.8;
+	color: var(--us-text-secondary);
+}
+
+// ==========================================================================
+// SECTION 3: Value Pillars
+// ==========================================================================
+.pillars-row {
+	--bs-gutter-x: 2rem;
+	--bs-gutter-y: 2.5rem;
+
+	@media (max-width: 767.98px) {
+		--bs-gutter-y: 2.5rem;
+	}
+}
+
+.pillar {
+	padding-left: $space-md;
+	border-left: 2px solid $bmg-silver;
+	height: 100%;
+
+	&__title {
+		font-family: $font-family-display;
+		font-size: 1.375rem;
+		font-weight: 600;
+		color: $bmg-obsidian;
+		margin-bottom: 12px;
+		line-height: 1.3;
+
+		[data-bs-theme="dark"] & {
+			color: $bmg-white;
+		}
+	}
+
+	&__text {
+		font-size: 0.9375rem;
+		line-height: 1.7;
+		color: $bmg-dark-gray;
+		margin: 0;
+
+		[data-bs-theme="dark"] & {
+			color: $bmg-platinum;
+		}
+	}
+}
+
+// ==========================================================================
+// SECTION 4: Plan Cards (Homepage) — Premium Material Presence
+// ==========================================================================
+.plan-card-home {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	background: #FFFFFF;
+	border: 1px solid rgba(0, 0, 0, 0.08);
+	border-radius: 4px;
+	padding: 48px;
+	box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+	transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+				box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+	@media (max-width: 767.98px) {
+		padding: 32px;
+	}
+
+	&:hover {
+		transform: translateY(-6px);
+		box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+	}
+
+	// Featured (Premium) card
+	&--featured {
+		border-top: 3px solid $bmg-silver;
+		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+
+		&:hover {
+			box-shadow: 0 16px 48px rgba(0, 0, 0, 0.1);
+		}
+	}
+
+	&__badge {
+		display: inline-block;
+		padding: 6px 20px;
+		background: $bmg-obsidian;
+		color: $bmg-white;
+		font-family: $font-family-base;
+		font-size: 11px;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		border-radius: 100px;
+		margin-bottom: 16px;
+		align-self: flex-start;
+	}
+
+	&__name {
+		font-family: $font-family-display;
+		font-size: 1.75rem;
+		font-weight: 600;
+		color: $bmg-obsidian;
+		margin-bottom: $space-sm;
+
+		[data-bs-theme="dark"] & {
+			color: $bmg-white;
+		}
+	}
+
+	&__description {
+		font-family: $font-family-base;
+		font-size: 0.9375rem;
+		line-height: 1.7;
+		color: $bmg-medium-gray;
+		margin-bottom: $space-md;
+		flex: 1;
+	}
+
+	&__pricing {
+		display: flex;
+		align-items: baseline;
+		margin-bottom: $space-md;
+	}
+
+	&__currency {
+		font-family: $font-family-base;
+		font-size: 1rem;
+		font-weight: 400;
+		color: $bmg-medium-gray;
+		margin-right: 2px;
+	}
+
+	&__amount {
+		font-family: $font-family-base;
+		font-size: 2.25rem;
+		font-weight: 700;
+		color: $bmg-obsidian;
+		line-height: 1;
+
+		[data-bs-theme="dark"] & {
+			color: $bmg-white;
+		}
+	}
+
+	&__period {
+		font-family: $font-family-base;
+		font-size: 0.875rem;
+		font-weight: 400;
+		color: $bmg-warm-gray;
+		margin-left: 4px;
+	}
+
+	// Card button — outline style
+	&__btn {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		height: 52px;
+		background: transparent;
+		border: 2px solid $bmg-obsidian;
+		border-radius: 4px;
+		font-family: $font-family-base;
+		font-size: 14px;
+		font-weight: 600;
+		letter-spacing: 0.03em;
+		text-transform: uppercase;
+		color: $bmg-obsidian;
+		text-decoration: none;
+		transition: all 0.2s ease;
+
+		&:hover {
+			background: $bmg-obsidian;
+			color: $bmg-white;
+		}
+
+		// Filled style for Premium
+		&--filled {
+			background: $bmg-obsidian;
+			color: $bmg-white;
+
+			&:hover {
+				background: $bmg-charcoal;
+				border-color: $bmg-charcoal;
+			}
+		}
+
+		[data-bs-theme="dark"] & {
+			border-color: $bmg-white;
+			color: $bmg-white;
+
+			&:hover {
+				background: $bmg-white;
+				color: $bmg-obsidian;
+			}
+
+			&--filled {
+				background: $bmg-white;
+				color: $bmg-obsidian;
+
+				&:hover {
+					background: $bmg-platinum;
+					border-color: $bmg-platinum;
+				}
+			}
+		}
+	}
+
+	// Dark mode card styles
+	[data-bs-theme="dark"] & {
+		background: $bmg-charcoal;
+		border-color: rgba(255, 255, 255, 0.08);
+		box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+
+		&:hover {
+			box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+		}
+
+		&--featured {
+			box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+
+			&:hover {
+				box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+			}
+		}
+	}
+}
+
+// ==========================================================================
+// Billing Toggle (Homepage) — Premium Pill Style
+// ==========================================================================
+.billing-toggle-home {
+	display: inline-flex;
+	background: $bmg-obsidian;
+	border-radius: 100px;
+	padding: 4px;
+	margin-top: $space-sm;
+
+	&__btn {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		padding: 12px 28px;
+		background: transparent;
+		border: none;
+		border-radius: 100px;
+		font-family: $font-family-base;
+		font-size: 0.875rem;
+		font-weight: 500;
+		letter-spacing: 0.02em;
+		color: $bmg-silver;
+		cursor: pointer;
+		transition: all 0.2s ease;
+
+		&:hover:not(.active) {
+			color: $bmg-platinum;
+		}
+
+		&.active {
+			background: $bmg-white;
+			color: $bmg-obsidian;
+		}
+	}
+
+	&__save {
+		display: inline-block;
+		padding: 3px 8px;
+		background: rgba($bmg-silver, 0.3);
+		border-radius: 4px;
+		font-size: 0.6875rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.03em;
+		color: $bmg-silver;
+		transition: all 0.2s ease;
+
+		.active & {
+			background: rgba($bmg-obsidian, 0.1);
+			color: $bmg-obsidian;
+		}
+	}
+
+	// Dark mode
+	[data-bs-theme="dark"] & {
+		background: rgba($bmg-white, 0.1);
+
+		.billing-toggle-home__btn {
+			color: $bmg-warm-gray;
+
+			&:hover:not(.active) {
+				color: $bmg-platinum;
+			}
+
+			&.active {
+				background: $bmg-white;
+				color: $bmg-obsidian;
+			}
+		}
+
+		.billing-toggle-home__save {
+			background: rgba($bmg-white, 0.1);
+			color: $bmg-warm-gray;
+
+			.active & {
+				background: rgba($bmg-obsidian, 0.1);
+				color: $bmg-obsidian;
+			}
+		}
+	}
+}
+
+// ==========================================================================
+// Plan Card Pricing Transitions
+// ==========================================================================
+.plan-card-home__pricing {
+	position: relative;
+	min-height: 48px; // Prevent layout shift
+}
+
+.plan-card-home__price {
+	display: flex;
+	align-items: baseline;
+	transition: opacity 0.2s ease;
+
+	// Hide annual by default
+	&--annual {
+		position: absolute;
+		top: 0;
+		left: 0;
+		opacity: 0;
+		pointer-events: none;
+	}
+
+	&--monthly {
+		opacity: 1;
+	}
+}
+
+// When billing is set to annual
+.plans-cards-container[data-billing="annual"] {
+	.plan-card-home__price--monthly {
+		opacity: 0;
+		pointer-events: none;
+	}
+
+	.plan-card-home__price--annual {
+		opacity: 1;
+		pointer-events: auto;
+	}
+}
+
+// Compare All Plans button
+.plans-cta {
+	margin-top: 48px;
+	text-align: center;
+}
+
+.btn-compare {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 16px 40px;
+	background: $bmg-obsidian;
+	border: none;
+	border-radius: 4px;
+	font-family: $font-family-base;
+	font-size: 14px;
+	font-weight: 600;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	color: $bmg-white;
+	text-decoration: none;
+	transition: background 0.2s ease;
+
+	&:hover {
+		background: $bmg-charcoal;
+		color: $bmg-white;
+	}
+
+	[data-bs-theme="dark"] & {
+		background: $bmg-white;
+		color: $bmg-obsidian;
+
+		&:hover {
+			background: $bmg-platinum;
+		}
+	}
+}
+
+// ==========================================================================
+// SECTION 5: Physician Preview
+// ==========================================================================
+.physician-preview {
+	&__eyebrow {
+		display: block;
+		font-family: $font-family-base;
+		font-size: 0.75rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: $bmg-silver;
+		margin-bottom: $space-md;
+	}
+
+	&__heading {
+		font-size: clamp(2rem, 4vw, 2.75rem);
+		color: $bmg-white;
+		margin-bottom: $space-lg;
+	}
+
+	&__bio {
+		font-size: 1.0625rem;
+		line-height: 1.8;
+		color: $bmg-platinum;
+		margin-bottom: $space-lg;
+	}
+
+	&__values {
+		list-style: none;
+		padding: 0;
+		margin: 0 0 $space-xl;
+
+		li {
+			position: relative;
+			padding-left: 20px;
+			padding-top: 8px;
+			padding-bottom: 8px;
+			font-size: 0.9375rem;
+			line-height: 1.5;
+
+			// Silver square bullet
+			&::before {
+				content: '';
+				position: absolute;
+				left: 0;
+				top: 50%;
+				transform: translateY(-50%);
+				width: 6px;
+				height: 6px;
+				background: $bmg-silver;
+			}
+
+			// Label (before em-dash) is white, rest is platinum
+			strong {
+				color: $bmg-white;
+				font-weight: 500;
+			}
+
+			// Default color is platinum
+			color: $bmg-platinum;
+		}
+	}
+
+	&__link {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5em;
+		font-size: 0.9375rem;
+		font-weight: 500;
+		color: $bmg-platinum;
+		text-decoration: none;
+		padding-bottom: 2px;
+		border-bottom: 1px solid rgba($bmg-silver, 0.5);
+		transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+		&:hover {
+			color: $bmg-white;
+			border-color: $bmg-white;
+		}
+	}
+
+	&__portrait {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 500px;
+		background: $bmg-charcoal;
+		border: 1px solid rgba(255, 255, 255, 0.06);
+		border-radius: 4px;
+	}
+
+	&__portrait-text {
+		font-family: $font-family-base;
+		font-size: 0.8125rem;
+		font-weight: 500;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		color: $bmg-silver;
+	}
+}
+
+// ==========================================================================
+// SECTION 6: FAQ Preview (Accordion)
+// ==========================================================================
+.faq-accordion {
+	.accordion-item {
+		background: var(--us-bg-primary);
+		border: 1px solid rgba(0, 0, 0, 0.08);
+		border-radius: 4px;
+		margin-bottom: 8px;
+		overflow: hidden;
+		transition: border-color 0.2s ease, background-color 0.2s ease;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+		&:hover {
+			border-color: rgba(0, 0, 0, 0.12);
+		}
+
+		[data-bs-theme="dark"] & {
+			background: $bmg-charcoal;
+			border-color: rgba(255, 255, 255, 0.1);
+
+			&:hover {
+				border-color: rgba(255, 255, 255, 0.15);
+			}
+		}
+	}
+
+	.accordion-button {
+		font-family: $font-family-base;
+		font-weight: 500;
+		font-size: 1rem;
+		padding: 20px 24px;
+		background: transparent;
+		color: var(--us-text-primary);
+		box-shadow: none;
+		transition: background-color 0.2s ease;
+
+		&:not(.collapsed) {
+			background: #F8F8F6;
+			box-shadow: none;
+
+			[data-bs-theme="dark"] & {
+				background: rgba(255, 255, 255, 0.05);
+			}
+		}
+
+		&:focus {
+			box-shadow: none;
+		}
+
+		// Plus icon that rotates to X
+		&::after {
+			width: 16px;
+			height: 16px;
+			background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23A8A9AD'%3e%3cpath d='M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z'/%3e%3c/svg%3e");
+			background-size: 16px;
+			transition: transform 0.3s ease, background-image 0.3s ease;
+		}
+
+		&:not(.collapsed)::after {
+			background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230A0A0A'%3e%3cpath d='M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z'/%3e%3c/svg%3e");
+			transform: rotate(0deg);
+		}
+
+		[data-bs-theme="dark"] & {
+			color: $bmg-white;
+
+			&::after {
+				background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23A8A9AD'%3e%3cpath d='M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z'/%3e%3c/svg%3e");
+			}
+
+			&:not(.collapsed)::after {
+				background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23FFFFFF'%3e%3cpath d='M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z'/%3e%3c/svg%3e");
+			}
+		}
+	}
+
+	.accordion-body {
+		padding: 0 24px 20px;
+		font-family: $font-family-base;
+		font-size: 0.9375rem;
+		line-height: 1.7;
+		color: $bmg-dark-gray;
+
+		p {
+			margin: 0;
+		}
+
+		[data-bs-theme="dark"] & {
+			color: $bmg-platinum;
+		}
+	}
+
+	.accordion-collapse {
+		transition: height 0.3s ease;
+	}
+}
+
+// ==========================================================================
+// SECTION 7: CTA
+// ==========================================================================
+.cta__heading {
+	font-size: clamp(2rem, 5vw, 2.75rem);
+	color: $bmg-white;
+	margin-bottom: $space-lg;
+}
+
+.cta__text {
+	font-size: 1.0625rem;
+	line-height: 1.7;
+	color: $bmg-platinum;
+	max-width: 640px;
+	margin: 0 auto $space-xl;
+}
+
+.cta__button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 18px 48px;
+	background: transparent;
+	border: 2px solid $bmg-white;
+	border-radius: 4px;
+	font-family: $font-family-base;
+	font-size: 14px;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: $bmg-white;
+	text-decoration: none;
+	margin-bottom: $space-lg;
+	transition: all 0.25s ease;
+
+	&:hover {
+		background: $bmg-white;
+		color: $bmg-obsidian;
+	}
+}
+
+.cta__phone {
+	font-size: 0.9375rem;
+	color: $bmg-silver;
+	margin: 0;
+
+	a {
+		color: $bmg-silver;
+		text-decoration: none;
+		transition: color 0.2s ease;
+
+		&:hover {
+			color: $bmg-white;
+		}
+	}
+}
+
+// ==========================================================================
+// Page Header
+// ==========================================================================
+.page-header {
+	padding-top: $space-3xl;
+	padding-bottom: $space-3xl;
+
+	@media (max-width: 767.98px) {
+		padding-top: $space-2xl;
+		padding-bottom: $space-2xl;
+	}
+}
+
+// ==========================================================================
+// Footer
+// ==========================================================================
+.site-footer {
+	padding-top: $space-2xl;
+	padding-bottom: $space-xl;
+
+	.footer-title {
+		color: $bmg-silver;
+		font-family: $font-family-base;
+		font-size: 0.75rem;
+		font-weight: 600;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+
+	.footer-address {
+		font-style: normal;
+		font-size: 0.9375rem;
+		color: $bmg-platinum;
+		line-height: 1.6;
+	}
+
+	.footer-contact {
+		font-size: 0.9375rem;
+
+		a {
+			color: $bmg-platinum;
+			text-decoration: none;
+			transition: color 0.2s ease;
+
+			&:hover {
+				color: $bmg-white;
+			}
+		}
+	}
+
+	.footer-hours {
+		font-size: 0.9375rem;
+		line-height: 1.8;
+		color: $bmg-platinum;
+	}
+
+	.footer-menu {
+		li {
+			margin-bottom: $space-xs;
+
+			a {
+				color: $bmg-platinum;
+				text-decoration: none;
+				font-size: 0.9375rem;
+				transition: color 0.2s ease;
+
+				&:hover {
+					color: $bmg-white;
+				}
+			}
+		}
+	}
+
+	.footer-bottom {
+		border-top: 1px solid rgba($bmg-white, 0.08);
+	}
+
+	.footer-copyright {
+		color: $bmg-warm-gray;
+	}
+}
+
+// ==========================================================================
+// Navbar
+// ==========================================================================
+#main-nav {
+	font-family: $font-family-base;
+
+	.navbar-brand {
+		font-family: $font-family-display;
+		font-size: 1.25rem;
+		font-weight: 600;
+		letter-spacing: 0.02em;
+		color: $bmg-white;
+
+		&:hover {
+			color: $bmg-white;
+		}
+	}
+
+	.navbar-nav {
+		.nav-link {
+			font-family: $font-family-base;
+			font-size: 0.875rem;
+			font-weight: 500;
+			letter-spacing: 0.03em;
+			color: rgba($bmg-white, 0.85);
+			padding: 0.5rem 1rem;
+			transition: color 0.2s ease;
+
+			&:hover,
+			&:focus {
+				color: $bmg-white;
+			}
+
+			&.active {
+				color: $bmg-white;
+			}
+		}
+
+		.dropdown-menu {
+			background: $bmg-obsidian;
+			border: 1px solid rgba($bmg-white, 0.1);
+			border-radius: 4px;
+
+			.dropdown-item {
+				font-size: 0.875rem;
+				font-weight: 500;
+				color: rgba($bmg-white, 0.85);
+				padding: 0.5rem 1rem;
+
+				&:hover,
+				&:focus {
+					background: rgba($bmg-white, 0.1);
+					color: $bmg-white;
+				}
+			}
+		}
+	}
+
+	.navbar-toggler {
+		border-color: rgba($bmg-white, 0.3);
+
+		&:focus {
+			box-shadow: 0 0 0 2px rgba($bmg-white, 0.25);
+		}
+	}
+}
+
+// ==========================================================================
+// Button Overrides
+// ==========================================================================
+.btn-outline-light {
+	border-color: $bmg-white;
+	color: $bmg-white;
+	border-radius: 4px;
+
+	&:hover,
+	&:focus {
+		background-color: $bmg-white;
+		border-color: $bmg-white;
+		color: $bmg-obsidian;
+	}
+}
+
+.btn-outline-dark {
+	border-color: var(--us-text-primary);
+	color: var(--us-text-primary);
+	background: transparent;
+	border-radius: 4px;
+	transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+	&:hover,
+	&:focus {
+		background-color: var(--us-text-primary);
+		border-color: var(--us-text-primary);
+		color: var(--us-bg-primary);
+	}
+}
+
+.btn-dark {
+	background-color: $bmg-obsidian;
+	border-color: $bmg-obsidian;
+	color: $bmg-white;
+	border-radius: 4px;
+	transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+	&:hover,
+	&:focus {
+		background-color: $bmg-charcoal;
+		border-color: $bmg-charcoal;
+		color: $bmg-white;
+	}
+}
+
+// ==========================================================================
+// Preserved Styles from Other Pages
+// ==========================================================================
+
+// Plan Card (full comparison page)
+.plan-card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	background: var(--us-bg-primary);
+	border: 1px solid var(--us-border-color);
+	border-radius: 4px;
+	padding: $space-xl;
+	transition: all 0.2s ease;
+
+	&:hover {
+		border-color: $bmg-silver;
+		box-shadow: $shadow-md;
+	}
+
+	&--featured {
+		border-color: var(--us-text-primary);
+		border-width: 2px;
+		box-shadow: $shadow-lg;
+	}
+
+	&__badge {
+		position: absolute;
+		top: 0;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		padding: $space-xs $space-md;
+		background: $bmg-silver;
+		color: $bmg-white;
+		font-size: 0.6875rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		border-radius: 100px;
+	}
+
+	&__header {
+		margin-bottom: $space-lg;
+		padding-bottom: $space-lg;
+		border-bottom: 1px solid var(--us-border-color);
+	}
+
+	&__name {
+		font-family: $font-family-display;
+		font-size: 1.75rem;
+		font-weight: 600;
+		color: var(--us-text-primary);
+		margin-bottom: $space-sm;
+	}
+
+	&__description {
+		font-size: 0.9375rem;
+		line-height: 1.5;
+		color: var(--us-text-secondary);
+		margin: 0;
+	}
+
+	&__pricing {
+		margin-bottom: $space-lg;
+	}
+
+	&__price {
+		display: flex;
+		align-items: baseline;
+		gap: $space-xs;
+	}
+
+	&__amount {
+		font-family: $font-family-display;
+		font-size: 2.5rem;
+		font-weight: 600;
+		color: var(--us-text-primary);
+		line-height: 1;
+	}
+
+	&__period {
+		font-size: 1rem;
+		color: var(--us-text-secondary);
+	}
+
+	&__billing-note {
+		font-size: 0.8125rem;
+		color: var(--us-text-secondary);
+		margin: $space-xs 0 0;
+	}
+
+	&__features {
+		flex: 1;
+		list-style: none;
+		padding: 0;
+		margin: 0 0 $space-xl;
+
+		li {
+			display: flex;
+			align-items: flex-start;
+			gap: $space-sm;
+			padding: $space-sm 0;
+			font-size: 0.9375rem;
+			color: var(--us-text-secondary);
+			border-bottom: 1px solid var(--us-border-color);
+
+			&:last-child {
+				border-bottom: none;
+			}
+		}
+	}
+
+	&__check {
+		flex-shrink: 0;
+		width: 18px;
+		height: 18px;
+		color: $bmg-silver;
+		margin-top: 2px;
+	}
+
+	&__footer {
+		margin-top: auto;
+
+		.btn {
+			padding: $space-md $space-lg;
+			font-weight: 600;
+		}
+	}
+}
+
+// Billing Toggle
+.billing-toggle {
+	display: inline-flex;
+	background: var(--us-bg-primary);
+	border: 1px solid var(--us-border-color);
+	border-radius: 100px;
+	padding: $space-xs;
+
+	&__btn {
+		padding: $space-sm $space-lg;
+		background: transparent;
+		border: none;
+		border-radius: 100px;
+		font-family: $font-family-base;
+		font-size: 0.9375rem;
+		font-weight: 500;
+		color: var(--us-text-secondary);
+		cursor: pointer;
+		transition: all 0.2s ease;
+
+		&:hover {
+			color: var(--us-text-primary);
+		}
+
+		&.active {
+			background: var(--us-text-primary);
+			color: var(--us-bg-primary);
+		}
+	}
+
+	&__save {
+		display: inline-block;
+		margin-left: $space-xs;
+		padding: 2px $space-xs;
+		background: rgba($bmg-silver, 0.3);
+		border-radius: 4px;
+		font-size: 0.6875rem;
+		font-weight: 600;
+		text-transform: uppercase;
+
+		.active & {
+			background: rgba($bmg-white, 0.2);
+		}
+	}
+}
+
+// Physician Section (About page)
+.physician-section {
+	.physician-portrait img {
+		width: 100%;
+		border-radius: 4px;
+		filter: grayscale(20%);
+		transition: filter 0.4s ease;
+
+		&:hover {
+			filter: grayscale(0%);
+		}
+	}
+
+	.physician-content {
+		padding-left: $space-lg;
+
+		@media (max-width: 991.98px) {
+			padding-left: 0;
+			padding-top: $space-lg;
+		}
+	}
+
+	.physician-credentials {
+		font-size: 0.875rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		color: $bmg-silver;
+		margin-bottom: $space-sm;
+	}
+
+	.physician-name {
+		font-size: 2.5rem;
+		font-weight: 600;
+		color: var(--us-text-primary);
+		margin-bottom: $space-lg;
+
+		@media (max-width: 767.98px) {
+			font-size: 2rem;
+		}
+	}
+
+	.physician-bio {
+		font-size: 1.0625rem;
+		line-height: 1.7;
+		color: var(--us-text-secondary);
+
+		p {
+			margin-bottom: $space-md;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+// Contact sections
+.contact-info-section {
+	.contact-details {
+		padding-right: $space-xl;
+
+		@media (max-width: 991.98px) {
+			padding-right: 0;
+			margin-bottom: $space-xl;
+		}
+	}
+
+	.contact-item {
+		display: flex;
+		gap: $space-md;
+		padding: $space-lg 0;
+		border-bottom: 1px solid var(--us-border-color);
+
+		&:first-of-type {
+			padding-top: 0;
+		}
+
+		&:last-of-type {
+			border-bottom: none;
+		}
+
+		&__icon {
+			flex-shrink: 0;
+			width: 48px;
+			height: 48px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: var(--us-bg-secondary);
+			border-radius: 4px;
+			color: var(--us-text-primary);
+
+			svg {
+				width: 24px;
+				height: 24px;
+			}
+		}
+
+		&__content {
+			flex: 1;
+		}
+
+		&__label {
+			font-size: 0.75rem;
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
+			color: var(--us-text-secondary);
+			margin-bottom: $space-xs;
+		}
+
+		&__value {
+			font-size: 1rem;
+			color: var(--us-text-primary);
+			font-style: normal;
+
+			a {
+				color: var(--us-text-primary);
+				text-decoration: none;
+
+				&:hover {
+					opacity: 0.8;
+				}
+			}
+		}
+	}
+
+	.contact-map {
+		height: 100%;
+		min-height: 400px;
+
+		&__placeholder {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			height: 100%;
+			min-height: 400px;
+			background: var(--us-bg-secondary);
+			border-radius: 4px;
+			color: var(--us-text-secondary);
+
+			svg {
+				width: 64px;
+				height: 64px;
+				margin-bottom: $space-md;
+				opacity: 0.5;
+			}
+		}
+
+		iframe {
+			width: 100%;
+			height: 100%;
+			min-height: 400px;
+			border: none;
+			border-radius: 4px;
+		}
+	}
+}
+
+// Contact Form (dark)
+.contact-form-section {
+	.contact-form-wrapper {
+		background: rgba($bmg-white, 0.05);
+		border: 1px solid rgba($bmg-white, 0.1);
+		border-radius: 4px;
+		padding: $space-xl;
+	}
+
+	.contact-form {
+		.form-label {
+			color: $bmg-platinum;
+			font-size: 0.875rem;
+			font-weight: 600;
+			margin-bottom: $space-xs;
+		}
+
+		.form-control {
+			background: rgba($bmg-white, 0.05);
+			border: 1px solid rgba($bmg-white, 0.15);
+			border-radius: 4px;
+			color: $bmg-white;
+			padding: $space-sm $space-md;
+			height: $form-height;
+
+			&::placeholder {
+				color: $bmg-warm-gray;
+			}
+
+			&:focus {
+				background: rgba($bmg-white, 0.08);
+				border-color: $bmg-silver;
+				box-shadow: none;
+			}
+		}
+
+		textarea.form-control {
+			height: auto;
+			min-height: 120px;
+		}
+	}
+}
+
+// FAQ Section (full page)
+.faq-section {
+	.faq-category__title {
+		font-family: $font-family-display;
+		font-weight: 600;
+		color: var(--us-text-primary);
+		padding-bottom: $space-sm;
+		border-bottom: 2px solid var(--us-text-primary);
+	}
+
+	.accordion {
+		--bs-accordion-bg: var(--us-bg-primary);
+		--bs-accordion-border-color: var(--us-border-color);
+		--bs-accordion-border-radius: 4px;
+		--bs-accordion-btn-color: var(--us-text-primary);
+		--bs-accordion-btn-bg: var(--us-bg-primary);
+		--bs-accordion-active-color: var(--us-text-primary);
+		--bs-accordion-active-bg: var(--us-bg-secondary);
+		--bs-accordion-btn-focus-box-shadow: none;
+	}
+
+	.accordion-item {
+		border: 1px solid var(--us-border-color);
+		margin-bottom: $space-sm;
+		border-radius: 4px;
+		overflow: hidden;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	.accordion-button {
+		font-family: $font-family-base;
+		font-weight: 600;
+		font-size: 1rem;
+		padding: $space-md $space-lg;
+
+		&:not(.collapsed) {
+			box-shadow: none;
+		}
+	}
+
+	.accordion-body {
+		padding: 0 $space-lg $space-lg;
+		font-size: 0.9375rem;
+		line-height: 1.7;
+		color: var(--us-text-secondary);
+
+		p {
+			margin-bottom: $space-sm;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+// Enrollment Form Section
+.enroll-form-section {
+	.enroll-form-wrapper {
+		background: var(--us-bg-primary);
+		border: 1px solid var(--us-border-color);
+		border-radius: 4px;
+		padding: $space-xl;
+	}
+
+	.enroll-placeholder {
+		text-align: center;
+		padding: $space-2xl;
+
+		&__icon {
+			width: 64px;
+			height: 64px;
+			margin: 0 auto $space-lg;
+			color: $bmg-silver;
+
+			svg {
+				width: 100%;
+				height: 100%;
+			}
+		}
+
+		h3 {
+			font-family: $font-family-display;
+			font-size: 1.5rem;
+			font-weight: 600;
+			margin-bottom: $space-md;
+		}
+
+		p {
+			color: var(--us-text-secondary);
+			margin-bottom: $space-lg;
+		}
+	}
+
+	.enroll-notice {
+		background: var(--us-bg-secondary);
+		border-radius: 4px;
+		padding: $space-lg;
+
+		&__content {
+			display: flex;
+			gap: $space-md;
+			align-items: flex-start;
+		}
+
+		&__icon {
+			flex-shrink: 0;
+			width: 24px;
+			height: 24px;
+			color: var(--us-text-primary);
+		}
+
+		p {
+			font-size: 0.875rem;
+			color: var(--us-text-secondary);
+		}
+
+		a {
+			color: var(--us-text-primary);
+		}
+	}
+}
+
+// Legal Content
+.legal-content {
+	h2 {
+		font-family: $font-family-display;
+		font-size: 1.5rem;
+		font-weight: 600;
+		margin-top: $space-xl;
+		margin-bottom: $space-md;
+		padding-top: $space-lg;
+		border-top: 1px solid var(--us-border-color);
+
+		&:first-child {
+			margin-top: 0;
+			padding-top: 0;
+			border-top: none;
+		}
+	}
+
+	h3 {
+		font-family: $font-family-display;
+		font-size: 1.25rem;
+		font-weight: 600;
+		margin-top: $space-lg;
+		margin-bottom: $space-sm;
+	}
+
+	p {
+		margin-bottom: $space-md;
+		line-height: 1.7;
+	}
+
+	ul, ol {
+		margin-bottom: $space-md;
+		padding-left: $space-lg;
+
+		li {
+			margin-bottom: $space-xs;
+			line-height: 1.6;
+		}
+	}
+
+	a {
+		color: var(--us-text-primary);
+		text-decoration: underline;
+
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+}
+
+// ==========================================================================
+// Theme Transitions
+// ==========================================================================
+@media (prefers-reduced-motion: no-preference) {
+	.section-light,
+	.section-light-warm,
+	.plan-card,
+	.plan-card-home,
+	.billing-toggle,
+	.accordion-item,
+	.accordion-button {
+		transition:
+			background-color 0.2s ease,
+			color 0.2s ease,
+			border-color 0.2s ease;
+	}
+}

@@ -1,0 +1,204 @@
+// Dark Mode Styles
+// CSS custom properties for light/dark color schemes using Bootstrap 5's data-bs-theme attribute
+
+// Theme transition duration
+$theme-transition-duration: 0.2s;
+
+// Light mode (default)
+:root,
+[data-bs-theme="light"] {
+	--us-bg-primary: #{$light-bg-primary};
+	--us-bg-secondary: #{$light-bg-secondary};
+	--us-bg-tertiary: #{$light-bg-tertiary};
+	--us-text-primary: #{$light-text-primary};
+	--us-text-secondary: #{$light-text-secondary};
+	--us-border-color: #{$light-border-color};
+
+	--bs-body-bg: #{$light-bg-primary};
+	--bs-body-color: #{$light-text-primary};
+	--bs-secondary-bg: #{$light-bg-secondary};
+	--bs-tertiary-bg: #{$light-bg-tertiary};
+	--bs-border-color: #{$light-border-color};
+}
+
+// Dark mode
+[data-bs-theme="dark"] {
+	--us-bg-primary: #{$dark-bg-primary};
+	--us-bg-secondary: #{$dark-bg-secondary};
+	--us-bg-tertiary: #{$dark-bg-tertiary};
+	--us-text-primary: #{$dark-text-primary};
+	--us-text-secondary: #{$dark-text-secondary};
+	--us-border-color: #{$dark-border-color};
+
+	--bs-body-bg: #{$dark-bg-primary};
+	--bs-body-color: #{$dark-text-primary};
+	--bs-secondary-bg: #{$dark-bg-secondary};
+	--bs-tertiary-bg: #{$dark-bg-tertiary};
+	--bs-border-color: #{$dark-border-color};
+	--bs-heading-color: #{$dark-text-primary};
+	--bs-code-color: #{$bmg-silver};
+}
+
+// Apply background and text colors to body
+body {
+	background-color: var(--bs-body-bg);
+	color: var(--bs-body-color);
+}
+
+// Smooth transitions (respects reduced-motion)
+@media (prefers-reduced-motion: no-preference) {
+	body,
+	.navbar,
+	.card,
+	.btn,
+	.form-control,
+	.dropdown-menu {
+		transition:
+			background-color $theme-transition-duration ease,
+			color $theme-transition-duration ease,
+			border-color $theme-transition-duration ease;
+	}
+}
+
+// Dark mode toggle button
+.dark-mode-toggle {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0.5rem;
+	background: transparent;
+	border: none;
+	border-radius: 0.375rem;
+	cursor: pointer;
+	color: var(--bs-body-color);
+
+	&:hover {
+		background-color: rgba(128, 128, 128, 0.2);
+	}
+
+	&:focus-visible {
+		outline: 2px solid currentColor;
+		outline-offset: 2px;
+	}
+
+	.icon {
+		width: 1.25rem;
+		height: 1.25rem;
+		fill: currentColor;
+	}
+
+	.icon-sun {
+		display: none;
+	}
+
+	.icon-moon {
+		display: block;
+	}
+}
+
+// Toggle in dark navbars
+.navbar-dark .dark-mode-toggle {
+	color: rgba($bmg-white, 0.85);
+
+	&:hover {
+		color: $bmg-white;
+		background-color: rgba($bmg-white, 0.1);
+	}
+}
+
+// Toggle in light navbars
+.navbar-light .dark-mode-toggle {
+	color: rgba(0, 0, 0, 0.65);
+
+	&:hover {
+		color: rgba(0, 0, 0, 0.9);
+		background-color: rgba(0, 0, 0, 0.05);
+	}
+}
+
+// Show sun icon in dark mode
+[data-bs-theme="dark"] {
+	.dark-mode-toggle {
+		.icon-sun {
+			display: block;
+		}
+
+		.icon-moon {
+			display: none;
+		}
+	}
+}
+
+// Dark mode component overrides
+[data-bs-theme="dark"] {
+	.navbar-light {
+		--bs-navbar-color: #{$dark-text-primary};
+		--bs-navbar-hover-color: #{$dark-text-primary};
+		--bs-navbar-active-color: #{$dark-text-primary};
+	}
+
+	.card {
+		--bs-card-bg: #{$dark-bg-secondary};
+		--bs-card-border-color: #{$dark-border-color};
+		--bs-card-color: #{$dark-text-primary};
+	}
+
+	.form-control,
+	.form-select {
+		background-color: $dark-bg-secondary;
+		border-color: $dark-border-color;
+		color: $dark-text-primary;
+
+		&:focus {
+			background-color: $dark-bg-secondary;
+			color: $dark-text-primary;
+		}
+
+		&::placeholder {
+			color: $dark-text-secondary;
+		}
+	}
+
+	.dropdown-menu {
+		--bs-dropdown-bg: #{$dark-bg-secondary};
+		--bs-dropdown-border-color: #{$dark-border-color};
+		--bs-dropdown-link-color: #{$dark-text-primary};
+		--bs-dropdown-link-hover-bg: #{$dark-bg-tertiary};
+	}
+
+	.table {
+		--bs-table-bg: transparent;
+		--bs-table-color: #{$dark-text-primary};
+		--bs-table-border-color: #{$dark-border-color};
+		--bs-table-striped-bg: #{$dark-bg-secondary};
+		--bs-table-hover-bg: #{$dark-bg-tertiary};
+	}
+
+	.modal-content {
+		--bs-modal-bg: #{$dark-bg-primary};
+		--bs-modal-border-color: #{$dark-border-color};
+		--bs-modal-color: #{$dark-text-primary};
+	}
+
+	.list-group-item {
+		--bs-list-group-bg: #{$dark-bg-secondary};
+		--bs-list-group-border-color: #{$dark-border-color};
+		--bs-list-group-color: #{$dark-text-primary};
+		--bs-list-group-action-hover-bg: #{$dark-bg-tertiary};
+	}
+
+	.accordion-item {
+		background-color: $dark-bg-secondary;
+		border-color: $dark-border-color;
+	}
+
+	.accordion-button {
+		background-color: $dark-bg-secondary;
+		color: $dark-text-primary;
+
+		&:not(.collapsed) {
+			background-color: $dark-bg-tertiary;
+			color: $dark-text-primary;
+		}
+	}
+}

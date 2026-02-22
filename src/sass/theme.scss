@@ -1,0 +1,23 @@
+// Starter Theme - Main Stylesheet
+// This file imports the parent Understrap theme and adds child theme customizations.
+
+// Child theme variable overrides (before parent imports)
+@import "theme/theme_variables";
+
+// Import parent theme's Bootstrap and Understrap
+@import "theme/theme_variables";              // Parent theme variables (will be overridden by ours above)
+@import "assets/bootstrap5/bootstrap";        // Bootstrap from parent
+@import "theme/understrap";                   // Understrap defaults
+@import "theme/colors";                       // Bootstrap color classes
+@import "theme/blocks";                       // Block editor styles
+
+// Optional parent theme imports
+@import "theme/contact-form7";                // Contact Form 7 Bootstrap support
+@import "theme/woocommerce";                  // WooCommerce styles
+@import "assets/fontawesome/font-awesome";    // Font Awesome icons
+
+// Child theme additions
+@import "theme/dark-mode";                    // Light/Dark mode theming
+@import "theme/sections";                     // Homepage section styles
+@import "theme/woocommerce";                  // BMG WooCommerce overrides
+@import "theme/theme";                        // Child theme custom styles
