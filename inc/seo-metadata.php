@@ -50,6 +50,10 @@ function bmg_seo_page_data() {
 			'title'       => __( 'Privacy Policy — Baig Medical Group', 'bmg-theme' ),
 			'description' => __( 'HIPAA Notice of Privacy Practices and website privacy policy for Baig Medical Group.', 'bmg-theme' ),
 		),
+		'page-terms'    => array(
+			'title'       => __( 'Terms of Use — Baig Medical Group', 'bmg-theme' ),
+			'description' => __( 'Website terms of use, medical disclaimer, and governing law for Baig Medical Group.', 'bmg-theme' ),
+		),
 	);
 }
 
