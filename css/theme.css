@@ -17598,6 +17598,19 @@ html {
 .contact-info-section .contact-item__value a:hover {
   opacity: 0.8;
 }
+.contact-info-section .contact-after-hours {
+  margin-top: 2rem;
+  padding: 1.5rem 2rem;
+  background: var(--us-bg-secondary);
+  border-radius: 4px;
+  border-left: 3px solid #A8A9AD;
+}
+.contact-info-section .contact-after-hours p {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--us-text-secondary);
+  margin: 0;
+}
 .contact-info-section .contact-map {
   height: 100%;
   min-height: 400px;
@@ -17618,6 +17631,12 @@ html {
   height: 64px;
   margin-bottom: 1.5rem;
   opacity: 0.5;
+}
+.contact-info-section .contact-map__note {
+  font-size: 0.8125rem;
+  color: var(--us-text-secondary);
+  opacity: 0.6;
+  margin-top: 0.5rem;
 }
 .contact-info-section .contact-map iframe {
   width: 100%;
@@ -17673,7 +17692,8 @@ html {
 .contact-form-section .contact-form .wpcf7 select,
 .wpcf7 .contact-form-section .contact-form select,
 .contact-form-section .contact-form .wpcf7 textarea,
-.wpcf7 .contact-form-section .contact-form textarea, .contact-form-section .contact-form .wpcf7 .wpcf7-validation-errors, .wpcf7 .contact-form-section .contact-form .wpcf7-validation-errors {
+.wpcf7 .contact-form-section .contact-form textarea, .contact-form-section .contact-form .wpcf7 .wpcf7-validation-errors, .wpcf7 .contact-form-section .contact-form .wpcf7-validation-errors,
+.contact-form-section .contact-form .form-select {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 4px;
@@ -17681,7 +17701,7 @@ html {
   padding: 1rem 1.5rem;
   height: 52px;
 }
-.contact-form-section .contact-form .form-control::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=text]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=text]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=search]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=search]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=url]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=url]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=tel]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=tel]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=number]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=number]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=range]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=range]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=date]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=date]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=month]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=month]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=week]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=week]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=time]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=time]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=datetime]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=datetime]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=datetime-local]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=datetime-local]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=color]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=color]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=email]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=email]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=file]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=file]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=submit]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=submit]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 select::-moz-placeholder, .wpcf7 .contact-form-section .contact-form select::-moz-placeholder, .contact-form-section .contact-form .wpcf7 textarea::-moz-placeholder, .wpcf7 .contact-form-section .contact-form textarea::-moz-placeholder, .contact-form-section .contact-form .wpcf7 .wpcf7-validation-errors::-moz-placeholder, .wpcf7 .contact-form-section .contact-form .wpcf7-validation-errors::-moz-placeholder {
+.contact-form-section .contact-form .form-control::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=text]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=text]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=search]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=search]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=url]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=url]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=tel]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=tel]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=number]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=number]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=range]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=range]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=date]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=date]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=month]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=month]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=week]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=week]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=time]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=time]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=datetime]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=datetime]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=datetime-local]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=datetime-local]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=color]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=color]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=email]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=email]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=file]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=file]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=submit]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=submit]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 select::-moz-placeholder, .wpcf7 .contact-form-section .contact-form select::-moz-placeholder, .contact-form-section .contact-form .wpcf7 textarea::-moz-placeholder, .wpcf7 .contact-form-section .contact-form textarea::-moz-placeholder, .contact-form-section .contact-form .wpcf7 .wpcf7-validation-errors::-moz-placeholder, .wpcf7 .contact-form-section .contact-form .wpcf7-validation-errors::-moz-placeholder, .contact-form-section .contact-form .form-select::-moz-placeholder {
   color: #8B8B8B;
 }
 .contact-form-section .contact-form .form-control::placeholder, .contact-form-section .contact-form .wpcf7 input[type=text]::placeholder, .wpcf7 .contact-form-section .contact-form input[type=text]::placeholder,
@@ -17718,7 +17738,8 @@ html {
 .contact-form-section .contact-form .wpcf7 select::placeholder,
 .wpcf7 .contact-form-section .contact-form select::placeholder,
 .contact-form-section .contact-form .wpcf7 textarea::placeholder,
-.wpcf7 .contact-form-section .contact-form textarea::placeholder, .contact-form-section .contact-form .wpcf7 .wpcf7-validation-errors::placeholder, .wpcf7 .contact-form-section .contact-form .wpcf7-validation-errors::placeholder {
+.wpcf7 .contact-form-section .contact-form textarea::placeholder, .contact-form-section .contact-form .wpcf7 .wpcf7-validation-errors::placeholder, .wpcf7 .contact-form-section .contact-form .wpcf7-validation-errors::placeholder,
+.contact-form-section .contact-form .form-select::placeholder {
   color: #8B8B8B;
 }
 .contact-form-section .contact-form .form-control:focus, .contact-form-section .contact-form .wpcf7 input[type=text]:focus, .wpcf7 .contact-form-section .contact-form input[type=text]:focus,
@@ -17755,16 +17776,33 @@ html {
 .contact-form-section .contact-form .wpcf7 select:focus,
 .wpcf7 .contact-form-section .contact-form select:focus,
 .contact-form-section .contact-form .wpcf7 textarea:focus,
-.wpcf7 .contact-form-section .contact-form textarea:focus, .contact-form-section .contact-form .wpcf7 .wpcf7-validation-errors:focus, .wpcf7 .contact-form-section .contact-form .wpcf7-validation-errors:focus {
+.wpcf7 .contact-form-section .contact-form textarea:focus, .contact-form-section .contact-form .wpcf7 .wpcf7-validation-errors:focus, .wpcf7 .contact-form-section .contact-form .wpcf7-validation-errors:focus,
+.contact-form-section .contact-form .form-select:focus {
   background: rgba(255, 255, 255, 0.08);
   border-color: #A8A9AD;
   box-shadow: none;
+}
+.contact-form-section .contact-form .form-select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23A8A9AD' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
 }
 .contact-form-section .contact-form textarea.form-control,
 .contact-form-section .contact-form .wpcf7 textarea,
 .wpcf7 .contact-form-section .contact-form textarea {
   height: auto;
   min-height: 120px;
+}
+.contact-form-section .contact-urgent-note p {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #A8A9AD;
+  margin: 0;
+}
+.contact-form-section .contact-urgent-note p a {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+.contact-form-section .contact-urgent-note p a:hover {
+  opacity: 0.8;
 }
 
 .faq-section .faq-category__title {

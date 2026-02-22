@@ -1811,6 +1811,21 @@ html {
 		}
 	}
 
+	.contact-after-hours {
+		margin-top: $space-lg;
+		padding: $space-md $space-lg;
+		background: var(--us-bg-secondary);
+		border-radius: 4px;
+		border-left: 3px solid $bmg-silver;
+
+		p {
+			font-size: 0.875rem;
+			line-height: 1.6;
+			color: var(--us-text-secondary);
+			margin: 0;
+		}
+	}
+
 	.contact-map {
 		height: 100%;
 		min-height: 400px;
@@ -1832,6 +1847,13 @@ html {
 				margin-bottom: $space-md;
 				opacity: 0.5;
 			}
+		}
+
+		&__note {
+			font-size: 0.8125rem;
+			color: var(--us-text-secondary);
+			opacity: 0.6;
+			margin-top: $space-xs;
 		}
 
 		iframe {
@@ -1861,7 +1883,8 @@ html {
 			margin-bottom: $space-xs;
 		}
 
-		.form-control {
+		.form-control,
+		.form-select {
 			background: rgba($bmg-white, 0.05);
 			border: 1px solid rgba($bmg-white, 0.15);
 			border-radius: 4px;
@@ -1880,9 +1903,31 @@ html {
 			}
 		}
 
+		.form-select {
+			background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23A8A9AD' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+		}
+
 		textarea.form-control {
 			height: auto;
 			min-height: 120px;
+		}
+	}
+
+	.contact-urgent-note {
+		p {
+			font-size: 0.875rem;
+			line-height: 1.6;
+			color: $bmg-silver;
+			margin: 0;
+
+			a {
+				color: $bmg-white;
+				text-decoration: none;
+
+				&:hover {
+					opacity: 0.8;
+				}
+			}
 		}
 	}
 }

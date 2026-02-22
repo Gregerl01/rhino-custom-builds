@@ -1,13 +1,17 @@
 <?php
 /**
- * Contact Form Section
+ * Contact Form Section — Contact Page
  *
- * Placeholder section for Gravity Forms contact form.
+ * Displays Gravity Forms contact form when available, otherwise a
+ * placeholder form matching CONTENT.md Section 5.3 fields.
  *
  * @package BMG_Theme
  */
 
 defined( 'ABSPATH' ) || exit;
+
+$phone_display = get_theme_mod( 'bmg_phone', '(000) 000-0000' );
+$phone_link    = preg_replace( '/[^0-9+]/', '', $phone_display );
 ?>
 
 <section id="contact-form" class="section section-charcoal contact-form-section">
@@ -19,33 +23,44 @@ defined( 'ABSPATH' ) || exit;
 					<h2 class="display-text h2 mb-3">
 						<?php esc_html_e( 'Send Us a Message', 'bmg-theme' ); ?>
 					</h2>
-					<p class="lead">
-						<?php esc_html_e( 'Have a question or ready to learn more? We\'d love to hear from you.', 'bmg-theme' ); ?>
-					</p>
 				</div>
 
 				<div class="contact-form-wrapper">
 					<?php
-					// Check if Gravity Forms is active and a form exists.
+					// Check if Gravity Forms is active.
 					if ( class_exists( 'GFAPI' ) ) {
-						// Replace '1' with your actual Gravity Forms form ID.
+						// Replace '1' with your actual Gravity Forms contact form ID.
 						echo do_shortcode( '[gravityform id="1" title="false" description="false" ajax="true"]' );
 					} else {
-						// Placeholder form for development.
+						// Placeholder form matching CONTENT.md Section 5.3.
 						?>
 						<form class="contact-form" action="#" method="post">
 							<div class="row g-3">
 								<div class="col-md-6">
-									<label for="contact-name" class="form-label"><?php esc_html_e( 'Name', 'bmg-theme' ); ?></label>
-									<input type="text" class="form-control" id="contact-name" name="name" required>
+									<label for="contact-first-name" class="form-label"><?php esc_html_e( 'First Name', 'bmg-theme' ); ?></label>
+									<input type="text" class="form-control" id="contact-first-name" name="first_name" required>
+								</div>
+								<div class="col-md-6">
+									<label for="contact-last-name" class="form-label"><?php esc_html_e( 'Last Name', 'bmg-theme' ); ?></label>
+									<input type="text" class="form-control" id="contact-last-name" name="last_name" required>
 								</div>
 								<div class="col-md-6">
 									<label for="contact-email" class="form-label"><?php esc_html_e( 'Email', 'bmg-theme' ); ?></label>
 									<input type="email" class="form-control" id="contact-email" name="email" required>
 								</div>
-								<div class="col-12">
+								<div class="col-md-6">
 									<label for="contact-phone" class="form-label"><?php esc_html_e( 'Phone (optional)', 'bmg-theme' ); ?></label>
 									<input type="tel" class="form-control" id="contact-phone" name="phone">
+								</div>
+								<div class="col-12">
+									<label for="contact-subject" class="form-label"><?php esc_html_e( 'Subject', 'bmg-theme' ); ?></label>
+									<select class="form-select" id="contact-subject" name="subject" required>
+										<option value=""><?php esc_html_e( 'Select a subject', 'bmg-theme' ); ?></option>
+										<option value="general"><?php esc_html_e( 'General Inquiry', 'bmg-theme' ); ?></option>
+										<option value="membership"><?php esc_html_e( 'Membership Question', 'bmg-theme' ); ?></option>
+										<option value="patient"><?php esc_html_e( 'Current Patient', 'bmg-theme' ); ?></option>
+										<option value="other"><?php esc_html_e( 'Other', 'bmg-theme' ); ?></option>
+									</select>
 								</div>
 								<div class="col-12">
 									<label for="contact-message" class="form-label"><?php esc_html_e( 'Message', 'bmg-theme' ); ?></label>
@@ -57,13 +72,22 @@ defined( 'ABSPATH' ) || exit;
 									</button>
 								</div>
 							</div>
-							<p class="form-note text-center mt-3">
-								<?php esc_html_e( 'Gravity Forms will replace this placeholder form.', 'bmg-theme' ); ?>
-							</p>
 						</form>
 						<?php
 					}
 					?>
+				</div>
+
+				<div class="contact-urgent-note mt-4 text-center">
+					<p>
+						<?php
+						printf(
+							/* translators: %s: phone link */
+							esc_html__( 'For urgent medical concerns, please call %s or visit your nearest emergency department. This form is not monitored for time-sensitive communications.', 'bmg-theme' ),
+							'<a href="tel:' . esc_attr( $phone_link ) . '">' . esc_html( $phone_display ) . '</a>'
+						);
+						?>
+					</p>
 				</div>
 
 			</div>
