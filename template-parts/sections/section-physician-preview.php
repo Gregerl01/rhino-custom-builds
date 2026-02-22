@@ -16,6 +16,10 @@ $physician_credentials = get_theme_mod( 'bmg_physician_credentials', 'Board-Cert
 $physician_years       = get_theme_mod( 'bmg_physician_years', '10' );
 $physician_med_school  = get_theme_mod( 'bmg_physician_med_school', '[Medical School]' );
 $physician_last_name   = get_theme_mod( 'bmg_physician_last_name', 'Baig' );
+
+// Portrait photo — try attachment ID for responsive srcset.
+$portrait_url = get_theme_mod( 'bmg_physician_photo_portrait', '' );
+$portrait_id  = $portrait_url ? attachment_url_to_postid( $portrait_url ) : 0;
 ?>
 
 <section id="physician" class="section section-dark reveal-on-scroll">
@@ -24,11 +28,35 @@ $physician_last_name   = get_theme_mod( 'bmg_physician_last_name', 'Baig' );
 
 			<!-- Portrait Column -->
 			<div class="col-lg-5 mb-5 mb-lg-0">
-				<div class="physician-preview__portrait">
-					<span class="physician-preview__portrait-text">
-						<?php esc_html_e( 'Physician Portrait', 'bmg-theme' ); ?>
-					</span>
-				</div>
+				<?php if ( $portrait_id ) : ?>
+					<div class="physician-preview__portrait physician-preview__portrait--has-image">
+						<?php
+						echo wp_get_attachment_image(
+							$portrait_id,
+							'large',
+							false,
+							array(
+								'class'   => 'physician-preview__img',
+								'alt'     => esc_attr( $physician_name ),
+								'loading' => 'lazy',
+							)
+						);
+						?>
+					</div>
+				<?php elseif ( $portrait_url ) : ?>
+					<div class="physician-preview__portrait physician-preview__portrait--has-image">
+						<img src="<?php echo esc_url( $portrait_url ); ?>"
+							 alt="<?php echo esc_attr( $physician_name ); ?>"
+							 class="physician-preview__img"
+							 loading="lazy">
+					</div>
+				<?php else : ?>
+					<div class="physician-preview__portrait">
+						<span class="physician-preview__portrait-text">
+							<?php esc_html_e( 'Physician Portrait', 'bmg-theme' ); ?>
+						</span>
+					</div>
+				<?php endif; ?>
 			</div>
 
 			<!-- Text Column -->

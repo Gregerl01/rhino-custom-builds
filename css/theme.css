@@ -16885,6 +16885,23 @@ html {
   background: #1C1C1C;
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 4px;
+  overflow: hidden;
+}
+.physician-preview__portrait--has-image {
+  min-height: 0;
+  background: none;
+  border: none;
+}
+.physician-preview__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+  filter: grayscale(20%);
+  transition: filter 0.4s ease;
+}
+.physician-preview__img:hover {
+  filter: grayscale(0%);
 }
 .physician-preview__portrait-text {
   font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;

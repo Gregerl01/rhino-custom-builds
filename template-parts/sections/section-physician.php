@@ -20,7 +20,10 @@ $physician_residency   = get_theme_mod( 'bmg_physician_residency', '[Residency P
 $physician_fellowship  = get_theme_mod( 'bmg_physician_fellowship', '' );
 $physician_board_cert  = get_theme_mod( 'bmg_physician_board_cert', 'American Board of Family Medicine' );
 $physician_memberships = get_theme_mod( 'bmg_physician_memberships', '[Professional Organizations]' );
-$physician_photo       = get_theme_mod( 'physician_photo', '' );
+
+// Full photo — try attachment ID for responsive srcset.
+$photo_url = get_theme_mod( 'bmg_physician_photo_full', '' );
+$photo_id  = $photo_url ? attachment_url_to_postid( $photo_url ) : 0;
 ?>
 
 <section id="physician-bio" class="section section-light physician-section reveal-on-scroll">
@@ -30,8 +33,21 @@ $physician_photo       = get_theme_mod( 'physician_photo', '' );
 			<!-- Portrait -->
 			<div class="col-lg-5">
 				<div class="physician-portrait">
-					<?php if ( $physician_photo ) : ?>
-						<img src="<?php echo esc_url( $physician_photo ); ?>"
+					<?php if ( $photo_id ) : ?>
+						<?php
+						echo wp_get_attachment_image(
+							$photo_id,
+							'large',
+							false,
+							array(
+								'class'   => 'img-fluid',
+								'alt'     => esc_attr( $physician_name ),
+								'loading' => 'lazy',
+							)
+						);
+						?>
+					<?php elseif ( $photo_url ) : ?>
+						<img src="<?php echo esc_url( $photo_url ); ?>"
 							 alt="<?php echo esc_attr( $physician_name ); ?>"
 							 class="img-fluid"
 							 loading="lazy">

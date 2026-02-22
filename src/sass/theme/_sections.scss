@@ -933,6 +933,26 @@ html {
 		background: $bmg-charcoal;
 		border: 1px solid rgba(255, 255, 255, 0.06);
 		border-radius: 4px;
+		overflow: hidden;
+
+		&--has-image {
+			min-height: 0;
+			background: none;
+			border: none;
+		}
+	}
+
+	&__img {
+		width: 100%;
+		height: auto;
+		display: block;
+		border-radius: 4px;
+		filter: grayscale(20%);
+		transition: filter 0.4s ease;
+
+		&:hover {
+			filter: grayscale(0%);
+		}
 	}
 
 	&__portrait-text {

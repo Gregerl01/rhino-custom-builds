@@ -227,6 +227,48 @@ function bmg_practice_info_customizer( $wp_customize ) {
 		)
 	);
 
+	// Portrait Photo (Homepage Physician Preview).
+	$wp_customize->add_setting(
+		'bmg_physician_photo_portrait',
+		array(
+			'default'           => '',
+			'sanitize_callback' => 'esc_url_raw',
+		)
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Image_Control(
+			$wp_customize,
+			'bmg_physician_photo_portrait',
+			array(
+				'label'       => __( 'Portrait Photo (Homepage)', 'bmg-theme' ),
+				'description' => __( 'Displayed in the homepage Physician Preview section. Recommended: 600×800px, vertical crop.', 'bmg-theme' ),
+				'section'     => 'bmg_section_physician',
+			)
+		)
+	);
+
+	// Full Photo (About Page Physician Bio).
+	$wp_customize->add_setting(
+		'bmg_physician_photo_full',
+		array(
+			'default'           => '',
+			'sanitize_callback' => 'esc_url_raw',
+		)
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Image_Control(
+			$wp_customize,
+			'bmg_physician_photo_full',
+			array(
+				'label'       => __( 'Full Photo (About Page)', 'bmg-theme' ),
+				'description' => __( 'Displayed in the About page Physician Bio section. Recommended: 800×1000px, vertical crop.', 'bmg-theme' ),
+				'section'     => 'bmg_section_physician',
+			)
+		)
+	);
+
 	// Short Bio (Physician Preview — homepage).
 	$wp_customize->add_setting(
 		'bmg_physician_bio_short',
