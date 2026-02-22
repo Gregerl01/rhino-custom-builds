@@ -16507,9 +16507,16 @@ html {
 }
 
 .pillar {
-  padding-left: 1.5rem;
+  background: rgba(168, 169, 173, 0.05);
+  padding: 2rem;
   border-left: 2px solid #A8A9AD;
+  border-radius: 4px;
   height: 100%;
+}
+.pillar__icon {
+  color: #A8A9AD;
+  margin-bottom: 1.5rem;
+  line-height: 0;
 }
 .pillar__title {
   font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
@@ -16561,7 +16568,10 @@ html {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
 }
 .plan-card-home__badge {
-  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
   padding: 6px 20px;
   background: #0A0A0A;
   color: #FFFFFF;
@@ -16571,8 +16581,12 @@ html {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   border-radius: 100px;
-  margin-bottom: 16px;
-  align-self: flex-start;
+  z-index: 1;
+  white-space: nowrap;
+}
+[data-bs-theme=dark] .plan-card-home__badge {
+  background: #FFFFFF;
+  color: #0A0A0A;
 }
 .plan-card-home__name {
   font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
