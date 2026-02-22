@@ -1376,14 +1376,25 @@ html {
 		}
 	}
 
-	// Smart Sticky Header — transitions
+	// Smart Sticky Header
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1030;
+	padding-top: $space-sm;   // 16px
+	padding-bottom: $space-sm; // 16px — gives ~80px total with content
+	background-color: transparent;
 	transition: transform $motion-moderate $ease-out-expo,
 	            background-color $motion-moderate $ease-out-smooth,
-	            height $motion-moderate $ease-out-smooth;
+	            padding $motion-moderate $ease-out-smooth;
 
-	// Full state (in hero viewport)
-	height: $nav-shrink-from;
-	background-color: transparent;
+	// Vertically center nav links with logo
+	.container,
+	.container-fluid {
+		display: flex;
+		align-items: center;
+	}
 
 	.navbar-brand img {
 		transition: transform $motion-moderate $ease-out-smooth;
@@ -1391,7 +1402,8 @@ html {
 
 	// Condensed state — scrolling up past hero
 	&.is-condensed {
-		height: $nav-shrink-to;
+		padding-top: $space-xs;   // 8px
+		padding-bottom: $space-xs; // 8px — gives ~60px total
 		background-color: rgba($bmg-obsidian, 0.98) !important;
 		box-shadow: 0 1px 0 rgba($bmg-silver, 0.1);
 
