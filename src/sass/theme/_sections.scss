@@ -1805,16 +1805,8 @@ html {
 		}
 	}
 
-	.physician-content {
-		padding-left: $space-lg;
-
-		@media (max-width: 991.98px) {
-			padding-left: 0;
-			padding-top: $space-lg;
-		}
-	}
-
-	.physician-credentials {
+	.physician-credentials-label {
+		font-family: $font-family-base;
 		font-size: 0.875rem;
 		font-weight: 600;
 		text-transform: uppercase;
@@ -1827,7 +1819,7 @@ html {
 		font-size: 2.5rem;
 		font-weight: 600;
 		color: var(--us-text-primary);
-		margin-bottom: $space-lg;
+		margin-bottom: 0;
 
 		@media (max-width: 767.98px) {
 			font-size: 2rem;
@@ -1849,40 +1841,51 @@ html {
 	}
 }
 
-// Credentials Sidebar (below portrait on About page)
+// Credentials Card (About page — beside bio)
 .physician-credentials-sidebar {
-	margin-top: $space-xl;
-	padding-top: $space-lg;
-	border-top: 1px solid $bmg-warm-gray;
+	background: rgba($bmg-silver, 0.05);
+	border-left: 2px solid $bmg-silver;
+	padding: $space-lg; // 32px
+	border-radius: 2px;
 
 	&__title {
 		font-family: $font-family-base;
-		font-size: 0.75rem;
+		font-size: 11px;
 		font-weight: 600;
 		letter-spacing: 0.1em;
 		text-transform: uppercase;
 		color: $bmg-silver;
-		margin-bottom: $space-md;
+		margin-bottom: $space-md; // 24px
 	}
 
 	&__list {
 		margin: 0;
 
 		dt {
-			font-size: 0.8125rem;
-			font-weight: 600;
+			font-family: $font-family-base;
+			font-size: 12px;
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: 0.03em;
 			color: var(--us-text-primary);
 			margin-bottom: 2px;
 		}
 
 		dd {
-			font-size: 0.9375rem;
+			font-family: $font-family-base;
+			font-size: 15px;
+			font-weight: 400;
 			color: var(--us-text-secondary);
-			margin-bottom: $space-md;
+			margin-bottom: $space-sm; // 16px
 			margin-left: 0;
 
 			&:last-child {
 				margin-bottom: 0;
+			}
+
+			// Placeholder values — reduced opacity until real data entered
+			&.is-placeholder {
+				opacity: 0.4;
 			}
 		}
 	}

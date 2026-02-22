@@ -17631,16 +17631,8 @@ html {
 .physician-section .physician-portrait img:hover {
   filter: grayscale(0%);
 }
-.physician-section .physician-content {
-  padding-left: 2rem;
-}
-@media (max-width: 991.98px) {
-  .physician-section .physician-content {
-    padding-left: 0;
-    padding-top: 2rem;
-  }
-}
-.physician-section .physician-credentials {
+.physician-section .physician-credentials-label {
+  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
   font-size: 0.875rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -17652,7 +17644,7 @@ html {
   font-size: 2.5rem;
   font-weight: 600;
   color: var(--us-text-primary);
-  margin-bottom: 2rem;
+  margin-bottom: 0;
 }
 @media (max-width: 767.98px) {
   .physician-section .physician-name {
@@ -17672,13 +17664,14 @@ html {
 }
 
 .physician-credentials-sidebar {
-  margin-top: 3rem;
-  padding-top: 2rem;
-  border-top: 1px solid #8B8B8B;
+  background: rgba(168, 169, 173, 0.05);
+  border-left: 2px solid #A8A9AD;
+  padding: 2rem;
+  border-radius: 2px;
 }
 .physician-credentials-sidebar__title {
   font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
-  font-size: 0.75rem;
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -17689,19 +17682,27 @@ html {
   margin: 0;
 }
 .physician-credentials-sidebar__list dt {
-  font-size: 0.8125rem;
-  font-weight: 600;
+  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
   color: var(--us-text-primary);
   margin-bottom: 2px;
 }
 .physician-credentials-sidebar__list dd {
-  font-size: 0.9375rem;
+  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
   color: var(--us-text-secondary);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   margin-left: 0;
 }
 .physician-credentials-sidebar__list dd:last-child {
   margin-bottom: 0;
+}
+.physician-credentials-sidebar__list dd.is-placeholder {
+  opacity: 0.4;
 }
 
 .service-block__title {
