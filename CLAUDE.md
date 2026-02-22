@@ -22,7 +22,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## What This Project Is
 
 A HIPAA-compliant concierge medical practice website where patients can:
-1. Browse three tiered service plans (Basic / Premium / VIP)
+1. Browse three tiered service plans (Essential / Premium / Concierge Elite)
 2. Enroll online via secure form with HIPAA consent
 3. Pay via Authorize.net (one-time and recurring subscriptions)
 4. Manage their account through a client portal (WooCommerce My Account)
@@ -82,7 +82,8 @@ starter-theme/
 ├── style.css                          # WP theme header (metadata only)
 ├── functions.php                      # Enqueues, WooCommerce setup, includes
 ├── front-page.php                     # Homepage (7 section templates)
-├── footer.php                         # Custom footer
+├── footer.php                         # Custom footer (3-col, bmg_* variables)
+├── 404.php                            # Page Not Found
 ├── package.json                       # NPM scripts + dependencies
 │
 ├── src/
@@ -117,37 +118,42 @@ starter-theme/
 ├── inc/
 │   ├── custom-post-types.php          # CPT: "service" (homepage icons)
 │   ├── customizer-site-identity.php   # Logo max-width control
+│   ├── customizer-practice-info.php   # Practice Information panel (physician, contact, hours)
 │   ├── customizer-hero.php            # Hero headline, subtitle, background
 │   ├── customizer-about.php           # Philosophy + physician profile
-│   ├── customizer-footer.php          # Footer menus, practice info, hours
-│   └── dark-mode.php                  # Dark mode FOUC prevention + toggle
+│   ├── customizer-footer.php          # Footer menus + walker
+│   ├── dark-mode.php                  # Dark mode FOUC prevention + toggle
+│   └── seo-metadata.php              # SEO title tags + meta descriptions
 │
 ├── global-templates/
 │   ├── navbar-collapse-bootstrap5.php # Bootstrap 5 navbar
 │   └── dark-mode-toggle.php           # Dark mode UI toggle
 │
 ├── page-templates/
-│   ├── page-about.php                 # About page
+│   ├── page-about.php                 # About page (philosophy + physician bio)
 │   ├── page-plans.php                 # Plans comparison page
+│   ├── page-services.php              # Services page (5 service blocks)
 │   ├── page-enroll.php                # Enrollment form page
-│   ├── page-faq.php                   # FAQ page
+│   ├── page-faq.php                   # FAQ page (10 questions)
 │   ├── page-contact.php               # Contact page
-│   └── page-privacy.php               # Privacy policy page
+│   └── page-privacy.php               # Privacy policy + HIPAA notice
 │
 └── template-parts/
     └── sections/
         ├── section-hero.php           # Full-viewport hero with animated headline
         ├── section-explainer.php      # What Is Concierge Medicine
         ├── section-pillars.php        # 4-column value pillars
-        ├── section-plans-overview.php # Three-tier plan cards
-        ├── section-plans-comparison.php # Detailed plan comparison
-        ├── section-physician.php      # Full physician bio
+        ├── section-plans-overview.php # Three-tier plan cards (Essential/Premium/Concierge Elite)
+        ├── section-plans-comparison.php # Detailed plan comparison table
+        ├── section-philosophy.php     # About page — philosophy of care
+        ├── section-physician.php      # Full physician bio + credentials sidebar
         ├── section-physician-preview.php # Homepage physician intro
-        ├── section-faq.php            # Full FAQ accordion
-        ├── section-faq-preview.php    # Homepage FAQ preview
-        ├── section-enroll-form.php    # Enrollment form
-        ├── section-contact-info.php   # Contact details
-        ├── section-contact-form.php   # Contact form
+        ├── section-services.php       # Services page — 5 alternating service blocks
+        ├── section-faq.php            # Full FAQ accordion (10 questions)
+        ├── section-faq-preview.php    # Homepage FAQ preview (4 questions)
+        ├── section-enroll-form.php    # Enrollment form (Gravity Forms or placeholder)
+        ├── section-contact-info.php   # Contact details + hours + map
+        ├── section-contact-form.php   # Contact form (Gravity Forms or placeholder)
         └── section-cta.php            # Consultation prompt CTA
 ```
 
@@ -226,21 +232,23 @@ All token values are defined in `src/sass/theme/_theme_variables.scss` — that 
 
 ## Site Map
 
-| Page | Template | Purpose |
-|------|----------|---------|
-| Homepage | `front-page.php` | Hero, explainer, pillars, plans, physician, FAQ, CTA |
-| About | `page-templates/page-about.php` | Doctor bio, philosophy, credentials |
-| Our Plans | `page-templates/page-plans.php` | Tiered plan comparison + WooCommerce purchase |
-| Enroll | `page-templates/page-enroll.php` | Enrollment form + HIPAA consent |
-| FAQ | `page-templates/page-faq.php` | Common questions |
-| Contact | `page-templates/page-contact.php` | Form, phone, address, map, hours |
-| Privacy Policy | `page-templates/page-privacy.php` | HIPAA Notice + website privacy |
-| My Account | WooCommerce override | Client portal |
+| Page | Template | Slug | Purpose |
+|------|----------|------|---------|
+| Homepage | `front-page.php` | `/` | Hero, explainer, pillars, plans, physician, FAQ, CTA |
+| About | `page-templates/page-about.php` | `/about/` | Philosophy, physician bio + credentials |
+| Our Plans | `page-templates/page-plans.php` | `/our-plans/` | Feature comparison table (Essential/Premium/Concierge Elite) |
+| Services | `page-templates/page-services.php` | `/services/` | 5 service blocks with alternating sections |
+| Enroll | `page-templates/page-enroll.php` | `/enroll/` | Enrollment form + HIPAA consent |
+| FAQ | `page-templates/page-faq.php` | `/faq/` | 10 questions, flat accordion |
+| Contact | `page-templates/page-contact.php` | `/contact/` | Form, phone, address, map, hours |
+| Privacy Policy | `page-templates/page-privacy.php` | `/privacy-policy/` | HIPAA Notice + website privacy |
+| 404 | `404.php` | — | Page Not Found |
+| My Account | WooCommerce override | `/my-account/` | Client portal |
 
 ### Navigation
 - **Header (flat):** About, Our Plans, Services, Contact
 - **My Account link:** Appears when logged in
-- **Footer:** Enroll, FAQ, Privacy Policy, Contact info
+- **Footer (3-col):** Practice identity (logo, address, phone, email) | Navigation (About, Our Plans, Services, Enroll, FAQ, Contact, Privacy Policy) | Office Hours
 
 ---
 
@@ -270,12 +278,12 @@ These plugins are required for production but **not all are installed yet**. Plu
 | All-in-One WP Migration | Backup/restore |
 
 ### Service Plans (WooCommerce Subscription Products)
-| | Basic | Premium | VIP |
-|---|-------|---------|-----|
+| | Essential | Premium | Concierge Elite |
+|---|-----------|---------|-----------------|
 | Monthly | TBD | TBD | TBD |
 | Annual | TBD (discount) | TBD (discount) | TBD (discount) |
-| 24/7 Access | No | Limited | Yes |
-| Specialist Referrals | Standard | Priority | VIP Priority |
+| 24/7 Access | No | Extended hours | Yes |
+| Specialist Referrals | Standard | Priority | VIP / Expedited |
 | Wellness Programs | Basic | Enhanced | Full Suite |
 
 ---
@@ -320,8 +328,10 @@ These plugins are required for production but **not all are installed yet**. Plu
 All approved website copy and dynamic variable definitions live in CONTENT.md in the theme root.
 - **Before editing any template file**, read CONTENT.md first
 - Use it as the source of truth for all text content, `get_theme_mod()` keys, fallback strings, and implementation order
-- Build `inc/customizer-practice-info.php` before populating any templates
 - Do not write placeholder copy — if content exists in CONTENT.md, use it exactly
+- All CONTENT.md sections (1–12) have been implemented in templates
+- Dynamic variables are centralized in `inc/customizer-practice-info.php` (Customizer → Practice Information panel)
+- SEO metadata is handled by `inc/seo-metadata.php` (yields to Rank Math when active)
 
 ---
 
@@ -335,17 +345,32 @@ All approved website copy and dynamic variable definitions live in CONTENT.md in
 
 ---
 
+## Customizer Dynamic Variables
+
+All reusable practice data is managed via Customizer → Practice Information (`inc/customizer-practice-info.php`):
+
+**Physician:** `bmg_physician_name`, `bmg_physician_last_name`, `bmg_physician_credentials`, `bmg_physician_specialty`, `bmg_physician_years`, `bmg_physician_med_school`, `bmg_physician_residency`, `bmg_physician_fellowship`, `bmg_physician_board_cert`, `bmg_physician_memberships`, `bmg_physician_photo_portrait`, `bmg_physician_photo_full`, `bmg_physician_bio_short`, `bmg_physician_bio_full`
+
+**Contact:** `bmg_phone`, `bmg_email`, `bmg_address_street`, `bmg_address_city`, `bmg_privacy_effective_date`
+
+**Hours:** `bmg_office_hours`, `bmg_office_hours_sat`, `bmg_office_hours_sun`
+
+The footer uses these `bmg_*` keys directly (not the legacy `footer_*` keys from `customizer-footer.php`).
+
+---
+
 ## Open Items (Need Client Input)
 
 > Review this list periodically — remove items as they are resolved.
 
-1. Plan pricing (Basic/Premium/VIP monthly + annual)
-2. Plan feature breakdown per tier
-3. Physician name, credentials, bio
-4. Practice address + phone
-5. Photography (physician portrait, office photos)
-6. Logo files (SVG, PNG)
-7. Hosting provider (must sign BAA)
-8. Authorize.net credentials
-9. Google Workspace BAA status
-10. Domain name
+1. Plan pricing (Essential/Premium/Concierge Elite monthly + annual)
+2. Physician medical school and residency (currently using placeholder defaults)
+3. Practice street address + ZIP code
+4. Photography (physician portrait, office photos)
+5. Logo files (SVG, PNG)
+6. Hosting provider (must sign BAA)
+7. Authorize.net credentials
+8. Google Workspace BAA status
+9. Domain name
+10. Gravity Forms license (enrollment + contact forms currently use placeholder HTML)
+11. Analytics provider (privacy policy references TBD)
