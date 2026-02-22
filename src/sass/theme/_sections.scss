@@ -861,6 +861,14 @@ html {
 		line-height: 1.8;
 		color: $bmg-platinum;
 		margin-bottom: $space-lg;
+
+		p {
+			margin-bottom: $space-md;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
 	}
 
 	&__values {

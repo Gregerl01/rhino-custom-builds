@@ -16825,6 +16825,12 @@ html {
   color: #E5E4E2;
   margin-bottom: 2rem;
 }
+.physician-preview__bio p {
+  margin-bottom: 1.5rem;
+}
+.physician-preview__bio p:last-child {
+  margin-bottom: 0;
+}
 .physician-preview__values {
   list-style: none;
   padding: 0;
