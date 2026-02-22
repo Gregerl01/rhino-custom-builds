@@ -99,7 +99,7 @@ $plans = array(
 							</ul>
 						<?php endif; ?>
 
-						<a href="<?php echo esc_url( home_url( '/plans/' ) ); ?>" class="plan-card-home__btn<?php echo ! empty( $plan['featured'] ) ? ' plan-card-home__btn--filled' : ''; ?>">
+						<a href="<?php echo esc_url( home_url( '/our-plans/' ) ); ?>" class="plan-card-home__btn<?php echo ! empty( $plan['featured'] ) ? ' plan-card-home__btn--filled' : ''; ?>">
 							<?php esc_html_e( 'View Plan Details', 'bmg-theme' ); ?>
 						</a>
 

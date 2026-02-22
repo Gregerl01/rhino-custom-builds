@@ -79,7 +79,7 @@ $hours_sunday   = get_theme_mod( 'bmg_office_hours_sun', 'Closed' );
 					<?php else : ?>
 						<ul class="footer-menu list-unstyled mb-0">
 							<li><a href="<?php echo esc_url( home_url( '/about/' ) ); ?>"><?php esc_html_e( 'About', 'bmg-theme' ); ?></a></li>
-							<li><a href="<?php echo esc_url( home_url( '/plans/' ) ); ?>"><?php esc_html_e( 'Our Plans', 'bmg-theme' ); ?></a></li>
+							<li><a href="<?php echo esc_url( home_url( '/our-plans/' ) ); ?>"><?php esc_html_e( 'Our Plans', 'bmg-theme' ); ?></a></li>
 							<li><a href="<?php echo esc_url( home_url( '/services/' ) ); ?>"><?php esc_html_e( 'Services', 'bmg-theme' ); ?></a></li>
 							<li><a href="<?php echo esc_url( home_url( '/enroll/' ) ); ?>"><?php esc_html_e( 'Enroll', 'bmg-theme' ); ?></a></li>
 							<li><a href="<?php echo esc_url( home_url( '/faq/' ) ); ?>"><?php esc_html_e( 'FAQ', 'bmg-theme' ); ?></a></li>
