@@ -1,218 +1,127 @@
 <?php
 /**
- * Plans Comparison Section
+ * Plans Comparison Section — Plans Page
  *
- * Three-tier plan comparison with monthly/annual toggle.
+ * Detailed feature-by-feature comparison table for all three tiers.
+ * Matches CONTENT.md Section 3.2. Pricing TBD.
  *
  * @package BMG_Theme
  */
 
 defined( 'ABSPATH' ) || exit;
 
-// Plan data - placeholder content (will be replaced by WooCommerce products).
-$plans = array(
-	'basic' => array(
-		'name'        => __( 'Basic', 'bmg-theme' ),
-		'description' => __( 'Essential concierge care for individuals seeking a more personal healthcare experience.', 'bmg-theme' ),
-		'monthly'     => '$XXX',
-		'annual'      => '$X,XXX',
-		'features'    => array(
-			__( 'Same-day or next-day appointments', 'bmg-theme' ),
-			__( 'Extended appointment times (30+ min)', 'bmg-theme' ),
-			__( 'Direct phone access to physician', 'bmg-theme' ),
-			__( 'Annual comprehensive wellness exam', 'bmg-theme' ),
-			__( 'Care coordination assistance', 'bmg-theme' ),
+// Comparison data — matches CONTENT.md Section 3.2.
+$categories = array(
+	array(
+		'name'     => __( 'Access & Availability', 'bmg-theme' ),
+		'features' => array(
+			array( __( 'Direct physician phone/text', 'bmg-theme' ), '✓', '✓', '✓' ),
+			array( __( 'Secure messaging', 'bmg-theme' ), '✓', '✓', '✓' ),
+			array( __( 'Same-day/next-day appointments', 'bmg-theme' ), '✓', '✓', '✓' ),
+			array( __( 'Extended hours (evenings)', 'bmg-theme' ), '—', '✓', '✓' ),
+			array( __( '24/7 physician availability', 'bmg-theme' ), '—', '—', '✓' ),
 		),
-		'featured'    => false,
 	),
-	'premium' => array(
-		'name'        => __( 'Premium', 'bmg-theme' ),
-		'description' => __( 'Enhanced access and comprehensive care coordination for busy professionals and families.', 'bmg-theme' ),
-		'monthly'     => '$XXX',
-		'annual'      => '$X,XXX',
-		'features'    => array(
-			__( 'All Basic features included', 'bmg-theme' ),
-			__( 'After-hours phone consultations', 'bmg-theme' ),
-			__( 'Priority specialist referrals', 'bmg-theme' ),
-			__( 'Preventive health screenings', 'bmg-theme' ),
-			__( 'Personalized wellness planning', 'bmg-theme' ),
-			__( 'Prescription coordination', 'bmg-theme' ),
+	array(
+		'name'     => __( 'Evaluations & Screenings', 'bmg-theme' ),
+		'features' => array(
+			array( __( 'Annual comprehensive evaluation', 'bmg-theme' ), '✓', '✓', '✓' ),
+			array( __( 'Executive physical with advanced panels', 'bmg-theme' ), '—', '✓', '✓' ),
+			array( __( 'Quarterly health check-ins', 'bmg-theme' ), '—', '—', '✓' ),
 		),
-		'featured'    => true,
-		'badge'       => __( 'Most Popular', 'bmg-theme' ),
 	),
-	'vip' => array(
-		'name'        => __( 'VIP', 'bmg-theme' ),
-		'description' => __( 'The highest level of personalized care with 24/7 access and white-glove service.', 'bmg-theme' ),
-		'monthly'     => '$XXX',
-		'annual'      => '$X,XXX',
-		'features'    => array(
-			__( 'All Premium features included', 'bmg-theme' ),
-			__( '24/7 physician access', 'bmg-theme' ),
-			__( 'Home and office visits available', 'bmg-theme' ),
-			__( 'Executive health assessments', 'bmg-theme' ),
-			__( 'Concierge travel medicine', 'bmg-theme' ),
-			__( 'Family member discounts', 'bmg-theme' ),
-			__( 'Priority hospital admission coordination', 'bmg-theme' ),
+	array(
+		'name'     => __( 'Specialist Coordination', 'bmg-theme' ),
+		'features' => array(
+			array( __( 'Referral coordination', 'bmg-theme' ), __( 'Standard', 'bmg-theme' ), __( 'Priority', 'bmg-theme' ), __( 'VIP / Expedited', 'bmg-theme' ) ),
+			array( __( 'Post-referral follow-up', 'bmg-theme' ), '✓', '✓', '✓' ),
+			array( __( 'Multi-specialist case management', 'bmg-theme' ), '—', '—', '✓' ),
 		),
-		'featured'    => false,
+	),
+	array(
+		'name'     => __( 'Wellness & Prevention', 'bmg-theme' ),
+		'features' => array(
+			array( __( 'Foundational wellness programming', 'bmg-theme' ), '✓', '✓', '✓' ),
+			array( __( 'Health coaching (nutrition & lifestyle)', 'bmg-theme' ), '—', '✓', '✓' ),
+			array( __( 'Longevity & optimization planning', 'bmg-theme' ), '—', '—', '✓' ),
+		),
+	),
+	array(
+		'name'     => __( 'Convenience', 'bmg-theme' ),
+		'features' => array(
+			array( __( 'In-home/on-site visits', 'bmg-theme' ), '—', '—', '✓' ),
+			array( __( 'Travel medicine & global coordination', 'bmg-theme' ), '—', '—', '✓' ),
+			array( __( 'Dedicated care coordinator', 'bmg-theme' ), '—', '—', '✓' ),
+			array( __( 'Family member add-on', 'bmg-theme' ), '—', '✓', '✓' ),
+		),
 	),
 );
 ?>
 
-<section id="plans-comparison" class="section section-light plans-comparison">
+<section id="plans-comparison" class="section section-light reveal-on-scroll">
 	<div class="container">
 
-		<!-- Section Header -->
-		<div class="row justify-content-center mb-5">
-			<div class="col-lg-8 text-center">
-				<h2 class="display-text h1 mb-3">
-					<?php esc_html_e( 'Choose Your Plan', 'bmg-theme' ); ?>
-				</h2>
-				<p class="lead text-muted">
-					<?php esc_html_e( 'Select the membership that best fits your healthcare needs.', 'bmg-theme' ); ?>
+		<div class="plans-table-wrapper">
+			<table class="plans-table">
+				<thead>
+					<tr>
+						<th class="plans-table__feature-col">
+							<span class="sr-only"><?php esc_html_e( 'Feature', 'bmg-theme' ); ?></span>
+						</th>
+						<th class="plans-table__plan-col">
+							<?php esc_html_e( 'Essential', 'bmg-theme' ); ?>
+						</th>
+						<th class="plans-table__plan-col plans-table__plan-col--featured">
+							<?php esc_html_e( 'Premium', 'bmg-theme' ); ?>
+							<span class="plans-table__badge"><?php esc_html_e( 'Recommended', 'bmg-theme' ); ?></span>
+						</th>
+						<th class="plans-table__plan-col">
+							<?php esc_html_e( 'Concierge Elite', 'bmg-theme' ); ?>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php foreach ( $categories as $category ) : ?>
+						<tr class="plans-table__category-row">
+							<td colspan="4"><?php echo esc_html( $category['name'] ); ?></td>
+						</tr>
+						<?php foreach ( $category['features'] as $feature ) : ?>
+							<tr>
+								<td class="plans-table__feature-name"><?php echo esc_html( $feature[0] ); ?></td>
+								<td class="plans-table__cell"><?php echo esc_html( $feature[1] ); ?></td>
+								<td class="plans-table__cell plans-table__cell--featured"><?php echo esc_html( $feature[2] ); ?></td>
+								<td class="plans-table__cell"><?php echo esc_html( $feature[3] ); ?></td>
+							</tr>
+						<?php endforeach; ?>
+					<?php endforeach; ?>
+
+					<!-- Pricing rows -->
+					<tr class="plans-table__category-row">
+						<td colspan="4"><?php esc_html_e( 'Investment', 'bmg-theme' ); ?></td>
+					</tr>
+					<tr>
+						<td class="plans-table__feature-name"><?php esc_html_e( 'Monthly', 'bmg-theme' ); ?></td>
+						<td class="plans-table__cell plans-table__cell--pricing"><?php esc_html_e( 'Contact Us', 'bmg-theme' ); ?></td>
+						<td class="plans-table__cell plans-table__cell--featured plans-table__cell--pricing"><?php esc_html_e( 'Contact Us', 'bmg-theme' ); ?></td>
+						<td class="plans-table__cell plans-table__cell--pricing"><?php esc_html_e( 'Contact Us', 'bmg-theme' ); ?></td>
+					</tr>
+					<tr>
+						<td class="plans-table__feature-name"><?php esc_html_e( 'Annual', 'bmg-theme' ); ?></td>
+						<td class="plans-table__cell plans-table__cell--pricing"><?php esc_html_e( 'Contact Us', 'bmg-theme' ); ?></td>
+						<td class="plans-table__cell plans-table__cell--featured plans-table__cell--pricing"><?php esc_html_e( 'Contact Us', 'bmg-theme' ); ?></td>
+						<td class="plans-table__cell plans-table__cell--pricing"><?php esc_html_e( 'Contact Us', 'bmg-theme' ); ?></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="row justify-content-center mt-4">
+			<div class="col-lg-10 text-center">
+				<p class="plans-table__note">
+					<?php esc_html_e( 'All plans require an initial enrollment consultation. Annual commitments include a preferred rate. Pricing reflects physician access and care coordination — standard office visit copays and insurance billing for covered services remain separate.', 'bmg-theme' ); ?>
 				</p>
-			</div>
-		</div>
-
-		<!-- Billing Toggle -->
-		<div class="row justify-content-center mb-5">
-			<div class="col-auto">
-				<div class="billing-toggle" role="tablist" aria-label="<?php esc_attr_e( 'Billing frequency', 'bmg-theme' ); ?>">
-					<button type="button"
-							class="billing-toggle__btn active"
-							data-billing="monthly"
-							role="tab"
-							aria-selected="true"
-							aria-controls="plans-monthly">
-						<?php esc_html_e( 'Monthly', 'bmg-theme' ); ?>
-					</button>
-					<button type="button"
-							class="billing-toggle__btn"
-							data-billing="annual"
-							role="tab"
-							aria-selected="false"
-							aria-controls="plans-annual">
-						<?php esc_html_e( 'Annual', 'bmg-theme' ); ?>
-						<span class="billing-toggle__save"><?php esc_html_e( 'Save 15%', 'bmg-theme' ); ?></span>
-					</button>
-				</div>
-			</div>
-		</div>
-
-		<!-- Plans Grid -->
-		<div class="row g-4 justify-content-center">
-			<?php foreach ( $plans as $plan_key => $plan ) : ?>
-				<div class="col-md-6 col-lg-4">
-					<div class="plan-card <?php echo $plan['featured'] ? 'plan-card--featured' : ''; ?>">
-
-						<?php if ( ! empty( $plan['badge'] ) ) : ?>
-							<div class="plan-card__badge">
-								<?php echo esc_html( $plan['badge'] ); ?>
-							</div>
-						<?php endif; ?>
-
-						<div class="plan-card__header">
-							<h3 class="plan-card__name">
-								<?php echo esc_html( $plan['name'] ); ?>
-							</h3>
-							<p class="plan-card__description">
-								<?php echo esc_html( $plan['description'] ); ?>
-							</p>
-						</div>
-
-						<div class="plan-card__pricing">
-							<div class="plan-card__price" data-monthly="<?php echo esc_attr( $plan['monthly'] ); ?>" data-annual="<?php echo esc_attr( $plan['annual'] ); ?>">
-								<span class="plan-card__amount"><?php echo esc_html( $plan['monthly'] ); ?></span>
-								<span class="plan-card__period"><?php esc_html_e( '/month', 'bmg-theme' ); ?></span>
-							</div>
-							<p class="plan-card__billing-note">
-								<span class="billing-monthly"><?php esc_html_e( 'Billed monthly', 'bmg-theme' ); ?></span>
-								<span class="billing-annual" style="display: none;"><?php esc_html_e( 'Billed annually', 'bmg-theme' ); ?></span>
-							</p>
-						</div>
-
-						<ul class="plan-card__features">
-							<?php foreach ( $plan['features'] as $feature ) : ?>
-								<li>
-									<svg class="plan-card__check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-										<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-									</svg>
-									<?php echo esc_html( $feature ); ?>
-								</li>
-							<?php endforeach; ?>
-						</ul>
-
-						<div class="plan-card__footer">
-							<a href="<?php echo esc_url( home_url( '/enroll/' ) ); ?>" class="btn <?php echo $plan['featured'] ? 'btn-dark' : 'btn-outline-dark'; ?> w-100">
-								<?php esc_html_e( 'Get Started', 'bmg-theme' ); ?>
-							</a>
-						</div>
-
-					</div>
-				</div>
-			<?php endforeach; ?>
-		</div>
-
-		<!-- Additional Info -->
-		<div class="row justify-content-center mt-5">
-			<div class="col-lg-8 text-center">
-				<p class="text-muted small">
-					<?php esc_html_e( 'All plans include a one-time enrollment fee. Prices subject to change. Contact us for family and corporate rates.', 'bmg-theme' ); ?>
-				</p>
-				<a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="text-decoration-underline">
-					<?php esc_html_e( 'Questions? Contact us', 'bmg-theme' ); ?>
-				</a>
 			</div>
 		</div>
 
 	</div>
 </section>
-
-<script>
-(function() {
-	'use strict';
-
-	document.addEventListener('DOMContentLoaded', function() {
-		const toggleBtns = document.querySelectorAll('.billing-toggle__btn');
-		const priceElements = document.querySelectorAll('.plan-card__price');
-		const monthlyNotes = document.querySelectorAll('.billing-monthly');
-		const annualNotes = document.querySelectorAll('.billing-annual');
-
-		toggleBtns.forEach(function(btn) {
-			btn.addEventListener('click', function() {
-				const billing = this.dataset.billing;
-
-				// Update active state
-				toggleBtns.forEach(function(b) {
-					b.classList.remove('active');
-					b.setAttribute('aria-selected', 'false');
-				});
-				this.classList.add('active');
-				this.setAttribute('aria-selected', 'true');
-
-				// Update prices
-				priceElements.forEach(function(el) {
-					const amount = el.querySelector('.plan-card__amount');
-					const period = el.querySelector('.plan-card__period');
-					if (billing === 'annual') {
-						amount.textContent = el.dataset.annual;
-						period.textContent = '/year';
-					} else {
-						amount.textContent = el.dataset.monthly;
-						period.textContent = '/month';
-					}
-				});
-
-				// Update billing notes
-				monthlyNotes.forEach(function(el) {
-					el.style.display = billing === 'monthly' ? '' : 'none';
-				});
-				annualNotes.forEach(function(el) {
-					el.style.display = billing === 'annual' ? '' : 'none';
-				});
-			});
-		});
-	});
-})();
-</script>

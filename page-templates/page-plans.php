@@ -15,49 +15,67 @@ get_header();
 
 <main id="main" class="site-main">
 
-	<!-- Page Header -->
+	<!-- 3.1 Hero / Intro -->
 	<section class="section section-dark page-header">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-lg-8 text-center">
 					<h1 class="display-text display-4 mb-3">
-						<?php the_title(); ?>
+						<?php esc_html_e( 'Membership Plans', 'bmg-theme' ); ?>
 					</h1>
-					<?php if ( has_excerpt() ) : ?>
-						<p class="lead mb-0">
-							<?php echo esc_html( get_the_excerpt() ); ?>
-						</p>
-					<?php endif; ?>
+					<p class="lead mb-0">
+						<?php esc_html_e( 'Every tier includes direct access to Dr. Baig, unhurried appointments, and coordinated care. The differences are in depth — how much access, how broad the wellness programming, and how extensive the coordination around your health. All plans are structured around prevention, partnership, and time.', 'bmg-theme' ); ?>
+					</p>
 				</div>
 			</div>
 		</div>
 	</section>
 
 	<?php
-	// Plans Comparison Section.
+	// 3.2 Comparison Table.
 	get_template_part( 'template-parts/sections/section', 'plans-comparison' );
-
-	// Optional: FAQ section or additional content from page editor.
-	if ( have_posts() ) :
-		while ( have_posts() ) :
-			the_post();
-			$content = get_the_content();
-			if ( ! empty( trim( $content ) ) ) :
-				?>
-				<section class="section section-light">
-					<div class="container">
-						<div class="row justify-content-center">
-							<div class="col-lg-8 content-narrow">
-								<?php the_content(); ?>
-							</div>
-						</div>
-					</div>
-				</section>
-				<?php
-			endif;
-		endwhile;
-	endif;
 	?>
+
+	<!-- 3.3 Plans CTA -->
+	<?php
+	$plans_phone_display = get_theme_mod( 'bmg_phone', '(000) 000-0000' );
+	$plans_phone_link    = preg_replace( '/[^0-9+]/', '', $plans_phone_display );
+	?>
+	<section class="section section-charcoal reveal-on-scroll">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-8 text-center">
+
+					<h2 class="cta__heading display-text">
+						<?php esc_html_e( 'Questions About Which Plan Fits?', 'bmg-theme' ); ?>
+					</h2>
+
+					<p class="cta__text">
+						<?php esc_html_e( 'Schedule a brief consultation with our team. We will review your health priorities and recommend the membership tier that aligns with your needs.', 'bmg-theme' ); ?>
+					</p>
+
+					<a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="cta__button">
+						<?php esc_html_e( 'Schedule a Consultation', 'bmg-theme' ); ?>
+					</a>
+
+					<p class="cta__phone">
+						<a href="tel:<?php echo esc_attr( $plans_phone_link ); ?>">
+							<?php
+							echo esc_html(
+								sprintf(
+									/* translators: %s: phone number */
+									__( 'Call %s', 'bmg-theme' ),
+									$plans_phone_display
+								)
+							);
+							?>
+						</a>
+					</p>
+
+				</div>
+			</div>
+		</div>
+	</section>
 
 </main>
 

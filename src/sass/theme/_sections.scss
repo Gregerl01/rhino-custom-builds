@@ -1429,6 +1429,98 @@ html {
 	}
 }
 
+// Plans Comparison Table
+.plans-table-wrapper {
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+.plans-table {
+	width: 100%;
+	border-collapse: collapse;
+	min-width: 640px;
+
+	thead tr {
+		border-bottom: 2px solid var(--us-text-primary);
+	}
+
+	&__feature-col {
+		width: 40%;
+		padding: $space-md $space-md $space-md 0;
+		text-align: left;
+	}
+
+	&__plan-col {
+		width: 20%;
+		padding: $space-md;
+		text-align: center;
+		font-family: $font-family-display;
+		font-size: 1.25rem;
+		font-weight: 600;
+		color: var(--us-text-primary);
+		vertical-align: bottom;
+
+		&--featured {
+			background: rgba($bmg-silver, 0.06);
+		}
+	}
+
+	&__badge {
+		display: block;
+		font-family: $font-family-base;
+		font-size: 0.6875rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		color: $bmg-silver;
+		margin-top: $space-xs;
+	}
+
+	&__category-row {
+		td {
+			padding: $space-lg $space-md $space-sm 0;
+			font-family: $font-family-base;
+			font-size: 0.75rem;
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 0.08em;
+			color: $bmg-silver;
+			border-bottom: 1px solid var(--us-border-color);
+		}
+	}
+
+	&__feature-name {
+		padding: $space-sm $space-md $space-sm 0;
+		font-size: 0.9375rem;
+		color: var(--us-text-primary);
+		border-bottom: 1px solid var(--us-border-color);
+	}
+
+	&__cell {
+		padding: $space-sm $space-md;
+		text-align: center;
+		font-size: 0.9375rem;
+		color: var(--us-text-secondary);
+		border-bottom: 1px solid var(--us-border-color);
+
+		&--featured {
+			background: rgba($bmg-silver, 0.06);
+		}
+
+		&--pricing {
+			font-weight: 600;
+			color: $bmg-silver;
+		}
+	}
+
+	&__note {
+		font-size: 0.875rem;
+		line-height: 1.6;
+		color: var(--us-text-secondary);
+		margin: 0;
+	}
+}
+
 // Billing Toggle
 .billing-toggle {
 	display: inline-flex;
