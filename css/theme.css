@@ -18009,6 +18009,11 @@ html {
 .legal-content a:hover {
   opacity: 0.8;
 }
+.legal-content address {
+  font-style: normal;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .section-light,
