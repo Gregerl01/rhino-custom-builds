@@ -17822,28 +17822,73 @@ html {
   padding: 3rem;
 }
 .enroll-form-section .enroll-placeholder {
-  text-align: center;
-  padding: 4rem;
+  padding: 3rem;
 }
 .enroll-form-section .enroll-placeholder__icon {
-  width: 64px;
-  height: 64px;
+  width: 48px;
+  height: 48px;
   margin: 0 auto 2rem;
   color: #A8A9AD;
+  text-align: center;
 }
 .enroll-form-section .enroll-placeholder__icon svg {
   width: 100%;
   height: 100%;
 }
-.enroll-form-section .enroll-placeholder h3, .enroll-form-section .enroll-placeholder .h3 {
+.enroll-form-section .enroll-placeholder > h3, .enroll-form-section .enroll-placeholder > .h3 {
   font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   font-size: 1.5rem;
   font-weight: 600;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.enroll-form-section .enroll-placeholder > p {
+  color: var(--us-text-secondary);
+  margin-bottom: 3rem;
+  text-align: center;
+}
+.enroll-form-section .enroll-placeholder__sections {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.enroll-form-section .enroll-placeholder__section {
+  padding-top: 2rem;
+  border-top: 1px solid var(--us-border-color);
+}
+.enroll-form-section .enroll-placeholder__section h4, .enroll-form-section .enroll-placeholder__section .h4 {
+  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #A8A9AD;
   margin-bottom: 1.5rem;
 }
-.enroll-form-section .enroll-placeholder p {
+.enroll-form-section .enroll-placeholder__section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.enroll-form-section .enroll-placeholder__section ul li {
+  padding: 0.5rem 0;
+  font-size: 0.9375rem;
   color: var(--us-text-secondary);
-  margin-bottom: 2rem;
+}
+.enroll-form-section .enroll-placeholder__section ul li::before {
+  content: "–";
+  margin-right: 1rem;
+  color: #A8A9AD;
+}
+.enroll-form-section .enroll-placeholder__note {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--us-text-secondary);
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+.enroll-form-section .enroll-placeholder__note a {
+  color: var(--us-text-primary);
 }
 .enroll-form-section .enroll-notice {
   background: var(--us-bg-secondary);

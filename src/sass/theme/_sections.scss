@@ -1956,14 +1956,14 @@ html {
 	}
 
 	.enroll-placeholder {
-		text-align: center;
-		padding: $space-2xl;
+		padding: $space-xl;
 
 		&__icon {
-			width: 64px;
-			height: 64px;
+			width: 48px;
+			height: 48px;
 			margin: 0 auto $space-lg;
 			color: $bmg-silver;
+			text-align: center;
 
 			svg {
 				width: 100%;
@@ -1971,16 +1971,69 @@ html {
 			}
 		}
 
-		h3 {
+		> h3 {
 			font-family: $font-family-display;
 			font-size: 1.5rem;
 			font-weight: 600;
-			margin-bottom: $space-md;
+			margin-bottom: $space-sm;
+			text-align: center;
 		}
 
-		p {
+		> p {
 			color: var(--us-text-secondary);
-			margin-bottom: $space-lg;
+			margin-bottom: $space-xl;
+			text-align: center;
+		}
+
+		&__sections {
+			display: flex;
+			flex-direction: column;
+			gap: $space-lg;
+		}
+
+		&__section {
+			padding-top: $space-lg;
+			border-top: 1px solid var(--us-border-color);
+
+			h4 {
+				font-family: $font-family-base;
+				font-size: 0.8125rem;
+				font-weight: 600;
+				text-transform: uppercase;
+				letter-spacing: 0.06em;
+				color: $bmg-silver;
+				margin-bottom: $space-md;
+			}
+
+			ul {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+
+				li {
+					padding: $space-xs 0;
+					font-size: 0.9375rem;
+					color: var(--us-text-secondary);
+
+					&::before {
+						content: "–";
+						margin-right: $space-sm;
+						color: $bmg-silver;
+					}
+				}
+			}
+		}
+
+		&__note {
+			font-size: 0.875rem;
+			line-height: 1.6;
+			color: var(--us-text-secondary);
+			margin-top: $space-sm;
+			margin-bottom: 0;
+
+			a {
+				color: var(--us-text-primary);
+			}
 		}
 	}
 
