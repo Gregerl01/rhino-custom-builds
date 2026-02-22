@@ -116,12 +116,13 @@ add_action( 'wp_enqueue_scripts', 'bmg_enqueue_scripts', 20 );
 $bmg_inc_dir = 'inc';
 
 $bmg_includes = array(
-	'/custom-post-types.php',       // Custom post types for homepage sections.
+	'/custom-post-types.php',        // Custom post types for homepage sections.
 	'/customizer-site-identity.php', // Site Identity settings (logo size).
-	'/customizer-footer.php',       // Footer Customizer settings and menus.
-	'/customizer-hero.php',         // Hero section Customizer settings.
-	'/customizer-about.php',        // About section Customizer settings.
-	'/dark-mode.php',               // Dark mode FOUC prevention and data-bs-theme attribute.
+	'/customizer-practice-info.php', // Practice Information panel (physician, contact, hours).
+	'/customizer-footer.php',        // Footer Customizer settings and menus.
+	'/customizer-hero.php',          // Hero section Customizer settings.
+	'/customizer-about.php',         // About section Customizer settings.
+	'/dark-mode.php',                // Dark mode FOUC prevention and data-bs-theme attribute.
 );
 
 foreach ( $bmg_includes as $file ) {
