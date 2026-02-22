@@ -1,4 +1,6 @@
-# CLAUDE.md — Baig Medical Group Website
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Project Identity
 
@@ -10,6 +12,9 @@
 - **Build Tool:** Rollup (JS) + Sass CLI + PostCSS + CleanCSS (SCSS)
 - **Dev Tool:** Claude Code (CLI in VS Code terminal)
 - **Local Dev:** Local by Flywheel — `bmg-dev.local`
+- **Runtime:** PHP 8.1, MySQL 8.0, Nginx 1.26
+- **Node:** >= 18, npm >= 8.6.0
+- **Testing/CI/Linting:** None configured
 - **Target Launch:** April 1, 2026
 
 ---
