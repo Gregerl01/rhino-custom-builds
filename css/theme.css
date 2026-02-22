@@ -16388,6 +16388,7 @@ html {
   left: 0;
   width: 100%;
   height: 120%;
+  background: radial-gradient(ellipse at 30% 50%, #1C1C1C 0%, #0A0A0A 70%);
   background-size: cover;
   background-position: center;
   animation: heroZoom 20s linear infinite alternate;

@@ -33,8 +33,8 @@ if ( $background_image ) {
 ?>
 
 <section id="hero" class="section-hero">
+	<div class="section-hero__background"<?php echo $bg_style ? ' style="' . esc_attr( $bg_style ) . '"' : ''; ?>></div>
 	<?php if ( $background_image ) : ?>
-		<div class="section-hero__background" style="<?php echo esc_attr( $bg_style ); ?>"></div>
 		<div class="section-hero__overlay section-hero__overlay--image" style="opacity: <?php echo esc_attr( $overlay_opacity / 100 ); ?>;"></div>
 	<?php else : ?>
 		<div class="section-hero__overlay"></div>
