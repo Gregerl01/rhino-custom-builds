@@ -17184,6 +17184,43 @@ html {
 .site-footer .footer-copyright {
   color: #8B8B8B;
 }
+.site-footer .footer-legal {
+  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.site-footer .footer-legal a {
+  color: rgba(168, 169, 173, 0.5);
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+.site-footer .footer-legal a:hover {
+  color: #A8A9AD;
+}
+.site-footer .footer-legal__sep {
+  color: rgba(168, 169, 173, 0.25);
+  margin: 0 1rem;
+}
+.site-footer .footer-credit {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(168, 169, 173, 0.08);
+  text-align: center;
+}
+.site-footer .footer-credit p {
+  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-size: 11px;
+  color: rgba(168, 169, 173, 0.35);
+}
+.site-footer .footer-credit a {
+  color: rgba(168, 169, 173, 0.35);
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+.site-footer .footer-credit a:hover {
+  color: rgba(168, 169, 173, 0.6);
+}
 
 #main-nav {
   font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;

@@ -1263,6 +1263,51 @@ html {
 	.footer-copyright {
 		color: $bmg-warm-gray;
 	}
+
+	.footer-legal {
+		font-family: $font-family-base;
+		font-size: 12px;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+
+		a {
+			color: rgba($bmg-silver, 0.5);
+			text-decoration: none;
+			transition: color $motion-fast ease;
+
+			&:hover {
+				color: $bmg-silver;
+			}
+		}
+
+		&__sep {
+			color: rgba($bmg-silver, 0.25);
+			margin: 0 $space-sm;
+		}
+	}
+
+	.footer-credit {
+		margin-top: $space-md;
+		padding-top: $space-md;
+		border-top: 1px solid rgba($bmg-silver, 0.08);
+		text-align: center;
+
+		p {
+			font-family: $font-family-base;
+			font-size: 11px;
+			color: rgba($bmg-silver, 0.35);
+		}
+
+		a {
+			color: rgba($bmg-silver, 0.35);
+			text-decoration: none;
+			transition: color $motion-fast ease;
+
+			&:hover {
+				color: rgba($bmg-silver, 0.6);
+			}
+		}
+	}
 }
 
 // ==========================================================================

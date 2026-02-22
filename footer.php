@@ -119,15 +119,38 @@ $hours_sunday   = get_theme_mod( 'bmg_office_hours_sun', 'Closed' );
 
 			</div>
 
-			<!-- Footer Bottom / Copyright -->
+			<!-- Footer Bottom -->
 			<div class="footer-bottom pt-4">
+
+				<!-- Row 1: Copyright + Legal Links -->
 				<div class="row align-items-center">
-					<div class="col-md-12 text-center">
-						<p class="footer-copyright mb-0 small">
+					<div class="col-md-6 text-center text-md-start">
+						<p class="footer-copyright mb-2 mb-md-0 small">
 							&copy; <?php echo esc_html( date( 'Y' ) ); ?> <?php esc_html_e( 'Baig Medical Group. All rights reserved.', 'bmg-theme' ); ?>
 						</p>
 					</div>
+					<div class="col-md-6 text-center text-md-end">
+						<nav class="footer-legal" aria-label="<?php esc_attr_e( 'Legal', 'bmg-theme' ); ?>">
+							<a href="<?php echo esc_url( home_url( '/privacy-policy/' ) ); ?>"><?php esc_html_e( 'Privacy Policy', 'bmg-theme' ); ?></a>
+							<span class="footer-legal__sep" aria-hidden="true">|</span>
+							<a href="<?php echo esc_url( home_url( '/terms/' ) ); ?>"><?php esc_html_e( 'Terms of Use', 'bmg-theme' ); ?></a>
+						</nav>
+					</div>
 				</div>
+
+				<!-- Row 2: Designer Credit -->
+				<div class="footer-credit">
+					<p class="mb-0">
+						<?php
+						printf(
+							/* translators: %s: designer link */
+							esc_html__( 'Website designed and maintained by %s', 'bmg-theme' ),
+							'<a href="https://gsldesign.net" target="_blank" rel="noopener">GSL Design</a>'
+						);
+						?>
+					</p>
+				</div>
+
 			</div>
 
 		</div>
