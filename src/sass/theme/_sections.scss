@@ -477,16 +477,17 @@ html {
 	border-radius: 4px;
 	padding: 48px;
 	box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
-	transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-				box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+	transition: transform $motion-fast $ease-spring,
+				box-shadow $motion-fast $ease-out-smooth,
+				border-color $motion-fast $ease-out-smooth;
 
 	@media (max-width: 767.98px) {
 		padding: 32px;
 	}
 
 	&:hover {
-		transform: translateY(-6px);
-		box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+		transform: translateY($hover-lift);
+		border-color: rgba($bmg-silver, 0.2);
 	}
 
 	// Featured (Premium) card
@@ -495,7 +496,7 @@ html {
 		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
 
 		&:hover {
-			box-shadow: 0 16px 48px rgba(0, 0, 0, 0.1);
+			box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
 		}
 	}
 
