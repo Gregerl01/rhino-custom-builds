@@ -11,7 +11,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Parent Theme:** Understrap
 - **Build Tool:** Rollup (JS) + Sass CLI + PostCSS + CleanCSS (SCSS)
 - **Dev Tool:** Claude Code (CLI in VS Code terminal)
-- **Local Dev:** Local by Flywheel — `bmg-dev.local`
+- **Local Dev:** Local by Flywheel — `baig-medical-group.local`
 - **Runtime:** PHP 8.1, MySQL 8.0, Nginx 1.26
 - **Node:** >= 18, npm >= 8.6.0
 - **Testing/CI/Linting:** None configured
@@ -63,7 +63,7 @@ wp-content/themes/starter-theme/
 | `npm run css` | Compile + prefix + minify SCSS |
 | `npm run js` | Bundle + minify JS |
 | `npm run watch` | Watch SCSS + JS for changes |
-| `npm run watch-bs` | Watch + BrowserSync on bmg-dev.local |
+| `npm run watch-bs` | Watch + BrowserSync on baig-medical-group.local |
 
 ### SCSS Load Path
 SCSS resolves imports via parent theme:
