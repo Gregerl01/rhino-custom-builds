@@ -131,11 +131,50 @@ $shadow-lg: 0 8px 24px rgba($bmg-obsidian, 0.08);
 $shadow-xl: 0 16px 48px rgba($bmg-obsidian, 0.12);
 
 // ==========================================================================
-// Transitions
+// Transitions (legacy — prefer motion tokens below)
 // ==========================================================================
 $transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
 $transition-base: 200ms ease;  // Per BMG brand: 200ms ease for buttons
 $transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+
+// ==========================================================================
+// Motion Tokens (MOTION.md — source of truth)
+// ==========================================================================
+
+// Durations
+$motion-instant:    100ms;   // Hover states, toggles
+$motion-fast:       200ms;   // Micro-interactions, button feedback
+$motion-moderate:   400ms;   // Section reveals, nav transitions
+$motion-slow:       600ms;   // Hero entrance, page-level transitions
+$motion-deliberate: 1000ms;  // Staggered sequences, hero headline
+
+// Easing
+$ease-out-smooth:   cubic-bezier(0.25, 0.46, 0.45, 0.94); // Calm deceleration
+$ease-out-expo:     cubic-bezier(0.16, 1, 0.3, 1);         // Confident entrance
+$ease-spring:       cubic-bezier(0.34, 1.56, 0.64, 1);     // Restrained spring
+$ease-linear:       linear;                                  // Opacity-only
+
+// Stagger
+$stagger-unit:      80ms;    // Delay between sequential items
+
+// Distances
+$reveal-distance:   24px;    // How far elements travel on scroll-reveal
+$hover-lift:        -2px;    // Subtle lift on interactive cards
+$nav-shrink-from:   80px;    // Navbar full height
+$nav-shrink-to:     60px;    // Navbar scrolled height
+
+// CSS Custom Properties (for JS access)
+:root {
+  --motion-instant: #{$motion-instant};
+  --motion-fast: #{$motion-fast};
+  --motion-moderate: #{$motion-moderate};
+  --motion-slow: #{$motion-slow};
+  --motion-deliberate: #{$motion-deliberate};
+  --ease-out-smooth: #{$ease-out-smooth};
+  --ease-out-expo: #{$ease-out-expo};
+  --ease-spring: #{$ease-spring};
+  --reveal-distance: #{$reveal-distance};
+}
 
 // ==========================================================================
 // Form Tokens

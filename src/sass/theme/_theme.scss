@@ -1,2 +1,53 @@
 // Starter Theme Custom Styles
 // Add your custom styles here.
+
+// ==========================================================================
+// Back to Top Button
+// ==========================================================================
+.bmg-back-to-top {
+	position: fixed;
+	bottom: $space-md; // 24px
+	right: $space-md;
+	width: 40px;
+	height: 40px;
+	border-radius: $radius-full;
+	border: 1px solid rgba($bmg-silver, 0.4);
+	background: transparent;
+	color: $bmg-silver;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity $motion-moderate $ease-out-smooth,
+	            background-color $motion-fast $ease-out-smooth,
+	            border-color $motion-fast $ease-out-smooth;
+	z-index: 900;
+
+	&.is-visible {
+		opacity: 1;
+		pointer-events: auto;
+	}
+
+	&:hover {
+		background: rgba($bmg-silver, 0.08);
+		border-color: $bmg-silver;
+	}
+
+	&:active {
+		transform: scale(0.95);
+	}
+
+	svg {
+		width: 16px;
+		height: 16px;
+		stroke: currentColor;
+		stroke-width: 2;
+		fill: none;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		transition: none;
+	}
+}

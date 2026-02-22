@@ -1375,6 +1375,44 @@ html {
 			box-shadow: 0 0 0 2px rgba($bmg-white, 0.25);
 		}
 	}
+
+	// Smart Sticky Header — transitions
+	transition: transform $motion-moderate $ease-out-expo,
+	            background-color $motion-moderate $ease-out-smooth,
+	            height $motion-moderate $ease-out-smooth;
+
+	// Full state (in hero viewport)
+	height: $nav-shrink-from;
+	background-color: transparent;
+
+	.navbar-brand img {
+		transition: transform $motion-moderate $ease-out-smooth;
+	}
+
+	// Condensed state — scrolling up past hero
+	&.is-condensed {
+		height: $nav-shrink-to;
+		background-color: rgba($bmg-obsidian, 0.98) !important;
+		box-shadow: 0 1px 0 rgba($bmg-silver, 0.1);
+
+		.navbar-brand img {
+			transform: scale(0.85);
+		}
+	}
+
+	// Hidden state — scrolling down past hero
+	&.is-hidden {
+		transform: translateY(-100%);
+	}
+
+	// Reduced motion
+	@media (prefers-reduced-motion: reduce) {
+		transition: none;
+
+		.navbar-brand img {
+			transition: none;
+		}
+	}
 }
 
 // ==========================================================================

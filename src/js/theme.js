@@ -189,6 +189,51 @@ import 'bootstrap';
 } )();
 
 /**
+ * BMG Reveal System
+ * Uses IntersectionObserver to reveal elements with .bmg-reveal class.
+ * Adds .is-visible when element enters viewport at 15% threshold.
+ * One-way — once revealed, stays revealed.
+ */
+( function() {
+	'use strict';
+
+	function init() {
+		const prefersReducedMotion = window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches;
+		const reveals = document.querySelectorAll( '.bmg-reveal' );
+
+		if ( ! reveals.length ) {
+			return;
+		}
+
+		if ( prefersReducedMotion || ! ( 'IntersectionObserver' in window ) ) {
+			reveals.forEach( function( el ) {
+				el.classList.add( 'is-visible' );
+			} );
+			return;
+		}
+
+		const observer = new IntersectionObserver( function( entries ) {
+			entries.forEach( function( entry ) {
+				if ( entry.isIntersecting ) {
+					entry.target.classList.add( 'is-visible' );
+					observer.unobserve( entry.target );
+				}
+			} );
+		}, { threshold: 0.15 } );
+
+		reveals.forEach( function( el ) {
+			observer.observe( el );
+		} );
+	}
+
+	if ( document.readyState === 'loading' ) {
+		document.addEventListener( 'DOMContentLoaded', init );
+	} else {
+		init();
+	}
+} )();
+
+/**
  * Smooth Scroll
  * Handles smooth scrolling for anchor links with header offset.
  */
@@ -282,6 +327,127 @@ import 'bootstrap';
 
 				// Update data attribute on cards container (CSS handles the transition)
 				cardsContainer.setAttribute( 'data-billing', billing );
+			} );
+		} );
+	}
+
+	if ( document.readyState === 'loading' ) {
+		document.addEventListener( 'DOMContentLoaded', init );
+	} else {
+		init();
+	}
+} )();
+
+/**
+ * Smart Sticky Header
+ * Hide/show navbar based on scroll direction. Full transparent in hero,
+ * hidden on scroll-down past hero, condensed on scroll-up past hero.
+ * Inner pages without a hero start condensed.
+ */
+( function() {
+	'use strict';
+
+	var lastScrollY = 0;
+	var ticking = false;
+	var SCROLL_THRESHOLD = 10;
+
+	function init() {
+		var navbar = document.getElementById( 'main-nav' );
+
+		if ( ! navbar ) {
+			return;
+		}
+
+		var heroSection = document.querySelector( '.section-hero' );
+
+		// Inner pages without a hero — start condensed immediately
+		if ( ! heroSection ) {
+			navbar.classList.add( 'is-condensed' );
+		}
+
+		function getHeroBottom() {
+			if ( ! heroSection ) {
+				return 0;
+			}
+			return heroSection.offsetTop + heroSection.offsetHeight;
+		}
+
+		function update() {
+			var currentScrollY = window.scrollY;
+			var delta = currentScrollY - lastScrollY;
+			var pastHero = currentScrollY > getHeroBottom();
+
+			// Ignore tiny scroll movements
+			if ( Math.abs( delta ) < SCROLL_THRESHOLD ) {
+				ticking = false;
+				return;
+			}
+
+			if ( ! pastHero ) {
+				// In hero — full transparent navbar
+				navbar.classList.remove( 'is-hidden', 'is-condensed' );
+			} else if ( delta > 0 ) {
+				// Scrolling DOWN past hero — hide
+				navbar.classList.add( 'is-hidden' );
+				navbar.classList.remove( 'is-condensed' );
+			} else {
+				// Scrolling UP past hero — show condensed
+				navbar.classList.remove( 'is-hidden' );
+				navbar.classList.add( 'is-condensed' );
+			}
+
+			lastScrollY = currentScrollY;
+			ticking = false;
+		}
+
+		function onScroll() {
+			if ( ! ticking ) {
+				requestAnimationFrame( update );
+				ticking = true;
+			}
+		}
+
+		lastScrollY = window.scrollY;
+		window.addEventListener( 'scroll', onScroll, { passive: true } );
+	}
+
+	if ( document.readyState === 'loading' ) {
+		document.addEventListener( 'DOMContentLoaded', init );
+	} else {
+		init();
+	}
+} )();
+
+/**
+ * Back to Top Button
+ * Shows a fixed button after scrolling 2x viewport height.
+ * Smooth scrolls to top on click. Respects prefers-reduced-motion.
+ */
+( function() {
+	'use strict';
+
+	function init() {
+		var backToTop = document.querySelector( '.bmg-back-to-top' );
+
+		if ( ! backToTop ) {
+			return;
+		}
+
+		var threshold = window.innerHeight * 2;
+		var prefersReducedMotion = window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches;
+
+		window.addEventListener( 'scroll', function() {
+			if ( window.scrollY > threshold ) {
+				backToTop.classList.add( 'is-visible' );
+			} else {
+				backToTop.classList.remove( 'is-visible' );
+			}
+		}, { passive: true } );
+
+		backToTop.addEventListener( 'click', function() {
+			window.scrollTo( {
+				top: 0,
+				behavior: prefersReducedMotion ? 'auto' : 'smooth'
 			} );
 		} );
 	}
