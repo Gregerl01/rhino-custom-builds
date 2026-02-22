@@ -504,13 +504,54 @@ html {
 		line-height: 1.7;
 		color: $bmg-medium-gray;
 		margin-bottom: $space-md;
-		flex: 1;
 	}
 
 	&__pricing {
 		display: flex;
 		align-items: baseline;
 		margin-bottom: $space-md;
+	}
+
+	&__pricing-tbd {
+		font-family: $font-family-base;
+		font-size: 0.875rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		color: $bmg-silver;
+	}
+
+	&__features {
+		list-style: none;
+		padding: 0;
+		margin: 0 0 $space-lg;
+		flex: 1;
+
+		li {
+			padding: $space-xs 0;
+			font-size: 0.9375rem;
+			line-height: 1.5;
+			color: $bmg-dark-gray;
+			border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+
+			&:first-child {
+				font-weight: 600;
+				color: $bmg-obsidian;
+			}
+
+			&:last-child {
+				border-bottom: none;
+			}
+
+			[data-bs-theme="dark"] & {
+				color: $bmg-platinum;
+				border-color: rgba(255, 255, 255, 0.06);
+
+				&:first-child {
+					color: $bmg-white;
+				}
+			}
+		}
 	}
 
 	&__currency {
@@ -745,6 +786,21 @@ html {
 .plans-cta {
 	margin-top: 48px;
 	text-align: center;
+
+	&__text {
+		font-family: $font-family-display;
+		font-size: 1.25rem;
+		font-weight: 400;
+		color: var(--us-text-primary);
+		margin-bottom: $space-md;
+	}
+
+	&__subtext {
+		font-size: 0.875rem;
+		color: $bmg-medium-gray;
+		margin-top: $space-sm;
+		margin-bottom: 0;
+	}
 }
 
 .btn-compare {

@@ -16532,12 +16532,46 @@ html {
   line-height: 1.7;
   color: #6B6B6B;
   margin-bottom: 1.5rem;
-  flex: 1;
 }
 .plan-card-home__pricing {
   display: flex;
   align-items: baseline;
   margin-bottom: 1.5rem;
+}
+.plan-card-home__pricing-tbd {
+  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #A8A9AD;
+}
+.plan-card-home__features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+  flex: 1;
+}
+.plan-card-home__features li {
+  padding: 0.5rem 0;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: #2D2D2D;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+.plan-card-home__features li:first-child {
+  font-weight: 600;
+  color: #0A0A0A;
+}
+.plan-card-home__features li:last-child {
+  border-bottom: none;
+}
+[data-bs-theme=dark] .plan-card-home__features li {
+  color: #E5E4E2;
+  border-color: rgba(255, 255, 255, 0.06);
+}
+[data-bs-theme=dark] .plan-card-home__features li:first-child {
+  color: #FFFFFF;
 }
 .plan-card-home__currency {
   font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
@@ -16726,6 +16760,19 @@ html {
 .plans-cta {
   margin-top: 48px;
   text-align: center;
+}
+.plans-cta__text {
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--us-text-primary);
+  margin-bottom: 1.5rem;
+}
+.plans-cta__subtext {
+  font-size: 0.875rem;
+  color: #6B6B6B;
+  margin-top: 1rem;
+  margin-bottom: 0;
 }
 
 .btn-compare {

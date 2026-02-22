@@ -3,38 +3,52 @@
  * Plans Overview Section - BMG Homepage
  *
  * Three-tier plan cards with premium material presence.
- * Think luxury menu card or private banking product brochure.
- * Monthly/Annual billing toggle with smooth price transitions.
+ * Pricing TBD — displays "Contact for Pricing" until client provides.
  *
  * @package BMG_Theme
  */
 
 defined( 'ABSPATH' ) || exit;
 
-// Annual savings percentage.
-$annual_savings = 15;
-
-// Plan data - placeholder content with monthly and annual pricing.
+// Plan data — matches CONTENT.md Section 1.4.
 $plans = array(
 	array(
-		'name'         => __( 'Basic', 'bmg-theme' ),
-		'description'  => __( 'Essential concierge care for individuals seeking a more personal healthcare experience.', 'bmg-theme' ),
-		'price_month'  => 'XXX',
-		'price_annual' => 'XXX',
+		'name'        => __( 'Essential', 'bmg-theme' ),
+		'description' => __( 'Foundational concierge care for individuals.', 'bmg-theme' ),
+		'features'    => array(
+			__( 'Annual comprehensive health evaluation', 'bmg-theme' ),
+			__( 'Same-day and next-day appointments', 'bmg-theme' ),
+			__( 'Direct physician phone and messaging access', 'bmg-theme' ),
+			__( 'Standard specialist referral coordination', 'bmg-theme' ),
+			__( 'Foundational wellness programming', 'bmg-theme' ),
+		),
 	),
 	array(
-		'name'         => __( 'Premium', 'bmg-theme' ),
-		'description'  => __( 'Enhanced access and comprehensive care coordination for busy professionals and families.', 'bmg-theme' ),
-		'price_month'  => 'XXX',
-		'price_annual' => 'XXX',
-		'featured'     => true,
-		'badge'        => __( 'Recommended', 'bmg-theme' ),
+		'name'        => __( 'Premium', 'bmg-theme' ),
+		'description' => __( 'Enhanced access with priority coordination.', 'bmg-theme' ),
+		'featured'    => true,
+		'badge'       => __( 'Recommended', 'bmg-theme' ),
+		'features'    => array(
+			__( 'Everything in Essential, plus:', 'bmg-theme' ),
+			__( 'Extended appointment availability, including evenings', 'bmg-theme' ),
+			__( 'Priority specialist referrals and follow-up', 'bmg-theme' ),
+			__( 'Health coaching with nutrition and lifestyle guidance', 'bmg-theme' ),
+			__( 'Annual executive physical with advanced screenings', 'bmg-theme' ),
+			__( 'Family member add-on available', 'bmg-theme' ),
+		),
 	),
 	array(
-		'name'         => __( 'VIP', 'bmg-theme' ),
-		'description'  => __( 'The highest level of personalized care with 24/7 access and priority specialist referrals.', 'bmg-theme' ),
-		'price_month'  => 'XXX',
-		'price_annual' => 'XXX',
+		'name'        => __( 'Concierge Elite', 'bmg-theme' ),
+		'description' => __( 'The full measure of personalized medicine.', 'bmg-theme' ),
+		'features'    => array(
+			__( 'Everything in Premium, plus:', 'bmg-theme' ),
+			__( '24/7 direct physician availability', 'bmg-theme' ),
+			__( 'VIP specialist referral network with expedited scheduling', 'bmg-theme' ),
+			__( 'Full-suite wellness, nutrition, and longevity programming', 'bmg-theme' ),
+			__( 'In-home and on-site visit options', 'bmg-theme' ),
+			__( 'Travel medicine and global care coordination', 'bmg-theme' ),
+			__( 'Dedicated care coordinator', 'bmg-theme' ),
+		),
 	),
 );
 ?>
@@ -42,30 +56,19 @@ $plans = array(
 <section id="plans" class="section section-light reveal-on-scroll">
 	<div class="container">
 
-		<div class="row justify-content-center mb-4">
+		<div class="row justify-content-center mb-5">
 			<div class="col-lg-8 text-center">
 				<h2 class="display-text h2 mb-3">
-					<?php esc_html_e( 'Our Plans', 'bmg-theme' ); ?>
+					<?php esc_html_e( 'Membership Tiers', 'bmg-theme' ); ?>
 				</h2>
 				<div class="silver-rule"></div>
-				<p class="lead mt-4 mb-4">
-					<?php esc_html_e( 'Choose the level of care that fits your needs.', 'bmg-theme' ); ?>
+				<p class="lead mt-4 mb-0">
+					<?php esc_html_e( 'Three levels of care, each built around access, attention, and coordination.', 'bmg-theme' ); ?>
 				</p>
-
-				<!-- Billing Toggle -->
-				<div class="billing-toggle-home" role="group" aria-label="<?php esc_attr_e( 'Billing frequency', 'bmg-theme' ); ?>">
-					<button type="button" class="billing-toggle-home__btn active" data-billing="monthly">
-						<?php esc_html_e( 'Monthly', 'bmg-theme' ); ?>
-					</button>
-					<button type="button" class="billing-toggle-home__btn" data-billing="annual">
-						<?php esc_html_e( 'Annual', 'bmg-theme' ); ?>
-						<span class="billing-toggle-home__save"><?php printf( esc_html__( 'Save %d%%', 'bmg-theme' ), $annual_savings ); ?></span>
-					</button>
-				</div>
 			</div>
 		</div>
 
-		<div class="row g-4 justify-content-center plans-cards-container" data-billing="monthly">
+		<div class="row g-4 justify-content-center">
 			<?php foreach ( $plans as $plan ) : ?>
 				<div class="col-md-6 col-lg-4">
 					<div class="plan-card-home<?php echo ! empty( $plan['featured'] ) ? ' plan-card-home--featured' : ''; ?>">
@@ -83,22 +86,21 @@ $plans = array(
 						</p>
 
 						<div class="plan-card-home__pricing">
-							<!-- Monthly Price -->
-							<div class="plan-card-home__price plan-card-home__price--monthly">
-								<span class="plan-card-home__currency">$</span>
-								<span class="plan-card-home__amount"><?php echo esc_html( $plan['price_month'] ); ?></span>
-								<span class="plan-card-home__period">/mo</span>
-							</div>
-							<!-- Annual Price -->
-							<div class="plan-card-home__price plan-card-home__price--annual">
-								<span class="plan-card-home__currency">$</span>
-								<span class="plan-card-home__amount"><?php echo esc_html( $plan['price_annual'] ); ?></span>
-								<span class="plan-card-home__period">/yr</span>
-							</div>
+							<span class="plan-card-home__pricing-tbd">
+								<?php esc_html_e( 'Contact for Pricing', 'bmg-theme' ); ?>
+							</span>
 						</div>
 
+						<?php if ( ! empty( $plan['features'] ) ) : ?>
+							<ul class="plan-card-home__features">
+								<?php foreach ( $plan['features'] as $feature ) : ?>
+									<li><?php echo esc_html( $feature ); ?></li>
+								<?php endforeach; ?>
+							</ul>
+						<?php endif; ?>
+
 						<a href="<?php echo esc_url( home_url( '/plans/' ) ); ?>" class="plan-card-home__btn<?php echo ! empty( $plan['featured'] ) ? ' plan-card-home__btn--filled' : ''; ?>">
-							<?php esc_html_e( 'View Details', 'bmg-theme' ); ?>
+							<?php esc_html_e( 'View Plan Details', 'bmg-theme' ); ?>
 						</a>
 
 					</div>
@@ -107,9 +109,15 @@ $plans = array(
 		</div>
 
 		<div class="plans-cta">
-			<a href="<?php echo esc_url( home_url( '/plans/' ) ); ?>" class="btn-compare">
-				<?php esc_html_e( 'Compare All Plans', 'bmg-theme' ); ?>
+			<p class="plans-cta__text">
+				<?php esc_html_e( 'Not sure which tier fits?', 'bmg-theme' ); ?>
+			</p>
+			<a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="btn-compare">
+				<?php esc_html_e( 'Schedule a Consultation', 'bmg-theme' ); ?>
 			</a>
+			<p class="plans-cta__subtext">
+				<?php esc_html_e( 'We will walk through your needs with no obligation.', 'bmg-theme' ); ?>
+			</p>
 		</div>
 
 	</div>
