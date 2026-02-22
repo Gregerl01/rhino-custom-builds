@@ -1,31 +1,38 @@
 <?php
 /**
- * Physician Section
+ * Physician Bio Section — About Page
  *
- * Displays physician profile with portrait, credentials, and bio.
+ * Full physician profile with portrait, five-paragraph bio using
+ * dynamic Customizer variables, and credentials sidebar.
+ * Matches CONTENT.md Section 2.3.
  *
  * @package BMG_Theme
  */
 
 defined( 'ABSPATH' ) || exit;
 
-// Get Customizer settings.
-$name        = get_theme_mod( 'physician_name', __( 'Dr. [Physician Name], MD', 'bmg-theme' ) );
-$credentials = get_theme_mod( 'physician_credentials', __( 'Board Certified Internal Medicine', 'bmg-theme' ) );
-$bio         = get_theme_mod( 'physician_bio', __( 'With over 20 years of experience in internal medicine, Dr. [Name] founded Baig Medical Group to provide the kind of personalized, unhurried care that patients deserve. After years of practicing in traditional healthcare settings, it became clear that the best outcomes come from building genuine relationships with patients—relationships that require time and attention that conventional practice models simply cannot provide.', 'bmg-theme' ) );
-$photo       = get_theme_mod( 'physician_photo', '' );
+// Dynamic variables from Customizer.
+$physician_name        = get_theme_mod( 'bmg_physician_name', 'Dr. Adil Baig' );
+$physician_last_name   = get_theme_mod( 'bmg_physician_last_name', 'Baig' );
+$physician_credentials = get_theme_mod( 'bmg_physician_credentials', 'Board-Certified Family Medicine Physician' );
+$physician_med_school  = get_theme_mod( 'bmg_physician_med_school', '[Medical School]' );
+$physician_residency   = get_theme_mod( 'bmg_physician_residency', '[Residency Program]' );
+$physician_fellowship  = get_theme_mod( 'bmg_physician_fellowship', '' );
+$physician_board_cert  = get_theme_mod( 'bmg_physician_board_cert', 'American Board of Family Medicine' );
+$physician_memberships = get_theme_mod( 'bmg_physician_memberships', '[Professional Organizations]' );
+$physician_photo       = get_theme_mod( 'physician_photo', '' );
 ?>
 
-<section id="physician" class="section section-light physician-section">
+<section id="physician-bio" class="section section-light physician-section reveal-on-scroll">
 	<div class="container">
-		<div class="row g-5 align-items-center">
+		<div class="row g-5 align-items-start">
 
 			<!-- Portrait -->
 			<div class="col-lg-5">
 				<div class="physician-portrait">
-					<?php if ( $photo ) : ?>
-						<img src="<?php echo esc_url( $photo ); ?>"
-							 alt="<?php echo esc_attr( $name ); ?>"
+					<?php if ( $physician_photo ) : ?>
+						<img src="<?php echo esc_url( $physician_photo ); ?>"
+							 alt="<?php echo esc_attr( $physician_name ); ?>"
 							 class="img-fluid"
 							 loading="lazy">
 					<?php else : ?>
@@ -37,28 +44,103 @@ $photo       = get_theme_mod( 'physician_photo', '' );
 						</div>
 					<?php endif; ?>
 				</div>
+
+				<!-- Credentials Sidebar -->
+				<div class="physician-credentials-sidebar">
+					<h3 class="physician-credentials-sidebar__title">
+						<?php esc_html_e( 'Credentials', 'bmg-theme' ); ?>
+					</h3>
+					<dl class="physician-credentials-sidebar__list">
+						<dt><?php esc_html_e( 'Board Certification', 'bmg-theme' ); ?></dt>
+						<dd><?php echo esc_html( $physician_board_cert ); ?></dd>
+
+						<dt><?php esc_html_e( 'Medical School', 'bmg-theme' ); ?></dt>
+						<dd><?php echo esc_html( $physician_med_school ); ?></dd>
+
+						<dt><?php esc_html_e( 'Residency', 'bmg-theme' ); ?></dt>
+						<dd><?php echo esc_html( $physician_residency ); ?></dd>
+
+						<?php if ( ! empty( $physician_fellowship ) ) : ?>
+							<dt><?php esc_html_e( 'Fellowship', 'bmg-theme' ); ?></dt>
+							<dd><?php echo esc_html( $physician_fellowship ); ?></dd>
+						<?php endif; ?>
+
+						<dt><?php esc_html_e( 'Professional Memberships', 'bmg-theme' ); ?></dt>
+						<dd><?php echo esc_html( $physician_memberships ); ?></dd>
+					</dl>
+				</div>
 			</div>
 
 			<!-- Bio Content -->
 			<div class="col-lg-7">
 				<div class="physician-content">
-					<?php if ( $credentials ) : ?>
-						<p class="physician-credentials">
-							<?php echo esc_html( $credentials ); ?>
+					<p class="physician-credentials">
+						<?php echo esc_html( $physician_credentials ); ?>
+					</p>
+
+					<h2 class="physician-name display-text">
+						<?php echo esc_html( $physician_name ); ?>
+					</h2>
+
+					<div class="physician-bio">
+						<p>
+							<?php
+							echo esc_html(
+								sprintf(
+									/* translators: %s: physician last name */
+									__( 'Dr. %s is a board-certified family medicine physician with over a decade of clinical experience spanning hospital systems, health system networks, and private practice.', 'bmg-theme' ),
+									$physician_last_name
+								)
+							);
+							?>
 						</p>
-					<?php endif; ?>
-
-					<?php if ( $name ) : ?>
-						<h2 class="physician-name display-text">
-							<?php echo esc_html( $name ); ?>
-						</h2>
-					<?php endif; ?>
-
-					<?php if ( $bio ) : ?>
-						<div class="physician-bio">
-							<?php echo wp_kses_post( wpautop( $bio ) ); ?>
-						</div>
-					<?php endif; ?>
+						<p>
+							<?php
+							echo esc_html(
+								sprintf(
+									/* translators: 1: physician last name, 2: medical school, 3: residency */
+									__( 'After completing his medical training at %2$s and residency at %3$s, Dr. %1$s practiced within traditional healthcare settings before founding Baig Medical Group in Yuma, Arizona.', 'bmg-theme' ),
+									$physician_last_name,
+									$physician_med_school,
+									$physician_residency
+								)
+							);
+							?>
+						</p>
+						<p>
+							<?php
+							echo esc_html(
+								sprintf(
+									/* translators: %s: physician last name */
+									__( 'The transition to concierge medicine was deliberate. Having experienced the constraints of volume-based practice firsthand — where patient panels routinely exceed 2,000 and appointments are compressed to minutes — Dr. %s recognized that the model itself was the barrier to the care patients deserved.', 'bmg-theme' ),
+									$physician_last_name
+								)
+							);
+							?>
+						</p>
+						<p>
+							<?php
+							echo esc_html(
+								sprintf(
+									/* translators: %s: physician last name */
+									__( 'At Baig Medical Group, Dr. %s maintains a limited patient panel, conducts extended appointments, and remains personally accessible to every member. His clinical approach emphasizes prevention, nutrition, movement, and evidence-based medicine, with care plans developed collaboratively through shared decision-making.', 'bmg-theme' ),
+									$physician_last_name
+								)
+							);
+							?>
+						</p>
+						<p>
+							<?php
+							echo esc_html(
+								sprintf(
+									/* translators: %s: physician last name */
+									__( 'Outside of practice, Dr. %s is a devoted father of five and remains connected to his roots as a second-generation physician.', 'bmg-theme' ),
+									$physician_last_name
+								)
+							);
+							?>
+						</p>
+					</div>
 				</div>
 			</div>
 

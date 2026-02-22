@@ -1475,6 +1475,19 @@ html {
 	}
 }
 
+// Philosophy Section (About page)
+.philosophy__text {
+	text-align: left;
+
+	p {
+		margin-bottom: $space-md;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+}
+
 // Physician Section (About page)
 .physician-section {
 	.physician-portrait img {
@@ -1524,6 +1537,45 @@ html {
 
 		p {
 			margin-bottom: $space-md;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+// Credentials Sidebar (below portrait on About page)
+.physician-credentials-sidebar {
+	margin-top: $space-xl;
+	padding-top: $space-lg;
+	border-top: 1px solid $bmg-warm-gray;
+
+	&__title {
+		font-family: $font-family-base;
+		font-size: 0.75rem;
+		font-weight: 600;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: $bmg-silver;
+		margin-bottom: $space-md;
+	}
+
+	&__list {
+		margin: 0;
+
+		dt {
+			font-size: 0.8125rem;
+			font-weight: 600;
+			color: var(--us-text-primary);
+			margin-bottom: 2px;
+		}
+
+		dd {
+			font-size: 0.9375rem;
+			color: var(--us-text-secondary);
+			margin-bottom: $space-md;
+			margin-left: 0;
 
 			&:last-child {
 				margin-bottom: 0;

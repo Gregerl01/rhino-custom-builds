@@ -17324,6 +17324,16 @@ html {
   background: rgba(255, 255, 255, 0.2);
 }
 
+.philosophy__text {
+  text-align: left;
+}
+.philosophy__text p {
+  margin-bottom: 1.5rem;
+}
+.philosophy__text p:last-child {
+  margin-bottom: 0;
+}
+
 .physician-section .physician-portrait img {
   width: 100%;
   border-radius: 4px;
@@ -17370,6 +17380,39 @@ html {
   margin-bottom: 1.5rem;
 }
 .physician-section .physician-bio p:last-child {
+  margin-bottom: 0;
+}
+
+.physician-credentials-sidebar {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #8B8B8B;
+}
+.physician-credentials-sidebar__title {
+  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #A8A9AD;
+  margin-bottom: 1.5rem;
+}
+.physician-credentials-sidebar__list {
+  margin: 0;
+}
+.physician-credentials-sidebar__list dt {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--us-text-primary);
+  margin-bottom: 2px;
+}
+.physician-credentials-sidebar__list dd {
+  font-size: 0.9375rem;
+  color: var(--us-text-secondary);
+  margin-bottom: 1.5rem;
+  margin-left: 0;
+}
+.physician-credentials-sidebar__list dd:last-child {
   margin-bottom: 0;
 }
 
