@@ -22,20 +22,23 @@ $cta_primary_url    = get_theme_mod( 'hero_cta_primary_url', '#plans' );
 $cta_secondary_text = get_theme_mod( 'hero_cta_secondary_text', __( 'Learn How It Works', 'bmg-theme' ) );
 $cta_secondary_url  = get_theme_mod( 'hero_cta_secondary_url', '#explainer' );
 
-// Build inline style for background image if set.
-$hero_style = '';
+// Build inline style for background div if image is set.
+$bg_style = '';
 if ( $background_image ) {
-	$hero_style = sprintf(
-		'background-image: linear-gradient(rgba(10, 10, 10, %s), rgba(10, 10, 10, %s)), url(%s); background-size: cover; background-position: center;',
-		$overlay_opacity / 100,
-		$overlay_opacity / 100,
+	$bg_style = sprintf(
+		'background-image: url(%s);',
 		esc_url( $background_image )
 	);
 }
 ?>
 
-<section id="hero" class="section-hero"<?php echo $hero_style ? ' style="' . esc_attr( $hero_style ) . '"' : ''; ?>>
-	<div class="section-hero__overlay"></div>
+<section id="hero" class="section-hero">
+	<?php if ( $background_image ) : ?>
+		<div class="section-hero__background" style="<?php echo esc_attr( $bg_style ); ?>"></div>
+		<div class="section-hero__overlay section-hero__overlay--image" style="opacity: <?php echo esc_attr( $overlay_opacity / 100 ); ?>;"></div>
+	<?php else : ?>
+		<div class="section-hero__overlay"></div>
+	<?php endif; ?>
 	<div class="container position-relative">
 		<div class="row justify-content-center">
 			<div class="col-lg-10 col-xl-8 text-center">

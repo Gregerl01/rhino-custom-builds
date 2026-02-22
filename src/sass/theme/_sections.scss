@@ -286,11 +286,36 @@ html {
 	background-color: $bmg-obsidian;
 	overflow: hidden;
 
+	// Parallax background layer — separate from content for independent transforms
+	&__background {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 120%; // Extra height prevents gaps during parallax translate
+		background-size: cover;
+		background-position: center;
+		animation: heroZoom 20s linear infinite alternate;
+		will-change: transform;
+		z-index: 0;
+	}
+
 	&__overlay {
 		position: absolute;
 		inset: 0;
 		background: radial-gradient(ellipse at center, #{$bmg-charcoal} 0%, #{$bmg-obsidian} 70%);
 		pointer-events: none;
+		z-index: 1;
+
+		// When used with a background image, overlay is a solid dark tint
+		&--image {
+			background: $bmg-obsidian;
+		}
+	}
+
+	// Content sits above background + overlay
+	> .container {
+		z-index: 2;
 	}
 
 	&__headline {
@@ -395,6 +420,17 @@ html {
 		transform: none;
 		animation: none;
 	}
+
+	.section-hero__background {
+		animation: none;
+		transform: none !important; // Disable JS parallax too
+	}
+}
+
+// Ken Burns slow zoom for hero background
+@keyframes heroZoom {
+	from { transform: scale(1.05); }
+	to   { transform: scale(1.12); }
 }
 
 // ==========================================================================

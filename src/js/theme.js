@@ -339,10 +339,15 @@ import 'bootstrap';
 } )();
 
 /**
- * Smart Sticky Header
- * Hide/show navbar based on scroll direction. Full transparent in hero,
- * hidden on scroll-down past hero, condensed on scroll-up past hero.
- * Inner pages without a hero start condensed.
+ * Smart Sticky Header + Hero Parallax
+ * Single scroll listener handles both features via shared rAF loop.
+ *
+ * Sticky header: Full transparent in hero, hidden on scroll-down past hero,
+ * condensed on scroll-up. Inner pages without hero start condensed.
+ *
+ * Hero parallax: Background translates at 30% of scroll speed with scale(1.05)
+ * base to prevent gaps. Only calculates while hero is in viewport.
+ * Disabled when prefers-reduced-motion is active.
  */
 ( function() {
 	'use strict';
@@ -359,6 +364,8 @@ import 'bootstrap';
 		}
 
 		var heroSection = document.querySelector( '.section-hero' );
+		var heroBg = document.querySelector( '.section-hero__background' );
+		var prefersReducedMotion = window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches;
 
 		// Inner pages without a hero — start condensed immediately
 		if ( ! heroSection ) {
@@ -375,28 +382,32 @@ import 'bootstrap';
 		function update() {
 			var currentScrollY = window.scrollY;
 			var delta = currentScrollY - lastScrollY;
+			var heroHeight = heroSection ? heroSection.offsetHeight : 0;
 			var pastHero = currentScrollY > getHeroBottom();
 
-			// Ignore tiny scroll movements
-			if ( Math.abs( delta ) < SCROLL_THRESHOLD ) {
-				ticking = false;
-				return;
+			// Hero parallax — runs on every frame while hero is in viewport
+			if ( heroBg && ! prefersReducedMotion && currentScrollY < heroHeight ) {
+				heroBg.style.transform = 'translateY(' + ( currentScrollY * 0.3 ) + 'px) scale(1.05)';
 			}
 
-			if ( ! pastHero ) {
-				// In hero — full transparent navbar
-				navbar.classList.remove( 'is-hidden', 'is-condensed' );
-			} else if ( delta > 0 ) {
-				// Scrolling DOWN past hero — hide
-				navbar.classList.add( 'is-hidden' );
-				navbar.classList.remove( 'is-condensed' );
-			} else {
-				// Scrolling UP past hero — show condensed
-				navbar.classList.remove( 'is-hidden' );
-				navbar.classList.add( 'is-condensed' );
+			// Sticky header — only updates on meaningful scroll deltas
+			if ( Math.abs( delta ) >= SCROLL_THRESHOLD ) {
+				if ( ! pastHero ) {
+					// In hero — full transparent navbar
+					navbar.classList.remove( 'is-hidden', 'is-condensed' );
+				} else if ( delta > 0 ) {
+					// Scrolling DOWN past hero — hide
+					navbar.classList.add( 'is-hidden' );
+					navbar.classList.remove( 'is-condensed' );
+				} else {
+					// Scrolling UP past hero — show condensed
+					navbar.classList.remove( 'is-hidden' );
+					navbar.classList.add( 'is-condensed' );
+				}
+
+				lastScrollY = currentScrollY;
 			}
 
-			lastScrollY = currentScrollY;
 			ticking = false;
 		}
 
