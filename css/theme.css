@@ -17056,6 +17056,10 @@ html {
   padding-top: 4rem;
   padding-bottom: 3rem;
 }
+.site-footer .footer-logo img {
+  max-width: 180px;
+  height: auto;
+}
 .site-footer .footer-title {
   color: #A8A9AD;
   font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;

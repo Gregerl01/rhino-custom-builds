@@ -1143,6 +1143,13 @@ html {
 	padding-top: $space-2xl;
 	padding-bottom: $space-xl;
 
+	.footer-logo {
+		img {
+			max-width: 180px;
+			height: auto;
+		}
+	}
+
 	.footer-title {
 		color: $bmg-silver;
 		font-family: $font-family-base;
