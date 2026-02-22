@@ -74,6 +74,34 @@ html {
 	}
 }
 
+// BMG Reveal System (MOTION.md — source of truth)
+.bmg-reveal {
+	opacity: 0;
+	transform: translateY($reveal-distance);
+	transition: opacity $motion-slow $ease-out-expo,
+				transform $motion-slow $ease-out-expo;
+	will-change: opacity, transform;
+
+	&.is-visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+// Stagger children within a container
+.bmg-reveal-stagger > .bmg-reveal:nth-child(1) { transition-delay: 0ms; }
+.bmg-reveal-stagger > .bmg-reveal:nth-child(2) { transition-delay: $stagger-unit; }
+.bmg-reveal-stagger > .bmg-reveal:nth-child(3) { transition-delay: $stagger-unit * 2; }
+.bmg-reveal-stagger > .bmg-reveal:nth-child(4) { transition-delay: $stagger-unit * 3; }
+
+@media (prefers-reduced-motion: reduce) {
+	.bmg-reveal {
+		opacity: 1;
+		transform: none;
+		transition: none;
+	}
+}
+
 // ==========================================================================
 // Base Section
 // ==========================================================================
@@ -1089,8 +1117,8 @@ html {
 	justify-content: center;
 	padding: 18px 48px;
 	background: transparent;
-	border: 2px solid $bmg-white;
-	border-radius: 4px;
+	border: 1px solid rgba($bmg-silver, 0.4);
+	border-radius: 0;
 	font-family: $font-family-base;
 	font-size: 14px;
 	font-weight: 600;
@@ -1099,11 +1127,19 @@ html {
 	color: $bmg-white;
 	text-decoration: none;
 	margin-bottom: $space-lg;
-	transition: all 0.25s ease;
+	transition: background-color $motion-fast $ease-out-smooth,
+				border-color $motion-fast $ease-out-smooth,
+				color $motion-fast $ease-out-smooth,
+				transform $motion-instant $ease-out-smooth;
 
 	&:hover {
-		background: $bmg-white;
-		color: $bmg-obsidian;
+		border-color: $bmg-silver;
+		background: rgba($bmg-silver, 0.08);
+		color: $bmg-white;
+	}
+
+	&:active {
+		transform: scale(0.98);
 	}
 }
 
