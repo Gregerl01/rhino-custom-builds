@@ -16461,7 +16461,7 @@ html {
   margin-bottom: 12px;
   line-height: 1.3;
 }
-[data-bs-theme=dark] .pillar__title {
+.section-dark .pillar__title, [data-bs-theme=dark] .pillar__title {
   color: #FFFFFF;
 }
 .pillar__text {
@@ -16470,7 +16470,7 @@ html {
   color: #2D2D2D;
   margin: 0;
 }
-[data-bs-theme=dark] .pillar__text {
+.section-dark .pillar__text, [data-bs-theme=dark] .pillar__text {
   color: #E5E4E2;
 }
 

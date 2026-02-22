@@ -2,38 +2,47 @@
 /**
  * Value Pillars Section - BMG Homepage
  *
- * Four key benefits in a clean grid layout.
- * No icons — text only. The restraint IS the design.
- * Left silver border creates vertical rhythm.
+ * Four key membership benefits in a clean grid layout.
+ * Dark section (Obsidian). Left silver border creates vertical rhythm.
  *
  * @package BMG_Theme
  */
 
 defined( 'ABSPATH' ) || exit;
 
-// Pillar content.
+// Pillar content — order matches CONTENT.md Section 1.3.
 $pillars = array(
 	array(
-		'title' => __( 'Unhurried Appointments', 'bmg-theme' ),
-		'text'  => __( 'Visits are never rushed. Your physician dedicates 30 to 60 minutes per appointment, ensuring every concern is heard and addressed thoroughly.', 'bmg-theme' ),
-	),
-	array(
 		'title' => __( 'Direct Physician Access', 'bmg-theme' ),
-		'text'  => __( 'Reach your physician directly by phone, email, or secure message. No navigating phone trees or waiting days for a callback.', 'bmg-theme' ),
+		'text'  => __( 'Reach Dr. Baig personally by phone, text, or secure message. Same-day and next-day appointments are standard, not exceptions. No gatekeeping, no hold queues.', 'bmg-theme' ),
 	),
 	array(
-		'title' => __( 'Preventive Focus', 'bmg-theme' ),
-		'text'  => __( 'Comprehensive wellness planning, advanced screenings, and proactive health management — designed to prevent problems before they start.', 'bmg-theme' ),
+		'title' => __( 'Unhurried Appointments', 'bmg-theme' ),
+		'text'  => __( 'Visits are scheduled for 30 to 60 minutes. There is time to listen, investigate, discuss options, and answer every question — without watching the clock.', 'bmg-theme' ),
 	),
 	array(
-		'title' => __( 'Coordinated Care', 'bmg-theme' ),
-		'text'  => __( 'When specialist referrals are needed, your physician personally coordinates with your care team to ensure seamless, informed treatment.', 'bmg-theme' ),
+		'title' => __( 'Coordinated Specialist Care', 'bmg-theme' ),
+		'text'  => __( 'When referrals are needed, Dr. Baig personally coordinates with specialists, follows up on results, and ensures nothing falls between the cracks.', 'bmg-theme' ),
+	),
+	array(
+		'title' => __( 'Prevention-First Approach', 'bmg-theme' ),
+		'text'  => __( 'Comprehensive evaluations, advanced screenings, and personalized wellness planning built around nutrition, movement, and lifestyle — identifying risk early, not reacting after symptoms appear.', 'bmg-theme' ),
 	),
 );
 ?>
 
-<section id="pillars" class="section section-light-warm reveal-on-scroll">
+<section id="pillars" class="section section-dark reveal-on-scroll">
 	<div class="container">
+
+		<div class="row justify-content-center mb-5">
+			<div class="col-lg-8 text-center">
+				<h2 class="display-text mb-0">
+					<?php esc_html_e( 'What Membership Provides', 'bmg-theme' ); ?>
+				</h2>
+				<div class="silver-rule"></div>
+			</div>
+		</div>
+
 		<div class="row pillars-row">
 			<?php foreach ( $pillars as $pillar ) : ?>
 				<div class="col-12 col-md-6 col-lg-3">
@@ -48,5 +57,6 @@ $pillars = array(
 				</div>
 			<?php endforeach; ?>
 		</div>
+
 	</div>
 </section>

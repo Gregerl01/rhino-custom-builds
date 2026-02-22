@@ -417,6 +417,7 @@ html {
 		margin-bottom: 12px;
 		line-height: 1.3;
 
+		.section-dark &,
 		[data-bs-theme="dark"] & {
 			color: $bmg-white;
 		}
@@ -428,6 +429,7 @@ html {
 		color: $bmg-dark-gray;
 		margin: 0;
 
+		.section-dark &,
 		[data-bs-theme="dark"] & {
 			color: $bmg-platinum;
 		}
