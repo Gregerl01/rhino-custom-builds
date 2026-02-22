@@ -16429,6 +16429,13 @@ html {
   font-size: 1.125rem;
   line-height: 1.8;
   color: var(--us-text-secondary);
+  text-align: left;
+}
+.explainer__text p {
+  margin-bottom: 1.5rem;
+}
+.explainer__text p:last-child {
+  margin-bottom: 0;
 }
 
 .pillars-row {
