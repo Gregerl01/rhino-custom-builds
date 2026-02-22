@@ -316,6 +316,13 @@ These plugins are required for production but **not all are installed yet**. Plu
 - Touch HIPAA config without explicit approval
 - Rewrite large sections without approval
 
+## Content Reference
+All approved website copy and dynamic variable definitions live in CONTENT.md in the theme root.
+- **Before editing any template file**, read CONTENT.md first
+- Use it as the source of truth for all text content, `get_theme_mod()` keys, fallback strings, and implementation order
+- Build `inc/customizer-practice-info.php` before populating any templates
+- Do not write placeholder copy — if content exists in CONTENT.md, use it exactly
+
 ---
 
 ## Tone of Voice (Generated Content)

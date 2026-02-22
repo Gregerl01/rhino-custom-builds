@@ -2,7 +2,7 @@
 /**
  * Hero Section - BMG Homepage
  *
- * Full-viewport dark section with animated headline and decorative elements.
+ * Full-viewport dark section with animated headline and ghost-button CTAs.
  * Refined luxury editorial aesthetic.
  *
  * @package BMG_Theme
@@ -11,10 +11,16 @@
 defined( 'ABSPATH' ) || exit;
 
 // Get Customizer settings.
-$headline         = get_theme_mod( 'hero_headline', __( 'Medicine the Way It Should Be', 'bmg-theme' ) );
-$subtitle         = get_theme_mod( 'hero_subtitle', __( 'Personalized, unhurried care for patients who expect more.', 'bmg-theme' ) );
+$headline         = get_theme_mod( 'hero_headline', __( 'Healthcare Designed for How You Live', 'bmg-theme' ) );
+$subtitle         = get_theme_mod( 'hero_subtitle', __( 'A physician who knows you personally, available when it matters — with the time to do it right.', 'bmg-theme' ) );
 $background_image = get_theme_mod( 'hero_background_image', '' );
 $overlay_opacity  = get_theme_mod( 'hero_overlay_opacity', 70 );
+
+// CTA settings.
+$cta_primary_text   = get_theme_mod( 'hero_cta_primary_text', __( 'Explore Membership Plans', 'bmg-theme' ) );
+$cta_primary_url    = get_theme_mod( 'hero_cta_primary_url', '#plans' );
+$cta_secondary_text = get_theme_mod( 'hero_cta_secondary_text', __( 'Learn How It Works', 'bmg-theme' ) );
+$cta_secondary_url  = get_theme_mod( 'hero_cta_secondary_url', '#explainer' );
 
 // Build inline style for background image if set.
 $hero_style = '';
@@ -46,6 +52,24 @@ if ( $background_image ) {
 					<p class="section-hero__subtitle hero-animate hero-animate--delay-2">
 						<?php echo esc_html( $subtitle ); ?>
 					</p>
+				<?php endif; ?>
+
+				<?php if ( $cta_primary_text || $cta_secondary_text ) : ?>
+					<div class="section-hero__ctas hero-animate hero-animate--delay-3">
+
+						<?php if ( $cta_primary_text ) : ?>
+							<a href="<?php echo esc_url( $cta_primary_url ); ?>" class="section-hero__btn">
+								<?php echo esc_html( $cta_primary_text ); ?>
+							</a>
+						<?php endif; ?>
+
+						<?php if ( $cta_secondary_text ) : ?>
+							<a href="<?php echo esc_url( $cta_secondary_url ); ?>" class="section-hero__btn section-hero__btn--secondary">
+								<?php echo esc_html( $cta_secondary_text ); ?>
+							</a>
+						<?php endif; ?>
+
+					</div>
 				<?php endif; ?>
 
 			</div>

@@ -30,7 +30,7 @@ function bmg_theme_hero_customizer( $wp_customize ) {
 	$wp_customize->add_setting(
 		'hero_headline',
 		array(
-			'default'           => __( 'Medicine the Way It Should Be', 'bmg-theme' ),
+			'default'           => __( 'Healthcare Designed for How You Live', 'bmg-theme' ),
 			'sanitize_callback' => 'sanitize_text_field',
 			'transport'         => 'postMessage',
 		)
@@ -54,7 +54,7 @@ function bmg_theme_hero_customizer( $wp_customize ) {
 	$wp_customize->add_setting(
 		'hero_subtitle',
 		array(
-			'default'           => __( 'Personalized, unhurried care for patients who expect more.', 'bmg-theme' ),
+			'default'           => __( 'A physician who knows you personally, available when it matters — with the time to do it right.', 'bmg-theme' ),
 			'sanitize_callback' => 'sanitize_text_field',
 			'transport'         => 'postMessage',
 		)
@@ -67,6 +67,83 @@ function bmg_theme_hero_customizer( $wp_customize ) {
 			'description' => __( 'Single supporting sentence.', 'bmg-theme' ),
 			'section'     => 'bmg_theme_hero',
 			'type'        => 'text',
+		)
+	);
+
+	// ==========================================================================
+	// Primary CTA
+	// ==========================================================================
+
+	$wp_customize->add_setting(
+		'hero_cta_primary_text',
+		array(
+			'default'           => __( 'Explore Membership Plans', 'bmg-theme' ),
+			'sanitize_callback' => 'sanitize_text_field',
+		)
+	);
+
+	$wp_customize->add_control(
+		'hero_cta_primary_text',
+		array(
+			'label'   => __( 'Primary CTA Text', 'bmg-theme' ),
+			'section' => 'bmg_theme_hero',
+			'type'    => 'text',
+		)
+	);
+
+	$wp_customize->add_setting(
+		'hero_cta_primary_url',
+		array(
+			'default'           => '#plans',
+			'sanitize_callback' => 'esc_url_raw',
+		)
+	);
+
+	$wp_customize->add_control(
+		'hero_cta_primary_url',
+		array(
+			'label'   => __( 'Primary CTA Link', 'bmg-theme' ),
+			'section' => 'bmg_theme_hero',
+			'type'    => 'url',
+		)
+	);
+
+	// ==========================================================================
+	// Secondary CTA
+	// ==========================================================================
+
+	$wp_customize->add_setting(
+		'hero_cta_secondary_text',
+		array(
+			'default'           => __( 'Learn How It Works', 'bmg-theme' ),
+			'sanitize_callback' => 'sanitize_text_field',
+		)
+	);
+
+	$wp_customize->add_control(
+		'hero_cta_secondary_text',
+		array(
+			'label'       => __( 'Secondary CTA Text (optional)', 'bmg-theme' ),
+			'description' => __( 'Leave empty to hide.', 'bmg-theme' ),
+			'section'     => 'bmg_theme_hero',
+			'type'        => 'text',
+		)
+	);
+
+	$wp_customize->add_setting(
+		'hero_cta_secondary_url',
+		array(
+			'default'           => '#explainer',
+			'sanitize_callback' => 'esc_url_raw',
+		)
+	);
+
+	$wp_customize->add_control(
+		'hero_cta_secondary_url',
+		array(
+			'label'   => __( 'Secondary CTA Link', 'bmg-theme' ),
+			'section' => 'bmg_theme_hero',
+			'type'    => 'url',
 		)
 	);
 
