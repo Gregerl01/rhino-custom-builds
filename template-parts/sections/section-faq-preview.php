@@ -10,23 +10,23 @@
 
 defined( 'ABSPATH' ) || exit;
 
-// FAQ content.
+// FAQ content — matches CONTENT.md Section 1.6 + answers from Section 7.2.
 $faqs = array(
 	array(
-		'question' => __( 'What is concierge medicine?', 'bmg-theme' ),
-		'answer'   => __( 'Concierge medicine is a membership-based approach where your physician limits their patient panel to provide more personalized, accessible, and comprehensive care. Members pay an annual or monthly fee for enhanced services beyond what traditional insurance-based practices offer.', 'bmg-theme' ),
+		'question' => __( 'What is concierge medicine and how does it differ from traditional primary care?', 'bmg-theme' ),
+		'answer'   => __( 'Concierge medicine is a membership-based model where patients pay an annual or monthly fee for enhanced physician access, longer appointments, and comprehensive care coordination. The core difference is panel size. A traditional primary care physician manages 2,000 to 2,500 patients. A concierge physician maintains a deliberately small panel — typically a few hundred — which allows for longer visits, same-day access, and a deeper physician-patient relationship built on continuity.', 'bmg-theme' ),
 	),
 	array(
-		'question' => __( 'Will I still need health insurance?', 'bmg-theme' ),
-		'answer'   => __( 'Yes. Concierge membership covers your primary care relationship and enhanced access. Health insurance remains important for hospitalizations, specialist care, prescriptions, and emergencies. Many of our members find their overall healthcare costs decrease due to better preventive care.', 'bmg-theme' ),
+		'question' => __( 'Will my health insurance still apply?', 'bmg-theme' ),
+		'answer'   => __( 'Yes. Your existing health insurance continues to function as it does now. Insurance covers eligible services such as labs, imaging, specialist visits, hospitalizations, and prescriptions. The concierge membership fee covers enhanced access, coordination, and services that fall outside standard insurance billing — such as extended appointments, direct physician communication, and wellness programming.', 'bmg-theme' ),
 	),
 	array(
-		'question' => __( 'What happens if I need to see a specialist?', 'bmg-theme' ),
-		'answer'   => __( 'Your physician personally coordinates specialist referrals, ensuring the specialist has your complete medical history and context. You benefit from priority scheduling and a physician who follows up on every referral to ensure continuity of care.', 'bmg-theme' ),
+		'question' => __( 'How quickly can I reach Dr. Baig?', 'bmg-theme' ),
+		'answer'   => __( 'All members have direct phone and secure messaging access to Dr. Baig. Same-day and next-day appointments are standard across every membership tier. Premium and Concierge Elite members have extended-hours and after-hours access. Concierge Elite members have 24/7 direct physician availability.', 'bmg-theme' ),
 	),
 	array(
-		'question' => __( 'How do I get started?', 'bmg-theme' ),
-		'answer'   => __( 'Begin with a private consultation — by phone or in person — where we discuss your health goals and determine if our practice is the right fit. There is no obligation, and we welcome your questions.', 'bmg-theme' ),
+		'question' => __( 'What happens if I need a specialist?', 'bmg-theme' ),
+		'answer'   => __( 'Dr. Baig personally coordinates referrals, shares relevant records, and follows up on specialist findings. The level of coordination depends on your tier — Essential members receive standard coordination, Premium members receive priority scheduling and follow-up, and Concierge Elite members receive expedited scheduling and multi-specialist case management.', 'bmg-theme' ),
 	),
 );
 ?>
@@ -38,7 +38,7 @@ $faqs = array(
 
 				<div class="text-center mb-5">
 					<h2 class="display-text h2 mb-3">
-						<?php esc_html_e( 'Commonly Asked Questions', 'bmg-theme' ); ?>
+						<?php esc_html_e( 'Common Questions', 'bmg-theme' ); ?>
 					</h2>
 					<div class="silver-rule"></div>
 				</div>
@@ -69,7 +69,7 @@ $faqs = array(
 
 				<div class="text-center mt-4">
 					<a href="<?php echo esc_url( home_url( '/faq/' ) ); ?>" class="text-link">
-						<?php esc_html_e( 'View all frequently asked questions', 'bmg-theme' ); ?>
+						<?php esc_html_e( 'View All Questions', 'bmg-theme' ); ?>
 						<span aria-hidden="true">&rarr;</span>
 					</a>
 				</div>
