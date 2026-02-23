@@ -1,10 +1,10 @@
 <?php
 /**
- * Philosophy & Physician Customizer Settings
+ * Philosophy & Provider Customizer Settings
  *
- * Used for the philosophy section on the homepage and physician profile.
+ * Used for the philosophy section on the homepage and provider profile.
  *
- * @package BMG_Theme
+ * @package starter-theme
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -18,8 +18,8 @@ function bmg_theme_about_customizer( $wp_customize ) {
 	$wp_customize->add_panel(
 		'bmg_theme_about_panel',
 		array(
-			'title'       => __( 'Philosophy & Physician', 'bmg-theme' ),
-			'description' => __( 'Customize practice philosophy and physician information.', 'bmg-theme' ),
+			'title'       => __( 'Philosophy & Provider', 'bmg-theme' ),
+			'description' => __( 'Customize business philosophy and provider information.', 'bmg-theme' ),
 			'priority'    => 122,
 		)
 	);
@@ -40,7 +40,7 @@ function bmg_theme_about_customizer( $wp_customize ) {
 	$wp_customize->add_setting(
 		'philosophy_paragraph_1',
 		array(
-			'default'           => __( 'We believe exceptional healthcare begins with time. Time to listen, time to understand, and time to develop a care plan tailored to your life.', 'bmg-theme' ),
+			'default'           => __( '[Philosophy paragraph 1 — opening statement about your approach.]', 'bmg-theme' ),
 			'sanitize_callback' => 'sanitize_textarea_field',
 			'transport'         => 'postMessage',
 		)
@@ -59,7 +59,7 @@ function bmg_theme_about_customizer( $wp_customize ) {
 	$wp_customize->add_setting(
 		'philosophy_paragraph_2',
 		array(
-			'default'           => __( 'Baig Medical Group offers concierge primary care that prioritizes the physician-patient relationship above all else. Fewer patients means more attention for you.', 'bmg-theme' ),
+			'default'           => __( '[Philosophy paragraph 2 — supporting statement about your value proposition.]', 'bmg-theme' ),
 			'sanitize_callback' => 'sanitize_textarea_field',
 			'transport'         => 'postMessage',
 		)
@@ -137,8 +137,8 @@ function bmg_theme_about_customizer( $wp_customize ) {
 	$wp_customize->add_section(
 		'bmg_theme_physician',
 		array(
-			'title'       => __( 'Physician Profile', 'bmg-theme' ),
-			'description' => __( 'Physician information for the About page.', 'bmg-theme' ),
+			'title'       => __( 'Provider Profile', 'bmg-theme' ),
+			'description' => __( 'Provider information for the About page.', 'bmg-theme' ),
 			'panel'       => 'bmg_theme_about_panel',
 		)
 	);
@@ -156,8 +156,8 @@ function bmg_theme_about_customizer( $wp_customize ) {
 	$wp_customize->add_control(
 		'physician_name',
 		array(
-			'label'       => __( 'Physician Name', 'bmg-theme' ),
-			'description' => __( 'e.g., Dr. John Smith, MD', 'bmg-theme' ),
+			'label'       => __( 'Provider Name', 'bmg-theme' ),
+			'description' => __( 'e.g., Dr. [Last Name], MD', 'bmg-theme' ),
 			'section'     => 'bmg_theme_physician',
 			'type'        => 'text',
 		)
@@ -216,7 +216,7 @@ function bmg_theme_about_customizer( $wp_customize ) {
 			$wp_customize,
 			'physician_photo',
 			array(
-				'label'   => __( 'Physician Photo', 'bmg-theme' ),
+				'label'   => __( 'Provider Photo', 'bmg-theme' ),
 				'section' => 'bmg_theme_physician',
 			)
 		)
@@ -238,7 +238,7 @@ function bmg_theme_about_customizer( $wp_customize ) {
 	$wp_customize->add_setting(
 		'credentials_list',
 		array(
-			'default'           => "Board Certified in Internal Medicine\nMember, American College of Physicians\nFellow, American Academy of Family Physicians\nConcierge Medicine Today Top Doctor",
+			'default'           => "[Credential 1]\n[Credential 2]\n[Credential 3]\n[Credential 4]",
 			'sanitize_callback' => 'sanitize_textarea_field',
 			'transport'         => 'postMessage',
 		)

@@ -1,20 +1,20 @@
-# Baig Medical Group — Website Content Architecture
+# GSL Starter Theme — Content Blueprint
 
-**Document type:** Production copy, mapped to template files
+**Document type:** Placeholder content architecture, mapped to template files
 **Brand voice:** Calm, Confident, Professional, Clear, Restrained
-**Target audience:** High-net-worth individuals, C-suite executives, professionals, families in Yuma, AZ
-**Conversion goal:** Enrollment in concierge medical plans
-**Physician:** Dr. Adil Baig, Board-Certified Family Medicine
+**Target audience:** [Define target audience — demographics, location, psychographics]
+**Conversion goal:** [Define primary conversion action — e.g., enrollment, booking, purchase]
+**Physician:** [Provider Name], [Provider Credentials]
 
 ---
 
 ### Brand Voice Quick Reference
 
-**Personality:** Calm, confident, grounded, warm, trustworthy, refined, premium but never cold
-**Voice:** Clear and conversational, empathetic, educational without overwhelming, reassuring, intentional
-**Messaging pillars:** Time as the most valuable resource. Quality over quantity. Personalized, relationship-based care. Prevention and long-term health. Partnership between patient and physician.
-**Emphasize:** Intentional, personalized, preventive, thoughtful, holistic, accessible, relationship-driven
-**Avoid:** Rushed, high-volume, transactional, impersonal, one-size-fits-all. No superlatives, no urgency tactics, no "best/leading/premier/redefining/reimagined."
+**Personality:** [Define 5-7 brand personality traits — e.g., calm, confident, grounded, warm, trustworthy, refined]
+**Voice:** [Define voice characteristics — e.g., clear and conversational, empathetic, educational, reassuring]
+**Messaging pillars:** [Define 3-5 messaging pillars — the core value propositions the brand communicates]
+**Emphasize:** [List 5-8 words/concepts to lean into across all copy]
+**Avoid:** [List words/concepts to avoid — superlatives, urgency tactics, specific banned phrases]
 
 ---
 ---
@@ -37,22 +37,22 @@ All reusable practice information is stored in WordPress Customizer under a "Pra
 
 | Theme Mod Key | Default Value | Used In |
 |---|---|---|
-| `bmg_physician_name` | `Dr. Adil Baig` | Physician Preview, Physician Bio, About, FAQ, CTA |
-| `bmg_physician_last_name` | `Baig` | FAQ, Contact after-hours note, throughout |
-| `bmg_physician_credentials` | `Board-Certified Family Medicine Physician` | Physician Preview, Physician Bio, About |
-| `bmg_physician_specialty` | `Family Medicine` | Physician Bio |
+| `bmg_physician_name` | `[Provider Name]` | Physician Preview, Physician Bio, About, FAQ, CTA |
+| `bmg_physician_last_name` | `[Provider Last Name]` | FAQ, Contact after-hours note, throughout |
+| `bmg_physician_credentials` | `[Provider Credentials]` | Physician Preview, Physician Bio, About |
+| `bmg_physician_specialty` | `[Specialty]` | Physician Bio |
 | `bmg_physician_bio_short` | *(see Section 1.5)* | Physician Preview (homepage) |
 | `bmg_physician_bio_full` | *(see Section 2.3)* | Physician Bio (About page) |
 | `bmg_physician_med_school` | `[Medical School]` | Physician Bio credentials sidebar |
 | `bmg_physician_residency` | `[Residency Program]` | Physician Bio credentials sidebar |
 | `bmg_physician_fellowship` | *(empty string — hidden if blank)* | Physician Bio credentials sidebar |
-| `bmg_physician_board_cert` | `American Board of Family Medicine` | Physician Bio credentials sidebar |
+| `bmg_physician_board_cert` | `[Board Certification]` | Physician Bio credentials sidebar |
 | `bmg_physician_memberships` | `[Professional Organizations]` | Physician Bio credentials sidebar |
 | `bmg_physician_years` | `10` | Physician Preview, Physician Bio |
 | `bmg_phone` | `(000) 000-0000` | CTA, Contact, Footer, FAQ, forms |
-| `bmg_email` | `info@baigmedicalgroup.com` | Contact, Footer, Privacy Policy |
+| `bmg_email` | `info@example.com` | Contact, Footer, Privacy Policy |
 | `bmg_address_street` | `[Street Address]` | Contact, Footer, Privacy Policy |
-| `bmg_address_city` | `Yuma, AZ [ZIP]` | Contact, Footer, Privacy Policy |
+| `bmg_address_city` | `[City, State ZIP]` | Contact, Footer, Privacy Policy |
 | `bmg_office_hours` | `Monday – Friday: 8:00 AM – 5:00 PM` | Contact, Footer |
 | `bmg_office_hours_sat` | `By appointment` | Contact, Footer |
 | `bmg_office_hours_sun` | `Closed` | Contact, Footer |
@@ -61,7 +61,7 @@ All reusable practice information is stored in WordPress Customizer under a "Pra
 ### Template Usage
 
 ```php
-<?php echo esc_html( get_theme_mod( 'bmg_physician_name', 'Dr. Adil Baig' ) ); ?>
+<?php echo esc_html( get_theme_mod( 'bmg_physician_name', '[Provider Name]' ) ); ?>
 <?php echo esc_html( get_theme_mod( 'bmg_phone', '(000) 000-0000' ) ); ?>
 ```
 
@@ -96,16 +96,16 @@ Seven sections loaded in order. Each maps to a template partial.
 ### 1.1 Hero — `section-hero.php`
 
 **H1 Headline** (6 words, ~40 chars)
-> Healthcare Designed for How You Live
+> [Headline placeholder — primary value proposition, 6 words max]
 
 **Subhead** (~90 chars)
-> A physician who knows you personally, available when it matters — with the time to do it right.
+> [Subhead placeholder — expand on headline, ~90 chars, one sentence]
 
 **Primary CTA Button**
-> Explore Membership Plans
+> [Primary CTA label — action-oriented, links to plans or services]
 
 **Secondary CTA (optional)**
-> Learn How It Works
+> [Secondary CTA label — links to explainer or about section]
 
 **Design notes:** Full-viewport background. Animated headline on load. Off-white text on dark overlay. Both CTAs use ghost-button style (outlined, not filled) per brand restraint.
 
@@ -114,14 +114,14 @@ Seven sections loaded in order. Each maps to a template partial.
 ### 1.2 Explainer — `section-explainer.php`
 
 **H2 Headline** (~50 chars)
-> A Different Standard of Medical Care
+> [Section 1.2 — headline describing the industry/service type differentiator]
 
 **Body Copy** (~130 words)
-> In traditional primary care, physicians manage panels of 2,000 patients or more. Appointments are compressed. Conversations are cut short. Medications are prescribed without always addressing root causes. The system rewards volume, and patients feel the difference.
+> [Section 1.2a — first paragraph: describe the problem with the traditional/conventional model in the industry. ~45 words]
 
-> Concierge medicine corrects the structure. By maintaining a deliberately small patient panel, your physician has the capacity for thorough evaluations, unhurried conversations, and meaningful follow-up. You reach your doctor directly — not a call center, not a rotating roster.
+> [Section 1.2b — second paragraph: describe how the alternative model (your service) corrects the problem. ~45 words]
 
-> At Baig Medical Group, Dr. Adil Baig built this practice on a straightforward conviction: time is the most valuable resource in medicine. Every membership is designed to protect that time — for you, for your family, and for the physician-patient relationship that makes good care possible.
+> [Section 1.2c — third paragraph: connect to [Business Name] and [Provider Name] specifically. State the founding conviction and what every membership/service is designed around. ~45 words]
 
 **Design notes:** Light section. Content-width container (680px max). No icons or imagery — copy does the work here.
 
@@ -130,27 +130,27 @@ Seven sections loaded in order. Each maps to a template partial.
 ### 1.3 Value Pillars — `section-pillars.php`
 
 **H2 Headline** (~35 chars)
-> What Membership Provides
+> [Section 1.3 — headline describing what membership/service provides]
 
-**Pillar 1 — Direct Access**
-Icon: Phone/connection
-**H3:** Direct Physician Access
-**Body** (~30 words): Reach Dr. Baig personally by phone, text, or secure message. Same-day and next-day appointments are standard, not exceptions. No gatekeeping, no hold queues.
+**Pillar 1 — [Pillar 1 Name]**
+Icon: [Icon description]
+**H3:** [Pillar 1 heading — ~3 words]
+**Body** (~30 words): [Pillar 1 body — describe the first key benefit of membership/service. ~30 words]
 
-**Pillar 2 — Unhurried Appointments**
-Icon: Clock
-**H3:** Unhurried Appointments
-**Body** (~30 words): Visits are scheduled for 30 to 60 minutes. There is time to listen, investigate, discuss options, and answer every question — without watching the clock.
+**Pillar 2 — [Pillar 2 Name]**
+Icon: [Icon description]
+**H3:** [Pillar 2 heading — ~3 words]
+**Body** (~30 words): [Pillar 2 body — describe the second key benefit. ~30 words]
 
-**Pillar 3 — Coordinated Care**
-Icon: Network/nodes
-**H3:** Coordinated Specialist Care
-**Body** (~30 words): When referrals are needed, Dr. Baig personally coordinates with specialists, follows up on results, and ensures nothing falls between the cracks.
+**Pillar 3 — [Pillar 3 Name]**
+Icon: [Icon description]
+**H3:** [Pillar 3 heading — ~3 words]
+**Body** (~30 words): [Pillar 3 body — describe the third key benefit. ~30 words]
 
-**Pillar 4 — Preventive Focus**
-Icon: Shield/checkmark
-**H3:** Prevention-First Approach
-**Body** (~30 words): Comprehensive evaluations, advanced screenings, and personalized wellness planning built around nutrition, movement, and lifestyle — identifying risk early, not reacting after symptoms appear.
+**Pillar 4 — [Pillar 4 Name]**
+Icon: [Icon description]
+**H3:** [Pillar 4 heading — ~3 words]
+**Body** (~30 words): [Pillar 4 body — describe the fourth key benefit. ~30 words]
 
 **Design notes:** Dark section (Obsidian background). 4-column grid on desktop, 2x2 on tablet, stacked on mobile. Icons in Brushed Silver. H3s in Cormorant Garamond, body in Montserrat.
 
@@ -159,75 +159,75 @@ Icon: Shield/checkmark
 ### 1.4 Plans Overview — `section-plans-overview.php`
 
 **H2 Headline** (~30 chars)
-> Membership Tiers
+> [Section 1.4 — headline for plan/pricing tiers]
 
 **H2 Subhead** (~65 chars)
-> Three levels of care, each built around access, attention, and coordination.
+> [Section 1.4 subhead — briefly describe the tiers and what differentiates them]
 
 ---
 
-**ESSENTIAL PLAN**
-**H3:** Essential
-**Tagline** (~40 chars): Foundational concierge care for individuals.
+**[PLAN TIER 1]**
+**H3:** [Plan Tier 1]
+**Tagline** (~40 chars): [Plan Tier 1 tagline — who this tier is for]
 **Features:**
-- Annual comprehensive health evaluation
-- Same-day and next-day appointments
-- Direct physician phone and messaging access
-- Standard specialist referral coordination
-- Foundational wellness programming
+- [Plan Tier 1 feature 1]
+- [Plan Tier 1 feature 2]
+- [Plan Tier 1 feature 3]
+- [Plan Tier 1 feature 4]
+- [Plan Tier 1 feature 5]
 
 **CTA:** View Plan Details
 
 ---
 
-**PREMIUM PLAN** (featured/recommended)
-**H3:** Premium
-**Tagline** (~45 chars): Enhanced access with priority coordination.
+**[PLAN TIER 2]** (featured/recommended)
+**H3:** [Plan Tier 2]
+**Tagline** (~45 chars): [Plan Tier 2 tagline — who this tier is for]
 **Features:**
-- Everything in Essential, plus:
-- Extended appointment availability, including evenings
-- Priority specialist referrals and follow-up
-- Health coaching with nutrition and lifestyle guidance
-- Annual executive physical with advanced screenings
-- Family member add-on available
+- Everything in [Plan Tier 1], plus:
+- [Plan Tier 2 feature 1]
+- [Plan Tier 2 feature 2]
+- [Plan Tier 2 feature 3]
+- [Plan Tier 2 feature 4]
+- [Plan Tier 2 feature 5]
 
 **CTA:** View Plan Details
 
 ---
 
-**CONCIERGE ELITE PLAN**
-**H3:** Concierge Elite
-**Tagline** (~50 chars): The full measure of personalized medicine.
+**[PLAN TIER 3]**
+**H3:** [Plan Tier 3]
+**Tagline** (~50 chars): [Plan Tier 3 tagline — who this tier is for]
 **Features:**
-- Everything in Premium, plus:
-- 24/7 direct physician availability
-- VIP specialist referral network with expedited scheduling
-- Full-suite wellness, nutrition, and longevity programming
-- In-home and on-site visit options
-- Travel medicine and global care coordination
-- Dedicated care coordinator
+- Everything in [Plan Tier 2], plus:
+- [Plan Tier 3 feature 1]
+- [Plan Tier 3 feature 2]
+- [Plan Tier 3 feature 3]
+- [Plan Tier 3 feature 4]
+- [Plan Tier 3 feature 5]
+- [Plan Tier 3 feature 6]
 
 **CTA:** View Plan Details
 
 **Section CTA:**
-> Not sure which tier fits? [Schedule a Consultation] — we will walk through your needs with no obligation.
+> [Section 1.4 CTA — prompt for undecided visitors to schedule a consultation. Include link and no-obligation note.]
 
-**Design notes:** Light section. Three equal-width cards. Premium card elevated (subtle shadow or border-top in Brushed Silver). Pricing TBD — display as "Contact for Pricing" until client provides.
+**Design notes:** Light section. Three equal-width cards. [Plan Tier 2] card elevated (subtle shadow or border-top in Brushed Silver). Pricing TBD — display as "Contact for Pricing" until client provides.
 
 ---
 
 ### 1.5 Physician Preview — `section-physician-preview.php`
 
 **H2 Headline** (~30 chars)
-> Your Physician
+> [Section 1.5 — headline introducing the provider, e.g., "Your Physician"]
 
 **Body Copy** (~80 words)
-> Dr. Adil Baig is a board-certified family medicine physician with over a decade of clinical experience. A second-generation physician and father of five, he founded Baig Medical Group on a conviction that guided his career: time is the most valuable resource in medicine — for patients and physicians alike.
+> [Section 1.5a — first paragraph: introduce [Provider Name] with credentials, experience, and founding story. ~40 words]
 
-> In Yuma, Dr. Baig maintains a limited patient panel, conducts extended appointments, and remains personally accessible to every member. The result is care built around attention, not volume.
+> [Section 1.5b — second paragraph: describe practice approach in [City, State] — limited panel, extended appointments, personal accessibility. ~40 words]
 
 **CTA:**
-> Read Full Profile →
+> [Section 1.5 CTA — link to full profile, e.g., "Read Full Profile"]
 
 **Design notes:** Two-column layout. Portrait photo left, copy right. Dark section with light text. Photo placeholder until client provides.
 
@@ -236,19 +236,19 @@ Icon: Shield/checkmark
 ### 1.6 FAQ Preview — `section-faq-preview.php`
 
 **H2 Headline** (~35 chars)
-> Common Questions
+> [Section 1.6 — headline, e.g., "Common Questions"]
 
 Display 4 questions from the full FAQ set (accordion style):
 
-**Q1:** What is concierge medicine and how does it differ from traditional primary care?
-**Q2:** Will my health insurance still apply?
-**Q3:** How quickly can I reach Dr. Baig?
-**Q4:** What happens if I need a specialist?
+**Q1:** [FAQ question 1 — about the industry/service type and how it differs from conventional]
+**Q2:** [FAQ question 2 — about insurance/payment coordination]
+**Q3:** [FAQ question 3 — about access/availability to the provider]
+**Q4:** [FAQ question 4 — about specialist/referral coordination]
 
 (Full answers provided in Section 7: FAQ Page below.)
 
 **CTA:**
-> View All Questions →
+> [Section 1.6 CTA — link to full FAQ page, e.g., "View All Questions"]
 
 **Design notes:** Light section. Accordion UI — one item open by default. Consistent with Bootstrap 5 accordion component.
 
@@ -257,13 +257,13 @@ Display 4 questions from the full FAQ set (accordion style):
 ### 1.7 CTA — `section-cta.php`
 
 **H2 Headline** (~40 chars)
-> The First Step Is a Conversation
+> [Section 1.7 — headline prompting consultation/contact]
 
 **Body** (~30 words)
-> Schedule a private consultation to discuss your health priorities, ask questions about membership, and determine which tier aligns with your needs. There is no obligation and no pressure.
+> [Section 1.7 body — invite the visitor to schedule a consultation, describe what happens, emphasize no obligation. ~30 words]
 
 **Primary CTA:**
-> Schedule a Consultation
+> [Primary CTA label — e.g., "Schedule a Consultation"]
 
 **Secondary CTA:**
 > Call `bmg_phone`
@@ -282,44 +282,44 @@ Uses `section-physician.php` for the full bio section.
 ### 2.1 Hero / Intro
 
 **H1 Headline** (~45 chars)
-> Medicine Practiced With Intention
+> [Section 2.1 — headline conveying the practice philosophy]
 
 **Body** (~60 words)
-> Baig Medical Group exists because healthcare should not require patients to choose between access and quality, or between thoroughness and convenience. Dr. Adil Baig built this practice to provide the kind of care he believes medicine is meant to deliver — attentive, preventive, and personal — in a model structured around the physician-patient relationship.
+> [Section 2.1 body — describe why [Business Name] exists, the problem it solves, and how [Provider Name] built the practice to deliver the kind of care they believe in. ~60 words]
 
 ---
 
-### 2.2 Philosophy — Dr. Baig's Approach
+### 2.2 Philosophy — [Provider Name]'s Approach
 
 **H2 Headline** (~30 chars)
-> A Philosophy of Care
+> [Section 2.2 — headline, e.g., "A Philosophy of Care"]
 
 **Body** (~200 words)
-> Dr. Adil Baig was born and raised in Chicago, Illinois, in a family where medicine was part of daily life. His father is a practicing family medicine physician. Though he did not initially plan to follow the same path, Dr. Baig ultimately found his calling in caring for others — and has spent over a decade doing so.
+> [Section 2.2a — first paragraph: [Provider Name]'s background, origin story, and path to the profession. ~80 words]
 
-> As his practice grew, so did his awareness of the structural limitations within conventional healthcare. In a system where physicians are expected to see 30 or more patients a day, appointments shrink, conversations are cut short, and medications are prescribed without always addressing root causes. Quality gives way to quantity. The physician wants to do more. The system does not allow it.
+> [Section 2.2b — second paragraph: describe the structural limitations of the conventional model in the industry that [Provider Name] experienced. ~60 words]
 
-> Becoming a father of five clarified what Dr. Baig already knew professionally: time is the most valuable resource. He could not practice medicine the way he believed it should be practiced — and be present for his family — within a model that treated both as secondary.
+> [Section 2.2c — third paragraph: the personal turning point or conviction that led to founding the practice. ~30 words]
 
-> Baig Medical Group is the result of that conviction. A concierge practice built around intentional care, shared decision-making, and the belief that prevention, nutrition, movement, and lifestyle are as important as any prescription.
+> [Section 2.2d — fourth paragraph: describe what [Business Name] is — the result of that conviction. State the practice model and core beliefs. ~30 words]
 
 ---
 
 ### 2.3 Full Physician Bio — `section-physician.php`
 
 **H2 Headline**
-> Dr. Adil Baig, `bmg_physician_credentials`
+> [Provider Name], `bmg_physician_credentials`
 
 **Bio** (~160 words)
-> Dr. Baig is a board-certified family medicine physician with over a decade of clinical experience spanning hospital systems, health system networks, and private practice.
+> [Section 2.3a — first paragraph: introduce [Provider Name] with credentials and experience summary. ~25 words]
 
-> After completing his medical training at `bmg_physician_med_school` and residency at `bmg_physician_residency`, Dr. Baig practiced within traditional healthcare settings before founding Baig Medical Group in Yuma, Arizona.
+> [Section 2.3b — second paragraph: education at `bmg_physician_med_school` and residency at `bmg_physician_residency`, career path before founding [Business Name] in [City, State]. ~30 words]
 
-> The transition to concierge medicine was deliberate. Having experienced the constraints of volume-based practice firsthand — where patient panels routinely exceed 2,000 and appointments are compressed to minutes — Dr. Baig recognized that the model itself was the barrier to the care patients deserved.
+> [Section 2.3c — third paragraph: describe the transition to the current practice model and why it was deliberate. ~40 words]
 
-> At Baig Medical Group, Dr. Baig maintains a limited patient panel, conducts extended appointments, and remains personally accessible to every member. His clinical approach emphasizes prevention, nutrition, movement, and evidence-based medicine, with care plans developed collaboratively through shared decision-making.
+> [Section 2.3d — fourth paragraph: describe what [Provider Name] does at [Business Name] — limited panel, extended appointments, personal accessibility, clinical approach. ~40 words]
 
-> Outside of practice, Dr. Baig is a devoted father of five and remains connected to his roots as a second-generation physician.
+> [Section 2.3e — fifth paragraph: personal detail about [Provider Name] outside of practice. ~20 words]
 
 **Credentials sidebar (dynamic, conditional display):**
 - Board Certification: `bmg_physician_board_cert`
@@ -346,58 +346,58 @@ Uses `section-plans-comparison.php` for the detailed comparison.
 ### 3.1 Hero / Intro
 
 **H1 Headline** (~35 chars)
-> Membership Plans
+> [Section 3.1 — headline, e.g., "Membership Plans"]
 
 **Body** (~50 words)
-> Every tier includes direct access to Dr. Baig, unhurried appointments, and coordinated care. The differences are in depth — how much access, how broad the wellness programming, and how extensive the coordination around your health. All plans are structured around prevention, partnership, and time.
+> [Section 3.1 body — describe what all tiers include, what differentiates them, and the principles they are structured around. ~50 words]
 
 ---
 
 ### 3.2 Comparison Table — `section-plans-comparison.php`
 
-| Feature | Essential | Premium | Concierge Elite |
+| Feature | [Plan Tier 1] | [Plan Tier 2] | [Plan Tier 3] |
 |---|---|---|---|
-| **Access & Availability** | | | |
-| Direct physician phone/text | ✓ | ✓ | ✓ |
-| Secure messaging | ✓ | ✓ | ✓ |
-| Same-day/next-day appointments | ✓ | ✓ | ✓ |
-| Extended hours (evenings) | — | ✓ | ✓ |
-| 24/7 physician availability | — | — | ✓ |
-| **Evaluations & Screenings** | | | |
-| Annual comprehensive evaluation | ✓ | ✓ | ✓ |
-| Executive physical with advanced panels | — | ✓ | ✓ |
-| Quarterly health check-ins | — | — | ✓ |
-| **Specialist Coordination** | | | |
-| Referral coordination | Standard | Priority | VIP / Expedited |
-| Post-referral follow-up | ✓ | ✓ | ✓ |
-| Multi-specialist case management | — | — | ✓ |
-| **Wellness & Prevention** | | | |
-| Foundational wellness programming | ✓ | ✓ | ✓ |
-| Health coaching (nutrition & lifestyle) | — | ✓ | ✓ |
-| Longevity & optimization planning | — | — | ✓ |
-| **Convenience** | | | |
-| In-home/on-site visits | — | — | ✓ |
-| Travel medicine & global coordination | — | — | ✓ |
-| Dedicated care coordinator | — | — | ✓ |
-| Family member add-on | — | ✓ | ✓ |
+| **[Category 1]** | | | |
+| [Feature 1.1] | [value] | [value] | [value] |
+| [Feature 1.2] | [value] | [value] | [value] |
+| [Feature 1.3] | [value] | [value] | [value] |
+| [Feature 1.4] | [value] | [value] | [value] |
+| [Feature 1.5] | [value] | [value] | [value] |
+| **[Category 2]** | | | |
+| [Feature 2.1] | [value] | [value] | [value] |
+| [Feature 2.2] | [value] | [value] | [value] |
+| [Feature 2.3] | [value] | [value] | [value] |
+| **[Category 3]** | | | |
+| [Feature 3.1] | [value] | [value] | [value] |
+| [Feature 3.2] | [value] | [value] | [value] |
+| [Feature 3.3] | [value] | [value] | [value] |
+| **[Category 4]** | | | |
+| [Feature 4.1] | [value] | [value] | [value] |
+| [Feature 4.2] | [value] | [value] | [value] |
+| [Feature 4.3] | [value] | [value] | [value] |
+| **[Category 5]** | | | |
+| [Feature 5.1] | [value] | [value] | [value] |
+| [Feature 5.2] | [value] | [value] | [value] |
+| [Feature 5.3] | [value] | [value] | [value] |
+| [Feature 5.4] | [value] | [value] | [value] |
 | **Monthly Investment** | [TBD] | [TBD] | [TBD] |
 | **Annual Investment** | [TBD] | [TBD] | [TBD] |
 
 **Below-table note:**
-> All plans require an initial enrollment consultation. Annual commitments include a preferred rate. Pricing reflects physician access and care coordination — standard office visit copays and insurance billing for covered services remain separate.
+> [Section 3.2 note — explain enrollment process, annual discount, and how pricing relates to the service. ~30 words]
 
 ---
 
 ### 3.3 CTA
 
 **H2 Headline**
-> Questions About Which Plan Fits?
+> [Section 3.3 — headline prompting visitors who are unsure about which plan fits]
 
 **Body** (~25 words)
-> Schedule a brief consultation with our team. We will review your health priorities and recommend the membership tier that aligns with your needs.
+> [Section 3.3 body — invite to schedule a consultation, describe the process, emphasize no obligation. ~25 words]
 
 **Primary CTA:**
-> Schedule a Consultation
+> [Primary CTA label — e.g., "Schedule a Consultation"]
 
 **Secondary CTA:**
 > Call `bmg_phone`
@@ -414,10 +414,10 @@ Uses `section-enroll-form.php`.
 ### 4.1 Intro
 
 **H1 Headline** (~25 chars)
-> Begin Enrollment
+> [Section 4.1 — headline, e.g., "Begin Enrollment"]
 
 **Body** (~50 words)
-> Complete the form below to start your membership application. All information is transmitted securely and handled in accordance with HIPAA privacy requirements. After submission, a member of our team will contact you within one business day to schedule your enrollment consultation.
+> [Section 4.1 body — explain the enrollment process, security/privacy assurance, and next steps after submission. ~50 words]
 
 ---
 
@@ -433,23 +433,23 @@ Uses `section-enroll-form.php`.
 - Preferred method of contact (phone / email / text)
 
 **Section 2: Plan Selection**
-- Desired membership tier (Essential / Premium / Concierge Elite)
+- Desired membership tier ([Plan Tier 1] / [Plan Tier 2] / [Plan Tier 3])
 - Billing preference (Monthly / Annual)
 - Number of family members to enroll (if applicable)
 
 **Section 3: Insurance Information** *(optional)*
 - Insurance carrier
 - Member ID
-- Note: "Insurance information is optional. Concierge membership fees are separate from insurance. We will discuss how your existing coverage coordinates with membership during your consultation."
+- Note: "[Insurance note — explain that membership fees are separate from insurance and coordination will be discussed during consultation.]"
 
 **Section 4: HIPAA Acknowledgment**
 - Checkbox (required):
-> "I acknowledge that I have read and understand the Baig Medical Group Notice of Privacy Practices, and I consent to the collection, use, and transmission of my health information as described therein."
+> "[HIPAA consent text — acknowledge reading the Notice of Privacy Practices and consent to collection, use, and transmission of health information.]"
 - Link to Privacy Policy page
 
 **Section 5: Submission**
 - Submit button: **Submit Enrollment Application**
-- Below button: "You will not be charged at this step. A member of our team will contact you to finalize enrollment and payment."
+- Below button: "[Post-submit note — reassure that no charges occur at this step and describe next steps.]"
 
 ---
 ---
@@ -463,10 +463,10 @@ Uses `section-contact-info.php` and `section-contact-form.php`.
 ### 5.1 Hero / Intro
 
 **H1 Headline** (~20 chars)
-> Get in Touch
+> [Section 5.1 — headline, e.g., "Get in Touch"]
 
 **Body** (~30 words)
-> Whether you are considering membership or have questions about our practice, we welcome the conversation. Reach us by phone, email, or the form below.
+> [Section 5.1 body — invite visitors to reach out, mention available contact methods. ~30 words]
 
 ---
 
@@ -484,7 +484,7 @@ Saturday: `bmg_office_hours_sat`
 Sunday: `bmg_office_hours_sun`
 
 **After-hours note:**
-> Premium and Concierge Elite members have direct after-hours access to Dr. Baig via phone and secure messaging.
+> [After-hours note — describe which tiers have after-hours access to [Provider Name] and through what channels.]
 
 ---
 
@@ -494,26 +494,26 @@ Sunday: `bmg_office_hours_sun`
 - Name (first, last)
 - Email
 - Phone (optional)
-- Subject (dropdown: General Inquiry / Membership Question / Current Patient / Other)
+- Subject (dropdown: [Subject option 1] / [Subject option 2] / [Subject option 3] / Other)
 - Message (textarea)
 
 **Submit button:** Send Message
 
 **Below form:**
-> For urgent medical concerns, please call `bmg_phone` or visit your nearest emergency department. This form is not monitored for time-sensitive communications.
+> [Urgent contact note — direct urgent concerns to `bmg_phone` or emergency services. Note that the form is not monitored for time-sensitive communications.]
 
 ---
 
 ### 5.4 Map
 
-Embedded Google Map to practice location in Yuma, AZ. Placeholder until street address confirmed.
+Embedded Google Map to practice location in [City, State]. Placeholder until street address confirmed.
 
 ---
 ---
 
 ## 6. SERVICES PAGE — `page-templates/page-services.php`
 
-**Purpose:** Explains what BMG does for people still researching concierge medicine in Yuma. Earlier in the funnel than Plans. Targets search queries like "concierge doctor Yuma AZ," "executive physical Yuma," "same-day doctor appointment Yuma."
+**Purpose:** [Describe the purpose of the services page — who it targets, where they are in the funnel, what search queries it targets.]
 
 **New template files needed:**
 - `page-templates/page-services.php`
@@ -524,10 +524,10 @@ Embedded Google Map to practice location in Yuma, AZ. Placeholder until street a
 ### 6.1 Hero / Intro
 
 **H1 Headline** (~40 chars)
-> What We Do for Our Members
+> [Section 6.1 — headline describing what the practice does for members]
 
 **Body** (~50 words)
-> Baig Medical Group provides comprehensive primary care, preventive medicine, and coordinated specialist access within a membership model built around availability, thoroughness, and continuity. Every service below is delivered personally by Dr. Baig — not a rotating roster of providers. The care is intentional, and the relationship is ongoing.
+> [Section 6.1 body — summarize the services offered, the model they are delivered within, and emphasize that care is delivered personally by [Provider Name]. ~50 words]
 
 ---
 
@@ -537,63 +537,63 @@ Five service blocks. Each is its own visual section within the page (alternating
 
 ---
 
-**Service 1: Primary Care**
-Icon: Stethoscope
+**Service 1: [Service 1 Name]**
+Icon: [Icon description]
 
-**H2:** Primary & Internal Medicine
+**H2:** [Service 1 headline]
 
 **Body** (~70 words)
-> Your membership begins with a physician who knows your full medical history — not a chart summary. Appointments are 30 to 60 minutes, with time for thorough examination, conversation, and follow-up planning. Acute concerns — respiratory illness, musculoskeletal pain, infections, skin conditions — are addressed same-day or next-day. Chronic conditions such as hypertension, diabetes, and thyroid disorders are managed with consistent oversight and proactive adjustment, always with the goal of addressing root causes.
+> [Service 1 body — describe the first core service offering. Include what it covers, how it is delivered, and what makes it different. ~70 words]
 
-**CTA:** See Membership Plans →
+**CTA:** [Service 1 CTA label] →
 
 ---
 
-**Service 2: Preventive & Executive Health**
-Icon: Clipboard/chart
+**Service 2: [Service 2 Name]**
+Icon: [Icon description]
 
-**H2:** Preventive Screenings & Executive Physicals
+**H2:** [Service 2 headline]
 
 **Body** (~75 words)
-> Every member receives an annual comprehensive evaluation: detailed health history, physical examination, and age-appropriate laboratory work. Premium and Concierge Elite members receive an executive-level physical with advanced diagnostics — cardiovascular risk panels, metabolic biomarkers, cancer screenings, and imaging tailored to age, sex, and family history. Results are reviewed in a dedicated follow-up appointment where Dr. Baig walks through findings, explains implications, and builds a plan grounded in prevention and long-term wellness.
+> [Service 2 body — describe the second core service offering. Detail what each tier receives and how results are communicated. ~75 words]
 
-**CTA:** Compare Plan Tiers →
+**CTA:** [Service 2 CTA label] →
 
 ---
 
-**Service 3: Same-Day & Urgent Access**
-Icon: Clock/lightning
+**Service 3: [Service 3 Name]**
+Icon: [Icon description]
 
-**H2:** Same-Day and Urgent Appointments
+**H2:** [Service 3 headline]
 
 **Body** (~65 words)
-> When something comes up, you should not have to wait days or resort to urgent care. All members have same-day and next-day appointments for acute concerns. Premium members have extended evening availability. Concierge Elite members reach Dr. Baig directly at any hour. The principle is simple: when you need medical attention, your own physician is available — not a stranger at a walk-in clinic.
+> [Service 3 body — describe the third core service offering. Explain access by tier and the principle behind it. ~65 words]
 
-**CTA:** Learn About Access by Tier →
+**CTA:** [Service 3 CTA label] →
 
 ---
 
-**Service 4: Specialist Coordination**
-Icon: Network/connected nodes
+**Service 4: [Service 4 Name]**
+Icon: [Icon description]
 
-**H2:** Specialist Referrals & Care Coordination
+**H2:** [Service 4 headline]
 
 **Body** (~70 words)
-> Referrals at Baig Medical Group are not a hand-off. Dr. Baig identifies the appropriate specialist, shares relevant records, and facilitates scheduling directly. After your specialist visit, he reviews findings, integrates them into your care plan, and ensures follow-up actions are completed. Concierge Elite members receive multi-specialist case management for complex or overlapping conditions, with Dr. Baig serving as the central coordinator across all providers.
+> [Service 4 body — describe the fourth core service offering. Detail coordination process and tier differences. ~70 words]
 
-**CTA:** Schedule a Consultation →
+**CTA:** [Service 4 CTA label] →
 
 ---
 
-**Service 5: Wellness & Longevity**
-Icon: Leaf/growth
+**Service 5: [Service 5 Name]**
+Icon: [Icon description]
 
-**H2:** Wellness, Nutrition & Longevity Planning
+**H2:** [Service 5 headline]
 
 **Body** (~75 words)
-> Dr. Baig's approach to care extends well beyond diagnosis and prescription. His clinical philosophy emphasizes nutrition, movement, lifestyle habits, and prevention as foundational to long-term health. All members receive wellness guidance as part of their care. Premium and Concierge Elite members receive structured health coaching, personalized nutrition plans, and wellness strategies informed by their screening results and goals. Concierge Elite members access the full suite — longevity planning, fitness integration, sleep optimization, and stress management.
+> [Service 5 body — describe the fifth core service offering. Explain the philosophy behind this service and what each tier receives. ~75 words]
 
-**CTA:** View the Full Plan Comparison →
+**CTA:** [Service 5 CTA label] →
 
 ---
 
@@ -613,44 +613,44 @@ Uses `section-faq.php`. Full accordion, all questions.
 ### 7.1 Hero
 
 **H1 Headline** (~30 chars)
-> Frequently Asked Questions
+> [Section 7.1 — headline, e.g., "Frequently Asked Questions"]
 
 **Body** (~20 words)
-> Answers to common questions about concierge medicine, our membership plans, and how Baig Medical Group operates.
+> [Section 7.1 body — briefly describe what questions are covered. ~20 words]
 
 ---
 
 ### 7.2 Full FAQ Set — `section-faq.php`
 
-**Q1: What is concierge medicine and how does it differ from traditional primary care?**
-Concierge medicine is a membership-based model where patients pay an annual or monthly fee for enhanced physician access, longer appointments, and comprehensive care coordination. The core difference is panel size. A traditional primary care physician manages 2,000 to 2,500 patients. A concierge physician maintains a deliberately small panel — typically a few hundred — which allows for longer visits, same-day access, and a deeper physician-patient relationship built on continuity.
+**Q1: [FAQ question 1 — about the industry/service type and how it differs from conventional]**
+[FAQ answer 1 — define the service model, explain the structural difference (e.g., panel size, appointment length), and describe the resulting benefit. ~60 words]
 
-**Q2: Will my health insurance still apply?**
-Yes. Your existing health insurance continues to function as it does now. Insurance covers eligible services such as labs, imaging, specialist visits, hospitalizations, and prescriptions. The concierge membership fee covers enhanced access, coordination, and services that fall outside standard insurance billing — such as extended appointments, direct physician communication, and wellness programming.
+**Q2: [FAQ question 2 — about insurance/payment coordination]**
+[FAQ answer 2 — explain how existing insurance works alongside the membership fee, what each covers, and reassure the visitor. ~50 words]
 
-**Q3: How quickly can I reach Dr. Baig?**
-All members have direct phone and secure messaging access to Dr. Baig. Same-day and next-day appointments are standard across every membership tier. Premium and Concierge Elite members have extended-hours and after-hours access. Concierge Elite members have 24/7 direct physician availability.
+**Q3: [FAQ question 3 — about access/availability to the provider]**
+[FAQ answer 3 — describe access methods, appointment availability, and how access varies by tier. ~40 words]
 
-**Q4: What happens if I need a specialist?**
-Dr. Baig personally coordinates referrals, shares relevant records, and follows up on specialist findings. The level of coordination depends on your tier — Essential members receive standard coordination, Premium members receive priority scheduling and follow-up, and Concierge Elite members receive expedited scheduling and multi-specialist case management.
+**Q4: [FAQ question 4 — about specialist/referral coordination]**
+[FAQ answer 4 — describe the referral process, how records are shared, follow-up procedures, and tier differences. ~50 words]
 
-**Q5: What does the annual comprehensive evaluation include?**
-Every member receives a thorough annual evaluation including a detailed health history review, physical examination, age-appropriate screenings, and laboratory work. Premium and Concierge Elite members receive an executive-level physical with advanced diagnostic panels, cardiovascular screening, and additional biomarkers. Results are reviewed in a dedicated follow-up appointment with Dr. Baig — not via a portal message.
+**Q5: [FAQ question 5 — about annual evaluations/screenings]**
+[FAQ answer 5 — describe what the annual evaluation includes, how it differs by tier, and how results are communicated. ~50 words]
 
-**Q6: Can family members join my plan?**
-Premium and Concierge Elite memberships include the option to add eligible family members. Each additional member receives full plan benefits. Family enrollment details and pricing are covered during your enrollment consultation.
+**Q6: [FAQ question 6 — about family member enrollment]**
+[FAQ answer 6 — explain which tiers allow family add-ons and how enrollment works. ~30 words]
 
-**Q7: Is there a contract or long-term commitment?**
-Memberships are offered on a month-to-month or annual basis. Annual memberships include a preferred rate. There are no multi-year contracts. We ask for 30 days' written notice for cancellation.
+**Q7: [FAQ question 7 — about contracts/commitment length]**
+[FAQ answer 7 — describe billing options (monthly/annual), cancellation policy, and that there are no multi-year contracts. ~30 words]
 
-**Q8: How do I enroll?**
-Start by submitting an enrollment application through our website or calling the office directly at `bmg_phone`. After submission, a member of our team will schedule an enrollment consultation where we discuss your health priorities, review plan options, and finalize your membership. You are not charged until enrollment is confirmed.
+**Q8: [FAQ question 8 — about how to enroll]**
+[FAQ answer 8 — describe the enrollment process from application to consultation to confirmation. Reference `bmg_phone`. ~40 words]
 
-**Q9: Is my personal health information protected?**
-Baig Medical Group operates in full compliance with HIPAA (Health Insurance Portability and Accountability Act) regulations. All patient data is encrypted, transmitted securely, and accessible only to authorized care team members. Our complete Notice of Privacy Practices is available on our Privacy Policy page.
+**Q9: [FAQ question 9 — about data privacy/security]**
+[FAQ answer 9 — describe HIPAA compliance, data encryption, and link to the Privacy Policy page. ~35 words]
 
-**Q10: What if I'm traveling or away from the area?**
-All members can reach Dr. Baig by phone or secure message regardless of location. Concierge Elite members receive dedicated travel medicine support, including pre-travel consultations, global care coordination, and assistance locating vetted providers in other cities or countries.
+**Q10: [FAQ question 10 — about remote/travel access]**
+[FAQ answer 10 — describe remote access capabilities and what additional services higher tiers receive for travel. ~35 words]
 
 ---
 ---
@@ -670,71 +670,145 @@ All members can reach Dr. Baig by phone or secure message regardless of location
 
 ### 8.2 HIPAA Notice of Privacy Practices
 
-> **Notice of Privacy Practices — Baig Medical Group**
+> **Notice of Privacy Practices — [Business Name]**
 
-> This notice describes how medical information about you may be used and disclosed, and how you can access this information. Please review it carefully.
+> [HIPAA intro — standard notice about how medical information may be used and disclosed, and how the patient can access it.]
 
 **Our Responsibilities**
-We are required by law to maintain the privacy of your protected health information (PHI), provide you with this notice of our legal duties and privacy practices, and follow the terms of the notice currently in effect.
+[Legal section — describe legal obligations to maintain privacy of PHI, provide notice, and follow terms.]
 
 **How We Use and Disclose Your Health Information**
-We may use and disclose your PHI for the following purposes:
+[Legal section — describe permitted uses and disclosures of PHI:]
 
-*Treatment* — To provide, coordinate, and manage your medical care. This includes sharing information with specialists, laboratories, and other providers involved in your care.
+*Treatment* — [Legal section — describe use of PHI for providing, coordinating, and managing care.]
 
-*Payment* — To obtain reimbursement for services provided, including billing your insurance carrier and communicating with third-party payers.
+*Payment* — [Legal section — describe use of PHI for reimbursement and billing.]
 
-*Healthcare Operations* — To support the business activities of the practice, including quality improvement, staff training, compliance auditing, and business management.
+*Healthcare Operations* — [Legal section — describe use of PHI for quality improvement, training, compliance, and business management.]
 
-*With Your Authorization* — For purposes not described above, we will obtain your written authorization before using or disclosing your PHI. You may revoke authorization at any time in writing.
+*With Your Authorization* — [Legal section — describe that other uses require written authorization, which can be revoked.]
 
 **Your Rights**
-- Access and obtain a copy of your health records
-- Request corrections to your health information
-- Request restrictions on certain uses and disclosures
-- Request confidential communications (e.g., contact at an alternate address or phone number)
-- Receive an accounting of disclosures made for purposes other than treatment, payment, or operations
-- Receive a paper copy of this notice upon request
+- [Patient right 1 — access and copy health records]
+- [Patient right 2 — request corrections]
+- [Patient right 3 — request restrictions on uses and disclosures]
+- [Patient right 4 — request confidential communications]
+- [Patient right 5 — receive accounting of disclosures]
+- [Patient right 6 — receive paper copy of notice]
 
 **Breach Notification**
-We will notify you promptly if a breach of your unsecured PHI occurs, as required by federal law.
+[Legal section — describe obligation to notify patients of PHI breaches as required by federal law.]
 
 **Contact**
-To exercise any of these rights or to file a complaint, contact:
+[Legal section — how to exercise rights or file a complaint:]
 
 Privacy Officer
-Baig Medical Group
+[Business Name]
 `bmg_address_street`
 `bmg_address_city`
 `bmg_phone`
 `bmg_email`
 
-You may also file a complaint with the U.S. Department of Health and Human Services Office for Civil Rights.
+[Note about filing complaints with U.S. Department of Health and Human Services Office for Civil Rights.]
 
 ---
 
 ### 8.3 Website Privacy Policy
 
 **Information We Collect**
-When you use this website, we may collect: your name, email address, phone number, and other information you voluntarily provide through forms. We also collect standard technical data such as browser type, IP address, and pages visited through cookies and server logs.
+[Legal section — describe what information is collected through the website: form submissions and technical data (browser, IP, cookies, server logs).]
 
 **How We Use This Information**
-Information submitted through website forms is used to respond to your inquiry or process your enrollment application. Technical data is used to maintain site security, improve performance, and understand usage patterns.
+[Legal section — describe how form submissions and technical data are used.]
 
 **Third-Party Services**
-This website uses the following third-party services that may collect data in accordance with their own privacy policies:
-- Payment processing: Authorize.net (PCI-DSS compliant)
-- Analytics: [ANALYTICS PROVIDER, if applicable]
-- Form handling: Gravity Forms (data stored on-site)
+[Legal section — list third-party services that may collect data:]
+- Payment processing: [Payment processor] ([compliance standard])
+- Analytics: [Analytics provider, if applicable]
+- Form handling: [Form plugin] (data stored on-site)
 
 **Data Security**
-All data transmitted through this website is encrypted via TLS (HTTPS). Form submissions containing personal information are stored in encrypted databases with access restricted to authorized personnel.
+[Legal section — describe encryption (TLS/HTTPS), secure storage, and access restrictions.]
 
 **Your Choices**
-You may decline to submit information through this website. If you have questions about data we have collected, contact us at `bmg_email` or `bmg_phone`.
+[Legal section — describe visitor's right to decline submission and how to inquire about collected data. Reference `bmg_email` and `bmg_phone`.]
 
 **Changes to This Policy**
-We may update this policy from time to time. The effective date at the top of this page reflects the most recent revision.
+[Legal section — describe that the policy may be updated and the effective date reflects the most recent revision.]
+
+---
+---
+
+## 8B. TERMS OF USE PAGE — `page-templates/page-terms.php`
+
+---
+
+### 8B.1 Hero
+
+**H1 Headline**
+> Terms of Use
+
+**Effective date:** `bmg_privacy_effective_date` (shared with Privacy Policy)
+
+---
+
+### 8B.2 Agreement to Terms
+
+[Legal section — state that by accessing or using the [Business Name] website, the user agrees to be bound by these Terms of Use.]
+
+---
+
+### 8B.3 Website Purpose and Medical Disclaimer
+
+[Legal section — state that the website is for informational purposes only, not a substitute for professional medical advice. Clarify that no physician-patient relationship is established through the website. Include emergency disclaimer directing users to call 911.]
+
+---
+
+### 8B.4 Intellectual Property
+
+[Legal section — state that all website content is the property of [Business Name] and protected by copyright and trademark laws. Prohibit reproduction without written consent.]
+
+---
+
+### 8B.5 Use of This Website
+
+[Legal section — describe acceptable use terms: lawful purposes only, no infringing or objectionable behavior.]
+
+---
+
+### 8B.6 Third-Party Links
+
+[Legal section — disclaim responsibility for external linked websites.]
+
+---
+
+### 8B.7 Limitation of Liability
+
+[Legal section — disclaim warranties and limit liability for damages arising from website use.]
+
+---
+
+### 8B.8 Governing Law
+
+[Legal section — specify governing state law and jurisdiction for disputes. Use `[State]` and `[County, State]` as placeholders.]
+
+---
+
+### 8B.9 Changes to These Terms
+
+[Legal section — reserve the right to modify terms, describe how changes take effect, and reference the effective date.]
+
+---
+
+### 8B.10 Contact
+
+[Legal section — provide contact information for questions about terms:]
+
+[Business Name]
+`bmg_address_street`
+`bmg_address_city`
+`bmg_phone`
+`bmg_email`
 
 ---
 ---
@@ -746,7 +820,7 @@ Controlled via Customizer (`customizer-footer.php`). All contact info pulled fro
 ---
 
 **Column 1 — Practice Identity**
-Baig Medical Group logo (SVG)
+[Business Name] logo (SVG)
 `bmg_address_street`
 `bmg_address_city`
 `bmg_phone`
@@ -766,15 +840,19 @@ Baig Medical Group logo (SVG)
 Saturday: `bmg_office_hours_sat`
 Sunday: `bmg_office_hours_sun`
 
-**Bottom Bar**
-© [YEAR — use PHP `date('Y')`] Baig Medical Group. All rights reserved.
+**Bottom Bar — Row 1**
+Left: (c) [YEAR — use PHP `date('Y')`] [Business Name]. All rights reserved.
+Right: Privacy Policy | Terms of Use (links to `/privacy-policy/` and `/terms/`)
+
+**Bottom Bar — Row 2**
+Centered: Website designed and maintained by [GSL Design](https://gsldesign.net) — `target="_blank" rel="noopener"`
 
 ---
 ---
 
 ## 10. SOCIAL PROOF FRAMEWORK
 
-BMG does not yet have testimonials or published stats. Below is the framework for when they are available.
+[Business Name] does not yet have testimonials or published stats. Below is the framework for when they are available.
 
 ---
 
@@ -788,8 +866,8 @@ BMG does not yet have testimonials or published stats. Below is the framework fo
 > — [First Name] [Last Initial]., [Tier] Member, [X] years
 
 **Example (placeholder, not for production use):**
-> "When I needed a cardiology referral, Dr. Baig had the appointment scheduled before I left the office. The specialist already had my records. That had never happened in primary care before."
-> — James R., Premium Member, 2 years
+> "[Testimonial placeholder — describe a concrete experience with the practice that illustrates a specific benefit.]"
+> — [First Name] [Last Initial]., [Plan Tier 2] Member, [X] years
 
 ---
 
@@ -799,11 +877,11 @@ These should be concrete, verifiable numbers. Avoid vanity metrics.
 
 | Stat | Display Format |
 |---|---|
-| Average appointment length | "45-minute average appointments" |
-| Patient panel size | "Fewer than [X] patients" |
-| Same-day appointment rate | "[X]% same-day availability" |
-| Response time | "Average response under [X] minutes" |
-| Member retention | "[X]% annual retention" |
+| [Stat 1 label] | "[Stat 1 value and unit]" |
+| [Stat 2 label] | "[Stat 2 value and unit]" |
+| [Stat 3 label] | "[Stat 3 value and unit]" |
+| [Stat 4 label] | "[Stat 4 value and unit]" |
+| [Stat 5 label] | "[Stat 5 value and unit]" |
 
 **Design notes:** Stats displayed as a horizontal row of 3-4 large numbers with labels. Cormorant Garamond for the number, Montserrat for the label. Dark section, Brushed Silver numbers.
 
@@ -822,13 +900,13 @@ Footer: About | Our Plans | Services | Enroll | FAQ | Contact | Privacy Policy
 Logged-in addition: My Account
 
 **Button labels:**
-- Explore Membership Plans
-- View Plan Details
-- Schedule a Consultation
-- Submit Enrollment Application
-- Send Message
-- Read Full Profile
-- View All Questions
+- [Primary CTA label — e.g., "Explore Membership Plans"]
+- [Plan detail CTA — e.g., "View Plan Details"]
+- [Consultation CTA — e.g., "Schedule a Consultation"]
+- [Enrollment submit — e.g., "Submit Enrollment Application"]
+- [Contact submit — e.g., "Send Message"]
+- [Profile CTA — e.g., "Read Full Profile"]
+- [FAQ CTA — e.g., "View All Questions"]
 - Call `bmg_phone`
 
 **Form validation messages:**
@@ -857,14 +935,15 @@ Title tags and meta descriptions for each page. Location-specific where it helps
 
 | Page | Title Tag (~60 chars) | Meta Description (~155 chars) |
 |---|---|---|
-| Homepage | Baig Medical Group — Concierge Medicine in Yuma, AZ | Membership-based medical practice in Yuma offering direct physician access, extended appointments, and coordinated care for individuals and families. |
-| About | About Dr. Adil Baig — Baig Medical Group | Meet Dr. Adil Baig, a board-certified family medicine physician offering concierge care in Yuma, Arizona. |
-| Our Plans | Membership Plans — Baig Medical Group | Compare three concierge medicine membership tiers. Every plan includes direct physician access, same-day appointments, and care coordination. |
-| Services | Our Services — Baig Medical Group, Yuma AZ | Primary care, preventive health, executive physicals, specialist coordination, and wellness planning delivered by your personal physician in Yuma. |
-| Enroll | Enroll — Baig Medical Group | Begin your membership application. All information is transmitted securely in compliance with HIPAA privacy requirements. |
-| FAQ | Frequently Asked Questions — Baig Medical Group | Answers about concierge medicine, membership plans, insurance coordination, physician access, and enrollment at Baig Medical Group. |
-| Contact | Contact — Baig Medical Group, Yuma AZ | Reach Baig Medical Group by phone, email, or contact form. Office hours, location, and directions in Yuma, Arizona. |
-| Privacy | Privacy Policy — Baig Medical Group | HIPAA Notice of Privacy Practices and website privacy policy for Baig Medical Group. |
+| Homepage | [Business Name] — [Industry/Service Type] in [City, State] | [Homepage meta — describe the practice model and key benefits in ~155 chars] |
+| About | About [Provider Name] — [Business Name] | [About meta — introduce the provider with credentials and location in ~155 chars] |
+| Our Plans | Membership Plans — [Business Name] | [Plans meta — describe the plan tiers and what they include in ~155 chars] |
+| Services | Our Services — [Business Name], [City State] | [Services meta — list key services and location in ~155 chars] |
+| Enroll | Enroll — [Business Name] | [Enroll meta — describe the enrollment process and security/privacy in ~155 chars] |
+| FAQ | Frequently Asked Questions — [Business Name] | [FAQ meta — describe the topics covered in the FAQ in ~155 chars] |
+| Contact | Contact — [Business Name], [City State] | [Contact meta — describe contact methods and location in ~155 chars] |
+| Privacy | Privacy Policy — [Business Name] | [Privacy meta — describe the privacy policy and HIPAA notice in ~155 chars] |
+| Terms | Terms of Use — [Business Name] | [Terms meta — describe the terms of use and governing law in ~155 chars] |
 
 ---
 ---
@@ -873,26 +952,27 @@ Title tags and meta descriptions for each page. Location-specific where it helps
 
 | Section | Template File | Copy Status | Still Needs | Uses Dynamic Vars |
 |---|---|---|---|---|
-| Homepage Hero | section-hero.php | ✅ Final | — | No |
-| Explainer | section-explainer.php | ✅ Final | — | No |
-| Pillars | section-pillars.php | ✅ Final | — | No |
-| Plans Overview | section-plans-overview.php | ✅ Final | Pricing | No |
-| Plans Comparison | section-plans-comparison.php | ✅ Final | Pricing, final features | No |
-| Physician Preview | section-physician-preview.php | ✅ Final | — | Yes: name, credentials, years, school |
-| Physician Full Bio | section-physician.php | ✅ Final | Med school, residency | Yes: all physician fields |
-| Philosophy | page-about.php | ✅ Final | — | No (name hardcoded in prose) |
-| FAQ Preview | section-faq-preview.php | ✅ Final | — | No (name hardcoded in prose) |
-| FAQ Full | section-faq.php | ✅ Final | — | Yes: phone |
-| CTA | section-cta.php | ✅ Final | — | Yes: phone |
-| About Page | page-about.php | ✅ Final | Med school, residency | Yes: physician credentials |
-| Plans Page | page-plans.php | ✅ Final | Pricing | Yes: phone |
-| Services Page | page-services.php | ✅ Final | — | No |
-| Enroll Page | page-enroll.php | ✅ Final | — | No |
-| Contact Page | page-contact.php | ✅ Final | Address, phone, email | Yes: all contact fields |
-| Privacy Policy | page-privacy.php | ✅ Final | Address, phone, email, date | Yes: all contact fields, date |
-| Footer | footer.php | ✅ Final | Logo, address, phone, email | Yes: all contact fields, hours |
+| Homepage Hero | section-hero.php | 🔲 Placeholder | Client copy needed | No |
+| Explainer | section-explainer.php | 🔲 Placeholder | Client copy needed | No |
+| Pillars | section-pillars.php | 🔲 Placeholder | Client copy needed | No |
+| Plans Overview | section-plans-overview.php | 🔲 Placeholder | Client copy needed, pricing | No |
+| Plans Comparison | section-plans-comparison.php | 🔲 Placeholder | Client copy needed, pricing, features | No |
+| Physician Preview | section-physician-preview.php | 🔲 Placeholder | Client copy needed | Yes: name, credentials, years, school |
+| Physician Full Bio | section-physician.php | 🔲 Placeholder | Client copy needed, med school, residency | Yes: all physician fields |
+| Philosophy | page-about.php | 🔲 Placeholder | Client copy needed | No (name hardcoded in prose) |
+| FAQ Preview | section-faq-preview.php | 🔲 Placeholder | Client copy needed | No (name hardcoded in prose) |
+| FAQ Full | section-faq.php | 🔲 Placeholder | Client copy needed | Yes: phone |
+| CTA | section-cta.php | 🔲 Placeholder | Client copy needed | Yes: phone |
+| About Page | page-about.php | 🔲 Placeholder | Client copy needed, med school, residency | Yes: physician credentials |
+| Plans Page | page-plans.php | 🔲 Placeholder | Client copy needed, pricing | Yes: phone |
+| Services Page | page-services.php | 🔲 Placeholder | Client copy needed | No |
+| Enroll Page | page-enroll.php | 🔲 Placeholder | Client copy needed | No |
+| Contact Page | page-contact.php | 🔲 Placeholder | Client copy needed, address, phone, email | Yes: all contact fields |
+| Privacy Policy | page-privacy.php | 🔲 Placeholder | Client copy needed, address, phone, email, date | Yes: all contact fields, date |
+| Terms of Use | page-terms.php | 🔲 Placeholder | Client copy needed, address, phone, email | Yes: all contact fields |
+| Footer | footer.php | 🔲 Placeholder | Client copy needed, logo, address, phone, email | Yes: all contact fields, hours |
 | Social Proof | — | 🔲 Framework only | Testimonials, stats | Yes: physician last name |
-| SEO Metadata | — | ✅ Final | — | Yes: physician name (About) |
+| SEO Metadata | — | 🔲 Placeholder | Client copy needed | Yes: physician name (About) |
 
 ---
 ---
@@ -903,27 +983,25 @@ Title tags and meta descriptions for each page. Location-specific where it helps
 1. `inc/customizer-practice-info.php` — register all dynamic variables first
 2. Include in `functions.php`
 3. Homepage sections (1.1 through 1.7) — validate design system against real content
-4. Inner pages: About → Plans → Services (new) → Enroll → Contact → FAQ → Privacy
+4. Inner pages: About → Plans → Services → Enroll → Contact → FAQ → Privacy → Terms
 5. Footer
 6. 404 page
 7. SEO metadata (Rank Math fields or Customizer, depending on plugin setup)
 
-### New Files Needed for Services Page
+### Template Files
 - `page-templates/page-services.php` — page template (follow existing pattern from page-about.php)
 - `template-parts/sections/section-services.php` — service category blocks
 
-### Navigation Update
+### Navigation
 Header nav: About | Our Plans | Services | Contact
-Footer nav: About | Our Plans | Services | Enroll | FAQ | Contact | Privacy Policy
+Footer nav: About | Our Plans | Services | Enroll | FAQ | Contact | Privacy Policy | Terms of Use
 
-### CLAUDE.md Updates Needed
-After implementing, update CLAUDE.md to reflect:
-- Add `customizer-practice-info.php` to inc/ file listing
-- Add `page-services.php` to page-templates/ listing
-- Add `section-services.php` to template-parts/sections/ listing
-- Update Site Map table to include Services page
-- Update Navigation section to include Services in header
-- Update physician references from placeholder to Dr. Adil Baig
-- Update location references to Yuma, AZ
-- Note tier names: Essential / Premium / Concierge Elite (not Basic / Premium / VIP)
-- Remove from "Open Items": Physician name, credentials, bio (resolved)
+### Per-Client Setup
+When cloning this starter theme for a new client:
+1. Update `CONTENT.md` — replace all `[placeholder]` markers with client-approved copy
+2. Update `inc/customizer-practice-info.php` — change default fallback values to match the client
+3. Update `_theme_variables.scss` — adjust design tokens to match client brand
+4. Update `functions.php` — change Google Fonts if needed
+5. Update `style.css` — change theme name and metadata
+6. Populate Customizer fields via WordPress admin
+7. Run `npm run build` to compile

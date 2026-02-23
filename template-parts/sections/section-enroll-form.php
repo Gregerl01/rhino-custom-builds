@@ -5,7 +5,7 @@
  * Displays Gravity Forms enrollment form when available, otherwise
  * shows a structured placeholder matching CONTENT.md Section 4.2.
  *
- * @package BMG_Theme
+ * @package starter-theme
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -49,7 +49,7 @@ defined( 'ABSPATH' ) || exit;
 								<div class="enroll-placeholder__section">
 									<h4><?php esc_html_e( 'Section 2: Plan Selection', 'bmg-theme' ); ?></h4>
 									<ul>
-										<li><?php esc_html_e( 'Desired membership tier (Essential / Premium / Concierge Elite)', 'bmg-theme' ); ?></li>
+										<li><?php esc_html_e( 'Desired membership tier ([Plan Tier 1] / [Plan Tier 2] / [Plan Tier 3])', 'bmg-theme' ); ?></li>
 										<li><?php esc_html_e( 'Billing preference (Monthly / Annual)', 'bmg-theme' ); ?></li>
 										<li><?php esc_html_e( 'Number of family members to enroll (if applicable)', 'bmg-theme' ); ?></li>
 									</ul>
@@ -62,7 +62,7 @@ defined( 'ABSPATH' ) || exit;
 										<li><?php esc_html_e( 'Member ID', 'bmg-theme' ); ?></li>
 									</ul>
 									<p class="enroll-placeholder__note">
-										<?php esc_html_e( 'Insurance information is optional. Concierge membership fees are separate from insurance. We will discuss how your existing coverage coordinates with membership during your consultation.', 'bmg-theme' ); ?>
+										<?php esc_html_e( 'Insurance information is optional. Membership fees are separate from insurance. We will discuss how your existing coverage coordinates with membership during your consultation.', 'bmg-theme' ); ?>
 									</p>
 								</div>
 
@@ -72,7 +72,7 @@ defined( 'ABSPATH' ) || exit;
 										<?php
 										printf(
 											/* translators: %s: link to privacy policy */
-											esc_html__( 'Required checkbox: "I acknowledge that I have read and understand the Baig Medical Group Notice of Privacy Practices, and I consent to the collection, use, and transmission of my health information as described therein." Links to %s.', 'bmg-theme' ),
+											esc_html__( 'Required checkbox: "I acknowledge that I have read and understand the [Business Name] Notice of Privacy Practices, and I consent to the collection, use, and transmission of my health information as described therein." Links to %s.', 'bmg-theme' ),
 											'<a href="' . esc_url( home_url( '/privacy-policy/' ) ) . '">' . esc_html__( 'Privacy Policy', 'bmg-theme' ) . '</a>'
 										);
 										?>

@@ -4,7 +4,7 @@
  *
  * Template for the patient enrollment page.
  *
- * @package BMG_Theme
+ * @package starter-theme
  */
 
 // Exit if accessed directly.
@@ -24,7 +24,7 @@ get_header();
 						<?php esc_html_e( 'Begin Enrollment', 'bmg-theme' ); ?>
 					</h1>
 					<p class="lead mb-0">
-						<?php esc_html_e( 'Complete the form below to start your membership application. All information is transmitted securely and handled in accordance with HIPAA privacy requirements. After submission, a member of our team will contact you within one business day to schedule your enrollment consultation.', 'bmg-theme' ); ?>
+						<?php esc_html_e( '[Enrollment page intro — describe the enrollment process, security, and next steps.]', 'bmg-theme' ); ?>
 					</p>
 				</div>
 			</div>

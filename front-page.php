@@ -2,9 +2,9 @@
 /**
  * Front Page Template
  *
- * BMG Homepage — 8 sections, refined luxury editorial aesthetic.
+ * Homepage — section-based layout.
  *
- * @package BMG_Theme
+ * @package starter-theme
  */
 
 // Exit if accessed directly.
@@ -19,7 +19,7 @@ get_header();
 	// Section 1: Hero — Full viewport, animated headline.
 	get_template_part( 'template-parts/sections/section', 'hero' );
 
-	// Section 2: What Is Concierge Medicine — Educational explainer.
+	// Section 2: Explainer — Educational section.
 	get_template_part( 'template-parts/sections/section', 'explainer' );
 
 	// Section 3: Value Pillars — 4-column benefits.
@@ -28,7 +28,7 @@ get_header();
 	// Section 4: Plans Overview — Three-tier cards.
 	get_template_part( 'template-parts/sections/section', 'plans-overview' );
 
-	// Section 5: Physician Preview — Doctor introduction.
+	// Section 5: Provider Preview — Provider introduction.
 	get_template_part( 'template-parts/sections/section', 'physician-preview' );
 
 	// Section 6: FAQ Preview — Common questions accordion.

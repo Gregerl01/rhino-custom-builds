@@ -2,10 +2,10 @@
 /**
  * Contact Info Section — Contact Page
  *
- * Practice contact details, office hours, after-hours note, and map.
- * All values from Customizer (bmg_* keys). Matches CONTENT.md Section 5.2 + 5.4.
+ * Business contact details, hours, after-hours note, and map.
+ * All values from Customizer (bmg_* keys).
  *
- * @package BMG_Theme
+ * @package starter-theme
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -13,13 +13,13 @@ defined( 'ABSPATH' ) || exit;
 // Dynamic variables from Customizer.
 $phone          = get_theme_mod( 'bmg_phone', '(000) 000-0000' );
 $phone_link     = preg_replace( '/[^0-9+]/', '', $phone );
-$email          = get_theme_mod( 'bmg_email', 'info@baigmedicalgroup.com' );
+$email          = get_theme_mod( 'bmg_email', 'info@example.com' );
 $address_street = get_theme_mod( 'bmg_address_street', '[Street Address]' );
-$address_city   = get_theme_mod( 'bmg_address_city', 'Yuma, AZ [ZIP]' );
+$address_city   = get_theme_mod( 'bmg_address_city', '[City, State ZIP]' );
 $hours_weekday  = get_theme_mod( 'bmg_office_hours', 'Monday – Friday: 8:00 AM – 5:00 PM' );
 $hours_sat      = get_theme_mod( 'bmg_office_hours_sat', 'By appointment' );
 $hours_sun      = get_theme_mod( 'bmg_office_hours_sun', 'Closed' );
-$physician_last = get_theme_mod( 'bmg_physician_last_name', 'Baig' );
+$physician_last = get_theme_mod( 'bmg_physician_last_name', '[Last Name]' );
 ?>
 
 <section id="contact-info" class="section section-light contact-info-section">
@@ -83,7 +83,7 @@ $physician_last = get_theme_mod( 'bmg_physician_last_name', 'Baig' );
 							</svg>
 						</div>
 						<div class="contact-item__content">
-							<h3 class="contact-item__label"><?php esc_html_e( 'Office Hours', 'bmg-theme' ); ?></h3>
+							<h3 class="contact-item__label"><?php esc_html_e( 'Business Hours', 'bmg-theme' ); ?></h3>
 							<div class="contact-item__value">
 								<?php echo esc_html( $hours_weekday ); ?><br>
 								<?php
@@ -115,7 +115,7 @@ $physician_last = get_theme_mod( 'bmg_physician_last_name', 'Baig' );
 							echo esc_html(
 								sprintf(
 									/* translators: %s: physician last name */
-									__( 'Premium and Concierge Elite members have direct after-hours access to Dr. %s via phone and secure messaging.', 'bmg-theme' ),
+									__( '[After-hours access note referencing Dr. %s.]', 'bmg-theme' ),
 									$physician_last
 								)
 							);
@@ -133,7 +133,7 @@ $physician_last = get_theme_mod( 'bmg_physician_last_name', 'Baig' );
 						<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
 							<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
 						</svg>
-						<span><?php esc_html_e( 'Google Map — Yuma, AZ', 'bmg-theme' ); ?></span>
+						<span><?php esc_html_e( 'Google Map — [City, State]', 'bmg-theme' ); ?></span>
 						<span class="contact-map__note"><?php esc_html_e( 'Embedded map will display once street address is confirmed.', 'bmg-theme' ); ?></span>
 					</div>
 				</div>

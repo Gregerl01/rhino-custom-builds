@@ -4,7 +4,7 @@
  *
  * Accessible toggle button for switching between light and dark themes.
  *
- * @package BMG_Theme
+ * @package starter-theme
  */
 
 // Exit if accessed directly.

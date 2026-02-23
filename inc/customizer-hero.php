@@ -2,7 +2,7 @@
 /**
  * Hero Section Customizer Settings
  *
- * @package BMG_Theme
+ * @package starter-theme
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -30,7 +30,7 @@ function bmg_theme_hero_customizer( $wp_customize ) {
 	$wp_customize->add_setting(
 		'hero_headline',
 		array(
-			'default'           => __( 'Healthcare Designed for How You Live', 'bmg-theme' ),
+			'default'           => __( '[Hero Headline]', 'bmg-theme' ),
 			'sanitize_callback' => 'sanitize_text_field',
 			'transport'         => 'postMessage',
 		)
@@ -54,7 +54,7 @@ function bmg_theme_hero_customizer( $wp_customize ) {
 	$wp_customize->add_setting(
 		'hero_subtitle',
 		array(
-			'default'           => __( 'A physician who knows you personally, available when it matters — with the time to do it right.', 'bmg-theme' ),
+			'default'           => __( '[Hero subtitle — one supporting sentence.]', 'bmg-theme' ),
 			'sanitize_callback' => 'sanitize_text_field',
 			'transport'         => 'postMessage',
 		)
@@ -77,7 +77,7 @@ function bmg_theme_hero_customizer( $wp_customize ) {
 	$wp_customize->add_setting(
 		'hero_cta_primary_text',
 		array(
-			'default'           => __( 'Explore Membership Plans', 'bmg-theme' ),
+			'default'           => __( '[Primary CTA Text]', 'bmg-theme' ),
 			'sanitize_callback' => 'sanitize_text_field',
 		)
 	);
@@ -115,7 +115,7 @@ function bmg_theme_hero_customizer( $wp_customize ) {
 	$wp_customize->add_setting(
 		'hero_cta_secondary_text',
 		array(
-			'default'           => __( 'Learn How It Works', 'bmg-theme' ),
+			'default'           => __( '[Secondary CTA Text]', 'bmg-theme' ),
 			'sanitize_callback' => 'sanitize_text_field',
 		)
 	);

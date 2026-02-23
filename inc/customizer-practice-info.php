@@ -1,51 +1,51 @@
 <?php
 /**
- * Practice Information Customizer Settings
+ * Business Information Customizer Settings
  *
- * Centralizes all reusable practice data (physician, contact, hours)
+ * Centralizes all reusable business data (provider, contact, hours)
  * so templates pull values via get_theme_mod() instead of hardcoding.
  * See CONTENT.md "Dynamic Variables" section for the full reference.
  *
- * @package BMG_Theme
+ * @package starter-theme
  */
 
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Register Practice Information Customizer Settings
+ * Register Business Information Customizer Settings
  */
 function bmg_practice_info_customizer( $wp_customize ) {
 
 	// ======================================================================
-	// Panel: Practice Information
+	// Panel: Business Information
 	// ======================================================================
 
 	$wp_customize->add_panel(
 		'bmg_practice_info',
 		array(
-			'title'       => __( 'Practice Information', 'bmg-theme' ),
-			'description' => __( 'Physician details, contact information, and office hours used across the site.', 'bmg-theme' ),
+			'title'       => __( 'Business Information', 'bmg-theme' ),
+			'description' => __( 'Provider details, contact information, and business hours used across the site.', 'bmg-theme' ),
 			'priority'    => 110,
 		)
 	);
 
 	// ======================================================================
-	// Section: Physician
+	// Section: Provider
 	// ======================================================================
 
 	$wp_customize->add_section(
 		'bmg_section_physician',
 		array(
-			'title' => __( 'Physician', 'bmg-theme' ),
+			'title' => __( 'Provider', 'bmg-theme' ),
 			'panel' => 'bmg_practice_info',
 		)
 	);
 
-	// Physician Name.
+	// Provider Name.
 	$wp_customize->add_setting(
 		'bmg_physician_name',
 		array(
-			'default'           => 'Dr. Adil Baig',
+			'default'           => '[Provider Name]',
 			'sanitize_callback' => 'sanitize_text_field',
 			'transport'         => 'postMessage',
 		)
@@ -60,11 +60,11 @@ function bmg_practice_info_customizer( $wp_customize ) {
 		)
 	);
 
-	// Physician Last Name.
+	// Provider Last Name.
 	$wp_customize->add_setting(
 		'bmg_physician_last_name',
 		array(
-			'default'           => 'Baig',
+			'default'           => '[Last Name]',
 			'sanitize_callback' => 'sanitize_text_field',
 			'transport'         => 'postMessage',
 		)
@@ -74,7 +74,7 @@ function bmg_practice_info_customizer( $wp_customize ) {
 		'bmg_physician_last_name',
 		array(
 			'label'       => __( 'Last Name', 'bmg-theme' ),
-			'description' => __( 'Used in shorthand references (e.g. "Dr. Baig").', 'bmg-theme' ),
+			'description' => __( 'Used in shorthand references (e.g. "Dr. [Last Name]").', 'bmg-theme' ),
 			'section'     => 'bmg_section_physician',
 			'type'        => 'text',
 		)
@@ -84,7 +84,7 @@ function bmg_practice_info_customizer( $wp_customize ) {
 	$wp_customize->add_setting(
 		'bmg_physician_credentials',
 		array(
-			'default'           => 'Board-Certified Family Medicine Physician',
+			'default'           => '[Credentials]',
 			'sanitize_callback' => 'sanitize_text_field',
 		)
 	);
@@ -102,7 +102,7 @@ function bmg_practice_info_customizer( $wp_customize ) {
 	$wp_customize->add_setting(
 		'bmg_physician_specialty',
 		array(
-			'default'           => 'Family Medicine',
+			'default'           => '[Specialty]',
 			'sanitize_callback' => 'sanitize_text_field',
 		)
 	);
@@ -134,7 +134,7 @@ function bmg_practice_info_customizer( $wp_customize ) {
 		)
 	);
 
-	// Medical School.
+	// Education 1.
 	$wp_customize->add_setting(
 		'bmg_physician_med_school',
 		array(
@@ -146,14 +146,14 @@ function bmg_practice_info_customizer( $wp_customize ) {
 	$wp_customize->add_control(
 		'bmg_physician_med_school',
 		array(
-			'label'       => __( 'Medical School', 'bmg-theme' ),
-			'description' => __( 'Displayed in credentials sidebar.', 'bmg-theme' ),
+			'label'       => __( 'Education / Training 1', 'bmg-theme' ),
+			'description' => __( 'Displayed in credentials sidebar (e.g. medical school, degree program).', 'bmg-theme' ),
 			'section'     => 'bmg_section_physician',
 			'type'        => 'text',
 		)
 	);
 
-	// Residency.
+	// Education 2.
 	$wp_customize->add_setting(
 		'bmg_physician_residency',
 		array(
@@ -165,7 +165,7 @@ function bmg_practice_info_customizer( $wp_customize ) {
 	$wp_customize->add_control(
 		'bmg_physician_residency',
 		array(
-			'label'   => __( 'Residency', 'bmg-theme' ),
+			'label'   => __( 'Education / Training 2', 'bmg-theme' ),
 			'section' => 'bmg_section_physician',
 			'type'    => 'text',
 		)
@@ -190,11 +190,11 @@ function bmg_practice_info_customizer( $wp_customize ) {
 		)
 	);
 
-	// Board Certification.
+	// Certification.
 	$wp_customize->add_setting(
 		'bmg_physician_board_cert',
 		array(
-			'default'           => 'American Board of Family Medicine',
+			'default'           => '[Certification]',
 			'sanitize_callback' => 'sanitize_text_field',
 		)
 	);
@@ -202,7 +202,7 @@ function bmg_practice_info_customizer( $wp_customize ) {
 	$wp_customize->add_control(
 		'bmg_physician_board_cert',
 		array(
-			'label'   => __( 'Board Certification', 'bmg-theme' ),
+			'label'   => __( 'Certification', 'bmg-theme' ),
 			'section' => 'bmg_section_physician',
 			'type'    => 'text',
 		)
@@ -227,7 +227,7 @@ function bmg_practice_info_customizer( $wp_customize ) {
 		)
 	);
 
-	// Portrait Photo (Homepage Physician Preview).
+	// Portrait Photo (Homepage Provider Preview).
 	$wp_customize->add_setting(
 		'bmg_physician_photo_portrait',
 		array(
@@ -242,13 +242,13 @@ function bmg_practice_info_customizer( $wp_customize ) {
 			'bmg_physician_photo_portrait',
 			array(
 				'label'       => __( 'Portrait Photo (Homepage)', 'bmg-theme' ),
-				'description' => __( 'Displayed in the homepage Physician Preview section. Recommended: 600×800px, vertical crop.', 'bmg-theme' ),
+				'description' => __( 'Displayed in the homepage Provider Preview section. Recommended: 600×800px, vertical crop.', 'bmg-theme' ),
 				'section'     => 'bmg_section_physician',
 			)
 		)
 	);
 
-	// Full Photo (About Page Physician Bio).
+	// Full Photo (About Page Provider Bio).
 	$wp_customize->add_setting(
 		'bmg_physician_photo_full',
 		array(
@@ -263,13 +263,13 @@ function bmg_practice_info_customizer( $wp_customize ) {
 			'bmg_physician_photo_full',
 			array(
 				'label'       => __( 'Full Photo (About Page)', 'bmg-theme' ),
-				'description' => __( 'Displayed in the About page Physician Bio section. Recommended: 800×1000px, vertical crop.', 'bmg-theme' ),
+				'description' => __( 'Displayed in the About page Provider Bio section. Recommended: 800×1000px, vertical crop.', 'bmg-theme' ),
 				'section'     => 'bmg_section_physician',
 			)
 		)
 	);
 
-	// Short Bio (Physician Preview — homepage).
+	// Short Bio (Provider Preview — homepage).
 	$wp_customize->add_setting(
 		'bmg_physician_bio_short',
 		array(
@@ -281,14 +281,14 @@ function bmg_practice_info_customizer( $wp_customize ) {
 	$wp_customize->add_control(
 		'bmg_physician_bio_short',
 		array(
-			'label'       => __( 'Short Bio (Homepage Preview)', 'bmg-theme' ),
+			'label'       => __( 'Short Bio (Homepage)', 'bmg-theme' ),
 			'description' => __( 'If empty, the template uses its built-in copy.', 'bmg-theme' ),
 			'section'     => 'bmg_section_physician',
 			'type'        => 'textarea',
 		)
 	);
 
-	// Full Bio (About page).
+	// Full Bio (About Page).
 	$wp_customize->add_setting(
 		'bmg_physician_bio_full',
 		array(
@@ -304,6 +304,39 @@ function bmg_practice_info_customizer( $wp_customize ) {
 			'description' => __( 'If empty, the template uses its built-in copy.', 'bmg-theme' ),
 			'section'     => 'bmg_section_physician',
 			'type'        => 'textarea',
+		)
+	);
+
+	// ======================================================================
+	// Section: Site Images
+	// ======================================================================
+
+	$wp_customize->add_section(
+		'bmg_section_site_images',
+		array(
+			'title' => __( 'Site Images', 'bmg-theme' ),
+			'panel' => 'bmg_practice_info',
+		)
+	);
+
+	// CTA Background Image.
+	$wp_customize->add_setting(
+		'bmg_cta_background',
+		array(
+			'default'           => '',
+			'sanitize_callback' => 'esc_url_raw',
+		)
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Image_Control(
+			$wp_customize,
+			'bmg_cta_background',
+			array(
+				'label'       => __( 'CTA Background Image', 'bmg-theme' ),
+				'description' => __( 'Photo used as parallax background in the CTA section. Recommended: 1920×1080px, landscape.', 'bmg-theme' ),
+				'section'     => 'bmg_section_site_images',
+			)
 		)
 	);
 
@@ -342,7 +375,7 @@ function bmg_practice_info_customizer( $wp_customize ) {
 	$wp_customize->add_setting(
 		'bmg_email',
 		array(
-			'default'           => 'info@baigmedicalgroup.com',
+			'default'           => 'info@example.com',
 			'sanitize_callback' => 'sanitize_email',
 			'transport'         => 'postMessage',
 		)
@@ -379,7 +412,7 @@ function bmg_practice_info_customizer( $wp_customize ) {
 	$wp_customize->add_setting(
 		'bmg_address_city',
 		array(
-			'default'           => 'Yuma, AZ [ZIP]',
+			'default'           => '[City, State ZIP]',
 			'sanitize_callback' => 'sanitize_text_field',
 		)
 	);
@@ -413,13 +446,13 @@ function bmg_practice_info_customizer( $wp_customize ) {
 	);
 
 	// ======================================================================
-	// Section: Hours
+	// Section: Business Hours
 	// ======================================================================
 
 	$wp_customize->add_section(
 		'bmg_section_hours',
 		array(
-			'title' => __( 'Office Hours', 'bmg-theme' ),
+			'title' => __( 'Business Hours', 'bmg-theme' ),
 			'panel' => 'bmg_practice_info',
 		)
 	);

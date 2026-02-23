@@ -1,8 +1,8 @@
 <?php
 /**
- * BMG Theme functions and definitions
+ * Theme functions and definitions
  *
- * @package BMG_Theme
+ * @package starter-theme
  */
 
 // Exit if accessed directly.
@@ -118,12 +118,12 @@ $bmg_inc_dir = 'inc';
 $bmg_includes = array(
 	'/custom-post-types.php',        // Custom post types for homepage sections.
 	'/customizer-site-identity.php', // Site Identity settings (logo size).
-	'/customizer-practice-info.php', // Practice Information panel (physician, contact, hours).
+	'/customizer-practice-info.php', // Business Information panel (provider, contact, hours).
 	'/customizer-footer.php',        // Footer Customizer settings and menus.
 	'/customizer-hero.php',          // Hero section Customizer settings.
 	'/customizer-about.php',         // About section Customizer settings.
 	'/dark-mode.php',                // Dark mode FOUC prevention and data-bs-theme attribute.
-	'/seo-metadata.php',             // SEO title tags and meta descriptions (CONTENT.md Section 12).
+	'/seo-metadata.php',             // SEO title tags and meta descriptions.
 );
 
 foreach ( $bmg_includes as $file ) {

@@ -3,9 +3,8 @@
  * Template Name: Privacy Policy Page
  *
  * HIPAA Notice of Privacy Practices + Website Privacy Policy.
- * Matches CONTENT.md Sections 8.1–8.3.
  *
- * @package BMG_Theme
+ * @package starter-theme
  */
 
 // Exit if accessed directly.
@@ -14,10 +13,10 @@ defined( 'ABSPATH' ) || exit;
 // Dynamic variables.
 $effective_date = get_theme_mod( 'bmg_privacy_effective_date', '[Effective Date]' );
 $address_street = get_theme_mod( 'bmg_address_street', '[Street Address]' );
-$address_city   = get_theme_mod( 'bmg_address_city', 'Yuma, AZ [ZIP]' );
+$address_city   = get_theme_mod( 'bmg_address_city', '[City, State ZIP]' );
 $phone_display  = get_theme_mod( 'bmg_phone', '(000) 000-0000' );
 $phone_link     = preg_replace( '/[^0-9+]/', '', $phone_display );
-$email          = get_theme_mod( 'bmg_email', 'info@baigmedicalgroup.com' );
+$email          = get_theme_mod( 'bmg_email', 'info@example.com' );
 
 get_header();
 ?>
@@ -53,7 +52,7 @@ get_header();
 				<div class="col-lg-8">
 					<article class="legal-content">
 
-						<h2><?php esc_html_e( 'Notice of Privacy Practices — Baig Medical Group', 'bmg-theme' ); ?></h2>
+						<h2><?php esc_html_e( 'Notice of Privacy Practices — [Business Name]', 'bmg-theme' ); ?></h2>
 
 						<p><em><?php esc_html_e( 'This notice describes how medical information about you may be used and disclosed, and how you can access this information. Please review it carefully.', 'bmg-theme' ); ?></em></p>
 
@@ -94,7 +93,7 @@ get_header();
 
 						<address class="privacy-contact-block">
 							<strong><?php esc_html_e( 'Privacy Officer', 'bmg-theme' ); ?></strong><br>
-							<?php esc_html_e( 'Baig Medical Group', 'bmg-theme' ); ?><br>
+							<?php esc_html_e( '[Business Name]', 'bmg-theme' ); ?><br>
 							<?php echo esc_html( $address_street ); ?><br>
 							<?php echo esc_html( $address_city ); ?><br>
 							<a href="tel:<?php echo esc_attr( $phone_link ); ?>"><?php echo esc_html( $phone_display ); ?></a><br>

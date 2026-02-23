@@ -4,7 +4,7 @@
  *
  * Template for the Plans/Pricing comparison page.
  *
- * @package BMG_Theme
+ * @package starter-theme
  */
 
 // Exit if accessed directly.
@@ -24,7 +24,7 @@ get_header();
 						<?php esc_html_e( 'Membership Plans', 'bmg-theme' ); ?>
 					</h1>
 					<p class="lead mb-0">
-						<?php esc_html_e( 'Every tier includes direct access to Dr. Baig, unhurried appointments, and coordinated care. The differences are in depth — how much access, how broad the wellness programming, and how extensive the coordination around your health. All plans are structured around prevention, partnership, and time.', 'bmg-theme' ); ?>
+						<?php esc_html_e( '[Plans page intro — describe what all tiers include and how they differ.]', 'bmg-theme' ); ?>
 					</p>
 				</div>
 			</div>
@@ -47,15 +47,15 @@ get_header();
 				<div class="col-lg-8 text-center">
 
 					<h2 class="cta__heading display-text">
-						<?php esc_html_e( 'Questions About Which Plan Fits?', 'bmg-theme' ); ?>
+						<?php esc_html_e( '[Plans Page CTA Headline]', 'bmg-theme' ); ?>
 					</h2>
 
 					<p class="cta__text">
-						<?php esc_html_e( 'Schedule a brief consultation with our team. We will review your health priorities and recommend the membership tier that aligns with your needs.', 'bmg-theme' ); ?>
+						<?php esc_html_e( '[Plans page CTA body copy.]', 'bmg-theme' ); ?>
 					</p>
 
 					<a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="cta__button">
-						<?php esc_html_e( 'Schedule a Consultation', 'bmg-theme' ); ?>
+						<?php esc_html_e( '[Plans Page CTA Button Text]', 'bmg-theme' ); ?>
 					</a>
 
 					<p class="cta__phone">

@@ -4,7 +4,7 @@
  *
  * Template for the Contact page.
  *
- * @package BMG_Theme
+ * @package starter-theme
  */
 
 // Exit if accessed directly.
@@ -24,7 +24,7 @@ get_header();
 						<?php esc_html_e( 'Get in Touch', 'bmg-theme' ); ?>
 					</h1>
 					<p class="lead mb-0">
-						<?php esc_html_e( 'Whether you are considering membership or have questions about our practice, we welcome the conversation. Reach us by phone, email, or the form below.', 'bmg-theme' ); ?>
+						<?php esc_html_e( '[Contact page intro — invite visitors to reach out by phone, email, or form.]', 'bmg-theme' ); ?>
 					</p>
 				</div>
 			</div>

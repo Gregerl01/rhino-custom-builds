@@ -1,7 +1,9 @@
 // ==========================================================================
-// BMG Design Tokens — Source of Truth
+// Design Tokens — Source of Truth
 // ==========================================================================
-// All values in this file come from the BMG Brand Style Guide.
+// ====================================================
+// CLIENT BRAND — START HERE — Update these per project
+// ====================================================
 // Do not hardcode colors, spacing, or typography elsewhere.
 // Reference these tokens exclusively for visual consistency.
 // ==========================================================================
@@ -34,18 +36,18 @@ $font-family-base: 'Montserrat', Arial, 'Helvetica Neue', sans-serif;
 // All-caps labels: +0.05em
 
 // ==========================================================================
-// Color Palette — "Black Card" Aesthetic
+// Color Palette
 // ==========================================================================
-// 70% Dark tones | 20% Neutrals | 10% Silver accents
-// Never use bright or saturated accent colors
+// Default: dark luxury aesthetic (70% dark / 20% neutral / 10% accent).
+// Update these values per client brand.
 
 // Primary Brand Colors
-$bmg-obsidian:       #0A0A0A;   // Primary dark
-$bmg-charcoal:       #1C1C1C;   // Secondary dark
+$bmg-obsidian:       #0A0A0A;   // Client primary dark
+$bmg-charcoal:       #1C1C1C;   // Client secondary dark
 $bmg-gunmetal:       #2C3E50;   // Depth/sophistication
 
 // Accent Colors
-$bmg-silver:         #A8A9AD;   // Primary accent (use sparingly ~10%)
+$bmg-silver:         #A8A9AD;   // Client accent / highlight (use sparingly ~10%)
 $bmg-platinum:       #E5E4E2;   // Light accent
 
 // Support Colors
@@ -58,10 +60,10 @@ $bmg-dark-gray:      #2D2D2D;   // Subheadings
 $bmg-medium-gray:    #6B6B6B;   // Tertiary text
 $bmg-accent-light:   #E8E8E8;   // Borders, separators
 
-// Error State (muted, not bright red — per brand guidelines)
+// Error State
 $bmg-error:          #8B4049;
 
-// Set Bootstrap primary to BMG Obsidian
+// Set Bootstrap primary
 $primary: $bmg-obsidian;
 
 // ==========================================================================
@@ -119,7 +121,7 @@ $radius-xl: 20px;
 $radius-2xl: 32px;
 $radius-full: 9999px;
 
-// Button radius: 0 (square edges per BMG brand)
+// Button radius: 0 (square edges — update per client brand)
 $radius-button: 0;
 
 // ==========================================================================
@@ -134,7 +136,7 @@ $shadow-xl: 0 16px 48px rgba($bmg-obsidian, 0.12);
 // Transitions (legacy — prefer motion tokens below)
 // ==========================================================================
 $transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-$transition-base: 200ms ease;  // Per BMG brand: 200ms ease for buttons
+$transition-base: 200ms ease;  // Default: 200ms ease for buttons
 $transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
 
 // ==========================================================================

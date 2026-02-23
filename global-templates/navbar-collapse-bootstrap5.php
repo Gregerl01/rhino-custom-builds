@@ -2,7 +2,7 @@
 /**
  * Header Navbar (bootstrap5)
  *
- * @package BMG_Theme
+ * @package starter-theme
  * @since 1.0.0
  */
 

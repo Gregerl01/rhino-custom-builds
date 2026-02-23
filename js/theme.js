@@ -6221,6 +6221,8 @@
       }
       var heroSection = document.querySelector('.section-hero');
       var heroBg = document.querySelector('.section-hero__background');
+      var ctaSection = document.querySelector('.section-cta');
+      var ctaBg = document.querySelector('.cta-background');
       var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
       // Inner pages without a hero — start condensed immediately
@@ -6242,6 +6244,15 @@
         // Hero parallax — runs on every frame while hero is in viewport
         if (heroBg && !prefersReducedMotion && currentScrollY < heroHeight) {
           heroBg.style.transform = 'translateY(' + currentScrollY * 0.3 + 'px) scale(1.05)';
+        }
+
+        // CTA parallax — only when section is near viewport
+        if (ctaBg && ctaSection && !prefersReducedMotion) {
+          var ctaRect = ctaSection.getBoundingClientRect();
+          if (ctaRect.bottom > 0 && ctaRect.top < window.innerHeight) {
+            var ctaScrollAmount = ctaRect.top * -0.2;
+            ctaBg.style.transform = 'translateY(' + ctaScrollAmount + 'px)';
+          }
         }
 
         // Sticky header — only updates on meaningful scroll deltas

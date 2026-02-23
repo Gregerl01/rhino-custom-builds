@@ -535,7 +535,7 @@ html {
 		border-color: rgba($bmg-silver, 0.2);
 	}
 
-	// Featured (Premium) card
+	// Featured card
 	&--featured {
 		border-top: 3px solid $bmg-silver;
 		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
@@ -688,7 +688,7 @@ html {
 			color: $bmg-white;
 		}
 
-		// Filled style for Premium
+		// Filled style for featured card
 		&--filled {
 			background: $bmg-obsidian;
 			color: $bmg-white;
@@ -1151,6 +1151,38 @@ html {
 // ==========================================================================
 // SECTION 7: CTA
 // ==========================================================================
+.section-cta {
+	position: relative;
+	overflow: hidden;
+	background-color: $bmg-obsidian;
+	color: $bmg-white;
+	padding: $space-5xl 0;
+
+	@media (max-width: 767.98px) {
+		padding: $space-3xl 0;
+	}
+}
+
+.cta-background {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 120%;
+	z-index: 0;
+	background-size: cover;
+	background-position: center;
+	will-change: transform;
+
+	&::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: rgba($bmg-obsidian, 0.82);
+		z-index: 1;
+	}
+}
+
 .cta__heading {
 	font-size: clamp(2rem, 5vw, 2.75rem);
 	color: $bmg-white;
@@ -1847,6 +1879,19 @@ html {
 	border-left: 2px solid $bmg-silver;
 	padding: $space-lg; // 32px
 	border-radius: 2px;
+
+	&__photo {
+		margin-bottom: $space-md;
+		overflow: hidden;
+		border-radius: 2px;
+	}
+
+	&__img {
+		width: 100%;
+		aspect-ratio: 4 / 5;
+		object-fit: cover;
+		display: block;
+	}
 
 	&__title {
 		font-family: $font-family-base;

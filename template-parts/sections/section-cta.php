@@ -1,11 +1,11 @@
 <?php
 /**
- * CTA Section - BMG Homepage
+ * CTA Section - Homepage
  *
  * Charcoal section with consultation prompt.
  * Generous spacing, refined typography, clear call-to-action.
  *
- * @package BMG_Theme
+ * @package starter-theme
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -13,23 +13,31 @@ defined( 'ABSPATH' ) || exit;
 // Dynamic phone from Customizer.
 $phone_display = get_theme_mod( 'bmg_phone', '(000) 000-0000' );
 $phone_link    = preg_replace( '/[^0-9+]/', '', $phone_display );
+
+// CTA background image from Customizer.
+$cta_bg = get_theme_mod( 'bmg_cta_background', '' );
+if ( ! $cta_bg ) {
+	// Fallback to placeholder image in media library.
+	$cta_bg = home_url( '/wp-content/uploads/placeholder-cta-background.webp' );
+}
 ?>
 
-<section id="cta" class="section section-charcoal reveal-on-scroll">
-	<div class="container">
+<section id="cta" class="section section-cta reveal-on-scroll">
+	<div class="cta-background" style="background-image: url(<?php echo esc_url( $cta_bg ); ?>);"></div>
+	<div class="container position-relative" style="z-index: 2;">
 		<div class="row justify-content-center">
-			<div class="col-lg-8 text-center">
+			<div class="col-lg-8 text-center bmg-reveal">
 
 				<h2 class="cta__heading display-text">
-					<?php esc_html_e( 'The First Step Is a Conversation', 'bmg-theme' ); ?>
+					<?php esc_html_e( '[CTA Headline]', 'bmg-theme' ); ?>
 				</h2>
 
 				<p class="cta__text">
-					<?php esc_html_e( 'Schedule a private consultation to discuss your health priorities, ask questions about membership, and determine which tier aligns with your needs. There is no obligation and no pressure.', 'bmg-theme' ); ?>
+					<?php esc_html_e( '[CTA body copy — one to two sentences encouraging the visitor to take the next step.]', 'bmg-theme' ); ?>
 				</p>
 
 				<a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="cta__button">
-					<?php esc_html_e( 'Schedule a Consultation', 'bmg-theme' ); ?>
+					<?php esc_html_e( '[CTA Button Text]', 'bmg-theme' ); ?>
 				</a>
 
 				<p class="cta__phone">

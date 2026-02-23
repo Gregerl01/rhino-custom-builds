@@ -4,7 +4,7 @@
  *
  * Handles theme switching, FOUC prevention, and language_attributes filter.
  *
- * @package BMG_Theme
+ * @package starter-theme
  */
 
 // Exit if accessed directly.

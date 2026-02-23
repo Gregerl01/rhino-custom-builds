@@ -1,25 +1,25 @@
 <?php
 /**
- * Hero Section - BMG Homepage
+ * Hero Section - Homepage
  *
  * Full-viewport dark section with animated headline and ghost-button CTAs.
  * Refined luxury editorial aesthetic.
  *
- * @package BMG_Theme
+ * @package starter-theme
  */
 
 defined( 'ABSPATH' ) || exit;
 
 // Get Customizer settings.
-$headline         = get_theme_mod( 'hero_headline', __( 'Healthcare Designed for How You Live', 'bmg-theme' ) );
-$subtitle         = get_theme_mod( 'hero_subtitle', __( 'A physician who knows you personally, available when it matters — with the time to do it right.', 'bmg-theme' ) );
+$headline         = get_theme_mod( 'hero_headline', __( '[Hero Headline]', 'bmg-theme' ) );
+$subtitle         = get_theme_mod( 'hero_subtitle', __( '[Hero subtitle — one or two sentences describing the value proposition.]', 'bmg-theme' ) );
 $background_image = get_theme_mod( 'hero_background_image', '' );
 $overlay_opacity  = get_theme_mod( 'hero_overlay_opacity', 70 );
 
 // CTA settings.
-$cta_primary_text   = get_theme_mod( 'hero_cta_primary_text', __( 'Explore Membership Plans', 'bmg-theme' ) );
+$cta_primary_text   = get_theme_mod( 'hero_cta_primary_text', __( '[Primary CTA Text]', 'bmg-theme' ) );
 $cta_primary_url    = get_theme_mod( 'hero_cta_primary_url', '#plans' );
-$cta_secondary_text = get_theme_mod( 'hero_cta_secondary_text', __( 'Learn How It Works', 'bmg-theme' ) );
+$cta_secondary_text = get_theme_mod( 'hero_cta_secondary_text', __( '[Secondary CTA Text]', 'bmg-theme' ) );
 $cta_secondary_url  = get_theme_mod( 'hero_cta_secondary_url', '#explainer' );
 
 // Build inline style for background div if image is set.

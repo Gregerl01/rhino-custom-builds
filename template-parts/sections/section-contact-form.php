@@ -5,7 +5,7 @@
  * Displays Gravity Forms contact form when available, otherwise a
  * placeholder form matching CONTENT.md Section 5.3 fields.
  *
- * @package BMG_Theme
+ * @package starter-theme
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -83,7 +83,7 @@ $phone_link    = preg_replace( '/[^0-9+]/', '', $phone_display );
 						<?php
 						printf(
 							/* translators: %s: phone link */
-							esc_html__( 'For urgent medical concerns, please call %s or visit your nearest emergency department. This form is not monitored for time-sensitive communications.', 'bmg-theme' ),
+							esc_html__( '[Urgent contact note. Call %s for time-sensitive matters. This form is not monitored in real time.]', 'bmg-theme' ),
 							'<a href="tel:' . esc_attr( $phone_link ) . '">' . esc_html( $phone_display ) . '</a>'
 						);
 						?>

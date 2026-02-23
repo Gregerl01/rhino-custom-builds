@@ -4,7 +4,7 @@
  *
  * Template for the FAQ page.
  *
- * @package BMG_Theme
+ * @package starter-theme
  */
 
 // Exit if accessed directly.
@@ -24,7 +24,7 @@ get_header();
 						<?php esc_html_e( 'Frequently Asked Questions', 'bmg-theme' ); ?>
 					</h1>
 					<p class="lead mb-0">
-						<?php esc_html_e( 'Answers to common questions about concierge medicine, our membership plans, and how Baig Medical Group operates.', 'bmg-theme' ); ?>
+						<?php esc_html_e( '[FAQ page intro — describe what questions are covered.]', 'bmg-theme' ); ?>
 					</p>
 				</div>
 			</div>

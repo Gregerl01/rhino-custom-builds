@@ -2,7 +2,7 @@
 /**
  * Footer Customizer Settings
  *
- * @package BMG_Theme
+ * @package starter-theme
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -41,7 +41,7 @@ function bmg_theme_footer_customizer( $wp_customize ) {
 	$wp_customize->add_section(
 		'bmg_theme_footer_practice',
 		array(
-			'title' => __( 'Practice Information', 'bmg-theme' ),
+			'title' => __( 'Business Information', 'bmg-theme' ),
 			'panel' => 'bmg_theme_footer_panel',
 		)
 	);
@@ -50,7 +50,7 @@ function bmg_theme_footer_customizer( $wp_customize ) {
 	$wp_customize->add_setting(
 		'footer_practice_name',
 		array(
-			'default'           => __( 'Baig Medical Group', 'bmg-theme' ),
+			'default'           => __( '[Business Name]', 'bmg-theme' ),
 			'sanitize_callback' => 'sanitize_text_field',
 			'transport'         => 'postMessage',
 		)
@@ -59,7 +59,7 @@ function bmg_theme_footer_customizer( $wp_customize ) {
 	$wp_customize->add_control(
 		'footer_practice_name',
 		array(
-			'label'   => __( 'Practice Name', 'bmg-theme' ),
+			'label'   => __( 'Business Name', 'bmg-theme' ),
 			'section' => 'bmg_theme_footer_practice',
 			'type'    => 'text',
 		)

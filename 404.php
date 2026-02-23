@@ -2,9 +2,7 @@
 /**
  * 404 — Page Not Found
  *
- * Matches CONTENT.md Section 11 (Global UI Copy → 404 Page).
- *
- * @package BMG_Theme
+ * @package starter-theme
  */
 
 defined( 'ABSPATH' ) || exit;

@@ -2,10 +2,9 @@
 /**
  * Template Name: Services Page
  *
- * Explains what BMG does for prospective members researching
- * concierge medicine in Yuma. Earlier in the funnel than Plans.
+ * Explains services offered. Earlier in the funnel than Plans.
  *
- * @package BMG_Theme
+ * @package starter-theme
  */
 
 // Exit if accessed directly.
@@ -22,10 +21,10 @@ get_header();
 			<div class="row justify-content-center">
 				<div class="col-lg-8 text-center">
 					<h1 class="display-text display-4 mb-3">
-						<?php esc_html_e( 'What We Do for Our Members', 'bmg-theme' ); ?>
+						<?php esc_html_e( '[Services Page Headline]', 'bmg-theme' ); ?>
 					</h1>
 					<p class="lead mb-0">
-						<?php esc_html_e( 'Baig Medical Group provides comprehensive primary care, preventive medicine, and coordinated specialist access within a membership model built around availability, thoroughness, and continuity. Every service below is delivered personally by Dr. Baig — not a rotating roster of providers. The care is intentional, and the relationship is ongoing.', 'bmg-theme' ); ?>
+						<?php esc_html_e( '[Services page intro paragraph — describe what the business provides and how services are delivered.]', 'bmg-theme' ); ?>
 					</p>
 				</div>
 			</div>

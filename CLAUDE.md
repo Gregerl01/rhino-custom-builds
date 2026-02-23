@@ -4,33 +4,53 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Identity
 
-- **Client:** Baig Medical Group (BMG)
-- **Type:** Production WordPress + WooCommerce website
+- **Theme:** GSL Starter Theme by GSL Design
+- **Client:** [Client Name]
+- **Type:** WordPress + WooCommerce website
 - **Compliance:** HIPAA required (PHI handling)
-- **Theme:** Understrap child theme (Bootstrap 5 + SCSS)
+- **Base:** Understrap child theme (Bootstrap 5 + SCSS)
 - **Parent Theme:** Understrap
 - **Build Tool:** Rollup (JS) + Sass CLI + PostCSS + CleanCSS (SCSS)
 - **Dev Tool:** Claude Code (CLI in VS Code terminal)
-- **Local Dev:** Local by Flywheel — `baig-medical-group.local`
+- **Local Dev:** Local by Flywheel — `gsl-starter.local`
 - **Runtime:** PHP 8.1, MySQL 8.0, Nginx 1.26
 - **Node:** >= 18, npm >= 8.6.0
 - **Testing/CI/Linting:** None configured
-- **Target Launch:** April 1, 2026
+- **Text Domain:** `bmg-theme` (do not rename)
 
 ---
 
 ## What This Project Is
 
-A HIPAA-compliant concierge medical practice website where patients can:
-1. Browse three tiered service plans (Essential / Premium / Concierge Elite)
-2. Enroll online via secure form with HIPAA consent
-3. Pay via Authorize.net (one-time and recurring subscriptions)
+A starter theme for service-based business websites where clients can:
+1. Browse tiered service plans ([Plan Tier 1] / [Plan Tier 2] / [Plan Tier 3])
+2. Enroll online via secure form with compliance consent
+3. Pay via payment gateway (one-time and recurring subscriptions)
 4. Manage their account through a client portal (WooCommerce My Account)
 5. Receive automated onboarding communications
 
-The brand position is premium, restrained luxury — "Black Card" aesthetic.
-Dark accent sections, silver highlights, generous whitespace, zero flashiness.
-Light-mode primary (off-white backgrounds) with dark hero/feature sections.
+The default aesthetic is premium and restrained — dark accent sections, silver highlights, generous whitespace, zero flashiness. Light-mode primary (off-white backgrounds) with dark hero/feature sections. Customize design tokens per client.
+
+---
+
+## New Project Setup
+
+When cloning this starter theme for a new client, complete these steps:
+
+1. **Clone the theme folder** — duplicate `starter-theme/` and rename for the client project
+2. **Update `style.css` metadata** — change Theme Name, Description, Author, and Version
+3. **Update `CLAUDE.md`** — replace `[Client Name]` and all `[bracketed placeholders]` with real values
+4. **Update `CONTENT.md`** — replace all placeholder copy with approved client content
+5. **Update design tokens** — edit `src/sass/theme/_theme_variables.scss` for client brand colors, fonts, and spacing
+6. **Update Google Fonts** — if the client uses different typefaces, update the font enqueue in `functions.php`
+7. **Upload logo** — add logo files and configure via Customizer > Site Identity
+8. **Set business info** — populate all `bmg_*` Customizer fields (Customizer > Business Information)
+9. **Upload photography** — provider portrait, office photos, hero background
+10. **Configure plan names and pricing** — update plan tier names and pricing throughout templates and CONTENT.md
+11. **Update `browser-sync.config.js`** — set the proxy URL to the client's local dev domain
+12. **Update `package.json`** — update the `watch-bs` script proxy URL
+13. **Run `npm run build`** — verify the full build completes without errors
+14. **Review all pages** — walk through every page template and confirm content renders correctly
 
 ---
 
@@ -48,7 +68,7 @@ wp-content/themes/starter-theme/
 ### Build Pipeline (Keep As-Is)
 | Tool | Purpose | Config Location |
 |------|---------|-----------------|
-| Sass CLI | SCSS → CSS compilation | npm script, loads from parent |
+| Sass CLI | SCSS > CSS compilation | npm script, loads from parent |
 | PostCSS + Autoprefixer | Vendor prefixes | src/build/postcss.config.js |
 | CleanCSS | CSS minification | npm script |
 | Rollup | JS bundling | src/build/rollup.config.js |
@@ -63,7 +83,7 @@ wp-content/themes/starter-theme/
 | `npm run css` | Compile + prefix + minify SCSS |
 | `npm run js` | Bundle + minify JS |
 | `npm run watch` | Watch SCSS + JS for changes |
-| `npm run watch-bs` | Watch + BrowserSync on baig-medical-group.local |
+| `npm run watch-bs` | Watch + BrowserSync on gsl-starter.local |
 
 ### SCSS Load Path
 SCSS resolves imports via parent theme:
@@ -99,7 +119,7 @@ starter-theme/
 │   └── sass/
 │       ├── theme.scss                 # Main SCSS entry point
 │       └── theme/
-│           ├── _theme_variables.scss  # BMG design tokens (source of truth)
+│           ├── _theme_variables.scss  # Design tokens (source of truth)
 │           ├── _sections.scss         # Section component styles
 │           ├── _woocommerce.scss      # WooCommerce styling
 │           ├── _dark-mode.scss        # Dark mode system (active)
@@ -118,9 +138,9 @@ starter-theme/
 ├── inc/
 │   ├── custom-post-types.php          # CPT: "service" (homepage icons)
 │   ├── customizer-site-identity.php   # Logo max-width control
-│   ├── customizer-practice-info.php   # Practice Information panel (physician, contact, hours)
+│   ├── customizer-practice-info.php   # Business Information panel (provider, contact, hours)
 │   ├── customizer-hero.php            # Hero headline, subtitle, background
-│   ├── customizer-about.php           # Philosophy + physician profile
+│   ├── customizer-about.php           # Philosophy + provider profile
 │   ├── customizer-footer.php          # Footer menus + walker
 │   ├── dark-mode.php                  # Dark mode FOUC prevention + toggle
 │   └── seo-metadata.php              # SEO title tags + meta descriptions
@@ -130,24 +150,24 @@ starter-theme/
 │   └── dark-mode-toggle.php           # Dark mode UI toggle
 │
 ├── page-templates/
-│   ├── page-about.php                 # About page (philosophy + physician bio)
+│   ├── page-about.php                 # About page (philosophy + provider bio)
 │   ├── page-plans.php                 # Plans comparison page
 │   ├── page-services.php              # Services page (5 service blocks)
 │   ├── page-enroll.php                # Enrollment form page
 │   ├── page-faq.php                   # FAQ page (10 questions)
 │   ├── page-contact.php               # Contact page
-│   └── page-privacy.php               # Privacy policy + HIPAA notice
+│   └── page-privacy.php               # Privacy policy + compliance notice
 │
 └── template-parts/
     └── sections/
         ├── section-hero.php           # Full-viewport hero with animated headline
-        ├── section-explainer.php      # What Is Concierge Medicine
+        ├── section-explainer.php      # What Is [Service Type]
         ├── section-pillars.php        # 4-column value pillars
-        ├── section-plans-overview.php # Three-tier plan cards (Essential/Premium/Concierge Elite)
+        ├── section-plans-overview.php # Three-tier plan cards ([Plan Tier 1]/[Plan Tier 2]/[Plan Tier 3])
         ├── section-plans-comparison.php # Detailed plan comparison table
         ├── section-philosophy.php     # About page — philosophy of care
-        ├── section-physician.php      # Full physician bio + credentials sidebar
-        ├── section-physician-preview.php # Homepage physician intro
+        ├── section-physician.php      # Full provider bio + credentials sidebar
+        ├── section-physician-preview.php # Homepage provider intro
         ├── section-services.php       # Services page — 5 alternating service blocks
         ├── section-faq.php            # Full FAQ accordion (10 questions)
         ├── section-faq-preview.php    # Homepage FAQ preview (4 questions)
@@ -159,10 +179,10 @@ starter-theme/
 
 ### Homepage Section Load Order (front-page.php)
 1. Hero — full viewport, animated headline
-2. Explainer — what is concierge medicine
+2. Explainer — what is [service type]
 3. Pillars — 4-column benefits
 4. Plans Overview — three-tier cards
-5. Physician Preview — doctor introduction
+5. Provider Preview — provider introduction
 6. FAQ Preview — common questions accordion
 7. CTA — consultation prompt
 
@@ -202,9 +222,9 @@ Assembly only. Use Bootstrap grid + utilities. No new styles.
 
 ---
 
-## BMG Brand Design Tokens
+## Design Tokens
 
-All token values are defined in `src/sass/theme/_theme_variables.scss` — that file is the source of truth. Below are the key principles for reference; always check the SCSS file for exact values.
+All token values are defined in `src/sass/theme/_theme_variables.scss` — that file is the source of truth. Below are the default principles for the starter theme; always check the SCSS file for exact values. Customize these per client.
 
 ### Color Principles
 - **70%** Dark tones (Obsidian `#0A0A0A`, Charcoal `#1C1C1C`)
@@ -234,21 +254,21 @@ All token values are defined in `src/sass/theme/_theme_variables.scss` — that 
 
 | Page | Template | Slug | Purpose |
 |------|----------|------|---------|
-| Homepage | `front-page.php` | `/` | Hero, explainer, pillars, plans, physician, FAQ, CTA |
-| About | `page-templates/page-about.php` | `/about/` | Philosophy, physician bio + credentials |
-| Our Plans | `page-templates/page-plans.php` | `/our-plans/` | Feature comparison table (Essential/Premium/Concierge Elite) |
+| Homepage | `front-page.php` | `/` | Hero, explainer, pillars, plans, provider, FAQ, CTA |
+| About | `page-templates/page-about.php` | `/about/` | Philosophy, provider bio + credentials |
+| Our Plans | `page-templates/page-plans.php` | `/our-plans/` | Feature comparison table ([Plan Tier 1]/[Plan Tier 2]/[Plan Tier 3]) |
 | Services | `page-templates/page-services.php` | `/services/` | 5 service blocks with alternating sections |
-| Enroll | `page-templates/page-enroll.php` | `/enroll/` | Enrollment form + HIPAA consent |
+| Enroll | `page-templates/page-enroll.php` | `/enroll/` | Enrollment form + compliance consent |
 | FAQ | `page-templates/page-faq.php` | `/faq/` | 10 questions, flat accordion |
 | Contact | `page-templates/page-contact.php` | `/contact/` | Form, phone, address, map, hours |
-| Privacy Policy | `page-templates/page-privacy.php` | `/privacy-policy/` | HIPAA Notice + website privacy |
+| Privacy Policy | `page-templates/page-privacy.php` | `/privacy-policy/` | Compliance notice + website privacy |
 | 404 | `404.php` | — | Page Not Found |
 | My Account | WooCommerce override | `/my-account/` | Client portal |
 
 ### Navigation
 - **Header (flat):** About, Our Plans, Services, Contact
 - **My Account link:** Appears when logged in
-- **Footer (3-col):** Practice identity (logo, address, phone, email) | Navigation (About, Our Plans, Services, Enroll, FAQ, Contact, Privacy Policy) | Office Hours
+- **Footer (3-col):** Business identity (logo, address, phone, email) | Navigation (About, Our Plans, Services, Enroll, FAQ, Contact, Privacy Policy) | Business Hours
 
 ---
 
@@ -278,7 +298,7 @@ These plugins are required for production but **not all are installed yet**. Plu
 | All-in-One WP Migration | Backup/restore |
 
 ### Service Plans (WooCommerce Subscription Products)
-| | Essential | Premium | Concierge Elite |
+| | [Plan Tier 1] | [Plan Tier 2] | [Plan Tier 3] |
 |---|-----------|---------|-----------------|
 | Monthly | TBD | TBD | TBD |
 | Annual | TBD (discount) | TBD (discount) | TBD (discount) |
@@ -325,17 +345,24 @@ These plugins are required for production but **not all are installed yet**. Plu
 - Rewrite large sections without approval
 
 ## Content Reference
-All approved website copy and dynamic variable definitions live in CONTENT.md in the theme root.
+CONTENT.md in the theme root contains placeholder website copy and dynamic variable definitions. This content should be customized for each client project.
 - **Before editing any template file**, read CONTENT.md first
-- Use it as the source of truth for all text content, `get_theme_mod()` keys, fallback strings, and implementation order
-- Do not write placeholder copy — if content exists in CONTENT.md, use it exactly
-- All CONTENT.md sections (1–12) have been implemented in templates
-- Dynamic variables are centralized in `inc/customizer-practice-info.php` (Customizer → Practice Information panel)
+- Use it as the reference for all text content, `get_theme_mod()` keys, fallback strings, and implementation order
+- Replace placeholder copy in CONTENT.md with approved client content before building templates
+- Dynamic variables are centralized in `inc/customizer-practice-info.php` (Customizer > Business Information panel)
 - SEO metadata is handled by `inc/seo-metadata.php` (yields to Rank Math when active)
+
+## Motion Reference
+All animation specs live in MOTION.md in the theme root.
+- **Before adding any animation or transition**, read MOTION.md first
+- Use motion tokens from `_theme_variables.scss` — never hardcode durations or easing values
+- Respect the "What NOT to animate" section — it is non-negotiable
 
 ---
 
 ## Tone of Voice (Generated Content)
+
+Default voice for the starter theme. Customize per client as needed.
 
 - **Calm:** Composed, never anxious
 - **Confident:** Authoritative, no hedging
@@ -347,9 +374,9 @@ All approved website copy and dynamic variable definitions live in CONTENT.md in
 
 ## Customizer Dynamic Variables
 
-All reusable practice data is managed via Customizer → Practice Information (`inc/customizer-practice-info.php`):
+All reusable business data is managed via Customizer > Business Information (`inc/customizer-practice-info.php`):
 
-**Physician:** `bmg_physician_name`, `bmg_physician_last_name`, `bmg_physician_credentials`, `bmg_physician_specialty`, `bmg_physician_years`, `bmg_physician_med_school`, `bmg_physician_residency`, `bmg_physician_fellowship`, `bmg_physician_board_cert`, `bmg_physician_memberships`, `bmg_physician_photo_portrait`, `bmg_physician_photo_full`, `bmg_physician_bio_short`, `bmg_physician_bio_full`
+**Provider:** `bmg_physician_name`, `bmg_physician_last_name`, `bmg_physician_credentials`, `bmg_physician_specialty`, `bmg_physician_years`, `bmg_physician_med_school`, `bmg_physician_residency`, `bmg_physician_fellowship`, `bmg_physician_board_cert`, `bmg_physician_memberships`, `bmg_physician_photo_portrait`, `bmg_physician_photo_full`, `bmg_physician_bio_short`, `bmg_physician_bio_full`
 
 **Contact:** `bmg_phone`, `bmg_email`, `bmg_address_street`, `bmg_address_city`, `bmg_privacy_effective_date`
 
@@ -357,20 +384,25 @@ All reusable practice data is managed via Customizer → Practice Information (`
 
 The footer uses these `bmg_*` keys directly (not the legacy `footer_*` keys from `customizer-footer.php`).
 
+> **Note:** All `bmg_*` keys, CSS classes, and PHP variable/function names retain the `bmg` prefix by convention. Do not rename them.
+
 ---
 
-## Open Items (Need Client Input)
+## New Project Setup Checklist
 
-> Review this list periodically — remove items as they are resolved.
+> Complete these items when starting a new client project based on this starter theme.
 
-1. Plan pricing (Essential/Premium/Concierge Elite monthly + annual)
-2. Physician medical school and residency (currently using placeholder defaults)
-3. Practice street address + ZIP code
-4. Photography (physician portrait, office photos)
-5. Logo files (SVG, PNG)
-6. Hosting provider (must sign BAA)
-7. Authorize.net credentials
-8. Google Workspace BAA status
-9. Domain name
-10. Gravity Forms license (enrollment + contact forms currently use placeholder HTML)
-11. Analytics provider (privacy policy references TBD)
+1. Update business name throughout CONTENT.md and templates
+2. Upload logo files (SVG, PNG) via Customizer > Site Identity
+3. Set provider/team information in Customizer > Business Information
+4. Configure plan tier names and pricing in templates and CONTENT.md
+5. Set business address, phone number, and email in Customizer
+6. Upload photography (provider portrait, office photos, hero background)
+7. Update design tokens in `_theme_variables.scss` for client brand colors and fonts
+8. Configure hosting provider (must sign BAA if HIPAA applies)
+9. Set up payment gateway (Authorize.net or alternative)
+10. Obtain Gravity Forms license and configure enrollment + contact forms
+11. Set domain name and update BrowserSync proxy URL
+12. Configure analytics provider and update privacy policy references
+13. Review and update FAQ content for the client's business
+14. Test all pages end-to-end after content and design updates

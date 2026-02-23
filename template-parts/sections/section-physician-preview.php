@@ -1,24 +1,24 @@
 <?php
 /**
- * Physician Preview Section - BMG Homepage
+ * Provider Preview Section - Homepage
  *
- * Dark section introducing Dr. Baig with two-column layout.
- * Portrait photo left, copy right. Photo placeholder until client provides.
+ * Dark section introducing provider with two-column layout.
+ * Portrait photo left, copy right.
  *
- * @package BMG_Theme
+ * @package starter-theme
  */
 
 defined( 'ABSPATH' ) || exit;
 
 // Dynamic variables from Customizer.
-$physician_name        = get_theme_mod( 'bmg_physician_name', 'Dr. Adil Baig' );
-$physician_credentials = get_theme_mod( 'bmg_physician_credentials', 'Board-Certified Family Medicine Physician' );
+$physician_name        = get_theme_mod( 'bmg_physician_name', '[Provider Name]' );
+$physician_credentials = get_theme_mod( 'bmg_physician_credentials', '[Credentials]' );
 $physician_years       = get_theme_mod( 'bmg_physician_years', '10' );
 $physician_med_school  = get_theme_mod( 'bmg_physician_med_school', '[Medical School]' );
-$physician_last_name   = get_theme_mod( 'bmg_physician_last_name', 'Baig' );
+$physician_last_name   = get_theme_mod( 'bmg_physician_last_name', '[Last Name]' );
 
-// Portrait photo — try attachment ID for responsive srcset.
-$portrait_url = get_theme_mod( 'bmg_physician_photo_portrait', '' );
+// Three-quarter body photo for homepage preview.
+$portrait_url = get_theme_mod( 'bmg_physician_photo_full', '' );
 $portrait_id  = $portrait_url ? attachment_url_to_postid( $portrait_url ) : 0;
 ?>
 
@@ -27,7 +27,7 @@ $portrait_id  = $portrait_url ? attachment_url_to_postid( $portrait_url ) : 0;
 		<div class="row align-items-center">
 
 			<!-- Portrait Column -->
-			<div class="col-lg-5 mb-5 mb-lg-0">
+			<div class="col-lg-5 mb-5 mb-lg-0 bmg-reveal">
 				<?php if ( $portrait_id ) : ?>
 					<div class="physician-preview__portrait physician-preview__portrait--has-image">
 						<?php
@@ -53,18 +53,18 @@ $portrait_id  = $portrait_url ? attachment_url_to_postid( $portrait_url ) : 0;
 				<?php else : ?>
 					<div class="physician-preview__portrait">
 						<span class="physician-preview__portrait-text">
-							<?php esc_html_e( 'Physician Portrait', 'bmg-theme' ); ?>
+							<?php esc_html_e( 'Provider Portrait', 'bmg-theme' ); ?>
 						</span>
 					</div>
 				<?php endif; ?>
 			</div>
 
 			<!-- Text Column -->
-			<div class="col-lg-6 offset-lg-1">
+			<div class="col-lg-6 offset-lg-1 bmg-reveal" style="transition-delay: 120ms">
 				<div class="physician-preview">
 
 					<span class="physician-preview__eyebrow">
-						<?php esc_html_e( 'Your Physician', 'bmg-theme' ); ?>
+						<?php esc_html_e( '[Provider Eyebrow Text]', 'bmg-theme' ); ?>
 					</span>
 
 					<h2 class="physician-preview__heading display-text">
@@ -77,7 +77,7 @@ $portrait_id  = $portrait_url ? attachment_url_to_postid( $portrait_url ) : 0;
 							echo esc_html(
 								sprintf(
 									/* translators: 1: physician name, 2: credentials */
-									__( '%1$s is a %2$s with over a decade of clinical experience. A second-generation physician and father of five, he founded Baig Medical Group on a conviction that guided his career: time is the most valuable resource in medicine — for patients and physicians alike.', 'bmg-theme' ),
+									__( '%1$s is a %2$s. [Provider preview bio paragraph 1 — brief introduction.]', 'bmg-theme' ),
 									$physician_name,
 									strtolower( $physician_credentials )
 								)
@@ -89,7 +89,7 @@ $portrait_id  = $portrait_url ? attachment_url_to_postid( $portrait_url ) : 0;
 							echo esc_html(
 								sprintf(
 									/* translators: 1: physician last name */
-									__( 'In Yuma, Dr. %1$s maintains a limited patient panel, conducts extended appointments, and remains personally accessible to every member. The result is care built around attention, not volume.', 'bmg-theme' ),
+									__( 'Dr. %1$s [provider preview bio paragraph 2 — describe approach and availability.]', 'bmg-theme' ),
 									$physician_last_name
 								)
 							);

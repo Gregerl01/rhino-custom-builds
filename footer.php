@@ -1,21 +1,20 @@
 <?php
 /**
- * Footer Template - BMG Theme
+ * Footer Template
  *
- * Three-column footer matching CONTENT.md Section 9.
- * All contact info pulled from bmg_* Customizer variables.
+ * Three-column footer. All contact info pulled from bmg_* Customizer variables.
  *
- * @package BMG_Theme
+ * @package starter-theme
  */
 
 defined( 'ABSPATH' ) || exit;
 
 // Dynamic variables from Customizer (Practice Information panel).
 $address_street = get_theme_mod( 'bmg_address_street', '[Street Address]' );
-$address_city   = get_theme_mod( 'bmg_address_city', 'Yuma, AZ [ZIP]' );
+$address_city   = get_theme_mod( 'bmg_address_city', '[City, State ZIP]' );
 $phone_display  = get_theme_mod( 'bmg_phone', '(000) 000-0000' );
 $phone_link     = preg_replace( '/[^0-9+]/', '', $phone_display );
-$email          = get_theme_mod( 'bmg_email', 'info@baigmedicalgroup.com' );
+$email          = get_theme_mod( 'bmg_email', 'info@example.com' );
 
 // Office hours.
 $hours_weekday  = get_theme_mod( 'bmg_office_hours', 'Monday – Friday: 8:00 AM – 5:00 PM' );
@@ -37,7 +36,7 @@ $hours_sunday   = get_theme_mod( 'bmg_office_hours_sun', 'Closed' );
 						</div>
 					<?php else : ?>
 						<h4 class="footer-title h6 text-uppercase mb-3">
-							<?php esc_html_e( 'Baig Medical Group', 'bmg-theme' ); ?>
+							<?php esc_html_e( '[Business Name]', 'bmg-theme' ); ?>
 						</h4>
 					<?php endif; ?>
 
@@ -89,10 +88,10 @@ $hours_sunday   = get_theme_mod( 'bmg_office_hours_sun', 'Closed' );
 					<?php endif; ?>
 				</div>
 
-				<!-- Column 3: Office Hours -->
+				<!-- Column 3: Business Hours -->
 				<div class="col-lg-4 col-md-6">
 					<h4 class="footer-title h6 text-uppercase mb-3">
-						<?php esc_html_e( 'Office Hours', 'bmg-theme' ); ?>
+						<?php esc_html_e( 'Business Hours', 'bmg-theme' ); ?>
 					</h4>
 					<div class="footer-hours">
 						<p class="mb-1"><?php echo esc_html( $hours_weekday ); ?></p>
@@ -126,7 +125,7 @@ $hours_sunday   = get_theme_mod( 'bmg_office_hours_sun', 'Closed' );
 				<div class="row align-items-center">
 					<div class="col-md-6 text-center text-md-start">
 						<p class="footer-copyright mb-2 mb-md-0 small">
-							&copy; <?php echo esc_html( date( 'Y' ) ); ?> <?php esc_html_e( 'Baig Medical Group. All rights reserved.', 'bmg-theme' ); ?>
+							&copy; <?php echo esc_html( date( 'Y' ) ); ?> <?php esc_html_e( '[Business Name]. All rights reserved.', 'bmg-theme' ); ?>
 						</p>
 					</div>
 					<div class="col-md-6 text-center text-md-end">

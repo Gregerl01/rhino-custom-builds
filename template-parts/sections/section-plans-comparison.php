@@ -5,7 +5,7 @@
  * Detailed feature-by-feature comparison table for all three tiers.
  * Matches CONTENT.md Section 3.2. Pricing TBD.
  *
- * @package BMG_Theme
+ * @package starter-theme
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -13,46 +13,46 @@ defined( 'ABSPATH' ) || exit;
 // Comparison data — matches CONTENT.md Section 3.2.
 $categories = array(
 	array(
-		'name'     => __( 'Access & Availability', 'bmg-theme' ),
+		'name'     => __( '[Feature Category 1]', 'bmg-theme' ),
 		'features' => array(
-			array( __( 'Direct physician phone/text', 'bmg-theme' ), '✓', '✓', '✓' ),
-			array( __( 'Secure messaging', 'bmg-theme' ), '✓', '✓', '✓' ),
-			array( __( 'Same-day/next-day appointments', 'bmg-theme' ), '✓', '✓', '✓' ),
-			array( __( 'Extended hours (evenings)', 'bmg-theme' ), '—', '✓', '✓' ),
-			array( __( '24/7 physician availability', 'bmg-theme' ), '—', '—', '✓' ),
+			array( __( '[Feature description]', 'bmg-theme' ), '✓', '✓', '✓' ),
+			array( __( '[Feature description]', 'bmg-theme' ), '✓', '✓', '✓' ),
+			array( __( '[Feature description]', 'bmg-theme' ), '✓', '✓', '✓' ),
+			array( __( '[Feature description]', 'bmg-theme' ), '—', '✓', '✓' ),
+			array( __( '[Feature description]', 'bmg-theme' ), '—', '—', '✓' ),
 		),
 	),
 	array(
-		'name'     => __( 'Evaluations & Screenings', 'bmg-theme' ),
+		'name'     => __( '[Feature Category 2]', 'bmg-theme' ),
 		'features' => array(
-			array( __( 'Annual comprehensive evaluation', 'bmg-theme' ), '✓', '✓', '✓' ),
-			array( __( 'Executive physical with advanced panels', 'bmg-theme' ), '—', '✓', '✓' ),
-			array( __( 'Quarterly health check-ins', 'bmg-theme' ), '—', '—', '✓' ),
+			array( __( '[Feature description]', 'bmg-theme' ), '✓', '✓', '✓' ),
+			array( __( '[Feature description]', 'bmg-theme' ), '—', '✓', '✓' ),
+			array( __( '[Feature description]', 'bmg-theme' ), '—', '—', '✓' ),
 		),
 	),
 	array(
-		'name'     => __( 'Specialist Coordination', 'bmg-theme' ),
+		'name'     => __( '[Feature Category 3]', 'bmg-theme' ),
 		'features' => array(
-			array( __( 'Referral coordination', 'bmg-theme' ), __( 'Standard', 'bmg-theme' ), __( 'Priority', 'bmg-theme' ), __( 'VIP / Expedited', 'bmg-theme' ) ),
-			array( __( 'Post-referral follow-up', 'bmg-theme' ), '✓', '✓', '✓' ),
-			array( __( 'Multi-specialist case management', 'bmg-theme' ), '—', '—', '✓' ),
+			array( __( '[Feature description]', 'bmg-theme' ), __( '[Tier 1 level]', 'bmg-theme' ), __( '[Tier 2 level]', 'bmg-theme' ), __( '[Tier 3 level]', 'bmg-theme' ) ),
+			array( __( '[Feature description]', 'bmg-theme' ), '✓', '✓', '✓' ),
+			array( __( '[Feature description]', 'bmg-theme' ), '—', '—', '✓' ),
 		),
 	),
 	array(
-		'name'     => __( 'Wellness & Prevention', 'bmg-theme' ),
+		'name'     => __( '[Feature Category 4]', 'bmg-theme' ),
 		'features' => array(
-			array( __( 'Foundational wellness programming', 'bmg-theme' ), '✓', '✓', '✓' ),
-			array( __( 'Health coaching (nutrition & lifestyle)', 'bmg-theme' ), '—', '✓', '✓' ),
-			array( __( 'Longevity & optimization planning', 'bmg-theme' ), '—', '—', '✓' ),
+			array( __( '[Feature description]', 'bmg-theme' ), '✓', '✓', '✓' ),
+			array( __( '[Feature description]', 'bmg-theme' ), '—', '✓', '✓' ),
+			array( __( '[Feature description]', 'bmg-theme' ), '—', '—', '✓' ),
 		),
 	),
 	array(
-		'name'     => __( 'Convenience', 'bmg-theme' ),
+		'name'     => __( '[Feature Category 5]', 'bmg-theme' ),
 		'features' => array(
-			array( __( 'In-home/on-site visits', 'bmg-theme' ), '—', '—', '✓' ),
-			array( __( 'Travel medicine & global coordination', 'bmg-theme' ), '—', '—', '✓' ),
-			array( __( 'Dedicated care coordinator', 'bmg-theme' ), '—', '—', '✓' ),
-			array( __( 'Family member add-on', 'bmg-theme' ), '—', '✓', '✓' ),
+			array( __( '[Feature description]', 'bmg-theme' ), '—', '—', '✓' ),
+			array( __( '[Feature description]', 'bmg-theme' ), '—', '—', '✓' ),
+			array( __( '[Feature description]', 'bmg-theme' ), '—', '—', '✓' ),
+			array( __( '[Feature description]', 'bmg-theme' ), '—', '✓', '✓' ),
 		),
 	),
 );
@@ -69,14 +69,14 @@ $categories = array(
 							<span class="sr-only"><?php esc_html_e( 'Feature', 'bmg-theme' ); ?></span>
 						</th>
 						<th class="plans-table__plan-col">
-							<?php esc_html_e( 'Essential', 'bmg-theme' ); ?>
+							<?php esc_html_e( '[Plan Tier 1]', 'bmg-theme' ); ?>
 						</th>
 						<th class="plans-table__plan-col plans-table__plan-col--featured">
-							<?php esc_html_e( 'Premium', 'bmg-theme' ); ?>
+							<?php esc_html_e( '[Plan Tier 2]', 'bmg-theme' ); ?>
 							<span class="plans-table__badge"><?php esc_html_e( 'Recommended', 'bmg-theme' ); ?></span>
 						</th>
 						<th class="plans-table__plan-col">
-							<?php esc_html_e( 'Concierge Elite', 'bmg-theme' ); ?>
+							<?php esc_html_e( '[Plan Tier 3]', 'bmg-theme' ); ?>
 						</th>
 					</tr>
 				</thead>
@@ -97,16 +97,16 @@ $categories = array(
 
 					<!-- Pricing rows -->
 					<tr class="plans-table__category-row">
-						<td colspan="4"><?php esc_html_e( 'Investment', 'bmg-theme' ); ?></td>
+						<td colspan="4"><?php esc_html_e( '[Feature Category 6]', 'bmg-theme' ); ?></td>
 					</tr>
 					<tr>
-						<td class="plans-table__feature-name"><?php esc_html_e( 'Monthly', 'bmg-theme' ); ?></td>
+						<td class="plans-table__feature-name"><?php esc_html_e( '[Feature description]', 'bmg-theme' ); ?></td>
 						<td class="plans-table__cell plans-table__cell--pricing"><?php esc_html_e( 'Contact Us', 'bmg-theme' ); ?></td>
 						<td class="plans-table__cell plans-table__cell--featured plans-table__cell--pricing"><?php esc_html_e( 'Contact Us', 'bmg-theme' ); ?></td>
 						<td class="plans-table__cell plans-table__cell--pricing"><?php esc_html_e( 'Contact Us', 'bmg-theme' ); ?></td>
 					</tr>
 					<tr>
-						<td class="plans-table__feature-name"><?php esc_html_e( 'Annual', 'bmg-theme' ); ?></td>
+						<td class="plans-table__feature-name"><?php esc_html_e( '[Feature description]', 'bmg-theme' ); ?></td>
 						<td class="plans-table__cell plans-table__cell--pricing"><?php esc_html_e( 'Contact Us', 'bmg-theme' ); ?></td>
 						<td class="plans-table__cell plans-table__cell--featured plans-table__cell--pricing"><?php esc_html_e( 'Contact Us', 'bmg-theme' ); ?></td>
 						<td class="plans-table__cell plans-table__cell--pricing"><?php esc_html_e( 'Contact Us', 'bmg-theme' ); ?></td>
@@ -118,7 +118,7 @@ $categories = array(
 		<div class="row justify-content-center mt-4">
 			<div class="col-lg-10 text-center">
 				<p class="plans-table__note">
-					<?php esc_html_e( 'All plans require an initial enrollment consultation. Annual commitments include a preferred rate. Pricing reflects physician access and care coordination — standard office visit copays and insurance billing for covered services remain separate.', 'bmg-theme' ); ?>
+					<?php esc_html_e( '[Plans disclaimer and pricing note.]', 'bmg-theme' ); ?>
 				</p>
 			</div>
 		</div>

@@ -6,7 +6,7 @@
  * Rank Math (or any SEO plugin) takes priority when configured;
  * these serve as fallbacks for pages without plugin-level overrides.
  *
- * @package BMG_Theme
+ * @package starter-theme
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -19,40 +19,40 @@ defined( 'ABSPATH' ) || exit;
 function bmg_seo_page_data() {
 	return array(
 		'front-page'    => array(
-			'title'       => __( 'Baig Medical Group — Concierge Medicine in Yuma, AZ', 'bmg-theme' ),
-			'description' => __( 'Membership-based medical practice in Yuma offering direct physician access, extended appointments, and coordinated care for individuals and families.', 'bmg-theme' ),
+			'title'       => __( '[Business Name] — [Industry Tagline]', 'bmg-theme' ),
+			'description' => __( '[Homepage meta description — summarize services, location, and value proposition.]', 'bmg-theme' ),
 		),
 		'page-about'    => array(
-			'title'       => __( 'About Dr. Adil Baig — Baig Medical Group', 'bmg-theme' ),
-			'description' => __( 'Meet Dr. Adil Baig, a board-certified family medicine physician offering concierge care in Yuma, Arizona.', 'bmg-theme' ),
+			'title'       => __( 'About — [Business Name]', 'bmg-theme' ),
+			'description' => __( '[About page meta description — introduce the provider or team and their qualifications.]', 'bmg-theme' ),
 		),
 		'page-plans'    => array(
-			'title'       => __( 'Membership Plans — Baig Medical Group', 'bmg-theme' ),
-			'description' => __( 'Compare three concierge medicine membership tiers. Every plan includes direct physician access, same-day appointments, and care coordination.', 'bmg-theme' ),
+			'title'       => __( 'Plans — [Business Name]', 'bmg-theme' ),
+			'description' => __( '[Plans page meta description — summarize plan tiers and key benefits.]', 'bmg-theme' ),
 		),
 		'page-services' => array(
-			'title'       => __( 'Our Services — Baig Medical Group, Yuma AZ', 'bmg-theme' ),
-			'description' => __( 'Primary care, preventive health, executive physicals, specialist coordination, and wellness planning delivered by your personal physician in Yuma.', 'bmg-theme' ),
+			'title'       => __( 'Services — [Business Name]', 'bmg-theme' ),
+			'description' => __( '[Services page meta description — summarize core service offerings.]', 'bmg-theme' ),
 		),
 		'page-enroll'   => array(
-			'title'       => __( 'Enroll — Baig Medical Group', 'bmg-theme' ),
-			'description' => __( 'Begin your membership application. All information is transmitted securely in compliance with HIPAA privacy requirements.', 'bmg-theme' ),
+			'title'       => __( 'Enroll — [Business Name]', 'bmg-theme' ),
+			'description' => __( '[Enrollment page meta description — describe the enrollment process.]', 'bmg-theme' ),
 		),
 		'page-faq'      => array(
-			'title'       => __( 'Frequently Asked Questions — Baig Medical Group', 'bmg-theme' ),
-			'description' => __( 'Answers about concierge medicine, membership plans, insurance coordination, physician access, and enrollment at Baig Medical Group.', 'bmg-theme' ),
+			'title'       => __( 'FAQ — [Business Name]', 'bmg-theme' ),
+			'description' => __( '[FAQ page meta description — summarize common questions covered.]', 'bmg-theme' ),
 		),
 		'page-contact'  => array(
-			'title'       => __( 'Contact — Baig Medical Group, Yuma AZ', 'bmg-theme' ),
-			'description' => __( 'Reach Baig Medical Group by phone, email, or contact form. Office hours, location, and directions in Yuma, Arizona.', 'bmg-theme' ),
+			'title'       => __( 'Contact — [Business Name]', 'bmg-theme' ),
+			'description' => __( '[Contact page meta description — mention contact methods and location.]', 'bmg-theme' ),
 		),
 		'page-privacy'  => array(
-			'title'       => __( 'Privacy Policy — Baig Medical Group', 'bmg-theme' ),
-			'description' => __( 'HIPAA Notice of Privacy Practices and website privacy policy for Baig Medical Group.', 'bmg-theme' ),
+			'title'       => __( 'Privacy Policy — [Business Name]', 'bmg-theme' ),
+			'description' => __( '[Privacy page meta description — mention privacy practices and compliance.]', 'bmg-theme' ),
 		),
 		'page-terms'    => array(
-			'title'       => __( 'Terms of Use — Baig Medical Group', 'bmg-theme' ),
-			'description' => __( 'Website terms of use, medical disclaimer, and governing law for Baig Medical Group.', 'bmg-theme' ),
+			'title'       => __( 'Terms of Use — [Business Name]', 'bmg-theme' ),
+			'description' => __( '[Terms page meta description — mention terms of use and disclaimers.]', 'bmg-theme' ),
 		),
 	);
 }

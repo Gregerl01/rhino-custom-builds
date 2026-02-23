@@ -4,7 +4,7 @@
  *
  * Adds logo size control to the Site Identity section.
  *
- * @package BMG_Theme
+ * @package starter-theme
  */
 
 defined( 'ABSPATH' ) || exit;

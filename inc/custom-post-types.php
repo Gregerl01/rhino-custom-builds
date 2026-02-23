@@ -2,7 +2,7 @@
 /**
  * Custom Post Types for Homepage Sections
  *
- * @package BMG_Theme
+ * @package starter-theme
  */
 
 defined( 'ABSPATH' ) || exit;
