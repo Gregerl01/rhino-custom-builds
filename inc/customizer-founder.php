@@ -247,35 +247,5 @@ function bmg_theme_founder_customizer( $wp_customize ) {
 			'type'    => 'url',
 		)
 	);
-
-	// ----------------------------------------------------------------------
-	// Image collage
-	// ----------------------------------------------------------------------
-
-	$image_fields = array(
-		'bmg_founder_image_main'      => __( 'Main Image (4:5 — shop floor)', 'bmg-theme' ),
-		'bmg_founder_image_collage_1' => __( 'Collage Image 1 (1:1 — install bay)', 'bmg-theme' ),
-		'bmg_founder_image_collage_2' => __( 'Collage Image 2 (1:1 — team)', 'bmg-theme' ),
-	);
-
-	foreach ( $image_fields as $key => $label ) {
-		$wp_customize->add_setting(
-			$key,
-			array(
-				'default'           => '',
-				'sanitize_callback' => 'esc_url_raw',
-			)
-		);
-		$wp_customize->add_control(
-			new WP_Customize_Image_Control(
-				$wp_customize,
-				$key,
-				array(
-					'label'   => $label,
-					'section' => 'bmg_theme_founder',
-				)
-			)
-		);
-	}
 }
 add_action( 'customize_register', 'bmg_theme_founder_customizer' );

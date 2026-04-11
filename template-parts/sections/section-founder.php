@@ -2,9 +2,9 @@
 /**
  * Homepage Founder / Shop Section — Rhino Custom Builds
  *
- * Dark section introducing the shop: two-paragraph story, credential
- * badges, four feature bullets, and an asymmetric image collage
- * (one 4:5 main + two stacked 1:1).
+ * Dark split-column section.
+ * Left: overline, H2, two paragraphs, ghost CTA.
+ * Right: three credential badges + four feature bullets.
  *
  * Content: CONTENT.md → Homepage → Section 3 — Founder / Shop
  * Design:  CLAUDE.md → GSL Section Mapping → Founder/Shop
@@ -57,11 +57,6 @@ $features = array(
 
 $cta_text = get_theme_mod( 'bmg_founder_cta_text', __( 'Meet the Team', 'bmg-theme' ) );
 $cta_url  = get_theme_mod( 'bmg_founder_cta_url', '/about/' );
-
-// Image collage — main + two stacked. Empty slots render dark placeholders.
-$image_main      = get_theme_mod( 'bmg_founder_image_main', '' );
-$image_collage_1 = get_theme_mod( 'bmg_founder_image_collage_1', '' );
-$image_collage_2 = get_theme_mod( 'bmg_founder_image_collage_2', '' );
 ?>
 
 <section id="founder" class="section-founder section-founder--dark" data-section="founder">
@@ -70,6 +65,7 @@ $image_collage_2 = get_theme_mod( 'bmg_founder_image_collage_2', '' );
 	<div class="container position-relative">
 		<div class="row g-5 align-items-start">
 
+			<?php // Left column — story + CTA ?>
 			<div class="col-lg-6 section-founder__content">
 
 				<?php if ( $overline ) : ?>
@@ -95,6 +91,20 @@ $image_collage_2 = get_theme_mod( 'bmg_founder_image_collage_2', '' );
 						<?php echo esc_html( $paragraph_2 ); ?>
 					</p>
 				<?php endif; ?>
+
+				<?php if ( $cta_text ) : ?>
+					<a href="<?php echo esc_url( $cta_url ); ?>" class="btn-rhino btn-rhino--ghost-dark section-founder__cta bmg-reveal">
+						<span><?php echo esc_html( $cta_text ); ?></span>
+						<svg class="btn-rhino__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+							<path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+						</svg>
+					</a>
+				<?php endif; ?>
+
+			</div>
+
+			<?php // Right column — credential badges + feature bullets ?>
+			<div class="col-lg-6 section-founder__proof">
 
 				<?php if ( ! empty( $badges ) ) : ?>
 					<ul class="section-founder__badges bmg-reveal-stagger" role="list">
@@ -131,48 +141,6 @@ $image_collage_2 = get_theme_mod( 'bmg_founder_image_collage_2', '' );
 					</ul>
 				<?php endif; ?>
 
-				<?php if ( $cta_text ) : ?>
-					<a href="<?php echo esc_url( $cta_url ); ?>" class="btn-rhino btn-rhino--ghost-dark section-founder__cta bmg-reveal">
-						<span><?php echo esc_html( $cta_text ); ?></span>
-						<svg class="btn-rhino__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-							<path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
-						</svg>
-					</a>
-				<?php endif; ?>
-
-			</div>
-
-			<div class="col-lg-6 section-founder__collage bmg-reveal">
-				<figure class="section-founder__collage-main">
-					<?php if ( $image_main ) : ?>
-						<img src="<?php echo esc_url( $image_main ); ?>" alt="<?php esc_attr_e( 'Rhino Custom Builds shop floor', 'bmg-theme' ); ?>" loading="lazy" decoding="async">
-					<?php else : ?>
-						<div class="section-founder__placeholder" aria-hidden="true">
-							<span class="section-founder__placeholder-label"><?php esc_html_e( 'SHOP FLOOR — 4:5', 'bmg-theme' ); ?></span>
-						</div>
-					<?php endif; ?>
-				</figure>
-
-				<div class="section-founder__collage-stack">
-					<figure class="section-founder__collage-sub">
-						<?php if ( $image_collage_1 ) : ?>
-							<img src="<?php echo esc_url( $image_collage_1 ); ?>" alt="<?php esc_attr_e( 'Rhino Custom Builds install bay', 'bmg-theme' ); ?>" loading="lazy" decoding="async">
-						<?php else : ?>
-							<div class="section-founder__placeholder" aria-hidden="true">
-								<span class="section-founder__placeholder-label"><?php esc_html_e( 'BAY — 1:1', 'bmg-theme' ); ?></span>
-							</div>
-						<?php endif; ?>
-					</figure>
-					<figure class="section-founder__collage-sub">
-						<?php if ( $image_collage_2 ) : ?>
-							<img src="<?php echo esc_url( $image_collage_2 ); ?>" alt="<?php esc_attr_e( 'Rhino Custom Builds team', 'bmg-theme' ); ?>" loading="lazy" decoding="async">
-						<?php else : ?>
-							<div class="section-founder__placeholder" aria-hidden="true">
-								<span class="section-founder__placeholder-label"><?php esc_html_e( 'TEAM — 1:1', 'bmg-theme' ); ?></span>
-							</div>
-						<?php endif; ?>
-					</figure>
-				</div>
 			</div>
 
 		</div>
