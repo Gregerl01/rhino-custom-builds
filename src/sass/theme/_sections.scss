@@ -2984,17 +2984,194 @@ html {
 }
 
 // ==========================================================================
-// SECTION 7: CTA
+// SECTION 7: CTA — Rhino Custom Builds
+// ==========================================================================
+// Dark closing band with dual CTA (red primary + amber phone fallback),
+// microcopy, hours, and a trust-strip echo from the hero. Noise grain
+// overlay matches hero and founder.
 // ==========================================================================
 .section-cta {
 	position: relative;
 	overflow: hidden;
-	background-color: $bmg-obsidian;
-	color: $bmg-white;
-	padding: $space-5xl 0;
+	background-color: $brand-dark;
+	color: $text-on-dark;
+	padding: 120px 0;
 
 	@media (max-width: 767.98px) {
-		padding: $space-3xl 0;
+		padding: 80px 0;
+	}
+
+	// 4% noise grain layer — same treatment as hero and founder
+	&__grain {
+		position: absolute;
+		inset: 0;
+		background-image: url('../img/noise.png');
+		background-repeat: repeat;
+		opacity: 0.04;
+		pointer-events: none;
+		mix-blend-mode: overlay;
+		z-index: 0;
+	}
+
+	> .container {
+		position: relative;
+		z-index: 1;
+	}
+
+	// ----- Typography -------------------------------------------------------
+
+	&__overline {
+		display: inline-block;
+		font-family: $font-family-mono;
+		font-size: 11px;
+		font-weight: 500;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: $brand-primary;
+		margin-bottom: $space-sm;
+	}
+
+	&__headline {
+		font-family: $font-family-display;
+		font-weight: 800;
+		font-size: clamp(2.5rem, 6vw, 4.5rem); // 40 → 72
+		line-height: 0.95;
+		letter-spacing: 0.01em;
+		text-transform: uppercase;
+		color: $text-on-dark;
+		margin: 0 0 $space-md; // 24
+		max-width: 18ch;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	&__subline {
+		font-family: $font-family-base;
+		font-size: clamp(1rem, 1.5vw, 1.125rem); // 16 → 18
+		font-weight: 400;
+		line-height: 1.6;
+		color: rgba($text-on-dark, 0.82);
+		margin: 0 auto $space-xl; // 40
+		max-width: 60ch;
+	}
+
+	// ----- Dual-CTA action row ---------------------------------------------
+
+	&__actions {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		gap: $space-sm; // 16
+		margin-bottom: $space-lg; // 32
+
+		@media (max-width: 575.98px) {
+			flex-direction: column;
+			gap: $space-sm;
+
+			> .btn-rhino {
+				width: 100%;
+				justify-content: center;
+			}
+		}
+	}
+
+	&__phone {
+		// Amber phone CTA — extends .btn-rhino--phone with icon + label + number
+		display: inline-flex;
+		align-items: center;
+		gap: $space-xs; // 8
+	}
+
+	&__phone-icon {
+		flex-shrink: 0;
+		transition: transform $motion-fast $ease-out-expo;
+	}
+
+	.section-cta__phone:hover .section-cta__phone-icon {
+		transform: rotate(-8deg);
+	}
+
+	&__phone-label {
+		font-family: $font-family-base;
+		font-weight: 500;
+		font-size: 13px;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+		opacity: 0.75;
+	}
+
+	&__phone-number {
+		font-family: $font-family-mono;
+		font-weight: 700;
+		font-size: 14px;
+		letter-spacing: 0.02em;
+	}
+
+	// ----- Microcopy + hours reminder --------------------------------------
+
+	&__microcopy {
+		font-family: $font-family-base;
+		font-size: 0.9375rem; // 15
+		font-weight: 400;
+		line-height: 1.55;
+		color: rgba($text-on-dark, 0.62);
+		margin: 0 auto $space-xs; // 8
+		max-width: 60ch;
+	}
+
+	&__hours {
+		font-family: $font-family-mono;
+		font-size: 11px;
+		font-weight: 500;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: rgba($text-on-dark, 0.5);
+		margin: 0 auto $space-2xl; // 64 → trust strip
+	}
+
+	// ----- Trust strip echo -------------------------------------------------
+
+	&__trust {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: $space-sm $space-lg; // 16 row / 32 col
+		list-style: none;
+		padding: $space-lg 0 0;
+		margin: 0 auto;
+		max-width: 900px;
+		border-top: 1px solid rgba($text-on-dark, 0.15);
+
+		@media (max-width: 575.98px) {
+			gap: $space-sm;
+		}
+	}
+
+	&__trust-item {
+		font-family: $font-family-mono;
+		font-size: 10px;
+		font-weight: 500;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: rgba($text-on-dark, 0.65);
+		position: relative;
+
+		// Red dot separator between items (desktop only — mobile wraps)
+		&:not(:last-child)::after {
+			content: '';
+			position: absolute;
+			right: -#{$space-md}; // -24
+			top: 50%;
+			width: 4px;
+			height: 4px;
+			background-color: $brand-primary;
+			transform: translateY(-50%);
+
+			@media (max-width: 575.98px) {
+				display: none;
+			}
+		}
 	}
 }
 
