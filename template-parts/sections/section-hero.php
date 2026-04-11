@@ -50,41 +50,7 @@ $bg_style = $background_image
 	? sprintf( 'background-image: url(%s);', esc_url( $background_image ) )
 	: '';
 
-/**
- * Parse a trust strip item for an animated counter.
- *
- * Looks for the first integer match (with optional comma grouping and
- * optional trailing "+"). Returns an array with "prefix", "count", and
- * "suffix" keys. If no match, returns null so the caller can fall back
- * to static rendering.
- *
- * @param string $item Raw trust strip string.
- * @return array|null
- */
-function bmg_parse_trust_item( $item ) {
-	if ( ! preg_match( '/(\d[\d,]*)(\+?)/', $item, $matches, PREG_OFFSET_CAPTURE ) ) {
-		return null;
-	}
-	$full_match   = $matches[0][0];
-	$offset       = $matches[0][1];
-	$number_raw   = $matches[1][0];
-	$plus         = $matches[2][0];
-	$count_target = (int) str_replace( ',', '', $number_raw );
-
-	// Skip counters for trivial numbers — "4.9" style ratings still render
-	// statically. Threshold of 10 prevents silly 0→5 animations.
-	if ( $count_target < 10 ) {
-		return null;
-	}
-
-	return array(
-		'prefix' => substr( $item, 0, $offset ),
-		'count'  => $count_target,
-		'format' => $number_raw, // preserve "4,200" formatting
-		'plus'   => $plus,
-		'suffix' => substr( $item, $offset + strlen( $full_match ) ),
-	);
-}
+// bmg_parse_trust_item() lives in inc/template-helpers.php (loaded via functions.php)
 ?>
 
 <section id="hero" class="section-hero section-hero--dark" data-section="hero">

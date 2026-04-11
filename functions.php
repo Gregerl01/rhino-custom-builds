@@ -116,6 +116,7 @@ add_action( 'wp_enqueue_scripts', 'bmg_enqueue_scripts', 20 );
 $bmg_inc_dir = 'inc';
 
 $bmg_includes = array(
+	'/template-helpers.php',         // Shared template helpers (e.g. trust-item parser).
 	'/custom-post-types.php',        // Custom post types for homepage sections.
 	'/customizer-site-identity.php', // Site Identity settings (logo size).
 	'/customizer-practice-info.php', // Business Information panel (provider, contact, hours).
@@ -124,6 +125,7 @@ $bmg_includes = array(
 	'/customizer-problem.php',       // Problem section Customizer settings.
 	'/customizer-founder.php',       // Founder / Shop section Customizer settings.
 	'/customizer-features.php',      // Features section Customizer settings.
+	'/customizer-proof.php',         // Proof section Customizer settings.
 	'/customizer-about.php',         // About section Customizer settings.
 	'/dark-mode.php',                // Dark mode FOUC prevention and data-bs-theme attribute.
 	'/seo-metadata.php',             // SEO title tags and meta descriptions.
