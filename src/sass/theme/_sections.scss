@@ -3500,7 +3500,9 @@ html {
 				> .nav-dropdown {
 					opacity: 1;
 					visibility: visible;
-					transform: translateY(0);
+					// Preserve the translateX(-50%) horizontal centering —
+					// only change the Y offset from 8px to 0.
+					transform: translate(-50%, 0);
 					pointer-events: auto;
 				}
 				> .nav-link.dropdown-toggle::after {
@@ -3787,7 +3789,12 @@ html {
 		transform: rotate(-135deg) translateY(3px);
 	}
 
-	// Sub-list starts collapsed, expands when parent has .is-expanded
+	// Sub-list starts collapsed, expands when parent has .is-expanded.
+	// NOTE: the expanded state is declared as a sibling rule (not nested
+	// inside .nav-dropdown) because Sass would otherwise invert the
+	// ancestry via `&` interpolation and produce
+	// `.has-dropdown.is-expanded .mobile-drawer .nav-dropdown`, which
+	// never matches anything.
 	.nav-dropdown {
 		position: static;
 		list-style: none;
@@ -3807,14 +3814,14 @@ html {
 			max-height $motion-moderate $ease-out-expo,
 			opacity $motion-moderate $ease-out-expo,
 			padding $motion-moderate $ease-out-expo;
+	}
 
-		.has-dropdown.is-expanded & {
-			opacity: 1;
-			visibility: visible;
-			pointer-events: auto;
-			max-height: 600px;
-			padding: 0 0 $space-sm;
-		}
+	.has-dropdown.is-expanded > .nav-dropdown {
+		opacity: 1;
+		visibility: visible;
+		pointer-events: auto;
+		max-height: 600px;
+		padding: 0 0 $space-sm;
 	}
 
 	.nav-dropdown__link {
