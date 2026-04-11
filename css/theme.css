@@ -18904,97 +18904,242 @@ html {
 }
 
 .site-footer {
-  padding-top: 4rem;
-  padding-bottom: 3rem;
+  background-color: #242424;
+  color: rgba(245, 242, 238, 0.75);
+  padding: 6rem 0 2rem;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
 }
-.site-footer .footer-logo img {
+@media (max-width: 767.98px) {
+  .site-footer {
+    padding: 4rem 0 1.5rem;
+  }
+}
+.site-footer__grid {
+  --bs-gutter-y: 4rem;
+  margin-bottom: 4rem;
+}
+@media (max-width: 767.98px) {
+  .site-footer__grid {
+    margin-bottom: 3rem;
+  }
+}
+.site-footer__logo {
+  margin-bottom: 1.5rem;
+}
+.site-footer__logo img {
   max-width: 180px;
   height: auto;
+  display: block;
 }
-.site-footer .footer-title {
-  color: #5A5651;
-  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
+.site-footer__brand {
+  font-family: "Barlow Condensed", "Barlow", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
+  color: #F5F2EE;
+  margin: 0 0 1.5rem;
 }
-.site-footer .footer-address {
+.site-footer__address {
   font-style: normal;
   font-size: 0.9375rem;
-  color: #E8E4DE;
-  line-height: 1.6;
+  line-height: 1.65;
+  color: rgba(245, 242, 238, 0.75);
+  margin: 0 0 1.5rem;
 }
-.site-footer .footer-contact {
-  font-size: 0.9375rem;
+.site-footer__contact {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
 }
-.site-footer .footer-contact a {
-  color: #E8E4DE;
+.site-footer__contact > li {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 0.5rem;
+}
+.site-footer__contact > li:last-child {
+  margin-bottom: 0;
+}
+.site-footer__contact a {
+  color: #F5F2EE;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color 200ms cubic-bezier(0.16, 1, 0.3, 1);
 }
-.site-footer .footer-contact a:hover {
-  color: #FFFFFF;
+.site-footer__contact a:hover, .site-footer__contact a:focus-visible {
+  color: #C41E2A;
+  outline: none;
 }
-.site-footer .footer-hours {
+.site-footer__contact-label {
+  display: block;
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(245, 242, 238, 0.45);
+  margin-bottom: 2px;
+}
+.site-footer__phone {
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-weight: 500;
   font-size: 0.9375rem;
-  line-height: 1.8;
-  color: #E8E4DE;
+  letter-spacing: 0.02em;
 }
-.site-footer .footer-menu li {
+.site-footer__email {
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.9375rem;
+  word-break: break-word;
+}
+.site-footer__rating {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(245, 242, 238, 0.1);
+}
+.site-footer__rating-stars {
+  color: #E8913A;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+.site-footer__rating-value {
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-weight: 700;
+  font-size: 14px;
+  color: #F5F2EE;
+}
+.site-footer__rating-label {
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(245, 242, 238, 0.45);
+}
+.site-footer__heading {
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #C41E2A;
+  margin: 0 0 1.5rem;
+}
+.site-footer__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.site-footer__list > li {
   margin-bottom: 0.5rem;
 }
-.site-footer .footer-menu li a {
-  color: #E8E4DE;
-  text-decoration: none;
+.site-footer__list > li:last-child {
+  margin-bottom: 0;
+}
+.site-footer__list a {
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.9375rem;
-  transition: color 0.2s ease;
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(245, 242, 238, 0.75);
+  text-decoration: none;
+  transition: color 200ms cubic-bezier(0.16, 1, 0.3, 1);
 }
-.site-footer .footer-menu li a:hover {
-  color: #FFFFFF;
+.site-footer__list a:hover, .site-footer__list a:focus-visible {
+  color: #C41E2A;
+  outline: none;
 }
-.site-footer .footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+.site-footer__hours {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
 }
-.site-footer .footer-copyright {
-  color: #5A5651;
-}
-.site-footer .footer-legal {
+.site-footer__hours > li {
   font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-  font-size: 12px;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: rgba(245, 242, 238, 0.75);
+}
+.site-footer__map {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: rgba(245, 242, 238, 0.75);
+  transition: color 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.site-footer__map:hover, .site-footer__map:focus-visible {
+  color: #F5F2EE;
+  outline: none;
+}
+.site-footer__map:hover .site-footer__map-placeholder, .site-footer__map:focus-visible .site-footer__map-placeholder {
+  border-color: rgba(245, 242, 238, 0.4);
+}
+.site-footer__map-placeholder {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16/9;
+  background-color: #1A1A1A;
+  background-image: repeating-linear-gradient(0deg, rgba(245, 242, 238, 0.05) 0, rgba(245, 242, 238, 0.05) 1px, transparent 1px, transparent 24px), repeating-linear-gradient(90deg, rgba(245, 242, 238, 0.05) 0, rgba(245, 242, 238, 0.05) 1px, transparent 1px, transparent 24px);
+  border: 1px solid rgba(245, 242, 238, 0.15);
+  transition: border-color 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.site-footer__map-label {
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
-.site-footer .footer-legal a {
-  color: rgba(90, 86, 81, 0.5);
+.site-footer__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(245, 242, 238, 0.08);
+}
+@media (max-width: 575.98px) {
+  .site-footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+.site-footer__copyright {
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(245, 242, 238, 0.45);
+  margin: 0;
+}
+.site-footer__legal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.site-footer__legal a {
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(245, 242, 238, 0.45);
   text-decoration: none;
-  transition: color 200ms ease;
+  transition: color 200ms cubic-bezier(0.16, 1, 0.3, 1);
 }
-.site-footer .footer-legal a:hover {
-  color: #5A5651;
+.site-footer__legal a:hover, .site-footer__legal a:focus-visible {
+  color: #C41E2A;
+  outline: none;
 }
-.site-footer .footer-legal__sep {
-  color: rgba(90, 86, 81, 0.25);
-  margin: 0 1rem;
-}
-.site-footer .footer-credit {
-  margin-top: 1.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(90, 86, 81, 0.08);
-  text-align: center;
-}
-.site-footer .footer-credit p {
-  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-  font-size: 11px;
-  color: rgba(90, 86, 81, 0.35);
-}
-.site-footer .footer-credit a {
-  color: rgba(90, 86, 81, 0.35);
-  text-decoration: none;
-  transition: color 200ms ease;
-}
-.site-footer .footer-credit a:hover {
-  color: rgba(90, 86, 81, 0.6);
+.site-footer__legal-sep {
+  color: rgba(245, 242, 238, 0.25);
 }
 
 #main-nav {

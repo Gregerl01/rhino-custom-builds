@@ -3201,121 +3201,318 @@ html {
 // ==========================================================================
 // Footer
 // ==========================================================================
-.site-footer {
-	padding-top: $space-2xl;
-	padding-bottom: $space-xl;
+// ==========================================================================
+// Site Footer — Rhino Custom Builds
+// ==========================================================================
+// Dark 4-column footer (Identity · Services · Company · Hours) with a
+// bottom bar. Collapses 4 → 2 → 1 across breakpoints. Column headings
+// in JetBrains Mono uppercase. Links in Barlow 400 → $brand-primary on
+// hover. Phone numbers + rating number in JetBrains Mono.
+// ==========================================================================
 
-	.footer-logo {
+.site-footer {
+	background-color: $brand-dark-lighter;
+	color: rgba($text-on-dark, 0.75);
+	padding: $space-3xl 0 $space-lg; // 96 top / 32 bottom
+	font-family: $font-family-base;
+
+	@media (max-width: 767.98px) {
+		padding: $space-2xl 0 $space-md; // 64 / 24
+	}
+
+	// ----- 4-col grid -----------------------------------------------------
+
+	&__grid {
+		--bs-gutter-y: #{$space-2xl}; // 64px row gap when columns wrap
+		margin-bottom: $space-2xl;
+
+		@media (max-width: 767.98px) {
+			margin-bottom: $space-xl;
+		}
+	}
+
+	&__col {
+		// Bootstrap grid handles width. This is just a scoping hook.
+	}
+
+	// ----- Column 1 — Identity --------------------------------------------
+
+	&__logo {
+		margin-bottom: $space-md; // 24
+
 		img {
 			max-width: 180px;
 			height: auto;
+			display: block;
 		}
 	}
 
-	.footer-title {
-		color: $bmg-silver;
-		font-family: $font-family-base;
-		font-size: 0.75rem;
-		font-weight: 600;
-		letter-spacing: 0.1em;
+	&__brand {
+		font-family: $font-family-display;
+		font-weight: 700;
+		font-size: 1.25rem;
+		letter-spacing: 0.04em;
 		text-transform: uppercase;
+		color: $text-on-dark;
+		margin: 0 0 $space-md;
 	}
 
-	.footer-address {
+	&__address {
 		font-style: normal;
-		font-size: 0.9375rem;
-		color: $bmg-platinum;
-		line-height: 1.6;
+		font-size: 0.9375rem; // 15
+		line-height: 1.65;
+		color: rgba($text-on-dark, 0.75);
+		margin: 0 0 $space-md;
 	}
 
-	.footer-contact {
-		font-size: 0.9375rem;
+	&__contact {
+		list-style: none;
+		padding: 0;
+		margin: 0 0 $space-md;
+
+		> li {
+			display: flex;
+			flex-direction: column;
+			margin: 0 0 $space-xs;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
 
 		a {
-			color: $bmg-platinum;
+			color: $text-on-dark;
 			text-decoration: none;
-			transition: color 0.2s ease;
+			transition: color $motion-fast $ease-out-expo;
 
-			&:hover {
-				color: $bmg-white;
+			&:hover,
+			&:focus-visible {
+				color: $brand-primary;
+				outline: none;
 			}
 		}
 	}
 
-	.footer-hours {
-		font-size: 0.9375rem;
-		line-height: 1.8;
-		color: $bmg-platinum;
-	}
-
-	.footer-menu {
-		li {
-			margin-bottom: $space-xs;
-
-			a {
-				color: $bmg-platinum;
-				text-decoration: none;
-				font-size: 0.9375rem;
-				transition: color 0.2s ease;
-
-				&:hover {
-					color: $bmg-white;
-				}
-			}
-		}
-	}
-
-	.footer-bottom {
-		border-top: 1px solid rgba($bmg-white, 0.08);
-	}
-
-	.footer-copyright {
-		color: $bmg-warm-gray;
-	}
-
-	.footer-legal {
-		font-family: $font-family-base;
-		font-size: 12px;
+	&__contact-label {
+		display: block;
+		font-family: $font-family-mono;
+		font-size: 9px;
+		font-weight: 500;
+		letter-spacing: 0.15em;
 		text-transform: uppercase;
-		letter-spacing: 0.05em;
+		color: rgba($text-on-dark, 0.45);
+		margin-bottom: 2px;
+	}
 
-		a {
-			color: rgba($bmg-silver, 0.5);
-			text-decoration: none;
-			transition: color $motion-fast ease;
+	&__phone {
+		font-family: $font-family-mono;
+		font-weight: 500;
+		font-size: 0.9375rem;
+		letter-spacing: 0.02em;
+	}
 
-			&:hover {
-				color: $bmg-silver;
+	&__email {
+		font-family: $font-family-base;
+		font-size: 0.9375rem;
+		word-break: break-word;
+	}
+
+	&__rating {
+		display: inline-flex;
+		align-items: baseline;
+		gap: 8px;
+		margin: 0;
+		padding-top: $space-sm;
+		border-top: 1px solid rgba($text-on-dark, 0.1);
+	}
+
+	&__rating-stars {
+		color: $brand-accent;
+		font-size: 14px;
+		letter-spacing: 2px;
+	}
+
+	&__rating-value {
+		font-family: $font-family-mono;
+		font-weight: 700;
+		font-size: 14px;
+		color: $text-on-dark;
+	}
+
+	&__rating-label {
+		font-family: $font-family-mono;
+		font-size: 9px;
+		font-weight: 500;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: rgba($text-on-dark, 0.45);
+	}
+
+	// ----- Shared column heading ------------------------------------------
+
+	&__heading {
+		font-family: $font-family-mono;
+		font-size: 10px;
+		font-weight: 500;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		color: $brand-primary;
+		margin: 0 0 $space-md;
+	}
+
+	// ----- Service + Company list columns ---------------------------------
+
+	&__list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+
+		> li {
+			margin-bottom: $space-xs; // 8
+
+			&:last-child {
+				margin-bottom: 0;
 			}
 		}
 
-		&__sep {
-			color: rgba($bmg-silver, 0.25);
-			margin: 0 $space-sm;
+		a {
+			font-family: $font-family-base;
+			font-size: 0.9375rem;
+			font-weight: 400;
+			line-height: 1.5;
+			color: rgba($text-on-dark, 0.75);
+			text-decoration: none;
+			transition: color $motion-fast $ease-out-expo;
+
+			&:hover,
+			&:focus-visible {
+				color: $brand-primary;
+				outline: none;
+			}
 		}
 	}
 
-	.footer-credit {
-		margin-top: $space-md;
-		padding-top: $space-md;
-		border-top: 1px solid rgba($bmg-silver, 0.08);
-		text-align: center;
+	// ----- Column 4 — Hours + map -----------------------------------------
 
-		p {
+	&__hours {
+		list-style: none;
+		padding: 0;
+		margin: 0 0 $space-lg;
+
+		> li {
 			font-family: $font-family-base;
-			font-size: 11px;
-			color: rgba($bmg-silver, 0.35);
+			font-size: 0.9375rem;
+			line-height: 1.6;
+			color: rgba($text-on-dark, 0.75);
 		}
+	}
 
-		a {
-			color: rgba($bmg-silver, 0.35);
-			text-decoration: none;
-			transition: color $motion-fast ease;
+	&__map {
+		display: flex;
+		flex-direction: column;
+		gap: $space-xs;
+		text-decoration: none;
+		color: rgba($text-on-dark, 0.75);
+		transition: color $motion-fast $ease-out-expo;
 
-			&:hover {
-				color: rgba($bmg-silver, 0.6);
+		&:hover,
+		&:focus-visible {
+			color: $text-on-dark;
+			outline: none;
+
+			.site-footer__map-placeholder {
+				border-color: rgba($text-on-dark, 0.4);
 			}
 		}
+	}
+
+	&__map-placeholder {
+		display: block;
+		width: 100%;
+		aspect-ratio: 16 / 9;
+		background-color: $brand-dark;
+		background-image:
+			repeating-linear-gradient(
+				0deg,
+				rgba($text-on-dark, 0.05) 0,
+				rgba($text-on-dark, 0.05) 1px,
+				transparent 1px,
+				transparent 24px
+			),
+			repeating-linear-gradient(
+				90deg,
+				rgba($text-on-dark, 0.05) 0,
+				rgba($text-on-dark, 0.05) 1px,
+				transparent 1px,
+				transparent 24px
+			);
+		border: 1px solid rgba($text-on-dark, 0.15);
+		transition: border-color $motion-fast $ease-out-expo;
+	}
+
+	&__map-label {
+		font-family: $font-family-mono;
+		font-size: 10px;
+		font-weight: 500;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		display: inline-flex;
+		align-items: center;
+		gap: 4px;
+	}
+
+	// ----- Bottom bar -----------------------------------------------------
+
+	&__bottom {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		gap: $space-sm;
+		padding-top: $space-lg;
+		border-top: 1px solid rgba($text-on-dark, 0.08);
+
+		@media (max-width: 575.98px) {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+	}
+
+	&__copyright {
+		font-family: $font-family-mono;
+		font-size: 10px;
+		font-weight: 500;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: rgba($text-on-dark, 0.45);
+		margin: 0;
+	}
+
+	&__legal {
+		display: inline-flex;
+		align-items: center;
+		gap: $space-xs;
+
+		a {
+			font-family: $font-family-mono;
+			font-size: 10px;
+			font-weight: 500;
+			letter-spacing: 0.12em;
+			text-transform: uppercase;
+			color: rgba($text-on-dark, 0.45);
+			text-decoration: none;
+			transition: color $motion-fast $ease-out-expo;
+
+			&:hover,
+			&:focus-visible {
+				color: $brand-primary;
+				outline: none;
+			}
+		}
+	}
+
+	&__legal-sep {
+		color: rgba($text-on-dark, 0.25);
 	}
 }
 
