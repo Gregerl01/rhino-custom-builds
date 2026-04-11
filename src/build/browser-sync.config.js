@@ -1,5 +1,5 @@
 module.exports = {
-	"proxy": "gsl-starter.local",
+	"proxy": "rhino-custom-build.local",
 	"open": "local",
 	"notify": false,
 	"files": ["./css/*.min.css", "./js/*.min.js", "./**/*.php"]
