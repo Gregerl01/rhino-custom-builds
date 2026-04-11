@@ -135,7 +135,7 @@ $col_company = array(
 					</ul>
 				</div>
 
-				<?php // ---------- Column 4 — Hours ---------- ?>
+				<?php // ---------- Column 4 — Hours + Social ---------- ?>
 				<div class="col-lg-3 col-md-6 site-footer__col">
 					<h4 class="site-footer__heading"><?php esc_html_e( 'Hours', 'bmg-theme' ); ?></h4>
 					<ul class="site-footer__hours" role="list">
@@ -144,15 +144,35 @@ $col_company = array(
 						<li><?php echo esc_html( $hours_sunday ); ?></li>
 					</ul>
 
-					<a class="site-footer__map" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" aria-label="<?php esc_attr_e( 'View location on map', 'bmg-theme' ); ?>">
-						<span class="site-footer__map-placeholder" aria-hidden="true"></span>
-						<span class="site-footer__map-label">
-							<?php esc_html_e( 'View on Map', 'bmg-theme' ); ?>
-							<svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-								<path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
-							</svg>
-						</span>
-					</a>
+					<div class="site-footer__social">
+						<span class="site-footer__social-label"><?php esc_html_e( 'Follow Us', 'bmg-theme' ); ?></span>
+						<ul class="site-footer__social-list" role="list">
+							<li>
+								<a class="site-footer__social-link" href="https://instagram.com/" aria-label="<?php esc_attr_e( 'Rhino Custom Builds on Instagram', 'bmg-theme' ); ?>" target="_blank" rel="noopener noreferrer">
+									<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+										<rect x="2" y="2" width="20" height="20" rx="5"/>
+										<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+										<line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+									</svg>
+								</a>
+							</li>
+							<li>
+								<a class="site-footer__social-link" href="https://facebook.com/" aria-label="<?php esc_attr_e( 'Rhino Custom Builds on Facebook', 'bmg-theme' ); ?>" target="_blank" rel="noopener noreferrer">
+									<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+										<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+									</svg>
+								</a>
+							</li>
+							<li>
+								<a class="site-footer__social-link" href="https://youtube.com/" aria-label="<?php esc_attr_e( 'Rhino Custom Builds on YouTube', 'bmg-theme' ); ?>" target="_blank" rel="noopener noreferrer">
+									<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+										<path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+									<polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor" stroke="none"/>
+									</svg>
+								</a>
+							</li>
+						</ul>
+					</div>
 				</div>
 
 			</div>
@@ -162,6 +182,15 @@ $col_company = array(
 				<p class="site-footer__copyright">
 					&copy; <?php echo esc_html( date( 'Y' ) ); ?>
 					<?php esc_html_e( 'Rhino Custom Builds', 'bmg-theme' ); ?>
+				</p>
+				<p class="site-footer__credit">
+					<?php
+					printf(
+						/* translators: %s: "GSL Design" linked */
+						esc_html__( 'Website design and maintained by %s', 'bmg-theme' ),
+						'<a href="https://gsldesign.net" target="_blank" rel="noopener noreferrer">GSL Design</a>'
+					);
+					?>
 				</p>
 				<nav class="site-footer__legal" aria-label="<?php esc_attr_e( 'Legal', 'bmg-theme' ); ?>">
 					<a href="<?php echo esc_url( home_url( '/privacy-policy/' ) ); ?>">

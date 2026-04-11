@@ -3407,74 +3407,70 @@ html {
 		}
 	}
 
-	&__map {
+	// ----- Social icons (replaces the old map thumbnail) -----------------
+
+	&__social {
 		display: flex;
 		flex-direction: column;
-		gap: $space-xs;
-		text-decoration: none;
-		color: rgba($text-on-dark, 0.75);
+		gap: $space-sm; // 16
+	}
+
+	&__social-label {
+		font-family: $font-family-mono;
+		font-size: 10px;
+		font-weight: 500;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: rgba($text-on-dark, 0.45);
+	}
+
+	&__social-list {
+		display: flex;
+		align-items: center;
+		gap: $space-sm; // 16
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	&__social-link {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 40px;
+		height: 40px;
+		color: $text-on-dark;
 		transition: color $motion-fast $ease-out-expo;
 
 		&:hover,
 		&:focus-visible {
-			color: $text-on-dark;
+			color: $brand-primary;
 			outline: none;
+		}
 
-			.site-footer__map-placeholder {
-				border-color: rgba($text-on-dark, 0.4);
-			}
+		svg {
+			display: block;
 		}
 	}
 
-	&__map-placeholder {
-		display: block;
-		width: 100%;
-		aspect-ratio: 16 / 9;
-		background-color: $brand-dark;
-		background-image:
-			repeating-linear-gradient(
-				0deg,
-				rgba($text-on-dark, 0.05) 0,
-				rgba($text-on-dark, 0.05) 1px,
-				transparent 1px,
-				transparent 24px
-			),
-			repeating-linear-gradient(
-				90deg,
-				rgba($text-on-dark, 0.05) 0,
-				rgba($text-on-dark, 0.05) 1px,
-				transparent 1px,
-				transparent 24px
-			);
-		border: 1px solid rgba($text-on-dark, 0.15);
-		transition: border-color $motion-fast $ease-out-expo;
-	}
-
-	&__map-label {
-		font-family: $font-family-mono;
-		font-size: 10px;
-		font-weight: 500;
-		letter-spacing: 0.12em;
-		text-transform: uppercase;
-		display: inline-flex;
-		align-items: center;
-		gap: 4px;
-	}
-
 	// ----- Bottom bar -----------------------------------------------------
+	// Single flowing line (desktop): © Rhino · Website by GSL · Privacy · Terms
+	// On tablet/phone the items wrap onto multiple lines and the inline
+	// · separators (::after) are hidden so the breaks feel clean.
 
 	&__bottom {
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
+		justify-content: flex-start;
 		flex-wrap: wrap;
-		gap: $space-sm;
+		gap: $space-sm 0;
 		padding-top: $space-lg;
 		border-top: 1px solid rgba($text-on-dark, 0.08);
 
-		@media (max-width: 575.98px) {
+		@media (max-width: 767.98px) {
 			flex-direction: column;
 			align-items: flex-start;
+			gap: 6px;
 		}
 	}
 
@@ -3486,6 +3482,51 @@ html {
 		text-transform: uppercase;
 		color: rgba($text-on-dark, 0.45);
 		margin: 0;
+
+		// Pull the credit line inline on desktop via a · pseudo-separator
+		&::after {
+			content: '·';
+			margin: 0 $space-xs;
+			color: rgba($text-on-dark, 0.25);
+
+			@media (max-width: 767.98px) {
+				display: none; // credit wraps below copyright on mobile
+			}
+		}
+	}
+
+	&__credit {
+		font-family: $font-family-base;
+		font-size: 10px;
+		font-weight: 400;
+		letter-spacing: 0.01em;
+		color: rgba($text-on-dark, 0.45);
+		margin: 0;
+
+		a {
+			color: inherit;
+			text-decoration: none;
+			border-bottom: 1px solid rgba($text-on-dark, 0.2);
+			transition: color $motion-fast $ease-out-expo, border-color $motion-fast $ease-out-expo;
+
+			&:hover,
+			&:focus-visible {
+				color: $brand-primary;
+				border-color: $brand-primary;
+				outline: none;
+			}
+		}
+
+		// Trailing · separating the credit from the legal links (desktop)
+		&::after {
+			content: '·';
+			margin: 0 $space-xs;
+			color: rgba($text-on-dark, 0.25);
+
+			@media (max-width: 767.98px) {
+				display: none;
+			}
+		}
 	}
 
 	&__legal {
