@@ -441,6 +441,236 @@ import 'bootstrap';
 } )();
 
 /**
+ * Trust Strip Counter — Rhino Hero
+ * Animates [data-count-to] elements from 0 to their target on viewport enter.
+ * RAF-based, 1200ms, ease-out-quint. Fires once. Respects prefers-reduced-motion.
+ */
+( function() {
+	'use strict';
+
+	var DURATION = 1200;
+
+	function formatNumber( value, template ) {
+		// If the original string used comma grouping (e.g. "4,200"), preserve it.
+		var rounded = Math.round( value );
+		if ( template && template.indexOf( ',' ) !== -1 ) {
+			return rounded.toLocaleString( 'en-US' );
+		}
+		return String( rounded );
+	}
+
+	function easeOutQuint( t ) {
+		return 1 - Math.pow( 1 - t, 5 );
+	}
+
+	function animateCounter( el ) {
+		var target = parseInt( el.getAttribute( 'data-count-to' ), 10 );
+		var template = el.getAttribute( 'data-count-format' ) || '';
+
+		if ( isNaN( target ) ) {
+			return;
+		}
+
+		var start = null;
+
+		function step( ts ) {
+			if ( start === null ) {
+				start = ts;
+			}
+			var elapsed = ts - start;
+			var progress = Math.min( elapsed / DURATION, 1 );
+			var eased = easeOutQuint( progress );
+			el.textContent = formatNumber( target * eased, template );
+
+			if ( progress < 1 ) {
+				requestAnimationFrame( step );
+			} else {
+				el.textContent = formatNumber( target, template );
+			}
+		}
+
+		requestAnimationFrame( step );
+	}
+
+	function init() {
+		var counters = document.querySelectorAll( '[data-count-to]' );
+
+		if ( ! counters.length ) {
+			return;
+		}
+
+		var prefersReducedMotion = window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches;
+
+		if ( prefersReducedMotion || ! ( 'IntersectionObserver' in window ) ) {
+			// Show final value immediately.
+			counters.forEach( function( el ) {
+				var target = parseInt( el.getAttribute( 'data-count-to' ), 10 );
+				var template = el.getAttribute( 'data-count-format' ) || '';
+				if ( ! isNaN( target ) ) {
+					el.textContent = formatNumber( target, template );
+				}
+			} );
+			return;
+		}
+
+		// Zero out so the animation starts from 0 even if server rendered the target.
+		counters.forEach( function( el ) {
+			el.textContent = '0';
+		} );
+
+		var observer = new IntersectionObserver( function( entries ) {
+			entries.forEach( function( entry ) {
+				if ( entry.isIntersecting ) {
+					animateCounter( entry.target );
+					observer.unobserve( entry.target );
+				}
+			} );
+		}, { threshold: 0.4 } );
+
+		counters.forEach( function( el ) {
+			observer.observe( el );
+		} );
+	}
+
+	if ( document.readyState === 'loading' ) {
+		document.addEventListener( 'DOMContentLoaded', init );
+	} else {
+		init();
+	}
+} )();
+
+/**
+ * Vehicle Type Selector — Rhino Hero & Services Hub
+ * Pill group filtering. State persists in sessionStorage + querystring.
+ * Emits a 'rhino:vehicle-change' CustomEvent so downstream components
+ * (project grid, features, services hub) can filter their content.
+ */
+( function() {
+	'use strict';
+
+	var STORAGE_KEY = 'rhino_vehicle';
+	var QUERY_KEY = 'vehicle';
+
+	function getInitialVehicle() {
+		// URL querystring wins for shareable links.
+		try {
+			var params = new URLSearchParams( window.location.search );
+			var fromQuery = params.get( QUERY_KEY );
+			if ( fromQuery ) {
+				return fromQuery;
+			}
+		} catch ( e ) {
+			// URLSearchParams not available — fall through.
+		}
+
+		try {
+			return sessionStorage.getItem( STORAGE_KEY );
+		} catch ( e ) {
+			return null;
+		}
+	}
+
+	function persist( vehicle ) {
+		try {
+			sessionStorage.setItem( STORAGE_KEY, vehicle );
+		} catch ( e ) {
+			// sessionStorage blocked — continue.
+		}
+
+		// Reflect in URL without reloading.
+		if ( window.history && window.history.replaceState ) {
+			try {
+				var url = new URL( window.location.href );
+				url.searchParams.set( QUERY_KEY, vehicle );
+				window.history.replaceState( {}, '', url.toString() );
+			} catch ( e ) {
+				// URL constructor not available in very old browsers — skip.
+			}
+		}
+	}
+
+	function applyActive( group, vehicle ) {
+		var pills = group.querySelectorAll( '.section-hero__vehicle-pill' );
+		var hasActive = false;
+
+		pills.forEach( function( pill ) {
+			var isActive = pill.getAttribute( 'data-vehicle' ) === vehicle;
+			pill.setAttribute( 'aria-selected', isActive ? 'true' : 'false' );
+			if ( isActive ) {
+				hasActive = true;
+			}
+		} );
+
+		group.setAttribute( 'data-active', hasActive ? 'true' : 'false' );
+	}
+
+	function broadcast( vehicle ) {
+		var evt;
+		try {
+			evt = new CustomEvent( 'rhino:vehicle-change', {
+				detail: { vehicle: vehicle },
+				bubbles: true
+			} );
+		} catch ( e ) {
+			// Very old IE fallback — skip.
+			return;
+		}
+		document.dispatchEvent( evt );
+	}
+
+	function init() {
+		var groups = document.querySelectorAll( '[data-vehicle-selector]' );
+
+		if ( ! groups.length ) {
+			return;
+		}
+
+		var initial = getInitialVehicle();
+
+		groups.forEach( function( group ) {
+			if ( initial ) {
+				applyActive( group, initial );
+			}
+
+			group.addEventListener( 'click', function( e ) {
+				var pill = e.target.closest( '.section-hero__vehicle-pill' );
+				if ( ! pill || ! group.contains( pill ) ) {
+					return;
+				}
+
+				var vehicle = pill.getAttribute( 'data-vehicle' );
+				if ( ! vehicle ) {
+					return;
+				}
+
+				// Toggle off if tapping the active pill a second time.
+				var isCurrentlyActive = pill.getAttribute( 'aria-selected' ) === 'true';
+				if ( isCurrentlyActive ) {
+					applyActive( group, null );
+					try { sessionStorage.removeItem( STORAGE_KEY ); } catch ( err ) {}
+					broadcast( null );
+					return;
+				}
+
+				applyActive( group, vehicle );
+				persist( vehicle );
+				broadcast( vehicle );
+			} );
+		} );
+
+		if ( initial ) {
+			broadcast( initial );
+		}
+	}
+
+	if ( document.readyState === 'loading' ) {
+		document.addEventListener( 'DOMContentLoaded', init );
+	} else {
+		init();
+	}
+} )();
+
+/**
  * Back to Top Button
  * Shows a fixed button after scrolling 2x viewport height.
  * Smooth scrolls to top on click. Respects prefers-reduced-motion.

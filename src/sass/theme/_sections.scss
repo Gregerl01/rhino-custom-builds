@@ -275,137 +275,407 @@ html {
 }
 
 // ==========================================================================
-// SECTION 1: Hero
+// SECTION 1: Hero — Rhino Custom Builds
 // ==========================================================================
+// Full-viewport dark hero. Action photography behind a 70% dark overlay
+// and a 4% noise grain. Barlow Condensed display + Mono overline/trust.
+// Red primary CTA, ghost secondary. Vehicle selector pill group overlay.
+// ==========================================================================
+
 .section-hero {
 	position: relative;
-	min-height: 80vh;
+	min-height: 100vh;
 	display: flex;
 	align-items: center;
-	justify-content: center;
-	background-color: $bmg-obsidian;
+	background-color: $brand-dark;
 	overflow: hidden;
+	padding: 120px 0 80px; // room for sticky header + vehicle selector bottom
 
-	// Parallax background layer — separate from content for independent transforms
+	@media (max-width: 991.98px) {
+		min-height: 85vh;
+		padding: 100px 0 64px;
+	}
+
+	// Parallax background layer — separate transform from content
 	&__background {
 		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100%;
-		height: 120%; // Extra height prevents gaps during parallax translate
-		background: radial-gradient(ellipse at 30% 50%, #{$bmg-charcoal} 0%, #{$bmg-obsidian} 70%);
+		height: 120%; // extra height prevents gap during parallax translate
+		background-color: $brand-dark;
+		background-image: radial-gradient(ellipse at 30% 40%, #{$brand-dark-lighter} 0%, #{$brand-dark} 70%);
 		background-size: cover;
 		background-position: center;
-		animation: heroZoom 20s linear infinite alternate;
+		filter: saturate(0.9) contrast(1.08); // cinematic treatment on hero photography
 		will-change: transform;
 		z-index: 0;
 	}
 
+	// 70% dark overlay — gradient top-lighter to bottom-darker for text legibility
 	&__overlay {
 		position: absolute;
 		inset: 0;
-		background: radial-gradient(ellipse at center, #{$bmg-charcoal} 0%, #{$bmg-obsidian} 70%);
+		background: linear-gradient(
+			180deg,
+			rgba($brand-dark, 0.55) 0%,
+			rgba($brand-dark, 0.85) 100%
+		);
 		pointer-events: none;
 		z-index: 1;
-
-		// When used with a background image, overlay is a solid dark tint
-		&--image {
-			background: $bmg-obsidian;
-		}
 	}
 
-	// Content sits above background + overlay
-	> .container {
+	// 4% noise grain layer — prevents flat digital look on the dark background
+	// TODO: drop a 200×200 tiling noise PNG at assets/img/noise.png.
+	// Until the asset exists this layer renders as a transparent no-op.
+	&__grain {
+		position: absolute;
+		inset: 0;
+		background-image: url('../img/noise.png');
+		background-repeat: repeat;
+		opacity: 0.04;
+		pointer-events: none;
+		mix-blend-mode: overlay;
 		z-index: 2;
+	}
+
+	// Content sits above background + overlay + grain
+	> .container {
+		position: relative;
+		z-index: 3;
+	}
+
+	// ----- Typography -------------------------------------------------------
+
+	&__overline {
+		display: inline-block;
+		font-family: $font-family-mono;
+		font-size: 11px;
+		font-weight: 500;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: $brand-primary;
+		margin-bottom: $space-sm; // 16px
 	}
 
 	&__headline {
 		font-family: $font-family-display;
-		font-weight: 300;
-		font-size: clamp(2.5rem, 6vw, 4.5rem);
-		line-height: 1.1;
-		letter-spacing: 0.02em;
-		color: $bmg-white;
-		margin-bottom: 0;
+		font-weight: 800;
+		font-size: clamp(3rem, 8vw, 6.25rem); // ~48 → 100px
+		line-height: 0.95;
+		letter-spacing: 0.005em;
+		text-transform: uppercase;
+		color: $text-on-dark;
+		margin: 0 0 $space-md; // 24px → subline
+		max-width: 14ch;
 	}
 
-	&__subtitle {
+	&__subline {
 		font-family: $font-family-base;
-		font-size: clamp(1rem, 2vw, 1.25rem);
+		font-size: clamp(1rem, 1.5vw, 1.1875rem); // 16 → 19
 		font-weight: 400;
-		letter-spacing: 0.04em;
-		color: $bmg-platinum;
-		margin-bottom: 0;
-		max-width: 600px;
-		margin-left: auto;
-		margin-right: auto;
+		line-height: 1.6;
+		letter-spacing: 0.005em;
+		color: rgba($text-on-dark, 0.82);
+		margin: 0 0 $space-xl; // 40px → CTA group
+		max-width: 60ch;
 	}
 
-	.silver-rule {
-		margin: 2rem auto;
-	}
+	// ----- CTA group --------------------------------------------------------
 
 	&__ctas {
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: center;
-		gap: $space-sm;
-		margin-top: $space-xl;
+		gap: $space-sm; // 16
+		margin-bottom: $space-2xl; // 64
 	}
 
-	&__btn {
+	&__cta {
+		svg {
+			transition: transform $motion-fast $ease-out-expo;
+		}
+
+		&:hover svg {
+			transform: translateX(2px);
+		}
+	}
+
+	// ----- Trust strip ------------------------------------------------------
+
+	&__trust-strip {
+		display: flex;
+		flex-wrap: wrap;
+		gap: $space-sm $space-lg; // 16 row / 32 col
+		list-style: none;
+		padding: $space-sm 0 0;
+		margin: 0;
+		border-top: 1px solid rgba($text-on-dark, 0.15);
+
+		@media (max-width: 575.98px) {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: $space-sm;
+		}
+	}
+
+	&__trust-item {
+		display: inline-flex;
+		align-items: baseline;
+		gap: 0.25em;
+		font-family: $font-family-mono;
+		font-size: 10px;
+		font-weight: 500;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: rgba($text-on-dark, 0.85);
+		position: relative;
+
+		// Separator — only between items, never on the last
+		&:not(:last-child)::after {
+			content: '';
+			width: 4px;
+			height: 4px;
+			background-color: $brand-primary;
+			display: inline-block;
+			margin-left: $space-lg;
+			position: absolute;
+			right: -#{$space-md}; // -24
+			top: 50%;
+			transform: translateY(-50%);
+
+			@media (max-width: 575.98px) {
+				display: none;
+			}
+		}
+
+		&-count,
+		&-plus {
+			color: $text-on-dark; // numbers brighter than labels
+			font-weight: 700;
+		}
+
+		&-prefix,
+		&-suffix {
+			white-space: nowrap;
+		}
+	}
+
+	// ----- Vehicle selector -------------------------------------------------
+
+	&__vehicle-selector {
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: $space-xl; // 40px from bottom of hero (inside padding)
+		display: flex;
+		align-items: center;
+		gap: $space-md;
+		padding: 0 var(--bs-gutter-x, 1.5rem);
+
+		@media (max-width: 767.98px) {
+			position: static;
+			flex-direction: column;
+			align-items: flex-start;
+			margin-top: $space-xl;
+			padding: 0;
+		}
+	}
+
+	&__vehicle-selector-label {
+		font-family: $font-family-mono;
+		font-size: 10px;
+		font-weight: 500;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: rgba($text-on-dark, 0.6);
+		flex-shrink: 0;
+	}
+
+	&__vehicle-selector-pills {
+		display: flex;
+		gap: $space-xs; // 8
+		flex-wrap: nowrap;
+
+		@media (max-width: 767.98px) {
+			overflow-x: auto;
+			scroll-snap-type: x mandatory;
+			-webkit-overflow-scrolling: touch;
+			padding-bottom: 4px;
+			width: 100%;
+
+			// hide scrollbar
+			scrollbar-width: none;
+			&::-webkit-scrollbar { display: none; }
+		}
+	}
+
+	&__vehicle-pill {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		padding: 16px 40px;
+		min-height: 44px;
+		min-width: 44px;
+		padding: 10px 20px;
 		background: transparent;
-		border: 1px solid rgba($bmg-white, 0.4);
+		border: 1px solid rgba($text-on-dark, 0.25);
 		border-radius: 0;
 		font-family: $font-family-base;
-		font-size: 14px;
+		font-size: 13px;
 		font-weight: 600;
-		letter-spacing: 0.06em;
+		letter-spacing: 0.08em;
 		text-transform: uppercase;
-		color: $bmg-white;
-		text-decoration: none;
-		transition: all 0.25s ease;
+		color: rgba($text-on-dark, 0.75);
+		cursor: pointer;
+		transition:
+			background-color $motion-fast $ease-out-expo,
+			border-color $motion-fast $ease-out-expo,
+			color $motion-fast $ease-out-expo,
+			opacity $motion-fast $ease-out-expo;
+		scroll-snap-align: start;
+		flex-shrink: 0;
 
-		&:hover {
-			background: $bmg-white;
-			border-color: $bmg-white;
-			color: $bmg-obsidian;
+		&:hover,
+		&:focus-visible {
+			color: $text-on-dark;
+			border-color: rgba($text-on-dark, 0.5);
+			outline: none;
 		}
 
-		&--secondary {
-			border-color: rgba($bmg-white, 0.25);
-			color: $bmg-platinum;
+		&[aria-selected='true'] {
+			background-color: $brand-primary;
+			border-color: $brand-primary;
+			color: $text-on-dark;
+		}
 
-			&:hover {
-				background: rgba($bmg-white, 0.1);
-				border-color: rgba($bmg-white, 0.5);
-				color: $bmg-white;
-			}
+		// When any pill is active, dim the non-active siblings
+		[data-vehicle-selector][data-active='true'] &:not([aria-selected='true']) {
+			opacity: 0.6;
 		}
 	}
 }
 
-// Hero animations
+// --------------------------------------------------------------------------
+// Rhino Button System — used inside the hero CTA group
+// --------------------------------------------------------------------------
+.btn-rhino {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: $space-xs;
+	padding: 18px 32px;
+	border: 1px solid transparent;
+	border-radius: 0;
+	font-family: $font-family-base;
+	font-size: 14px;
+	font-weight: 600;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	text-decoration: none;
+	cursor: pointer;
+	position: relative;
+	overflow: hidden;
+	transition: background-color $motion-fast $ease-out-expo, color $motion-fast $ease-out-expo, border-color $motion-fast $ease-out-expo;
+
+	// Underline sweep (::after) — left-to-right on hover. No scale transforms.
+	&::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		height: 2px;
+		width: 100%;
+		background-color: currentColor;
+		transform: scaleX(0);
+		transform-origin: left center;
+		transition: transform 300ms $ease-out-expo;
+	}
+
+	&:hover::after,
+	&:focus-visible::after {
+		transform: scaleX(1);
+	}
+
+	&:active {
+		transform: translateY(1px); // press feel — not a scale
+	}
+
+	// Primary — Rhino Red on any background
+	&--primary {
+		background-color: $brand-primary;
+		color: $text-on-dark;
+
+		&:hover,
+		&:focus-visible {
+			background-color: darken($brand-primary, 8%);
+			color: $text-on-dark;
+		}
+	}
+
+	// Ghost on dark sections — hero, CTA band, founder
+	&--ghost-dark {
+		background-color: transparent;
+		color: $text-on-dark;
+		border-color: rgba($text-on-dark, 0.3);
+
+		&:hover,
+		&:focus-visible {
+			background-color: rgba($text-on-dark, 0.08);
+			border-color: $text-on-dark;
+			color: $text-on-dark;
+		}
+	}
+
+	// Ghost on light sections — Features, Process
+	&--ghost-light {
+		background-color: transparent;
+		color: $brand-dark;
+		border-color: $brand-dark;
+
+		&:hover,
+		&:focus-visible {
+			background-color: $brand-dark;
+			color: $text-on-dark;
+		}
+	}
+
+	// Urgency / phone CTA — amber
+	&--phone {
+		background-color: $brand-accent;
+		color: $brand-dark;
+
+		&:hover,
+		&:focus-visible {
+			background-color: darken($brand-accent, 6%);
+			color: $brand-dark;
+		}
+	}
+
+	&__arrow {
+		flex-shrink: 0;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.btn-rhino {
+		transition: none;
+
+		&::after {
+			transition: none;
+		}
+	}
+}
+
+// Hero animations — staggered reveal, condensed-type feel (60ms base stagger)
 .hero-animate {
 	opacity: 0;
-	transform: translateY(20px);
-	animation: heroFadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+	transform: translateY(16px);
+	animation: heroFadeUp 0.8s $ease-out-expo forwards;
 
-	&--delay-1 {
-		animation-delay: 0.3s;
-	}
-
-	&--delay-2 {
-		animation-delay: 0.5s;
-	}
-
-	&--delay-3 {
-		animation-delay: 0.7s;
-	}
+	&--delay-1 { animation-delay: 0.15s; }
+	&--delay-2 { animation-delay: 0.30s; }
+	&--delay-3 { animation-delay: 0.45s; }
+	&--delay-4 { animation-delay: 0.60s; }
+	&--delay-5 { animation-delay: 0.75s; }
 }
 
 @keyframes heroFadeUp {
