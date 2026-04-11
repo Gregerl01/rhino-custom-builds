@@ -6250,6 +6250,86 @@
   })();
 
   /**
+   * Mobile Nav Drawer — accordion expand for .has-dropdown items
+   *
+   * On viewports < 768px (matching the Bootstrap md breakpoint and the
+   * navbar's collapse behavior), taps on a .nav-link.dropdown-toggle
+   * inside a .has-dropdown item become "expand" toggles rather than
+   * navigating. The parent <li> gets .is-expanded which the SCSS uses
+   * to reveal the sub-list accordion-style. The submenu's
+   * "View All" footer link is the way to navigate to the parent page
+   * on mobile. On desktop, clicks pass through to the normal href.
+   */
+  (function () {
+
+    var MOBILE_BREAKPOINT = 768;
+    function isMobile() {
+      return window.innerWidth < MOBILE_BREAKPOINT;
+    }
+    function init() {
+      var toggles = document.querySelectorAll('#main-nav .has-dropdown > .nav-link.dropdown-toggle');
+      if (!toggles.length) {
+        return;
+      }
+      toggles.forEach(function (toggle) {
+        toggle.addEventListener('click', function (e) {
+          if (!isMobile()) {
+            return; // desktop — let the href navigate
+          }
+          e.preventDefault();
+          var parent = toggle.parentElement;
+          if (!parent) {
+            return;
+          }
+          var expanded = parent.classList.toggle('is-expanded');
+          toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+
+          // Collapse other open dropdowns (accordion behavior)
+          var siblings = parent.parentElement ? parent.parentElement.querySelectorAll('.has-dropdown.is-expanded') : [];
+          siblings.forEach(function (sib) {
+            if (sib !== parent) {
+              sib.classList.remove('is-expanded');
+              var sibToggle = sib.querySelector('.nav-link.dropdown-toggle');
+              if (sibToggle) {
+                sibToggle.setAttribute('aria-expanded', 'false');
+              }
+            }
+          });
+        });
+      });
+
+      // Reset expanded state when the drawer closes or when the viewport
+      // crosses the mobile breakpoint going up.
+      var navbarCollapse = document.getElementById('navbarNavDropdown');
+      if (navbarCollapse) {
+        navbarCollapse.addEventListener('hidden.bs.collapse', function () {
+          document.querySelectorAll('#main-nav .has-dropdown.is-expanded').forEach(function (el) {
+            el.classList.remove('is-expanded');
+            var t = el.querySelector('.nav-link.dropdown-toggle');
+            if (t) {
+              t.setAttribute('aria-expanded', 'false');
+            }
+          });
+        });
+      }
+      window.addEventListener('resize', function () {
+        if (!isMobile()) {
+          document.querySelectorAll('#main-nav .has-dropdown.is-expanded').forEach(function (el) {
+            el.classList.remove('is-expanded');
+          });
+        }
+      }, {
+        passive: true
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+
+  /**
    * Trust Strip Counter — Rhino Hero
    * Animates [data-count-to] elements from 0 to their target on viewport enter.
    * RAF-based, 1200ms, ease-out-quint. Fires once. Respects prefers-reduced-motion.

@@ -3439,7 +3439,14 @@ html {
 
 	// The "Get a Quote" CTA — keep it red in BOTH states. It's the one
 	// red element in the header, so its background doesn't respond to
-	// the condensed transition.
+	// the condensed transition. Smaller than the default .btn-rhino
+	// because it has to fit the navbar height.
+	.btn-rhino--nav,
+	.btn-rhino--primary.btn-rhino--nav {
+		padding: 10px 20px;
+		font-size: 13px;
+	}
+
 	.btn-rhino--primary {
 		background-color: $brand-primary;
 		color: $text-on-dark;
@@ -3448,6 +3455,147 @@ html {
 		&:focus-visible {
 			background-color: darken($brand-primary, 8%);
 			color: $text-on-dark;
+		}
+	}
+
+	// ----- Navigation items (shared desktop + mobile) ---------------------
+
+	.navbar-nav {
+		gap: $space-xs; // 8px between items desktop
+	}
+
+	.nav-item {
+		position: relative; // anchor for desktop dropdowns
+	}
+
+	// Reset the dropdown chevron Bootstrap paints on .dropdown-toggle —
+	// we draw our own mono caret via ::after.
+	.nav-link.dropdown-toggle {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+
+		&::after {
+			content: '';
+			display: inline-block;
+			width: 6px;
+			height: 6px;
+			margin: 0;
+			border: 0;
+			border-right: 1.5px solid currentColor;
+			border-bottom: 1.5px solid currentColor;
+			transform: rotate(45deg) translateY(-2px);
+			transition: transform $motion-fast $ease-out-expo;
+			vertical-align: middle;
+		}
+	}
+
+	// ---- Desktop dropdown panel -------------------------------------------
+	@media (min-width: 768px) {
+		.has-dropdown {
+			// Show panel on hover and on keyboard focus-within
+			&:hover,
+			&:focus-within,
+			&.is-expanded {
+				> .nav-dropdown {
+					opacity: 1;
+					visibility: visible;
+					transform: translateY(0);
+					pointer-events: auto;
+				}
+				> .nav-link.dropdown-toggle::after {
+					transform: rotate(-135deg) translateY(2px);
+				}
+			}
+		}
+
+		.nav-dropdown {
+			position: absolute;
+			top: 100%;
+			left: 50%;
+			transform: translate(-50%, 8px);
+			min-width: 260px;
+			margin: 0;
+			padding: $space-xs 0;
+			list-style: none;
+			background-color: rgba($brand-dark, 0.98);
+			backdrop-filter: blur(12px);
+			-webkit-backdrop-filter: blur(12px);
+			border: 1px solid rgba($text-on-dark, 0.08);
+			border-top: 2px solid $brand-primary;
+			box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+			opacity: 0;
+			visibility: hidden;
+			pointer-events: none;
+			transition:
+				opacity $motion-fast $ease-out-expo,
+				transform $motion-fast $ease-out-expo,
+				visibility 0s linear $motion-fast;
+			z-index: 1040;
+		}
+
+		// When opening, remove the transition delay on visibility so it
+		// appears immediately (only delayed on close to allow fade-out).
+		.has-dropdown:hover > .nav-dropdown,
+		.has-dropdown:focus-within > .nav-dropdown,
+		.has-dropdown.is-expanded > .nav-dropdown {
+			transition:
+				opacity $motion-fast $ease-out-expo,
+				transform $motion-fast $ease-out-expo,
+				visibility 0s;
+		}
+	}
+
+	.nav-dropdown__link {
+		display: block;
+		padding: 10px $space-md; // 10 / 24
+		font-family: $font-family-base;
+		font-size: 13px;
+		font-weight: 500;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		color: rgba($text-on-dark, 0.85);
+		text-decoration: none;
+		white-space: nowrap;
+		transition: background-color $motion-fast $ease-out-expo, color $motion-fast $ease-out-expo;
+
+		&:hover,
+		&:focus-visible {
+			background-color: rgba($text-on-dark, 0.08);
+			color: $text-on-dark;
+			outline: none;
+		}
+	}
+
+	.nav-dropdown__footer {
+		margin-top: 6px;
+		padding-top: 6px;
+		border-top: 1px solid rgba($text-on-dark, 0.1);
+	}
+
+	.nav-dropdown__footer-link {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		padding: 10px $space-md;
+		font-family: $font-family-mono;
+		font-size: 10px;
+		font-weight: 500;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: $brand-primary;
+		text-decoration: none;
+		transition: gap $motion-fast $ease-out-expo;
+
+		&:hover,
+		&:focus-visible {
+			color: $brand-primary;
+			gap: 10px;
+			outline: none;
+		}
+
+		svg {
+			flex-shrink: 0;
 		}
 	}
 
@@ -3487,6 +3635,245 @@ html {
 
 		&.is-condensed {
 			background-color: rgba($brand-dark, 0.98);
+		}
+	}
+
+	// ----- Mobile drawer (< md breakpoint) --------------------------------
+	// The Bootstrap collapse toggles .show on .navbar-collapse. We turn
+	// that into a full-viewport drawer with an accordion-style expand
+	// behavior for Services / Shop and pinned CTAs at the bottom.
+	@media (max-width: 767.98px) {
+		.navbar-collapse {
+			position: fixed;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			background-color: $brand-dark;
+			padding: 96px $space-lg $space-lg; // leave room for the fixed brand + hamburger at top
+			overflow-y: auto;
+			z-index: 1035;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			transform: translateX(100%);
+			transition: transform $motion-moderate $ease-out-expo;
+
+			// Bootstrap adds .collapsing while transitioning, .show when open.
+			// We override so the drawer slides instead of height-animates.
+			&.collapsing {
+				height: 100% !important;
+				transition: transform $motion-moderate $ease-out-expo;
+			}
+			&.show {
+				transform: translateX(0);
+			}
+		}
+
+		.navbar-nav {
+			flex-direction: column;
+			gap: 0;
+			width: 100%;
+			margin: 0;
+			padding: 0;
+		}
+
+		.nav-item {
+			width: 100%;
+			border-bottom: 1px solid rgba($text-on-dark, 0.08);
+		}
+
+		.nav-link {
+			font-family: $font-family-display;
+			font-size: 1.5rem; // 24px
+			font-weight: 700;
+			letter-spacing: 0.04em;
+			text-transform: uppercase;
+			padding: 20px 0;
+			width: 100%;
+		}
+
+		// On mobile the dropdown sub-list is part of flow, starts collapsed.
+		.has-dropdown {
+			.nav-link.dropdown-toggle {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+
+				&::after {
+					// larger caret for touch, right-anchored
+					width: 10px;
+					height: 10px;
+					border-width: 2px;
+					transform: rotate(45deg) translateY(-3px);
+				}
+			}
+
+			&.is-expanded .nav-link.dropdown-toggle::after {
+				transform: rotate(-135deg) translateY(3px);
+			}
+		}
+
+		.nav-dropdown {
+			position: static;
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			background: transparent;
+			border: none;
+			box-shadow: none;
+			backdrop-filter: none;
+			opacity: 0;
+			visibility: hidden;
+			pointer-events: none;
+			max-height: 0;
+			overflow: hidden;
+			transition: max-height $motion-moderate $ease-out-expo, opacity $motion-moderate $ease-out-expo;
+
+			.has-dropdown.is-expanded & {
+				opacity: 1;
+				visibility: visible;
+				pointer-events: auto;
+				max-height: 600px;
+				padding: 0 0 $space-sm;
+			}
+		}
+
+		.nav-dropdown__link {
+			font-family: $font-family-base;
+			font-size: 15px;
+			font-weight: 500;
+			letter-spacing: 0.02em;
+			text-transform: none;
+			padding: 12px 0 12px $space-md; // indented
+			color: rgba($text-on-dark, 0.7);
+
+			&:hover,
+			&:focus-visible {
+				background: transparent;
+				color: $text-on-dark;
+			}
+		}
+
+		.nav-dropdown__footer {
+			margin-top: 4px;
+			padding-top: 4px;
+			border-top: 1px solid rgba($text-on-dark, 0.08);
+		}
+
+		.nav-dropdown__footer-link {
+			padding: 10px 0 10px $space-md;
+		}
+	}
+}
+
+// --------------------------------------------------------------------------
+// Mobile drawer CTA block — pinned bottom of the drawer
+// --------------------------------------------------------------------------
+.mobile-nav-cta {
+	display: flex;
+	flex-direction: column;
+	gap: $space-sm; // 12
+	margin-top: $space-xl; // 40
+	padding-top: $space-lg; // 32
+	border-top: 1px solid rgba($text-on-dark, 0.1);
+
+	&__quote {
+		width: 100%;
+		justify-content: center;
+	}
+
+	&__phone {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: $space-xs;
+		padding: 16px 20px;
+		background-color: $brand-accent;
+		color: $brand-dark;
+		text-decoration: none;
+		transition: background-color $motion-fast $ease-out-expo;
+
+		&:hover,
+		&:focus-visible {
+			background-color: darken($brand-accent, 6%);
+			color: $brand-dark;
+		}
+
+		svg {
+			flex-shrink: 0;
+		}
+	}
+
+	&__phone-label {
+		font-family: $font-family-base;
+		font-weight: 600;
+		font-size: 13px;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+	}
+
+	&__phone-number {
+		font-family: $font-family-mono;
+		font-weight: 700;
+		font-size: 14px;
+		letter-spacing: 0.02em;
+	}
+}
+
+// --------------------------------------------------------------------------
+// Hamburger toggler — swap Bootstrap's light icon for a condensed 3-bar
+// --------------------------------------------------------------------------
+#main-nav .navbar-toggler {
+	border: none;
+	padding: 8px 0 8px 8px;
+
+	&:focus {
+		box-shadow: none;
+	}
+
+	.navbar-toggler-icon {
+		background-image: none;
+		width: 24px;
+		height: 2px;
+		background-color: $text-on-dark;
+		position: relative;
+		display: block;
+		transition: background-color $motion-fast $ease-out-expo;
+
+		&::before,
+		&::after {
+			content: '';
+			position: absolute;
+			left: 0;
+			width: 24px;
+			height: 2px;
+			background-color: $text-on-dark;
+			transition: transform $motion-fast $ease-out-expo, top $motion-fast $ease-out-expo;
+		}
+
+		&::before {
+			top: -8px;
+		}
+
+		&::after {
+			top: 8px;
+		}
+	}
+
+	// When drawer is open, morph into an X
+	&[aria-expanded='true'] .navbar-toggler-icon {
+		background-color: transparent;
+
+		&::before {
+			top: 0;
+			transform: rotate(45deg);
+		}
+
+		&::after {
+			top: 0;
+			transform: rotate(-45deg);
 		}
 	}
 }
