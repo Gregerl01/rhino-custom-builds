@@ -3392,83 +3392,42 @@ html {
 }
 
 // ==========================================================================
-// Navbar
+// Navbar — Rhino Custom Builds
 // ==========================================================================
+// Two visual states:
+//   1. Transparent default — over the hero or the first 120px of inner
+//      pages. White logo + links + cart/toggler.
+//   2. Condensed on scroll — $brand-dark at 95% opacity with
+//      backdrop-filter: blur(12px). Feels like a dashboard locking in.
+// The "Get a Quote" CTA button (.btn-rhino--primary inside the nav) stays
+// red in both states — it's the single red element in the header.
+// ==========================================================================
+
 #main-nav {
 	font-family: $font-family-base;
 
-	.navbar-brand {
-		font-family: $font-family-display;
-		font-size: 1.25rem;
-		font-weight: 600;
-		letter-spacing: 0.02em;
-		color: $bmg-white;
-
-		&:hover {
-			color: $bmg-white;
-		}
-	}
-
-	.navbar-nav {
-		.nav-link {
-			font-family: $font-family-base;
-			font-size: 0.875rem;
-			font-weight: 500;
-			letter-spacing: 0.03em;
-			color: rgba($bmg-white, 0.85);
-			padding: 0.5rem 1rem;
-			transition: color 0.2s ease;
-
-			&:hover,
-			&:focus {
-				color: $bmg-white;
-			}
-
-			&.active {
-				color: $bmg-white;
-			}
-		}
-
-		.dropdown-menu {
-			background: $bmg-obsidian;
-			border: 1px solid rgba($bmg-white, 0.1);
-			border-radius: 4px;
-
-			.dropdown-item {
-				font-size: 0.875rem;
-				font-weight: 500;
-				color: rgba($bmg-white, 0.85);
-				padding: 0.5rem 1rem;
-
-				&:hover,
-				&:focus {
-					background: rgba($bmg-white, 0.1);
-					color: $bmg-white;
-				}
-			}
-		}
-	}
-
-	.navbar-toggler {
-		border-color: rgba($bmg-white, 0.3);
-
-		&:focus {
-			box-shadow: 0 0 0 2px rgba($bmg-white, 0.25);
-		}
-	}
-
-	// Smart Sticky Header
+	// Smart sticky positioning
 	position: fixed;
 	top: 0;
 	left: 0;
 	right: 0;
 	z-index: 1030;
-	padding-top: $space-sm;   // 16px
-	padding-bottom: $space-sm; // 16px — gives ~80px total with content
+	padding-top: $space-sm;    // 16px
+	padding-bottom: $space-sm; // 16px — ~80px total with content
+
+	// Transparent by default (over hero / first 120px of inner pages).
 	background-color: transparent;
-	transition: transform $motion-moderate $ease-out-expo,
-	            background-color $motion-moderate $ease-out-smooth,
-	            padding $motion-moderate $ease-out-smooth;
+	backdrop-filter: none;
+	-webkit-backdrop-filter: none;
+	box-shadow: none;
+
+	transition:
+		transform $motion-moderate $ease-out-expo,
+		background-color $motion-moderate $ease-out-smooth,
+		backdrop-filter $motion-moderate $ease-out-smooth,
+		-webkit-backdrop-filter $motion-moderate $ease-out-smooth,
+		padding $motion-moderate $ease-out-smooth,
+		box-shadow $motion-moderate $ease-out-smooth;
 
 	// Vertically center nav links with logo
 	.container,
@@ -3477,33 +3436,125 @@ html {
 		align-items: center;
 	}
 
-	.navbar-brand img {
-		transition: transform $motion-moderate $ease-out-smooth;
+	// Brand / logo
+	.navbar-brand {
+		font-family: $font-family-display;
+		font-weight: 700;
+		font-size: 1.25rem;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		color: $text-on-dark;
+		transition: color $motion-fast $ease-out-expo;
+
+		&:hover,
+		&:focus {
+			color: $text-on-dark;
+		}
+
+		img {
+			transition: transform $motion-moderate $ease-out-smooth;
+		}
 	}
 
-	// Condensed state — scrolling up past hero
+	// Nav links
+	.navbar-nav .nav-link {
+		font-family: $font-family-base;
+		font-size: 0.875rem;
+		font-weight: 600;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+		color: rgba($text-on-dark, 0.85);
+		padding: 0.5rem 1rem;
+		transition: color $motion-fast $ease-out-expo;
+
+		&:hover,
+		&:focus,
+		&.active {
+			color: $text-on-dark;
+		}
+	}
+
+	// Dropdown menus (megamenu surfaces)
+	.navbar-nav .dropdown-menu {
+		background-color: $brand-dark;
+		border: 1px solid rgba($text-on-dark, 0.1);
+		border-radius: $radius-sm;
+		padding: $space-xs 0;
+
+		.dropdown-item {
+			font-family: $font-family-base;
+			font-size: 0.875rem;
+			font-weight: 500;
+			letter-spacing: 0.02em;
+			color: rgba($text-on-dark, 0.85);
+			padding: 0.5rem 1rem;
+			transition: background-color $motion-fast $ease-out-expo, color $motion-fast $ease-out-expo;
+
+			&:hover,
+			&:focus {
+				background-color: rgba($text-on-dark, 0.08);
+				color: $text-on-dark;
+			}
+		}
+	}
+
+	// Mobile hamburger
+	.navbar-toggler {
+		border-color: rgba($text-on-dark, 0.3);
+
+		&:focus {
+			box-shadow: 0 0 0 2px rgba($text-on-dark, 0.25);
+		}
+	}
+
+	// The "Get a Quote" CTA — keep it red in BOTH states. It's the one
+	// red element in the header, so its background doesn't respond to
+	// the condensed transition.
+	.btn-rhino--primary {
+		background-color: $brand-primary;
+		color: $text-on-dark;
+
+		&:hover,
+		&:focus-visible {
+			background-color: darken($brand-primary, 8%);
+			color: $text-on-dark;
+		}
+	}
+
+	// ----- Condensed state (past hero or past 120px on inner pages) ------
 	&.is-condensed {
-		padding-top: $space-xs;   // 8px
-		padding-bottom: $space-xs; // 8px — gives ~60px total
-		background-color: rgba($bmg-obsidian, 0.98) !important;
-		box-shadow: 0 1px 0 rgba($bmg-silver, 0.1);
+		padding-top: $space-xs;    // 8px
+		padding-bottom: $space-xs; // 8px — ~60px total
+		background-color: rgba($brand-dark, 0.95);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		box-shadow: 0 1px 0 rgba($text-on-dark, 0.08);
 
 		.navbar-brand img {
 			transform: scale(0.85);
 		}
 	}
 
-	// Hidden state — scrolling down past hero
+	// ----- Hidden state (scroll down past hero) ---------------------------
 	&.is-hidden {
 		transform: translateY(-100%);
 	}
 
-	// Reduced motion
+	// ----- Reduced motion -------------------------------------------------
 	@media (prefers-reduced-motion: reduce) {
 		transition: none;
 
 		.navbar-brand img {
 			transition: none;
+		}
+	}
+
+	// ----- backdrop-filter fallback --------------------------------------
+	// Browsers without backdrop-filter support get a slightly more opaque
+	// solid fill so the hero content doesn't bleed through in a jarring way.
+	@supports not (backdrop-filter: blur(12px)) {
+		&.is-condensed {
+			background-color: rgba($brand-dark, 0.98);
 		}
 	}
 }

@@ -342,19 +342,27 @@ import 'bootstrap';
  * Smart Sticky Header + Hero Parallax
  * Single scroll listener handles both features via shared rAF loop.
  *
- * Sticky header: Full transparent in hero, hidden on scroll-down past hero,
- * condensed on scroll-up. Inner pages without hero start condensed.
+ * Sticky header:
+ * - Transparent over the hero (or over the first MIN_THRESHOLD px on
+ *   inner pages without a hero).
+ * - Condensed state (dark + backdrop-blur) activates once the user
+ *   has scrolled past that threshold.
+ * - On scroll-DOWN past the threshold, the navbar hides via
+ *   translateY(-100%). On scroll-UP at any depth past the threshold,
+ *   the condensed navbar reappears.
  *
- * Hero parallax: Background translates at 30% of scroll speed with scale(1.05)
- * base to prevent gaps. Only calculates while hero is in viewport.
- * Disabled when prefers-reduced-motion is active.
+ * Hero parallax: Background translates at 30% of scroll speed with
+ * scale(1.05) base to prevent gaps. Only calculates while hero is in
+ * viewport. Disabled when prefers-reduced-motion is active.
  */
 ( function() {
 	'use strict';
 
+	var MIN_THRESHOLD = 120;   // Phase 4 spec — 80 → 120px
+	var SCROLL_DELTA  = 10;    // ignore micro-scrolls
+
 	var lastScrollY = 0;
 	var ticking = false;
-	var SCROLL_THRESHOLD = 10;
 
 	function init() {
 		var navbar = document.getElementById( 'main-nav' );
@@ -369,25 +377,24 @@ import 'bootstrap';
 		var ctaBg = document.querySelector( '.cta-background' );
 		var prefersReducedMotion = window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches;
 
-		// Inner pages without a hero — start condensed immediately
-		if ( ! heroSection ) {
-			navbar.classList.add( 'is-condensed' );
-		}
-
-		function getHeroBottom() {
-			if ( ! heroSection ) {
-				return 0;
+		// Condensed activation threshold:
+		// - With a hero: past the bottom of the hero section.
+		// - Without a hero: MIN_THRESHOLD (120px).
+		function getCondenseThreshold() {
+			if ( heroSection ) {
+				return heroSection.offsetTop + heroSection.offsetHeight;
 			}
-			return heroSection.offsetTop + heroSection.offsetHeight;
+			return MIN_THRESHOLD;
 		}
 
 		function update() {
 			var currentScrollY = window.scrollY;
 			var delta = currentScrollY - lastScrollY;
 			var heroHeight = heroSection ? heroSection.offsetHeight : 0;
-			var pastHero = currentScrollY > getHeroBottom();
+			var threshold = getCondenseThreshold();
+			var pastThreshold = currentScrollY > threshold;
 
-			// Hero parallax — runs on every frame while hero is in viewport
+			// Hero parallax — every frame while hero is in viewport
 			if ( heroBg && ! prefersReducedMotion && currentScrollY < heroHeight ) {
 				heroBg.style.transform = 'translateY(' + ( currentScrollY * 0.3 ) + 'px) scale(1.05)';
 			}
@@ -402,16 +409,16 @@ import 'bootstrap';
 			}
 
 			// Sticky header — only updates on meaningful scroll deltas
-			if ( Math.abs( delta ) >= SCROLL_THRESHOLD ) {
-				if ( ! pastHero ) {
-					// In hero — full transparent navbar
+			if ( Math.abs( delta ) >= SCROLL_DELTA ) {
+				if ( ! pastThreshold ) {
+					// Over the hero / first 120px — transparent
 					navbar.classList.remove( 'is-hidden', 'is-condensed' );
 				} else if ( delta > 0 ) {
-					// Scrolling DOWN past hero — hide
+					// Scrolling down past threshold — hide
 					navbar.classList.add( 'is-hidden' );
 					navbar.classList.remove( 'is-condensed' );
 				} else {
-					// Scrolling UP past hero — show condensed
+					// Scrolling up past threshold — show condensed
 					navbar.classList.remove( 'is-hidden' );
 					navbar.classList.add( 'is-condensed' );
 				}
@@ -429,7 +436,13 @@ import 'bootstrap';
 			}
 		}
 
+		// Initialize state based on current scroll position (for
+		// inner pages loaded mid-scroll or with anchor jumps).
 		lastScrollY = window.scrollY;
+		if ( window.scrollY > getCondenseThreshold() ) {
+			navbar.classList.add( 'is-condensed' );
+		}
+
 		window.addEventListener( 'scroll', onScroll, { passive: true } );
 	}
 
