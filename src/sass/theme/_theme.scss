@@ -2,13 +2,17 @@
 // Add your custom styles here.
 
 // ==========================================================================
-// Fixed Navbar Body Offset
+// Fixed Navbar Offset — handled per-section
 // ==========================================================================
-// Push page content below fixed navbar on inner pages (no full-viewport hero).
-// The homepage hero (min-height: 80vh) naturally covers this.
-body {
-	padding-top: $nav-shrink-from; // 80px — matches full navbar height
-}
+// We intentionally do NOT add `body { padding-top: 80px }` here. The
+// homepage hero is full-bleed 100vh and the fixed nav overlays it. A
+// global body offset would push the hero down below the nav (breaking
+// the intended design).
+//
+// Inner pages that need the nav to sit above their content should use
+// `.page-header` / `.section-service-hero` / `.section-page-hero`
+// components that include their own top padding (≥ 80px) to clear the
+// fixed nav.
 
 // ==========================================================================
 // Back to Top Button
