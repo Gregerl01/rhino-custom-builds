@@ -19006,9 +19006,9 @@ html {
   z-index: 1030;
   padding-top: 1rem;
   padding-bottom: 1rem;
-  background-color: transparent;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
+  background-color: rgba(26, 26, 26, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   box-shadow: none;
   transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1), background-color 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94), backdrop-filter 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94), -webkit-backdrop-filter 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94), padding 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -19106,6 +19106,9 @@ html {
   }
 }
 @supports not ((-webkit-backdrop-filter: blur(12px)) or (backdrop-filter: blur(12px))) {
+  #main-nav {
+    background-color: rgba(26, 26, 26, 0.55);
+  }
   #main-nav.is-condensed {
     background-color: rgba(26, 26, 26, 0.98);
   }

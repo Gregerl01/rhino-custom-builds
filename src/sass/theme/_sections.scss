@@ -3343,10 +3343,12 @@ html {
 	padding-top: $space-sm;    // 16px
 	padding-bottom: $space-sm; // 16px — ~80px total with content
 
-	// Transparent by default (over hero / first 120px of inner pages).
-	background-color: transparent;
-	backdrop-filter: none;
-	-webkit-backdrop-filter: none;
+	// Frosted default (over hero / first 120px of inner pages).
+	// Light dark tint + blur gives just enough separation from hero
+	// headlines without feeling like an opaque bar.
+	background-color: rgba($brand-dark, 0.3);
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
 	box-shadow: none;
 
 	transition:
@@ -3481,6 +3483,8 @@ html {
 	// Browsers without backdrop-filter support get a slightly more opaque
 	// solid fill so the hero content doesn't bleed through in a jarring way.
 	@supports not (backdrop-filter: blur(12px)) {
+		background-color: rgba($brand-dark, 0.55);
+
 		&.is-condensed {
 			background-color: rgba($brand-dark, 0.98);
 		}
