@@ -16599,6 +16599,170 @@ html {
   opacity: 0.6;
 }
 
+.section-problem {
+  background-color: #F5F2EE;
+  color: #1A1A1A;
+  padding: 128px 0 120px;
+  position: relative;
+}
+@media (max-width: 767.98px) {
+  .section-problem {
+    padding: 80px 0 80px;
+  }
+}
+.section-problem__header {
+  max-width: 720px;
+  margin: 0 0 6rem;
+  padding: 0;
+}
+@media (max-width: 767.98px) {
+  .section-problem__header {
+    margin-bottom: 4rem;
+  }
+}
+.section-problem__overline {
+  display: inline-block;
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #C41E2A;
+  margin-bottom: 1rem;
+}
+.section-problem__headline {
+  font-family: "Barlow Condensed", "Barlow", Arial, sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: #1A1A1A;
+  margin: 0 0 1.5rem;
+  max-width: 18ch;
+}
+.section-problem__intro {
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.0625rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #5A5651;
+  max-width: 60ch;
+  margin: 0;
+}
+.section-problem__blocks {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 6rem;
+}
+@media (max-width: 991.98px) {
+  .section-problem__blocks {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 4rem;
+  }
+}
+.section-problem__block {
+  background-color: #FFFFFF;
+  border: 1px solid #D1CCC5;
+  border-top: 3px solid #C41E2A;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  transition: border-color 200ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (max-width: 767.98px) {
+  .section-problem__block {
+    padding: 1.5rem;
+  }
+}
+.section-problem__block:hover {
+  box-shadow: 0 8px 32px rgba(26, 26, 26, 0.06);
+}
+.section-problem__block-overline {
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #C41E2A;
+  margin-bottom: 1rem;
+  display: block;
+}
+.section-problem__block-title {
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 600;
+  font-size: 1.125rem;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+  color: #1A1A1A;
+  margin: 0 0 1rem;
+}
+.section-problem__block-body {
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.65;
+  color: #5A5651;
+  margin: 0;
+}
+.section-problem__footer {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+  padding-top: 2rem;
+  border-top: 1px solid #E8E4DE;
+}
+@media (max-width: 767.98px) {
+  .section-problem__footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+}
+.section-problem__bridge {
+  font-family: "Barlow Condensed", "Barlow", Arial, sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: #1A1A1A;
+  margin: 0;
+  flex: 1 1 auto;
+  max-width: 30ch;
+}
+.section-problem__cta {
+  flex-shrink: 0;
+}
+
+.section-problem .bmg-reveal-stagger > .bmg-reveal {
+  transform: translateY(16px);
+}
+
+.section-problem .bmg-reveal-stagger > .bmg-reveal.is-visible {
+  transform: translateY(0);
+}
+
+.section-problem .bmg-reveal-stagger > .bmg-reveal:nth-child(1) {
+  transition-delay: 0ms;
+}
+
+.section-problem .bmg-reveal-stagger > .bmg-reveal:nth-child(2) {
+  transition-delay: 60ms;
+}
+
+.section-problem .bmg-reveal-stagger > .bmg-reveal:nth-child(3) {
+  transition-delay: 120ms;
+}
+
+.section-problem .bmg-reveal-stagger > .bmg-reveal:nth-child(4) {
+  transition-delay: 180ms;
+}
+
 .btn-rhino {
   display: inline-flex;
   align-items: center;

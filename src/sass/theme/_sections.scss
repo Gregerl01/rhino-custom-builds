@@ -554,6 +554,180 @@ html {
 	}
 }
 
+// ==========================================================================
+// SECTION 2: Problem — Rhino Custom Builds
+// ==========================================================================
+// Warm-white loss-aversion section. Dark → light transition gets the +16px
+// top padding bump per design spec (128px desktop / 80px mobile bottom).
+// Three pain blocks stagger in at 60ms per Phase 4 reveal override.
+// ==========================================================================
+
+.section-problem {
+	background-color: $brand-warm-white;
+	color: $text-primary;
+	padding: 128px 0 120px; // +8px top breathing room from dark-hero above
+	position: relative;
+
+	@media (max-width: 767.98px) {
+		padding: 80px 0 80px;
+	}
+
+	&__header {
+		max-width: 720px;
+		margin: 0 0 $space-3xl; // 96px → blocks
+		padding: 0;
+
+		@media (max-width: 767.98px) {
+			margin-bottom: $space-2xl; // 64
+		}
+	}
+
+	&__overline {
+		display: inline-block;
+		font-family: $font-family-mono;
+		font-size: 11px;
+		font-weight: 500;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: $brand-primary;
+		margin-bottom: $space-sm; // 16
+	}
+
+	&__headline {
+		font-family: $font-family-display;
+		font-weight: 700;
+		font-size: clamp(2.25rem, 5vw, 3.75rem); // 36 → 60
+		line-height: 1.0;
+		letter-spacing: 0.01em;
+		text-transform: uppercase;
+		color: $text-primary;
+		margin: 0 0 $space-md; // 24 → intro
+		max-width: 18ch;
+	}
+
+	&__intro {
+		font-family: $font-family-base;
+		font-size: 1.0625rem; // 17
+		font-weight: 400;
+		line-height: 1.6;
+		color: $text-secondary;
+		max-width: 60ch;
+		margin: 0;
+	}
+
+	// ----- Three pain blocks ------------------------------------------------
+
+	&__blocks {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: $space-lg; // 32 desktop
+		margin-bottom: $space-3xl; // 96 → footer (bridge + CTA)
+
+		@media (max-width: 991.98px) {
+			grid-template-columns: 1fr;
+			gap: $space-sm; // 16
+			margin-bottom: $space-2xl; // 64
+		}
+	}
+
+	&__block {
+		background-color: $brand-white;
+		border: 1px solid $border-color;
+		border-top: 3px solid $brand-primary;
+		padding: $space-lg; // 32
+		display: flex;
+		flex-direction: column;
+		min-height: 100%;
+		transition: border-color $motion-fast $ease-out-expo, box-shadow $motion-fast $ease-out-expo;
+
+		@media (max-width: 767.98px) {
+			padding: $space-md; // 24
+		}
+
+		&:hover {
+			box-shadow: 0 8px 32px rgba($brand-dark, 0.06);
+		}
+
+		&-overline {
+			font-family: $font-family-mono;
+			font-size: 10px;
+			font-weight: 700;
+			letter-spacing: 0.12em;
+			text-transform: uppercase;
+			color: $brand-primary;
+			margin-bottom: $space-sm; // 16
+			display: block;
+		}
+
+		&-title {
+			font-family: $font-family-base;
+			font-weight: 600;
+			font-size: 1.125rem; // 18
+			line-height: 1.35;
+			letter-spacing: 0.01em;
+			color: $text-primary;
+			margin: 0 0 $space-sm; // 16 → body
+		}
+
+		&-body {
+			font-family: $font-family-base;
+			font-size: 0.9375rem; // 15
+			font-weight: 400;
+			line-height: 1.65;
+			color: $text-secondary;
+			margin: 0;
+		}
+	}
+
+	// ----- Footer — bridge + CTA -------------------------------------------
+
+	&__footer {
+		display: flex;
+		align-items: center;
+		gap: $space-xl; // 40
+		flex-wrap: wrap;
+		padding-top: $space-lg; // 32
+		border-top: 1px solid $border-light;
+
+		@media (max-width: 767.98px) {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: $space-md; // 24
+		}
+	}
+
+	&__bridge {
+		font-family: $font-family-display;
+		font-weight: 700;
+		font-size: clamp(1.5rem, 3vw, 2rem); // 24 → 32
+		line-height: 1.15;
+		letter-spacing: 0.01em;
+		text-transform: uppercase;
+		color: $text-primary;
+		margin: 0;
+		flex: 1 1 auto;
+		max-width: 30ch;
+	}
+
+	&__cta {
+		flex-shrink: 0;
+	}
+}
+
+// Override the generic .bmg-reveal-stagger delays for the problem blocks:
+// Rhino spec says stagger 60ms (not the default 80ms) and travel 16px
+// (not 24px). Scoped to this section only.
+.section-problem .bmg-reveal-stagger > .bmg-reveal {
+	transform: translateY(16px);
+}
+.section-problem .bmg-reveal-stagger > .bmg-reveal.is-visible {
+	transform: translateY(0);
+}
+.section-problem .bmg-reveal-stagger > .bmg-reveal:nth-child(1) { transition-delay: 0ms; }
+.section-problem .bmg-reveal-stagger > .bmg-reveal:nth-child(2) { transition-delay: 60ms; }
+.section-problem .bmg-reveal-stagger > .bmg-reveal:nth-child(3) { transition-delay: 120ms; }
+.section-problem .bmg-reveal-stagger > .bmg-reveal:nth-child(4) { transition-delay: 180ms; }
+
 // --------------------------------------------------------------------------
 // Rhino Button System — used inside the hero CTA group
 // --------------------------------------------------------------------------

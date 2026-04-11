@@ -121,6 +121,7 @@ $bmg_includes = array(
 	'/customizer-practice-info.php', // Business Information panel (provider, contact, hours).
 	'/customizer-footer.php',        // Footer Customizer settings and menus.
 	'/customizer-hero.php',          // Hero section Customizer settings.
+	'/customizer-problem.php',       // Problem section Customizer settings.
 	'/customizer-about.php',         // About section Customizer settings.
 	'/dark-mode.php',                // Dark mode FOUC prevention and data-bs-theme attribute.
 	'/seo-metadata.php',             // SEO title tags and meta descriptions.
