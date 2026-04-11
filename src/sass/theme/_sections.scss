@@ -1000,6 +1000,277 @@ html {
 .section-founder .bmg-reveal-stagger > .bmg-reveal:nth-child(3) { transition-delay: 120ms; }
 .section-founder .bmg-reveal-stagger > .bmg-reveal:nth-child(4) { transition-delay: 180ms; }
 
+// ==========================================================================
+// SECTION 4: Features — Rhino Custom Builds
+// ==========================================================================
+// White section showcasing six Service Category Cards (XL). Grid is 3 col
+// desktop → 2 col tablet → 1 col mobile. Each card is a full <a> with a
+// 4:3 image header, mono overline, Barlow Condensed title, body, and
+// bottom-right arrow. Hover: red 3px bottom border sweep, 1.02 image
+// scale, soft elevation shadow. No scale on the card itself.
+// ==========================================================================
+
+.section-features {
+	background-color: $brand-white;
+	color: $text-primary;
+	padding: 120px 0;
+
+	@media (max-width: 767.98px) {
+		padding: 80px 0;
+	}
+
+	&__header {
+		max-width: 720px;
+		margin: 0 0 $space-3xl; // 96 → grid
+
+		@media (max-width: 767.98px) {
+			margin-bottom: $space-2xl; // 64
+		}
+	}
+
+	&__overline {
+		display: inline-block;
+		font-family: $font-family-mono;
+		font-size: 11px;
+		font-weight: 500;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: $brand-primary;
+		margin-bottom: $space-sm; // 16
+	}
+
+	&__headline {
+		font-family: $font-family-display;
+		font-weight: 700;
+		font-size: clamp(2.25rem, 5vw, 3.75rem); // 36 → 60
+		line-height: 1.0;
+		letter-spacing: 0.01em;
+		text-transform: uppercase;
+		color: $text-primary;
+		margin: 0 0 $space-md; // 24 → subline
+		max-width: 16ch;
+	}
+
+	&__subline {
+		font-family: $font-family-base;
+		font-size: 1.0625rem; // 17
+		font-weight: 400;
+		line-height: 1.6;
+		color: $text-secondary;
+		margin: 0;
+		max-width: 52ch;
+	}
+
+	&__grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: $space-md; // 24
+
+		@media (max-width: 991.98px) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+		@media (max-width: 575.98px) {
+			grid-template-columns: 1fr;
+			gap: $space-sm; // 16
+		}
+	}
+
+	&__footer {
+		display: flex;
+		justify-content: center;
+		margin-top: $space-2xl; // 64
+	}
+}
+
+// --------------------------------------------------------------------------
+// Service Category Card (XL) — Component #2
+// --------------------------------------------------------------------------
+.service-card-xl {
+	display: flex;
+	flex-direction: column;
+	background-color: $brand-white;
+	color: $text-primary;
+	text-decoration: none;
+	border: 1px solid $border-color;
+	border-radius: $radius-sm;
+	overflow: hidden;
+	position: relative;
+	min-height: 100%;
+	transition:
+		border-color $motion-fast $ease-out-expo,
+		box-shadow $motion-fast $ease-out-expo;
+
+	// 3px red bottom border sweep — scales left-to-right on hover
+	&::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: -1px; // sit on top of the card border
+		height: 3px;
+		background-color: $brand-primary;
+		transform: scaleX(0);
+		transform-origin: left center;
+		transition: transform 300ms $ease-out-expo;
+		pointer-events: none;
+		z-index: 2;
+	}
+
+	&:hover,
+	&:focus-visible {
+		border-color: transparent; // let the shadow + red rail do the framing
+		box-shadow: 0 8px 32px rgba($brand-dark, 0.08);
+		color: $text-primary;
+		text-decoration: none;
+		outline: none;
+
+		&::after {
+			transform: scaleX(1);
+		}
+
+		.service-card-xl__media img,
+		.service-card-xl__placeholder {
+			transform: scale(1.02);
+		}
+
+		.service-card-xl__arrow {
+			color: $brand-primary;
+			transform: translateX(2px);
+		}
+	}
+
+	// ----- Media (4:3 full-bleed) ------------------------------------------
+	&__media {
+		position: relative;
+		aspect-ratio: 4 / 3;
+		overflow: hidden;
+		background-color: $brand-surface;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+			filter: saturate(0.9) contrast(1.08);
+			transition: transform $motion-moderate $ease-out-expo;
+		}
+	}
+
+	&__placeholder {
+		position: absolute;
+		inset: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: $brand-surface;
+		background-image: repeating-linear-gradient(
+			45deg,
+			rgba($brand-dark, 0.03) 0,
+			rgba($brand-dark, 0.03) 1px,
+			transparent 1px,
+			transparent 14px
+		);
+		transition: transform $motion-moderate $ease-out-expo;
+	}
+
+	&__placeholder-label {
+		font-family: $font-family-mono;
+		font-weight: 500;
+		font-size: 10px;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: rgba($brand-dark, 0.35);
+	}
+
+	// ----- Body -------------------------------------------------------------
+	&__body {
+		position: relative;
+		padding: $space-lg; // 32 desktop
+		display: flex;
+		flex-direction: column;
+		flex: 1 1 auto;
+
+		@media (max-width: 767.98px) {
+			padding: $space-md; // 24
+		}
+	}
+
+	&__overline {
+		display: block;
+		font-family: $font-family-mono;
+		font-size: 10px;
+		font-weight: 500;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: $brand-primary;
+		margin-bottom: $space-xs; // 8
+	}
+
+	&__title {
+		font-family: $font-family-display;
+		font-weight: 700;
+		font-size: 1.5rem; // 24
+		line-height: 1.05;
+		letter-spacing: 0.01em;
+		text-transform: uppercase;
+		color: $text-primary;
+		margin: 0 0 $space-sm; // 16 → description
+	}
+
+	&__description {
+		font-family: $font-family-base;
+		font-size: 0.9375rem; // 15
+		font-weight: 400;
+		line-height: 1.6;
+		color: $text-secondary;
+		margin: 0 0 $space-lg; // 32 → arrow anchor
+		flex: 1 1 auto; // push the arrow to the bottom-right
+	}
+
+	&__arrow {
+		align-self: flex-end;
+		color: $text-secondary;
+		transition: color $motion-fast $ease-out-expo, transform $motion-fast $ease-out-expo;
+		display: inline-flex;
+
+		svg {
+			display: block;
+		}
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.service-card-xl {
+		transition: none;
+
+		&::after {
+			transition: none;
+		}
+
+		.service-card-xl__media img,
+		.service-card-xl__placeholder,
+		.service-card-xl__arrow {
+			transition: none;
+			transform: none !important;
+		}
+	}
+}
+
+// Scoped reveal stagger override — 60ms interval, 16px travel.
+// Six cards, six delay slots.
+.section-features .bmg-reveal-stagger > .bmg-reveal {
+	transform: translateY(16px);
+}
+.section-features .bmg-reveal-stagger > .bmg-reveal.is-visible {
+	transform: translateY(0);
+}
+.section-features .bmg-reveal-stagger > .bmg-reveal:nth-child(1) { transition-delay: 0ms; }
+.section-features .bmg-reveal-stagger > .bmg-reveal:nth-child(2) { transition-delay: 60ms; }
+.section-features .bmg-reveal-stagger > .bmg-reveal:nth-child(3) { transition-delay: 120ms; }
+.section-features .bmg-reveal-stagger > .bmg-reveal:nth-child(4) { transition-delay: 180ms; }
+.section-features .bmg-reveal-stagger > .bmg-reveal:nth-child(5) { transition-delay: 240ms; }
+.section-features .bmg-reveal-stagger > .bmg-reveal:nth-child(6) { transition-delay: 300ms; }
+
 // --------------------------------------------------------------------------
 // Rhino Button System — used inside the hero CTA group
 // --------------------------------------------------------------------------

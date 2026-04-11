@@ -17001,6 +17001,253 @@ html {
   transition-delay: 180ms;
 }
 
+.section-features {
+  background-color: #FFFFFF;
+  color: #1A1A1A;
+  padding: 120px 0;
+}
+@media (max-width: 767.98px) {
+  .section-features {
+    padding: 80px 0;
+  }
+}
+.section-features__header {
+  max-width: 720px;
+  margin: 0 0 6rem;
+}
+@media (max-width: 767.98px) {
+  .section-features__header {
+    margin-bottom: 4rem;
+  }
+}
+.section-features__overline {
+  display: inline-block;
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #C41E2A;
+  margin-bottom: 1rem;
+}
+.section-features__headline {
+  font-family: "Barlow Condensed", "Barlow", Arial, sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: #1A1A1A;
+  margin: 0 0 1.5rem;
+  max-width: 16ch;
+}
+.section-features__subline {
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.0625rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #5A5651;
+  margin: 0;
+  max-width: 52ch;
+}
+.section-features__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+@media (max-width: 991.98px) {
+  .section-features__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 575.98px) {
+  .section-features__grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+.section-features__footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 4rem;
+}
+
+.service-card-xl {
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFF;
+  color: #1A1A1A;
+  text-decoration: none;
+  border: 1px solid #D1CCC5;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  min-height: 100%;
+  transition: border-color 200ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.service-card-xl::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 3px;
+  background-color: #C41E2A;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 2;
+}
+.service-card-xl:hover, .service-card-xl:focus-visible {
+  border-color: transparent;
+  box-shadow: 0 8px 32px rgba(26, 26, 26, 0.08);
+  color: #1A1A1A;
+  text-decoration: none;
+  outline: none;
+}
+.service-card-xl:hover::after, .service-card-xl:focus-visible::after {
+  transform: scaleX(1);
+}
+.service-card-xl:hover .service-card-xl__media img,
+.service-card-xl:hover .service-card-xl__placeholder, .service-card-xl:focus-visible .service-card-xl__media img,
+.service-card-xl:focus-visible .service-card-xl__placeholder {
+  transform: scale(1.02);
+}
+.service-card-xl:hover .service-card-xl__arrow, .service-card-xl:focus-visible .service-card-xl__arrow {
+  color: #C41E2A;
+  transform: translateX(2px);
+}
+.service-card-xl__media {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background-color: #E8E4DE;
+}
+.service-card-xl__media img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.9) contrast(1.08);
+  transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.service-card-xl__placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #E8E4DE;
+  background-image: repeating-linear-gradient(45deg, rgba(26, 26, 26, 0.03) 0, rgba(26, 26, 26, 0.03) 1px, transparent 1px, transparent 14px);
+  transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.service-card-xl__placeholder-label {
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(26, 26, 26, 0.35);
+}
+.service-card-xl__body {
+  position: relative;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+@media (max-width: 767.98px) {
+  .service-card-xl__body {
+    padding: 1.5rem;
+  }
+}
+.service-card-xl__overline {
+  display: block;
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #C41E2A;
+  margin-bottom: 0.5rem;
+}
+.service-card-xl__title {
+  font-family: "Barlow Condensed", "Barlow", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: #1A1A1A;
+  margin: 0 0 1rem;
+}
+.service-card-xl__description {
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #5A5651;
+  margin: 0 0 2rem;
+  flex: 1 1 auto;
+}
+.service-card-xl__arrow {
+  align-self: flex-end;
+  color: #5A5651;
+  transition: color 200ms cubic-bezier(0.16, 1, 0.3, 1), transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+}
+.service-card-xl__arrow svg {
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-card-xl {
+    transition: none;
+  }
+  .service-card-xl::after {
+    transition: none;
+  }
+  .service-card-xl .service-card-xl__media img,
+  .service-card-xl .service-card-xl__placeholder,
+  .service-card-xl .service-card-xl__arrow {
+    transition: none;
+    transform: none !important;
+  }
+}
+.section-features .bmg-reveal-stagger > .bmg-reveal {
+  transform: translateY(16px);
+}
+
+.section-features .bmg-reveal-stagger > .bmg-reveal.is-visible {
+  transform: translateY(0);
+}
+
+.section-features .bmg-reveal-stagger > .bmg-reveal:nth-child(1) {
+  transition-delay: 0ms;
+}
+
+.section-features .bmg-reveal-stagger > .bmg-reveal:nth-child(2) {
+  transition-delay: 60ms;
+}
+
+.section-features .bmg-reveal-stagger > .bmg-reveal:nth-child(3) {
+  transition-delay: 120ms;
+}
+
+.section-features .bmg-reveal-stagger > .bmg-reveal:nth-child(4) {
+  transition-delay: 180ms;
+}
+
+.section-features .bmg-reveal-stagger > .bmg-reveal:nth-child(5) {
+  transition-delay: 240ms;
+}
+
+.section-features .bmg-reveal-stagger > .bmg-reveal:nth-child(6) {
+  transition-delay: 300ms;
+}
+
 .btn-rhino {
   display: inline-flex;
   align-items: center;
