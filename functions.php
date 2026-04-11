@@ -145,7 +145,7 @@ $bmg_includes = array(
 	'/customizer-process.php',       // Process + FAQ section Customizer settings.
 	'/customizer-cta.php',           // CTA section Customizer settings.
 	'/customizer-about.php',         // About section Customizer settings.
-	'/dark-mode.php',                // Dark mode FOUC prevention and data-bs-theme attribute.
+	// '/dark-mode.php',              // Disabled — this site does not use dark mode.
 	'/seo-metadata.php',             // SEO title tags and meta descriptions.
 );
 

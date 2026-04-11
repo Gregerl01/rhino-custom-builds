@@ -5937,77 +5937,21 @@
   })();
 
   /**
-   * Dark Mode Toggle
-   * Handles theme switching, localStorage persistence, and system preference detection.
+   * Force light theme — Rhino Custom Builds does not use dark mode.
+   *
+   * The starter theme shipped a dark-mode toggle that read system
+   * preference + localStorage and flipped `data-bs-theme` on <html>.
+   * We keep the _dark-mode.scss file on disk for reference but neuter
+   * the runtime: always pin `data-bs-theme="light"` and purge any
+   * stale preference from localStorage.
    */
   (function () {
 
-    const STORAGE_KEY = 'bmg-theme-mode';
-    const THEME_ATTRIBUTE = 'data-bs-theme';
-    function getSystemPreference() {
-      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        return 'dark';
-      }
-      return 'light';
-    }
-    function getStoredTheme() {
-      try {
-        return localStorage.getItem(STORAGE_KEY);
-      } catch (e) {
-        return null;
-      }
-    }
-    function setStoredTheme(theme) {
-      try {
-        localStorage.setItem(STORAGE_KEY, theme);
-      } catch (e) {
-        // localStorage not available
-      }
-    }
-    function applyTheme(theme) {
-      document.documentElement.setAttribute(THEME_ATTRIBUTE, theme);
-      updateToggleButtons(theme);
-    }
-    function getCurrentTheme() {
-      const storedTheme = getStoredTheme();
-      if (storedTheme) {
-        return storedTheme;
-      }
-      return getSystemPreference();
-    }
-    function toggleTheme() {
-      const currentTheme = document.documentElement.getAttribute(THEME_ATTRIBUTE) || 'light';
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      applyTheme(newTheme);
-      setStoredTheme(newTheme);
-    }
-    function updateToggleButtons(theme) {
-      const buttons = document.querySelectorAll('.dark-mode-toggle');
-      buttons.forEach(function (button) {
-        const lightLabel = button.getAttribute('data-light-label') || 'Switch to dark mode';
-        const darkLabel = button.getAttribute('data-dark-label') || 'Switch to light mode';
-        button.setAttribute('aria-label', theme === 'dark' ? darkLabel : lightLabel);
-      });
-    }
-    function init() {
-      const theme = getCurrentTheme();
-      applyTheme(theme);
-      document.querySelectorAll('.dark-mode-toggle').forEach(function (button) {
-        button.addEventListener('click', toggleTheme);
-      });
-      if (window.matchMedia) {
-        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-        mediaQuery.addEventListener('change', function (e) {
-          if (!getStoredTheme()) {
-            applyTheme(e.matches ? 'dark' : 'light');
-          }
-        });
-      }
-    }
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', init);
-    } else {
-      init();
+    document.documentElement.setAttribute('data-bs-theme', 'light');
+    try {
+      localStorage.removeItem('bmg-theme-mode');
+    } catch (e) {
+      // localStorage unavailable — nothing to clean up.
     }
   })();
 

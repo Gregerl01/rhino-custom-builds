@@ -23,21 +23,18 @@ $container = get_theme_mod( 'understrap_container_type' );
 		<!-- Your site branding in the menu -->
 		<?php get_template_part( 'global-templates/navbar-branding' ); ?>
 
-		<!-- Dark mode toggle + hamburger: anchored right on mobile -->
-		<div class="d-flex align-items-center gap-2 order-md-last">
-			<?php get_template_part( 'global-templates/dark-mode-toggle' ); ?>
-			<button
-				class="navbar-toggler"
-				type="button"
-				data-bs-toggle="collapse"
-				data-bs-target="#navbarNavDropdown"
-				aria-controls="navbarNavDropdown"
-				aria-expanded="false"
-				aria-label="<?php esc_attr_e( 'Toggle navigation', 'bmg-theme' ); ?>"
-			>
-				<span class="navbar-toggler-icon"></span>
-			</button>
-		</div>
+		<!-- Hamburger — anchored right on mobile -->
+		<button
+			class="navbar-toggler order-md-last"
+			type="button"
+			data-bs-toggle="collapse"
+			data-bs-target="#navbarNavDropdown"
+			aria-controls="navbarNavDropdown"
+			aria-expanded="false"
+			aria-label="<?php esc_attr_e( 'Toggle navigation', 'bmg-theme' ); ?>"
+		>
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
 		<!-- The WordPress Menu goes here -->
 		<?php
