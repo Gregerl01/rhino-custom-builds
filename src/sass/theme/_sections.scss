@@ -3638,221 +3638,222 @@ html {
 		}
 	}
 
-	// ----- Mobile drawer (< md breakpoint) --------------------------------
-	// Custom drawer — NOT using Bootstrap's collapse plugin because it
-	// height-animates which fights a fixed-position drawer. The hamburger
-	// toggles an .is-open class directly via theme.js. The navbar-collapse
-	// stays on the element as a layout hook but carries no Bootstrap JS.
-	@media (max-width: 767.98px) {
-		.navbar-collapse {
-			position: fixed;
-			top: 0;
-			right: 0;
-			bottom: 0;
-			left: 0;
-			width: 100%;
-			height: 100vh;
-			height: 100dvh;
-			background-color: $brand-dark;
-			padding: 80px $space-lg $space-lg; // clear the fixed brand + hamburger at top
-			overflow-y: auto;
-			overscroll-behavior: contain;
-			z-index: 1035;
-			display: flex;
-			flex-direction: column;
-			transform: translateX(100%);
-			visibility: hidden;
-			transition:
-				transform $motion-moderate $ease-out-expo,
-				visibility 0s linear $motion-moderate;
-
-			&.is-open {
-				transform: translateX(0);
-				visibility: visible;
-				transition:
-					transform $motion-moderate $ease-out-expo,
-					visibility 0s linear 0s;
-			}
-		}
-
-		.navbar-nav {
-			flex-direction: column;
-			gap: 0;
-			width: 100%;
-			margin: 0;
-			padding: 0;
-		}
-
-		.nav-item {
-			width: 100%;
-			border-bottom: 1px solid rgba($text-on-dark, 0.08);
-		}
-
-		.nav-link {
-			font-family: $font-family-display;
-			font-size: 1.5rem; // 24px
-			font-weight: 700;
-			letter-spacing: 0.04em;
-			text-transform: uppercase;
-			padding: 20px 0;
-			width: 100%;
-		}
-
-		// On mobile the dropdown sub-list is part of flow, starts collapsed.
-		.has-dropdown {
-			.nav-link.dropdown-toggle {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-
-				&::after {
-					// larger caret for touch, right-anchored
-					width: 10px;
-					height: 10px;
-					border-width: 2px;
-					transform: rotate(45deg) translateY(-3px);
-				}
-			}
-
-			&.is-expanded .nav-link.dropdown-toggle::after {
-				transform: rotate(-135deg) translateY(3px);
-			}
-		}
-
-		.nav-dropdown {
-			position: static;
-			list-style: none;
-			margin: 0;
-			padding: 0;
-			background: transparent;
-			border: none;
-			box-shadow: none;
-			backdrop-filter: none;
-			opacity: 0;
-			visibility: hidden;
-			pointer-events: none;
-			max-height: 0;
-			overflow: hidden;
-			transition: max-height $motion-moderate $ease-out-expo, opacity $motion-moderate $ease-out-expo;
-
-			.has-dropdown.is-expanded & {
-				opacity: 1;
-				visibility: visible;
-				pointer-events: auto;
-				max-height: 600px;
-				padding: 0 0 $space-sm;
-			}
-		}
-
-		.nav-dropdown__link {
-			font-family: $font-family-base;
-			font-size: 15px;
-			font-weight: 500;
-			letter-spacing: 0.02em;
-			text-transform: none;
-			padding: 12px 0 12px $space-md; // indented
-			color: rgba($text-on-dark, 0.7);
-
-			&:hover,
-			&:focus-visible {
-				background: transparent;
-				color: $text-on-dark;
-			}
-		}
-
-		.nav-dropdown__footer {
-			margin-top: 4px;
-			padding-top: 4px;
-			border-top: 1px solid rgba($text-on-dark, 0.08);
-		}
-
-		.nav-dropdown__footer-link {
-			padding: 10px 0 10px $space-md;
-		}
-	}
+	// Mobile drawer is rendered OUTSIDE #main-nav (see .mobile-drawer
+	// below) to escape the backdrop-filter containing-block trap.
 }
 
-// --------------------------------------------------------------------------
-// Mobile drawer — close button + backdrop + body scroll lock
-// --------------------------------------------------------------------------
-.drawer-close {
-	position: absolute;
-	top: $space-md;    // 24
-	right: $space-md;
-	width: 44px;
-	height: 44px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background-color: transparent;
-	border: 1px solid rgba($text-on-dark, 0.25);
-	border-radius: 0;
-	color: $text-on-dark;
-	cursor: pointer;
-	z-index: 2;
-	transition:
-		background-color $motion-fast $ease-out-expo,
-		border-color $motion-fast $ease-out-expo,
-		color $motion-fast $ease-out-expo;
+// ==========================================================================
+// Mobile Drawer — Rhino Custom Builds
+// ==========================================================================
+// Rendered as a SIBLING of #main-nav, NOT a child, so it escapes the
+// backdrop-filter containing-block trap (the nav's backdrop-filter
+// would otherwise constrain any fixed descendants to the nav's bounds).
+//
+// z-index stack on mobile (low → high):
+//   1030  #main-nav (frosted header)
+//   1050  .nav-backdrop (dimming layer)
+//   1060  .mobile-drawer (slide-in panel)
+// ==========================================================================
 
-	&:hover,
-	&:focus-visible {
-		background-color: rgba($text-on-dark, 0.08);
-		border-color: $text-on-dark;
-		outline: none;
-	}
-
-	&:active {
-		transform: translateY(1px);
-	}
-}
-
-.nav-backdrop {
+.mobile-drawer {
 	position: fixed;
 	top: 0;
-	left: 0;
 	right: 0;
 	bottom: 0;
-	width: 100%;
+	width: min(360px, 100%);
 	height: 100vh;
 	height: 100dvh;
-	background-color: rgba(0, 0, 0, 0.55);
-	backdrop-filter: blur(2px);
-	-webkit-backdrop-filter: blur(2px);
-	opacity: 0;
+	background-color: $brand-dark;
+	padding: 80px $space-lg $space-lg;
+	overflow-y: auto;
+	overscroll-behavior: contain;
+	z-index: 1060; // above #main-nav (1030) and .nav-backdrop (1050)
+	display: flex;
+	flex-direction: column;
+	transform: translateX(100%);
 	visibility: hidden;
-	pointer-events: none;
-	z-index: 1034; // below .navbar-collapse (1035)
 	transition:
-		opacity $motion-moderate $ease-out-expo,
+		transform $motion-moderate $ease-out-expo,
 		visibility 0s linear $motion-moderate;
 
 	&.is-open {
-		opacity: 1;
+		transform: translateX(0);
 		visibility: visible;
-		pointer-events: auto;
 		transition:
-			opacity $motion-moderate $ease-out-expo,
+			transform $motion-moderate $ease-out-expo,
 			visibility 0s linear 0s;
 	}
-}
 
-// Body scroll lock while the drawer is open.
-body.drawer-open {
-	overflow: hidden;
-	touch-action: none;
-}
+	// ----- Close button ----------------------------------------------------
+	&__close {
+		position: absolute;
+		top: $space-md; // 24
+		right: $space-md;
+		width: 44px;
+		height: 44px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: transparent;
+		border: 1px solid rgba($text-on-dark, 0.25);
+		border-radius: 0;
+		color: $text-on-dark;
+		cursor: pointer;
+		z-index: 2; // above drawer content
+		transition:
+			background-color $motion-fast $ease-out-expo,
+			border-color $motion-fast $ease-out-expo,
+			color $motion-fast $ease-out-expo;
 
-// --------------------------------------------------------------------------
-// Mobile drawer CTA block — pinned bottom of the drawer via margin-top:auto
-// --------------------------------------------------------------------------
-.mobile-nav-cta {
-	display: flex;
-	flex-direction: column;
-	gap: $space-sm; // 12
-	margin-top: auto; // flex push to the bottom of the drawer
-	padding-top: $space-lg; // 32
-	border-top: 1px solid rgba($text-on-dark, 0.1);
+		&:hover,
+		&:focus-visible {
+			background-color: rgba($text-on-dark, 0.08);
+			border-color: $text-on-dark;
+			outline: none;
+		}
+
+		&:active {
+			transform: translateY(1px);
+		}
+	}
+
+	// ----- Body (nav list scrolls here) -----------------------------------
+	&__body {
+		flex: 1 1 auto;
+		min-height: 0; // allow inner overflow
+	}
+
+	// Nav list styles inside the drawer (override the desktop #main-nav rules)
+	.navbar-nav {
+		flex-direction: column;
+		gap: 0;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.nav-item {
+		width: 100%;
+		border-bottom: 1px solid rgba($text-on-dark, 0.08);
+		position: relative;
+
+		&.nav-cta {
+			display: none; // the inline desktop CTA list item is hidden — mobile uses __footer below
+		}
+	}
+
+	.nav-link {
+		font-family: $font-family-display;
+		font-weight: 700;
+		font-size: 1.5rem; // 24
+		line-height: 1.1;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		color: rgba($text-on-dark, 0.85);
+		padding: 18px 0;
+		display: block;
+		text-decoration: none;
+		transition: color $motion-fast $ease-out-expo;
+
+		&:hover,
+		&:focus-visible {
+			color: $text-on-dark;
+			outline: none;
+		}
+	}
+
+	// Mobile dropdown-toggle — shows expand state via a chevron
+	.has-dropdown .nav-link.dropdown-toggle {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		&::after {
+			content: '';
+			display: inline-block;
+			width: 10px;
+			height: 10px;
+			margin: 0;
+			border: 0;
+			border-right: 2px solid currentColor;
+			border-bottom: 2px solid currentColor;
+			transform: rotate(45deg) translateY(-3px);
+			transition: transform $motion-fast $ease-out-expo;
+		}
+	}
+
+	.has-dropdown.is-expanded .nav-link.dropdown-toggle::after {
+		transform: rotate(-135deg) translateY(3px);
+	}
+
+	// Sub-list starts collapsed, expands when parent has .is-expanded
+	.nav-dropdown {
+		position: static;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		background: transparent;
+		border: none;
+		box-shadow: none;
+		backdrop-filter: none;
+		-webkit-backdrop-filter: none;
+		opacity: 0;
+		visibility: hidden;
+		pointer-events: none;
+		max-height: 0;
+		overflow: hidden;
+		transition:
+			max-height $motion-moderate $ease-out-expo,
+			opacity $motion-moderate $ease-out-expo,
+			padding $motion-moderate $ease-out-expo;
+
+		.has-dropdown.is-expanded & {
+			opacity: 1;
+			visibility: visible;
+			pointer-events: auto;
+			max-height: 600px;
+			padding: 0 0 $space-sm;
+		}
+	}
+
+	.nav-dropdown__link {
+		font-family: $font-family-base;
+		font-weight: 500;
+		font-size: 15px;
+		letter-spacing: 0.02em;
+		text-transform: none;
+		padding: 12px 0 12px $space-md;
+		color: rgba($text-on-dark, 0.7);
+		white-space: normal;
+
+		&:hover,
+		&:focus-visible {
+			background: transparent;
+			color: $text-on-dark;
+		}
+	}
+
+	.nav-dropdown__footer {
+		margin-top: 4px;
+		padding-top: 4px;
+		border-top: 1px solid rgba($text-on-dark, 0.08);
+	}
+
+	.nav-dropdown__footer-link {
+		padding: 10px 0 10px $space-md;
+	}
+
+	// ----- Footer (pinned CTAs) --------------------------------------------
+	&__footer {
+		flex: 0 0 auto;
+		display: flex;
+		flex-direction: column;
+		gap: $space-sm; // 12
+		margin-top: $space-xl; // 40 above the CTAs
+		padding-top: $space-lg; // 32
+		border-top: 1px solid rgba($text-on-dark, 0.1);
+	}
 
 	&__quote {
 		width: 100%;
@@ -3895,6 +3896,42 @@ body.drawer-open {
 		font-size: 14px;
 		letter-spacing: 0.02em;
 	}
+}
+
+.nav-backdrop {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100vh;
+	height: 100dvh;
+	background-color: rgba(0, 0, 0, 0.55);
+	backdrop-filter: blur(2px);
+	-webkit-backdrop-filter: blur(2px);
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+	z-index: 1050; // below .mobile-drawer (1060), above #main-nav (1030)
+	transition:
+		opacity $motion-moderate $ease-out-expo,
+		visibility 0s linear $motion-moderate;
+
+	&.is-open {
+		opacity: 1;
+		visibility: visible;
+		pointer-events: auto;
+		transition:
+			opacity $motion-moderate $ease-out-expo,
+			visibility 0s linear 0s;
+	}
+}
+
+// Body scroll lock while the drawer is open.
+body.drawer-open {
+	overflow: hidden;
+	touch-action: none;
 }
 
 // --------------------------------------------------------------------------

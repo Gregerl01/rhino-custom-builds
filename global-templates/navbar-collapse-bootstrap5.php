@@ -2,11 +2,18 @@
 /**
  * Header Navbar — Rhino Custom Builds
  *
- * Static nav structure (sitemap is fixed at V1 so there is no benefit
- * to routing through wp_nav_menu + the WP menu admin). Desktop uses
- * CSS-only hover dropdowns (no Bootstrap dropdown JS). Mobile collapses
- * into a full-height drawer with expandable Services + Shop groups and
- * a pinned CTA block at the bottom.
+ * Static nav structure (the sitemap is fixed at V1 so there's no benefit
+ * to routing through wp_nav_menu + the WP menu admin).
+ *
+ * Layout:
+ *   Desktop — #main-nav contains the logo, hamburger (hidden), and a
+ *             Bootstrap-flex .navbar-collapse holding the desktop menu.
+ *   Mobile  — The mobile drawer + backdrop live OUTSIDE #main-nav in the
+ *             DOM. This matters because #main-nav has `backdrop-filter`
+ *             which creates a containing block for its `position: fixed`
+ *             descendants (CSS spec), so a drawer nested inside would be
+ *             trapped to the nav's bounding box instead of covering the
+ *             viewport. Rendering them as siblings escapes that trap.
  *
  * @package rhino-custom-builds-theme
  */
@@ -18,10 +25,6 @@ $container = get_theme_mod( 'understrap_container_type', 'container' );
 $phone_display = get_theme_mod( 'bmg_phone', '(555) 555-0123' );
 $phone_link    = preg_replace( '/[^0-9+]/', '', (string) $phone_display );
 
-/**
- * Nav items rendered twice (desktop inline + mobile drawer). Define
- * once at the top so both surfaces stay in sync.
- */
 $nav_services = array(
 	array( 'label' => __( 'Spray-On Bedliners', 'bmg-theme' ),  'url' => '/services/spray-on-bedliners/' ),
 	array( 'label' => __( 'Protective Coatings', 'bmg-theme' ), 'url' => '/services/protective-coatings/' ),
@@ -39,6 +42,93 @@ $nav_shop = array(
 	array( 'label' => __( 'Bed & Cargo', 'bmg-theme' ),        'url' => '/shop/category/bed-cargo/' ),
 	array( 'label' => __( 'Overland Gear', 'bmg-theme' ),      'url' => '/shop/category/overland-gear/' ),
 );
+
+/**
+ * Render the flat + dropdown nav list. Used by both the desktop inline
+ * menu and the mobile drawer so the two stay in sync.
+ */
+$render_nav_list = function ( $nav_services, $nav_shop ) {
+	?>
+	<ul class="navbar-nav ms-auto align-items-md-center" role="list">
+
+		<?php // ---- Services (dropdown) ---- ?>
+		<li class="nav-item has-dropdown">
+			<a class="nav-link dropdown-toggle" href="<?php echo esc_url( home_url( '/services/' ) ); ?>" aria-haspopup="true" aria-expanded="false">
+				<?php esc_html_e( 'Services', 'bmg-theme' ); ?>
+			</a>
+			<ul class="nav-dropdown" aria-label="<?php esc_attr_e( 'Services menu', 'bmg-theme' ); ?>">
+				<?php foreach ( $nav_services as $item ) : ?>
+					<li>
+						<a class="nav-dropdown__link" href="<?php echo esc_url( home_url( $item['url'] ) ); ?>">
+							<?php echo esc_html( $item['label'] ); ?>
+						</a>
+					</li>
+				<?php endforeach; ?>
+				<li class="nav-dropdown__footer">
+					<a class="nav-dropdown__footer-link" href="<?php echo esc_url( home_url( '/services/' ) ); ?>">
+						<?php esc_html_e( 'View All Services', 'bmg-theme' ); ?>
+						<svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+							<path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+						</svg>
+					</a>
+				</li>
+			</ul>
+		</li>
+
+		<?php // ---- Shop (dropdown) ---- ?>
+		<li class="nav-item has-dropdown">
+			<a class="nav-link dropdown-toggle" href="<?php echo esc_url( home_url( '/shop/' ) ); ?>" aria-haspopup="true" aria-expanded="false">
+				<?php esc_html_e( 'Shop', 'bmg-theme' ); ?>
+			</a>
+			<ul class="nav-dropdown" aria-label="<?php esc_attr_e( 'Shop menu', 'bmg-theme' ); ?>">
+				<?php foreach ( $nav_shop as $item ) : ?>
+					<li>
+						<a class="nav-dropdown__link" href="<?php echo esc_url( home_url( $item['url'] ) ); ?>">
+							<?php echo esc_html( $item['label'] ); ?>
+						</a>
+					</li>
+				<?php endforeach; ?>
+				<li class="nav-dropdown__footer">
+					<a class="nav-dropdown__footer-link" href="<?php echo esc_url( home_url( '/shop/' ) ); ?>">
+						<?php esc_html_e( 'Browse Full Shop', 'bmg-theme' ); ?>
+						<svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+							<path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+						</svg>
+					</a>
+				</li>
+			</ul>
+		</li>
+
+		<?php // ---- Flat links ---- ?>
+		<li class="nav-item">
+			<a class="nav-link" href="<?php echo esc_url( home_url( '/gallery/' ) ); ?>">
+				<?php esc_html_e( 'Gallery', 'bmg-theme' ); ?>
+			</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="<?php echo esc_url( home_url( '/about/' ) ); ?>">
+				<?php esc_html_e( 'About', 'bmg-theme' ); ?>
+			</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">
+				<?php esc_html_e( 'Contact', 'bmg-theme' ); ?>
+			</a>
+		</li>
+
+		<?php // ---- Desktop CTA — hidden inside the mobile drawer (handled by the pinned block below) ---- ?>
+		<li class="nav-item nav-cta d-none d-md-flex">
+			<a class="btn-rhino btn-rhino--primary btn-rhino--nav" href="<?php echo esc_url( home_url( '/quote/' ) ); ?>">
+				<span><?php esc_html_e( 'Get a Quote', 'bmg-theme' ); ?></span>
+				<svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+					<path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+				</svg>
+			</a>
+		</li>
+
+	</ul>
+	<?php
+};
 ?>
 
 <nav id="main-nav" class="navbar navbar-expand-md navbar-dark" aria-labelledby="main-nav-label">
@@ -64,124 +154,56 @@ $nav_shop = array(
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
-		<?php // Nav row — inline on desktop, drawer on mobile. The .navbar-collapse class is kept for Bootstrap spacing utilities only; no data-bs-toggle wiring. ?>
-		<div class="navbar-collapse" id="main-drawer" data-drawer>
-
-			<?php // Mobile-only close button — pinned to the drawer's top-right ?>
-			<button
-				class="drawer-close d-md-none"
-				type="button"
-				data-drawer-close
-				aria-label="<?php esc_attr_e( 'Close navigation menu', 'bmg-theme' ); ?>"
-			>
-				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-					<path d="M6 6l12 12M18 6l-12 12" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
-				</svg>
-			</button>
-
-			<ul class="navbar-nav ms-auto align-items-md-center" id="primary-menu">
-
-				<?php // ---- Services (dropdown) ---- ?>
-				<li class="nav-item has-dropdown">
-					<a class="nav-link dropdown-toggle" href="<?php echo esc_url( home_url( '/services/' ) ); ?>" aria-haspopup="true" aria-expanded="false">
-						<?php esc_html_e( 'Services', 'bmg-theme' ); ?>
-					</a>
-					<ul class="nav-dropdown" aria-label="<?php esc_attr_e( 'Services menu', 'bmg-theme' ); ?>">
-						<?php foreach ( $nav_services as $item ) : ?>
-							<li>
-								<a class="nav-dropdown__link" href="<?php echo esc_url( home_url( $item['url'] ) ); ?>">
-									<?php echo esc_html( $item['label'] ); ?>
-								</a>
-							</li>
-						<?php endforeach; ?>
-						<li class="nav-dropdown__footer">
-							<a class="nav-dropdown__footer-link" href="<?php echo esc_url( home_url( '/services/' ) ); ?>">
-								<?php esc_html_e( 'View All Services', 'bmg-theme' ); ?>
-								<svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-									<path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
-								</svg>
-							</a>
-						</li>
-					</ul>
-				</li>
-
-				<?php // ---- Shop (dropdown) ---- ?>
-				<li class="nav-item has-dropdown">
-					<a class="nav-link dropdown-toggle" href="<?php echo esc_url( home_url( '/shop/' ) ); ?>" aria-haspopup="true" aria-expanded="false">
-						<?php esc_html_e( 'Shop', 'bmg-theme' ); ?>
-					</a>
-					<ul class="nav-dropdown" aria-label="<?php esc_attr_e( 'Shop menu', 'bmg-theme' ); ?>">
-						<?php foreach ( $nav_shop as $item ) : ?>
-							<li>
-								<a class="nav-dropdown__link" href="<?php echo esc_url( home_url( $item['url'] ) ); ?>">
-									<?php echo esc_html( $item['label'] ); ?>
-								</a>
-							</li>
-						<?php endforeach; ?>
-						<li class="nav-dropdown__footer">
-							<a class="nav-dropdown__footer-link" href="<?php echo esc_url( home_url( '/shop/' ) ); ?>">
-								<?php esc_html_e( 'Browse Full Shop', 'bmg-theme' ); ?>
-								<svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-									<path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
-								</svg>
-							</a>
-						</li>
-					</ul>
-				</li>
-
-				<?php // ---- Flat links ---- ?>
-				<li class="nav-item">
-					<a class="nav-link" href="<?php echo esc_url( home_url( '/gallery/' ) ); ?>">
-						<?php esc_html_e( 'Gallery', 'bmg-theme' ); ?>
-					</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="<?php echo esc_url( home_url( '/about/' ) ); ?>">
-						<?php esc_html_e( 'About', 'bmg-theme' ); ?>
-					</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">
-						<?php esc_html_e( 'Contact', 'bmg-theme' ); ?>
-					</a>
-				</li>
-
-				<?php // ---- Desktop CTA — hidden inside mobile drawer (handled below) ---- ?>
-				<li class="nav-item nav-cta d-none d-md-flex">
-					<a class="btn-rhino btn-rhino--primary btn-rhino--nav" href="<?php echo esc_url( home_url( '/quote/' ) ); ?>">
-						<span><?php esc_html_e( 'Get a Quote', 'bmg-theme' ); ?></span>
-						<svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-							<path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
-						</svg>
-					</a>
-				</li>
-
-			</ul>
-
-			<?php // ---- Mobile drawer CTA block (pinned to bottom) ---- ?>
-			<div class="mobile-nav-cta d-md-none">
-				<a class="btn-rhino btn-rhino--primary mobile-nav-cta__quote" href="<?php echo esc_url( home_url( '/quote/' ) ); ?>">
-					<span><?php esc_html_e( 'Get a Quote', 'bmg-theme' ); ?></span>
-					<svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-						<path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
-					</svg>
-				</a>
-				<?php if ( $phone_display && $phone_link ) : ?>
-					<a class="mobile-nav-cta__phone" href="tel:<?php echo esc_attr( $phone_link ); ?>">
-						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-							<path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 6a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
-						</svg>
-						<span class="mobile-nav-cta__phone-label"><?php esc_html_e( 'Call', 'bmg-theme' ); ?></span>
-						<span class="mobile-nav-cta__phone-number"><?php echo esc_html( $phone_display ); ?></span>
-					</a>
-				<?php endif; ?>
-			</div>
-
-		</div><!-- .navbar-collapse -->
+		<?php // Desktop inline menu — visible >= md only. Mobile drawer lives outside #main-nav below. ?>
+		<div class="navbar-collapse d-none d-md-flex" id="primary-menu-desktop">
+			<?php $render_nav_list( $nav_services, $nav_shop ); ?>
+		</div>
 
 	</div><!-- .container(-fluid) -->
 
 </nav><!-- #main-nav -->
 
-<?php // Mobile drawer backdrop — sits below the drawer, captures outside taps ?>
+<?php // ==================================================================
+	// Mobile drawer + backdrop — rendered OUTSIDE #main-nav.
+	// Escapes the `backdrop-filter` containing-block trap (fixed children
+	// of a backdrop-filtered ancestor get constrained to the ancestor's
+	// bounding box instead of covering the viewport).
+	// ================================================================== ?>
+<aside class="mobile-drawer d-md-none" id="main-drawer" data-drawer aria-label="<?php esc_attr_e( 'Mobile navigation', 'bmg-theme' ); ?>">
+
+	<button
+		class="mobile-drawer__close"
+		type="button"
+		data-drawer-close
+		aria-label="<?php esc_attr_e( 'Close navigation menu', 'bmg-theme' ); ?>"
+	>
+		<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+			<path d="M6 6l12 12M18 6l-12 12" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+		</svg>
+	</button>
+
+	<div class="mobile-drawer__body">
+		<?php $render_nav_list( $nav_services, $nav_shop ); ?>
+	</div>
+
+	<div class="mobile-drawer__footer">
+		<a class="btn-rhino btn-rhino--primary mobile-drawer__quote" href="<?php echo esc_url( home_url( '/quote/' ) ); ?>">
+			<span><?php esc_html_e( 'Get a Quote', 'bmg-theme' ); ?></span>
+			<svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+				<path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+			</svg>
+		</a>
+		<?php if ( $phone_display && $phone_link ) : ?>
+			<a class="mobile-drawer__phone" href="tel:<?php echo esc_attr( $phone_link ); ?>">
+				<svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+					<path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 6a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+				</svg>
+				<span class="mobile-drawer__phone-label"><?php esc_html_e( 'Call', 'bmg-theme' ); ?></span>
+				<span class="mobile-drawer__phone-number"><?php echo esc_html( $phone_display ); ?></span>
+			</a>
+		<?php endif; ?>
+	</div>
+
+</aside>
+
 <div class="nav-backdrop d-md-none" data-drawer-backdrop aria-hidden="true"></div>
