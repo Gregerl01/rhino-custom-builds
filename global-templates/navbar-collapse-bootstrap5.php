@@ -52,21 +52,33 @@ $nav_shop = array(
 		<?php // Branding ?>
 		<?php get_template_part( 'global-templates/navbar-branding' ); ?>
 
-		<?php // Hamburger — mobile only, anchored right ?>
+		<?php // Hamburger — mobile only, anchored right. Custom drawer (not Bootstrap collapse). ?>
 		<button
 			class="navbar-toggler order-md-last"
 			type="button"
-			data-bs-toggle="collapse"
-			data-bs-target="#navbarNavDropdown"
-			aria-controls="navbarNavDropdown"
+			data-drawer-toggle="main-drawer"
+			aria-controls="main-drawer"
 			aria-expanded="false"
-			aria-label="<?php esc_attr_e( 'Toggle navigation', 'bmg-theme' ); ?>"
+			aria-label="<?php esc_attr_e( 'Open navigation menu', 'bmg-theme' ); ?>"
 		>
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
-		<?php // Nav collapse — desktop row / mobile drawer ?>
-		<div class="collapse navbar-collapse" id="navbarNavDropdown">
+		<?php // Nav row — inline on desktop, drawer on mobile. The .navbar-collapse class is kept for Bootstrap spacing utilities only; no data-bs-toggle wiring. ?>
+		<div class="navbar-collapse" id="main-drawer" data-drawer>
+
+			<?php // Mobile-only close button — pinned to the drawer's top-right ?>
+			<button
+				class="drawer-close d-md-none"
+				type="button"
+				data-drawer-close
+				aria-label="<?php esc_attr_e( 'Close navigation menu', 'bmg-theme' ); ?>"
+			>
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+					<path d="M6 6l12 12M18 6l-12 12" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+				</svg>
+			</button>
+
 			<ul class="navbar-nav ms-auto align-items-md-center" id="primary-menu">
 
 				<?php // ---- Services (dropdown) ---- ?>
@@ -170,3 +182,6 @@ $nav_shop = array(
 	</div><!-- .container(-fluid) -->
 
 </nav><!-- #main-nav -->
+
+<?php // Mobile drawer backdrop — sits below the drawer, captures outside taps ?>
+<div class="nav-backdrop d-md-none" data-drawer-backdrop aria-hidden="true"></div>

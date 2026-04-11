@@ -6250,15 +6250,16 @@
   })();
 
   /**
-   * Mobile Nav Drawer — accordion expand for .has-dropdown items
+   * Mobile Nav Drawer — custom implementation (not Bootstrap collapse)
    *
-   * On viewports < 768px (matching the Bootstrap md breakpoint and the
-   * navbar's collapse behavior), taps on a .nav-link.dropdown-toggle
-   * inside a .has-dropdown item become "expand" toggles rather than
-   * navigating. The parent <li> gets .is-expanded which the SCSS uses
-   * to reveal the sub-list accordion-style. The submenu's
-   * "View All" footer link is the way to navigate to the parent page
-   * on mobile. On desktop, clicks pass through to the normal href.
+   * Bootstrap's collapse plugin height-animates the target element, which
+   * fights a fixed-position drawer and produces a half-open state. We
+   * manage open/close ourselves via an .is-open class on the drawer and
+   * backdrop, plus .drawer-open on <body> for scroll lock.
+   *
+   * Also handles the accordion expand behavior for Services / Shop
+   * dropdowns on mobile: tap the parent label to expand its submenu,
+   * tap the "View All" footer link to navigate.
    */
   (function () {
 
@@ -6267,56 +6268,116 @@
       return window.innerWidth < MOBILE_BREAKPOINT;
     }
     function init() {
-      var toggles = document.querySelectorAll('#main-nav .has-dropdown > .nav-link.dropdown-toggle');
-      if (!toggles.length) {
+      var drawer = document.querySelector('[data-drawer]');
+      var toggle = document.querySelector('[data-drawer-toggle]');
+      var closeBtn = document.querySelector('[data-drawer-close]');
+      var backdrop = document.querySelector('[data-drawer-backdrop]');
+      if (!drawer || !toggle) {
         return;
       }
-      toggles.forEach(function (toggle) {
-        toggle.addEventListener('click', function (e) {
+      function collapseAccordions() {
+        var expanded = drawer.querySelectorAll('.has-dropdown.is-expanded');
+        expanded.forEach(function (el) {
+          el.classList.remove('is-expanded');
+          var t = el.querySelector('.nav-link.dropdown-toggle');
+          if (t) {
+            t.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+      function openDrawer() {
+        drawer.classList.add('is-open');
+        if (backdrop) {
+          backdrop.classList.add('is-open');
+        }
+        document.body.classList.add('drawer-open');
+        toggle.setAttribute('aria-expanded', 'true');
+
+        // Focus the close button for keyboard users.
+        if (closeBtn) {
+          window.setTimeout(function () {
+            closeBtn.focus();
+          }, 50);
+        }
+      }
+      function closeDrawer() {
+        drawer.classList.remove('is-open');
+        if (backdrop) {
+          backdrop.classList.remove('is-open');
+        }
+        document.body.classList.remove('drawer-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        collapseAccordions();
+
+        // Return focus to the hamburger.
+        toggle.focus();
+      }
+      function toggleDrawer() {
+        if (drawer.classList.contains('is-open')) {
+          closeDrawer();
+        } else {
+          openDrawer();
+        }
+      }
+
+      // ----- Wire up controls -----
+      toggle.addEventListener('click', function (e) {
+        e.preventDefault();
+        toggleDrawer();
+      });
+      if (closeBtn) {
+        closeBtn.addEventListener('click', function (e) {
+          e.preventDefault();
+          closeDrawer();
+        });
+      }
+      if (backdrop) {
+        backdrop.addEventListener('click', closeDrawer);
+      }
+
+      // Escape key closes the drawer when open.
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && drawer.classList.contains('is-open')) {
+          closeDrawer();
+        }
+      });
+
+      // ----- Submenu accordion (Services / Shop) -----
+      var subToggles = drawer.querySelectorAll('.has-dropdown > .nav-link.dropdown-toggle');
+      subToggles.forEach(function (subToggle) {
+        subToggle.addEventListener('click', function (e) {
           if (!isMobile()) {
-            return; // desktop — let the href navigate
+            return; // desktop — let href navigate
           }
           e.preventDefault();
-          var parent = toggle.parentElement;
+          var parent = subToggle.parentElement;
           if (!parent) {
             return;
           }
           var expanded = parent.classList.toggle('is-expanded');
-          toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+          subToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
 
-          // Collapse other open dropdowns (accordion behavior)
+          // Accordion behavior: close other open submenus.
           var siblings = parent.parentElement ? parent.parentElement.querySelectorAll('.has-dropdown.is-expanded') : [];
           siblings.forEach(function (sib) {
             if (sib !== parent) {
               sib.classList.remove('is-expanded');
-              var sibToggle = sib.querySelector('.nav-link.dropdown-toggle');
-              if (sibToggle) {
-                sibToggle.setAttribute('aria-expanded', 'false');
+              var t = sib.querySelector('.nav-link.dropdown-toggle');
+              if (t) {
+                t.setAttribute('aria-expanded', 'false');
               }
             }
           });
         });
       });
 
-      // Reset expanded state when the drawer closes or when the viewport
-      // crosses the mobile breakpoint going up.
-      var navbarCollapse = document.getElementById('navbarNavDropdown');
-      if (navbarCollapse) {
-        navbarCollapse.addEventListener('hidden.bs.collapse', function () {
-          document.querySelectorAll('#main-nav .has-dropdown.is-expanded').forEach(function (el) {
-            el.classList.remove('is-expanded');
-            var t = el.querySelector('.nav-link.dropdown-toggle');
-            if (t) {
-              t.setAttribute('aria-expanded', 'false');
-            }
-          });
-        });
-      }
+      // ----- Resize handler — close drawer + reset accordions on desktop -----
       window.addEventListener('resize', function () {
         if (!isMobile()) {
-          document.querySelectorAll('#main-nav .has-dropdown.is-expanded').forEach(function (el) {
-            el.classList.remove('is-expanded');
-          });
+          if (drawer.classList.contains('is-open')) {
+            closeDrawer();
+          }
+          collapseAccordions();
         }
       }, {
         passive: true

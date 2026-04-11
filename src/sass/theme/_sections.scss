@@ -3639,9 +3639,10 @@ html {
 	}
 
 	// ----- Mobile drawer (< md breakpoint) --------------------------------
-	// The Bootstrap collapse toggles .show on .navbar-collapse. We turn
-	// that into a full-viewport drawer with an accordion-style expand
-	// behavior for Services / Shop and pinned CTAs at the bottom.
+	// Custom drawer — NOT using Bootstrap's collapse plugin because it
+	// height-animates which fights a fixed-position drawer. The hamburger
+	// toggles an .is-open class directly via theme.js. The navbar-collapse
+	// stays on the element as a layout hook but carries no Bootstrap JS.
 	@media (max-width: 767.98px) {
 		.navbar-collapse {
 			position: fixed;
@@ -3650,24 +3651,27 @@ html {
 			bottom: 0;
 			left: 0;
 			width: 100%;
+			height: 100vh;
+			height: 100dvh;
 			background-color: $brand-dark;
-			padding: 96px $space-lg $space-lg; // leave room for the fixed brand + hamburger at top
+			padding: 80px $space-lg $space-lg; // clear the fixed brand + hamburger at top
 			overflow-y: auto;
+			overscroll-behavior: contain;
 			z-index: 1035;
 			display: flex;
 			flex-direction: column;
-			justify-content: space-between;
 			transform: translateX(100%);
-			transition: transform $motion-moderate $ease-out-expo;
+			visibility: hidden;
+			transition:
+				transform $motion-moderate $ease-out-expo,
+				visibility 0s linear $motion-moderate;
 
-			// Bootstrap adds .collapsing while transitioning, .show when open.
-			// We override so the drawer slides instead of height-animates.
-			&.collapsing {
-				height: 100% !important;
-				transition: transform $motion-moderate $ease-out-expo;
-			}
-			&.show {
+			&.is-open {
 				transform: translateX(0);
+				visibility: visible;
+				transition:
+					transform $motion-moderate $ease-out-expo,
+					visibility 0s linear 0s;
 			}
 		}
 
@@ -3769,13 +3773,84 @@ html {
 }
 
 // --------------------------------------------------------------------------
-// Mobile drawer CTA block — pinned bottom of the drawer
+// Mobile drawer — close button + backdrop + body scroll lock
+// --------------------------------------------------------------------------
+.drawer-close {
+	position: absolute;
+	top: $space-md;    // 24
+	right: $space-md;
+	width: 44px;
+	height: 44px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: transparent;
+	border: 1px solid rgba($text-on-dark, 0.25);
+	border-radius: 0;
+	color: $text-on-dark;
+	cursor: pointer;
+	z-index: 2;
+	transition:
+		background-color $motion-fast $ease-out-expo,
+		border-color $motion-fast $ease-out-expo,
+		color $motion-fast $ease-out-expo;
+
+	&:hover,
+	&:focus-visible {
+		background-color: rgba($text-on-dark, 0.08);
+		border-color: $text-on-dark;
+		outline: none;
+	}
+
+	&:active {
+		transform: translateY(1px);
+	}
+}
+
+.nav-backdrop {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100vh;
+	height: 100dvh;
+	background-color: rgba(0, 0, 0, 0.55);
+	backdrop-filter: blur(2px);
+	-webkit-backdrop-filter: blur(2px);
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+	z-index: 1034; // below .navbar-collapse (1035)
+	transition:
+		opacity $motion-moderate $ease-out-expo,
+		visibility 0s linear $motion-moderate;
+
+	&.is-open {
+		opacity: 1;
+		visibility: visible;
+		pointer-events: auto;
+		transition:
+			opacity $motion-moderate $ease-out-expo,
+			visibility 0s linear 0s;
+	}
+}
+
+// Body scroll lock while the drawer is open.
+body.drawer-open {
+	overflow: hidden;
+	touch-action: none;
+}
+
+// --------------------------------------------------------------------------
+// Mobile drawer CTA block — pinned bottom of the drawer via margin-top:auto
 // --------------------------------------------------------------------------
 .mobile-nav-cta {
 	display: flex;
 	flex-direction: column;
 	gap: $space-sm; // 12
-	margin-top: $space-xl; // 40
+	margin-top: auto; // flex push to the bottom of the drawer
 	padding-top: $space-lg; // 32
 	border-top: 1px solid rgba($text-on-dark, 0.1);
 
