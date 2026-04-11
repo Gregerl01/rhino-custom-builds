@@ -24,6 +24,22 @@ function bmg_theme_setup() {
 add_action( 'after_setup_theme', 'bmg_theme_setup' );
 
 /**
+ * Force Understrap to use the Bootstrap 5 variants of its global
+ * templates (navbar, etc.). The parent ships a `bootstrap4` default,
+ * which causes header.php to load `navbar-collapse-bootstrap4.php`
+ * from the parent — a file we cannot safely edit and which still
+ * carries the legacy `.bg-primary` utility. Forcing `bootstrap5`
+ * makes the parent resolve to `navbar-collapse-bootstrap5.php`, which
+ * `get_template_part()` then picks up from the CHILD theme first.
+ */
+add_filter(
+	'theme_mod_understrap_bootstrap_version',
+	function ( $value ) {
+		return 'bootstrap5';
+	}
+);
+
+/**
  * WooCommerce: Remove default styles.
  *
  * We handle all WooCommerce styling via our SCSS.
