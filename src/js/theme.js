@@ -541,6 +541,51 @@ import 'bootstrap';
 } )();
 
 /**
+ * Before/After Slider — Rhino Service Detail pages
+ *
+ * The heavy lifting (drag, touch, keyboard) is handled by a native
+ * <input type="range"> sitting on top of the stage. We just listen
+ * for its "input" event and push the value to a --slider-pos CSS
+ * custom property, which drives the clip-path on the "after" image
+ * and the position of the divider + handle. No canvas, no raf loop,
+ * no synthetic pointer events.
+ */
+( function() {
+	'use strict';
+
+	function init() {
+		var stages = document.querySelectorAll( '[data-before-after]' );
+		if ( ! stages.length ) {
+			return;
+		}
+
+		stages.forEach( function( figure ) {
+			var range = figure.querySelector( '.before-after__range' );
+			var stage = figure.querySelector( '.before-after__stage' );
+			if ( ! range || ! stage ) {
+				return;
+			}
+
+			function apply() {
+				stage.style.setProperty( '--slider-pos', range.value + '%' );
+			}
+
+			range.addEventListener( 'input', apply );
+			range.addEventListener( 'change', apply );
+
+			// Initial sync (in case the input has a non-default value).
+			apply();
+		} );
+	}
+
+	if ( document.readyState === 'loading' ) {
+		document.addEventListener( 'DOMContentLoaded', init );
+	} else {
+		init();
+	}
+} )();
+
+/**
  * Trust Strip Counter — Rhino Hero
  * Animates [data-count-to] elements from 0 to their target on viewport enter.
  * RAF-based, 1200ms, ease-out-quint. Fires once. Respects prefers-reduced-motion.

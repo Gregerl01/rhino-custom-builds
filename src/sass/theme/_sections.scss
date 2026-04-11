@@ -555,6 +555,941 @@ html {
 }
 
 // ==========================================================================
+// SECTION: Service Hero (inner-page variant of .section-hero)
+// ==========================================================================
+// 70vh dark hero used on /services/{slug}/ pages. Same visual language
+// as the homepage hero but shorter and with a breadcrumb slot above
+// the overline. Left-aligned content, same noise grain + gradient.
+// ==========================================================================
+
+.section-service-hero {
+	position: relative;
+	min-height: 70vh;
+	display: flex;
+	align-items: center;
+	background-color: $brand-dark;
+	overflow: hidden;
+	padding: 160px 0 80px; // clear fixed nav + breathing room
+
+	@media (max-width: 767.98px) {
+		min-height: 60vh;
+		padding: 120px 0 64px;
+	}
+
+	&__background {
+		position: absolute;
+		inset: 0;
+		background-color: $brand-dark;
+		background-image: radial-gradient(ellipse at 30% 40%, #{$brand-dark-lighter} 0%, #{$brand-dark} 70%);
+		background-size: cover;
+		background-position: center;
+		filter: saturate(0.9) contrast(1.08);
+		z-index: 0;
+	}
+
+	&__overlay {
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(
+			180deg,
+			rgba($brand-dark, 0.55) 0%,
+			rgba($brand-dark, 0.85) 100%
+		);
+		pointer-events: none;
+		z-index: 1;
+	}
+
+	&__grain {
+		position: absolute;
+		inset: 0;
+		background-image: url('../img/noise.png');
+		background-repeat: repeat;
+		opacity: 0.04;
+		pointer-events: none;
+		mix-blend-mode: overlay;
+		z-index: 2;
+	}
+
+	> .container {
+		position: relative;
+		z-index: 3;
+	}
+
+	// Breadcrumb
+	&__breadcrumb {
+		margin-bottom: $space-md; // 24
+
+		ol {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0 $space-xs;
+			font-family: $font-family-mono;
+			font-size: 10px;
+			font-weight: 500;
+			letter-spacing: 0.15em;
+			text-transform: uppercase;
+			color: rgba($text-on-dark, 0.55);
+		}
+
+		li + li::before {
+			content: '/';
+			display: inline-block;
+			margin-right: $space-xs;
+			color: rgba($text-on-dark, 0.3);
+		}
+
+		a {
+			color: rgba($text-on-dark, 0.55);
+			text-decoration: none;
+			transition: color $motion-fast $ease-out-expo;
+
+			&:hover,
+			&:focus-visible {
+				color: $brand-primary;
+				outline: none;
+			}
+		}
+
+		[aria-current='page'] {
+			color: $text-on-dark;
+		}
+	}
+
+	&__overline {
+		display: inline-block;
+		font-family: $font-family-mono;
+		font-size: 11px;
+		font-weight: 500;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: $brand-primary;
+		margin-bottom: $space-sm;
+	}
+
+	&__headline {
+		font-family: $font-family-display;
+		font-weight: 800;
+		font-size: clamp(2.5rem, 6vw, 4.5rem); // 40 → 72
+		line-height: 0.95;
+		letter-spacing: 0.005em;
+		text-transform: uppercase;
+		color: $text-on-dark;
+		margin: 0 0 $space-md;
+		max-width: 18ch;
+	}
+
+	&__subline {
+		font-family: $font-family-base;
+		font-size: clamp(1rem, 1.5vw, 1.125rem);
+		font-weight: 400;
+		line-height: 1.6;
+		color: rgba($text-on-dark, 0.82);
+		margin: 0 0 $space-xl;
+		max-width: 58ch;
+	}
+
+	&__ctas {
+		display: flex;
+		flex-wrap: wrap;
+		gap: $space-sm;
+		margin-bottom: $space-xl;
+	}
+
+	&__trust-strip {
+		display: flex;
+		flex-wrap: wrap;
+		gap: $space-sm $space-lg;
+		list-style: none;
+		padding: $space-sm 0 0;
+		margin: 0;
+		border-top: 1px solid rgba($text-on-dark, 0.15);
+
+		@media (max-width: 575.98px) {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: $space-sm;
+		}
+	}
+
+	&__trust-item {
+		font-family: $font-family-mono;
+		font-size: 10px;
+		font-weight: 500;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: rgba($text-on-dark, 0.85);
+		position: relative;
+
+		&:not(:last-child)::after {
+			content: '';
+			width: 4px;
+			height: 4px;
+			background-color: $brand-primary;
+			display: inline-block;
+			margin-left: $space-lg;
+			position: absolute;
+			right: -#{$space-md};
+			top: 50%;
+			transform: translateY(-50%);
+
+			@media (max-width: 575.98px) {
+				display: none;
+			}
+		}
+	}
+}
+
+// ==========================================================================
+// SECTION: Coating Tiers (service-detail only)
+// ==========================================================================
+// Warm-white section with a 3-card tier grid. Uses the same spacing /
+// headline scale as .section-problem / .section-features.
+// ==========================================================================
+
+.section-coating-tiers {
+	background-color: $brand-warm-white;
+	color: $text-primary;
+	padding: 120px 0;
+
+	@media (max-width: 767.98px) {
+		padding: 80px 0;
+	}
+
+	&__header {
+		max-width: 720px;
+		margin: 0 0 $space-3xl;
+
+		@media (max-width: 767.98px) {
+			margin-bottom: $space-2xl;
+		}
+	}
+
+	&__overline {
+		display: inline-block;
+		font-family: $font-family-mono;
+		font-size: 11px;
+		font-weight: 500;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: $brand-primary;
+		margin-bottom: $space-sm;
+	}
+
+	&__headline {
+		font-family: $font-family-display;
+		font-weight: 700;
+		font-size: clamp(2.25rem, 5vw, 3.75rem);
+		line-height: 1.0;
+		letter-spacing: 0.01em;
+		text-transform: uppercase;
+		color: $text-primary;
+		margin: 0;
+	}
+
+	&__grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: $space-md;
+
+		@media (max-width: 991.98px) {
+			grid-template-columns: 1fr;
+			gap: $space-sm;
+		}
+	}
+}
+
+.coating-tier-card {
+	position: relative;
+	background-color: $brand-white;
+	border: 1px solid $border-color;
+	padding: $space-xl $space-lg $space-lg;
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+	transition: box-shadow $motion-fast $ease-out-expo, border-color $motion-fast $ease-out-expo;
+
+	&:hover {
+		box-shadow: 0 8px 32px rgba($brand-dark, 0.08);
+	}
+
+	&--recommended {
+		border-top: 3px solid $brand-primary;
+		box-shadow: 0 12px 40px rgba($brand-dark, 0.1);
+	}
+
+	&__badge {
+		position: absolute;
+		top: -11px;
+		left: 50%;
+		transform: translateX(-50%);
+		background-color: $brand-primary;
+		color: $text-on-dark;
+		font-family: $font-family-mono;
+		font-weight: 700;
+		font-size: 10px;
+		letter-spacing: 0.15em;
+		padding: 5px 12px;
+		white-space: nowrap;
+	}
+
+	&__name {
+		font-family: $font-family-display;
+		font-weight: 800;
+		font-size: 1.75rem; // 28
+		line-height: 1;
+		letter-spacing: 0.01em;
+		text-transform: uppercase;
+		color: $text-primary;
+		margin: 0 0 $space-sm;
+	}
+
+	&__best-for {
+		font-family: $font-family-base;
+		font-size: 0.875rem; // 14
+		line-height: 1.5;
+		color: $text-secondary;
+		margin: 0 0 $space-lg;
+	}
+
+	&__best-for-label {
+		display: block;
+		font-family: $font-family-mono;
+		font-size: 9px;
+		font-weight: 500;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: rgba($text-primary, 0.5);
+		margin-bottom: 2px;
+	}
+
+	&__highlights {
+		list-style: none;
+		padding: $space-md 0;
+		margin: 0 0 $space-lg;
+		border-top: 1px solid $border-light;
+		border-bottom: 1px solid $border-light;
+		flex: 1 1 auto;
+
+		> li {
+			display: flex;
+			align-items: flex-start;
+			gap: $space-sm;
+			font-family: $font-family-base;
+			font-size: 0.9375rem;
+			line-height: 1.45;
+			color: $text-primary;
+			margin-bottom: $space-xs;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+			svg {
+				flex-shrink: 0;
+				color: $brand-primary;
+				margin-top: 2px;
+			}
+		}
+	}
+
+	&__cta {
+		align-self: flex-start;
+	}
+
+	&--recommended &__cta {
+		background-color: $brand-primary;
+		color: $text-on-dark;
+		border-color: $brand-primary;
+
+		&:hover,
+		&:focus-visible {
+			background-color: darken($brand-primary, 8%);
+			border-color: darken($brand-primary, 8%);
+			color: $text-on-dark;
+		}
+	}
+}
+
+// ==========================================================================
+// SECTION: Before / After Slider
+// ==========================================================================
+
+.section-before-after {
+	background-color: $brand-white;
+	color: $text-primary;
+	padding: 120px 0;
+
+	@media (max-width: 767.98px) {
+		padding: 80px 0;
+	}
+
+	&__header {
+		max-width: 720px;
+		margin: 0 0 $space-2xl;
+	}
+
+	&__overline {
+		display: inline-block;
+		font-family: $font-family-mono;
+		font-size: 11px;
+		font-weight: 500;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: $brand-primary;
+		margin-bottom: $space-sm;
+	}
+
+	&__headline {
+		font-family: $font-family-display;
+		font-weight: 700;
+		font-size: clamp(2.25rem, 5vw, 3.75rem);
+		line-height: 1.0;
+		letter-spacing: 0.01em;
+		text-transform: uppercase;
+		color: $text-primary;
+		margin: 0 0 $space-md;
+	}
+
+	&__body {
+		font-family: $font-family-base;
+		font-size: 1rem;
+		line-height: 1.6;
+		color: $text-secondary;
+		margin: 0;
+	}
+
+	&__grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: $space-lg;
+		max-width: 960px;
+		margin: 0 auto;
+	}
+}
+
+.before-after {
+	margin: 0;
+
+	&__stage {
+		position: relative;
+		width: 100%;
+		aspect-ratio: 16 / 9;
+		overflow: hidden;
+		border-radius: $radius-sm;
+		background-color: $brand-surface;
+		isolation: isolate;
+		--slider-pos: 50%;
+	}
+
+	&__image {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+		filter: saturate(0.9) contrast(1.08);
+
+		&--before {
+			z-index: 1;
+		}
+
+		&--after {
+			z-index: 2;
+			clip-path: inset(0 calc(100% - var(--slider-pos)) 0 0);
+			-webkit-clip-path: inset(0 calc(100% - var(--slider-pos)) 0 0);
+		}
+	}
+
+	&__placeholder {
+		background-color: $brand-surface;
+		background-image: repeating-linear-gradient(
+			45deg,
+			rgba($brand-dark, 0.04) 0,
+			rgba($brand-dark, 0.04) 1px,
+			transparent 1px,
+			transparent 14px
+		);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		&--after {
+			background-color: $brand-dark;
+			background-image: repeating-linear-gradient(
+				45deg,
+				rgba($text-on-dark, 0.06) 0,
+				rgba($text-on-dark, 0.06) 1px,
+				transparent 1px,
+				transparent 14px
+			);
+		}
+	}
+
+	&__placeholder-label {
+		font-family: $font-family-mono;
+		font-size: 10px;
+		font-weight: 500;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: rgba($brand-dark, 0.4);
+
+		&:where(.before-after__placeholder--after .before-after__placeholder-label),
+		.before-after__placeholder--after & {
+			color: rgba($text-on-dark, 0.55);
+		}
+	}
+
+	&__label {
+		position: absolute;
+		top: $space-sm;
+		z-index: 4;
+		font-family: $font-family-mono;
+		font-size: 10px;
+		font-weight: 700;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		padding: 6px 10px;
+		background-color: rgba($brand-dark, 0.8);
+		color: $text-on-dark;
+
+		&--before {
+			left: $space-sm;
+		}
+
+		&--after {
+			right: $space-sm;
+		}
+	}
+
+	// Red vertical divider + circular handle
+	&__divider {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: var(--slider-pos);
+		width: 2px;
+		background-color: $brand-primary;
+		transform: translateX(-1px);
+		z-index: 3;
+		pointer-events: none;
+	}
+
+	&__handle {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 44px;
+		height: 44px;
+		border-radius: 50%;
+		background-color: $brand-primary;
+		color: $text-on-dark;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		box-shadow: 0 4px 16px rgba($brand-primary, 0.4);
+		transition: box-shadow $motion-fast $ease-out-expo;
+	}
+
+	// Native range input — sits above everything, transparent, full-width
+	&__range {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		appearance: none;
+		-webkit-appearance: none;
+		background: transparent;
+		border: 0;
+		margin: 0;
+		padding: 0;
+		cursor: ew-resize;
+		z-index: 5;
+		opacity: 0; // invisible — the visual is the divider + handle below
+
+		&::-webkit-slider-thumb {
+			-webkit-appearance: none;
+			appearance: none;
+			width: 44px;
+			height: 44px;
+			background: transparent;
+			border: 0;
+			cursor: ew-resize;
+		}
+
+		&::-moz-range-thumb {
+			width: 44px;
+			height: 44px;
+			background: transparent;
+			border: 0;
+			cursor: ew-resize;
+		}
+
+		&:focus-visible {
+			outline: 0;
+
+			+ .before-after__divider .before-after__handle,
+			~ .before-after__divider .before-after__handle {
+				box-shadow: 0 0 0 3px rgba($brand-primary, 0.3), 0 4px 16px rgba($brand-primary, 0.5);
+			}
+		}
+	}
+
+	&:hover .before-after__handle {
+		box-shadow: 0 0 0 6px rgba($brand-primary, 0.15), 0 4px 16px rgba($brand-primary, 0.4);
+	}
+
+	&__caption {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: $space-sm;
+		margin: $space-sm 0 0;
+		padding: 0;
+
+		@media (max-width: 575.98px) {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: $space-xs;
+		}
+	}
+
+	&__caption-label {
+		font-family: $font-family-base;
+		font-size: 0.875rem;
+		font-weight: 500;
+		color: $text-primary;
+	}
+
+	&__caption-tier {
+		font-family: $font-family-mono;
+		font-size: 10px;
+		font-weight: 700;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: $brand-primary;
+	}
+}
+
+// ==========================================================================
+// SECTION: Pricing (Starting At)
+// ==========================================================================
+// Grid-based price table, recommended column highlighted with a red
+// top rail. Collapses to stacked "bed size" cards on mobile.
+// ==========================================================================
+
+.section-pricing-starting {
+	background-color: $brand-warm-white;
+	color: $text-primary;
+	padding: 120px 0;
+
+	@media (max-width: 767.98px) {
+		padding: 80px 0;
+	}
+
+	&__header {
+		max-width: 720px;
+		margin: 0 0 $space-2xl;
+	}
+
+	&__overline {
+		display: inline-block;
+		font-family: $font-family-mono;
+		font-size: 11px;
+		font-weight: 500;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: $brand-primary;
+		margin-bottom: $space-sm;
+	}
+
+	&__headline {
+		font-family: $font-family-display;
+		font-weight: 700;
+		font-size: clamp(2.25rem, 5vw, 3.75rem);
+		line-height: 1.0;
+		letter-spacing: 0.01em;
+		text-transform: uppercase;
+		color: $text-primary;
+		margin: 0;
+	}
+
+	// Table — CSS Grid with 4 columns on desktop
+	&__table {
+		display: grid;
+		grid-template-columns: 1.5fr 1fr 1fr 1fr;
+		background-color: $brand-white;
+		border: 1px solid $border-color;
+		max-width: 960px;
+		margin: 0 auto;
+
+		@media (max-width: 767.98px) {
+			grid-template-columns: 1fr;
+			border: 0;
+			background-color: transparent;
+			gap: $space-md;
+		}
+	}
+
+	&__row {
+		display: contents;
+
+		// Mobile: stack each row as its own card
+		@media (max-width: 767.98px) {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 0;
+			background-color: $brand-white;
+			border: 1px solid $border-color;
+			padding: $space-md;
+
+			&--head {
+				display: none;
+			}
+		}
+	}
+
+	&__cell {
+		padding: $space-md $space-lg;
+		border-bottom: 1px solid $border-light;
+		border-right: 1px solid $border-light;
+		font-family: $font-family-mono;
+		font-weight: 500;
+		font-size: 0.9375rem;
+		color: $text-primary;
+		display: flex;
+		align-items: center;
+		position: relative;
+
+		&:last-child {
+			border-right: 0;
+		}
+
+		// Desktop: last row has no bottom border
+		.section-pricing-starting__row:last-child & {
+			border-bottom: 0;
+		}
+
+		&--head {
+			background-color: $brand-surface;
+			font-family: $font-family-mono;
+			font-size: 10px;
+			font-weight: 700;
+			letter-spacing: 0.15em;
+			text-transform: uppercase;
+			color: $text-primary;
+			padding-top: $space-lg;
+			padding-bottom: $space-md;
+		}
+
+		&--label {
+			font-family: $font-family-display;
+			font-weight: 700;
+			font-size: 1.125rem;
+			letter-spacing: 0.01em;
+			text-transform: uppercase;
+			color: $text-primary;
+		}
+
+		&--recommended {
+			background-color: rgba($brand-primary, 0.04);
+
+			&.section-pricing-starting__cell--head {
+				background-color: $brand-surface;
+				border-top: 3px solid $brand-primary;
+				padding-top: $space-md;
+			}
+		}
+
+		// Mobile: render as label/value pairs inside the stacked card
+		@media (max-width: 767.98px) {
+			padding: $space-xs 0;
+			border: 0;
+
+			&--label {
+				grid-column: 1 / -1;
+				padding-bottom: $space-sm;
+				margin-bottom: $space-sm;
+				border-bottom: 1px solid $border-light;
+				font-size: 1.25rem;
+			}
+
+			&::before {
+				content: attr(data-col);
+				display: block;
+				font-family: $font-family-mono;
+				font-size: 9px;
+				font-weight: 700;
+				letter-spacing: 0.12em;
+				text-transform: uppercase;
+				color: rgba($text-primary, 0.5);
+				margin-bottom: 2px;
+			}
+
+			&--label::before {
+				display: none;
+			}
+		}
+	}
+
+	&__recommended-badge {
+		position: absolute;
+		top: -11px;
+		left: 50%;
+		transform: translateX(-50%);
+		background-color: $brand-primary;
+		color: $text-on-dark;
+		font-family: $font-family-mono;
+		font-weight: 700;
+		font-size: 9px;
+		letter-spacing: 0.15em;
+		padding: 4px 10px;
+		white-space: nowrap;
+	}
+
+	&__microcopy {
+		font-family: $font-family-mono;
+		font-size: 11px;
+		font-weight: 500;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+		color: $text-secondary;
+		text-align: center;
+		max-width: 640px;
+		margin: $space-lg auto 0;
+		line-height: 1.6;
+	}
+}
+
+// ==========================================================================
+// SECTION: Service FAQ (scoped accordion reusing .section-process styles)
+// ==========================================================================
+
+.section-service-faq {
+	background-color: $brand-white;
+	color: $text-primary;
+	padding: 120px 0;
+
+	@media (max-width: 767.98px) {
+		padding: 80px 0;
+	}
+
+	&__header {
+		max-width: 820px;
+		margin: 0 auto $space-xl;
+		text-align: center;
+	}
+
+	&__overline {
+		display: inline-block;
+		font-family: $font-family-mono;
+		font-size: 11px;
+		font-weight: 500;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: $brand-primary;
+		margin-bottom: $space-sm;
+	}
+
+	&__headline {
+		font-family: $font-family-display;
+		font-weight: 700;
+		font-size: clamp(2rem, 4.5vw, 3rem);
+		line-height: 1.0;
+		letter-spacing: 0.01em;
+		text-transform: uppercase;
+		color: $text-primary;
+		margin: 0;
+	}
+
+	&__accordion {
+		max-width: 820px;
+		margin: 0 auto;
+
+		// Inherit the same override logic as .section-process__accordion
+		--bs-accordion-bg: #{$brand-white};
+		--bs-accordion-border-color: #{$border-color};
+		--bs-accordion-border-radius: 0;
+		--bs-accordion-inner-border-radius: 0;
+		--bs-accordion-btn-color: #{$text-primary};
+		--bs-accordion-btn-bg: transparent;
+		--bs-accordion-btn-focus-box-shadow: none;
+		--bs-accordion-active-color: #{$text-primary};
+		--bs-accordion-active-bg: #{$brand-warm-white};
+
+		.collapsing {
+			transition: height 250ms $ease-out-expo;
+		}
+
+		.accordion-item {
+			border-left: 3px solid transparent;
+			border-right: 1px solid $border-color;
+			border-top: 1px solid $border-color;
+			border-bottom: 1px solid $border-color;
+			background-color: $brand-white;
+			transition: border-left-color $motion-fast $ease-out-expo;
+
+			& + .accordion-item {
+				border-top-width: 0;
+			}
+
+			&:has(.accordion-button:not(.collapsed)) {
+				border-left-color: $brand-primary;
+			}
+		}
+
+		.accordion-button {
+			font-family: $font-family-base;
+			font-weight: 600;
+			font-size: 1rem;
+			line-height: 1.4;
+			color: $text-primary;
+			padding: $space-md $space-lg;
+			background: transparent;
+			box-shadow: none;
+			border-radius: 0;
+
+			&:not(.collapsed) {
+				color: $text-primary;
+				background-color: $brand-warm-white;
+				box-shadow: none;
+			}
+
+			&::after {
+				background-image: none;
+				content: '+';
+				font-family: $font-family-mono;
+				font-weight: 500;
+				font-size: 20px;
+				line-height: 1;
+				color: $brand-primary;
+				width: auto;
+				height: auto;
+				transform: none;
+			}
+
+			&:not(.collapsed)::after {
+				content: '−';
+				transform: none;
+			}
+		}
+
+		.accordion-body {
+			padding: 0 $space-lg $space-md;
+			font-family: $font-family-base;
+			font-size: 0.9375rem;
+			line-height: 1.65;
+			color: $text-secondary;
+			background-color: $brand-warm-white;
+		}
+	}
+}
+
+// ==========================================================================
 // SECTION 2: Problem — Rhino Custom Builds
 // ==========================================================================
 // Warm-white loss-aversion section. Dark → light transition gets the +16px
