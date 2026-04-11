@@ -126,6 +126,7 @@ $bmg_includes = array(
 	'/customizer-founder.php',       // Founder / Shop section Customizer settings.
 	'/customizer-features.php',      // Features section Customizer settings.
 	'/customizer-proof.php',         // Proof section Customizer settings.
+	'/customizer-process.php',       // Process + FAQ section Customizer settings.
 	'/customizer-about.php',         // About section Customizer settings.
 	'/dark-mode.php',                // Dark mode FOUC prevention and data-bs-theme attribute.
 	'/seo-metadata.php',             // SEO title tags and meta descriptions.

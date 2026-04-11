@@ -1810,6 +1810,315 @@ html {
 .section-proof .bmg-reveal-stagger > .bmg-reveal:nth-child(3) { transition-delay: 120ms; }
 .section-proof .bmg-reveal-stagger > .bmg-reveal:nth-child(4) { transition-delay: 180ms; }
 
+// ==========================================================================
+// SECTION 6: Process + FAQ — Rhino Custom Builds
+// ==========================================================================
+// White section containing the 4-step process row and an inline
+// 8-question FAQ accordion (Bootstrap 5 native), overridden to 250ms
+// expand speed and a red 3px left rail on the active item.
+// ==========================================================================
+
+.section-process {
+	background-color: $brand-white;
+	color: $text-primary;
+	padding: 120px 0;
+
+	@media (max-width: 767.98px) {
+		padding: 80px 0;
+	}
+
+	&__header {
+		max-width: 720px;
+		margin: 0 0 $space-3xl; // 96
+
+		@media (max-width: 767.98px) {
+			margin-bottom: $space-2xl; // 64
+		}
+	}
+
+	&__overline {
+		display: inline-block;
+		font-family: $font-family-mono;
+		font-size: 11px;
+		font-weight: 500;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: $brand-primary;
+		margin-bottom: $space-sm;
+	}
+
+	&__headline {
+		font-family: $font-family-display;
+		font-weight: 700;
+		font-size: clamp(2.25rem, 5vw, 3.75rem);
+		line-height: 1.0;
+		letter-spacing: 0.01em;
+		text-transform: uppercase;
+		color: $text-primary;
+		margin: 0;
+	}
+
+	// ----- 4-step process row ----------------------------------------------
+
+	&__steps {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: $space-lg; // 32
+		list-style: none;
+		padding: 0;
+		margin: 0 0 $space-4xl; // 128 → FAQ
+		position: relative;
+		counter-reset: process;
+
+		// Red connecting line running across the row behind the step numbers
+		&::before {
+			content: '';
+			position: absolute;
+			top: 22px; // vertically centered with the step number baseline
+			left: 0;
+			right: 0;
+			height: 2px;
+			background-color: $brand-primary;
+			opacity: 0.25;
+			z-index: 0;
+
+			@media (max-width: 767.98px) {
+				top: 0;
+				bottom: 0;
+				left: 22px;
+				right: auto;
+				width: 2px;
+				height: auto;
+			}
+		}
+
+		@media (max-width: 991.98px) {
+			grid-template-columns: repeat(2, 1fr);
+			gap: $space-xl; // 40
+
+			&::before {
+				display: none; // grid wrapping makes a single-line rail wrong
+			}
+		}
+
+		@media (max-width: 767.98px) {
+			grid-template-columns: 1fr;
+			gap: $space-lg;
+
+			&::before {
+				display: block; // vertical rail is simple
+			}
+		}
+	}
+
+	&__step {
+		position: relative;
+		z-index: 1;
+		padding-right: $space-md; // air after each step before the next
+
+		@media (max-width: 767.98px) {
+			padding-left: 56px; // space for the number column + rail
+			padding-right: 0;
+		}
+	}
+
+	&__step-number {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 44px;
+		height: 44px;
+		background-color: $brand-white; // covers the rail behind it
+		font-family: $font-family-mono;
+		font-weight: 700;
+		font-size: 1rem; // 16
+		letter-spacing: 0.02em;
+		color: $brand-primary;
+		margin-bottom: $space-md; // 24 → title
+		padding: 0 8px;
+		position: relative;
+
+		&::before {
+			content: '';
+			position: absolute;
+			inset: 8px 0;
+			border: 1px solid $brand-primary;
+			pointer-events: none;
+		}
+
+		@media (max-width: 767.98px) {
+			position: absolute;
+			left: 0;
+			top: 0;
+			margin-bottom: 0;
+		}
+	}
+
+	&__step-title {
+		font-family: $font-family-display;
+		font-weight: 700;
+		font-size: 1.5rem; // 24
+		line-height: 1.05;
+		letter-spacing: 0.01em;
+		text-transform: uppercase;
+		color: $text-primary;
+		margin: 0 0 $space-sm; // 16
+	}
+
+	&__step-body {
+		font-family: $font-family-base;
+		font-size: 0.9375rem; // 15
+		font-weight: 400;
+		line-height: 1.6;
+		color: $text-secondary;
+		margin: 0;
+		max-width: 32ch;
+	}
+
+	// ----- FAQ block --------------------------------------------------------
+
+	&__faq {
+		max-width: 820px;
+		margin: 0 auto;
+		padding-top: $space-3xl; // 96
+		border-top: 1px solid $border-color;
+	}
+
+	&__faq-header {
+		margin-bottom: $space-xl; // 40
+		text-align: center;
+	}
+
+	&__faq-overline {
+		display: inline-block;
+		font-family: $font-family-mono;
+		font-size: 11px;
+		font-weight: 500;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: $brand-primary;
+		margin-bottom: $space-sm;
+	}
+
+	&__faq-headline {
+		font-family: $font-family-display;
+		font-weight: 700;
+		font-size: clamp(1.75rem, 4vw, 2.5rem); // 28 → 40
+		line-height: 1.05;
+		letter-spacing: 0.01em;
+		text-transform: uppercase;
+		color: $text-primary;
+		margin: 0;
+	}
+
+	// ----- Accordion override (Bootstrap 5 native) -------------------------
+	// Override the starter's generic accordion styling inside this section.
+	// Scope is tight: only .section-process__accordion.
+
+	&__accordion {
+		--bs-accordion-bg: #{$brand-white};
+		--bs-accordion-border-color: #{$border-color};
+		--bs-accordion-border-radius: 0;
+		--bs-accordion-inner-border-radius: 0;
+		--bs-accordion-btn-color: #{$text-primary};
+		--bs-accordion-btn-bg: transparent;
+		--bs-accordion-btn-focus-box-shadow: none;
+		--bs-accordion-active-color: #{$text-primary};
+		--bs-accordion-active-bg: #{$brand-warm-white};
+
+		// Faster expand than Bootstrap default (350ms → 250ms).
+		// .collapsing is the transient state during expand/collapse.
+		.collapsing {
+			transition: height 250ms $ease-out-expo;
+		}
+
+		.accordion-item {
+			border-left: 3px solid transparent;
+			border-right: 1px solid $border-color;
+			border-top: 1px solid $border-color;
+			border-bottom: 1px solid $border-color;
+			background-color: $brand-white;
+			transition: border-left-color $motion-fast $ease-out-expo;
+
+			& + .accordion-item {
+				border-top-width: 0;
+			}
+
+			// Red 3px left rail on the active (expanded) item
+			&:has(.accordion-button:not(.collapsed)) {
+				border-left-color: $brand-primary;
+			}
+		}
+
+		.accordion-button {
+			font-family: $font-family-base;
+			font-weight: 600;
+			font-size: 1rem; // 16
+			line-height: 1.4;
+			letter-spacing: 0.005em;
+			color: $text-primary;
+			padding: $space-md $space-lg; // 24 / 32
+			background: transparent;
+			box-shadow: none;
+			border-radius: 0;
+			transition: color $motion-fast $ease-out-expo, background-color $motion-fast $ease-out-expo;
+
+			&:not(.collapsed) {
+				color: $text-primary;
+				background-color: $brand-warm-white;
+				box-shadow: none;
+			}
+
+			&:focus-visible {
+				outline: 2px solid $brand-primary;
+				outline-offset: -2px;
+			}
+
+			// Chevron icon — rewrite to Rhino style (no gradient, red on open)
+			&::after {
+				background-image: none;
+				content: '+';
+				font-family: $font-family-mono;
+				font-weight: 500;
+				font-size: 20px;
+				line-height: 1;
+				color: $brand-primary;
+				width: auto;
+				height: auto;
+				transform: none;
+				transition: transform $motion-fast $ease-out-expo, content 0s;
+			}
+
+			&:not(.collapsed)::after {
+				content: '−';
+				transform: none;
+			}
+		}
+
+		.accordion-body {
+			padding: 0 $space-lg $space-md; // 0 / 32 / 24
+			font-family: $font-family-base;
+			font-size: 0.9375rem; // 15
+			font-weight: 400;
+			line-height: 1.65;
+			color: $text-secondary;
+			background-color: $brand-warm-white;
+		}
+	}
+}
+
+// Scoped reveal stagger override for process — 60ms, 16px (4 steps)
+.section-process .bmg-reveal-stagger > .bmg-reveal {
+	transform: translateY(16px);
+}
+.section-process .bmg-reveal-stagger > .bmg-reveal.is-visible {
+	transform: translateY(0);
+}
+.section-process .bmg-reveal-stagger > .bmg-reveal:nth-child(1) { transition-delay: 0ms; }
+.section-process .bmg-reveal-stagger > .bmg-reveal:nth-child(2) { transition-delay: 60ms; }
+.section-process .bmg-reveal-stagger > .bmg-reveal:nth-child(3) { transition-delay: 120ms; }
+.section-process .bmg-reveal-stagger > .bmg-reveal:nth-child(4) { transition-delay: 180ms; }
+
 // --------------------------------------------------------------------------
 // Rhino Button System — used inside the hero CTA group
 // --------------------------------------------------------------------------
