@@ -9,62 +9,77 @@
 // ==========================================================================
 
 // ==========================================================================
-// Typography
+// Typography — Rhino Custom Builds
 // ==========================================================================
 // Font imports are handled in functions.php via Google Fonts
-// Cormorant Garamond: Elegant serif for display/headlines
-// Montserrat: Clean geometric sans-serif for body text
+// Barlow Condensed: Display/headlines (uppercase, 700–800)
+// Barlow: Body, UI, buttons (400–600)
+// JetBrains Mono: Stats, phone numbers, overlines, tags, metadata
+// No serifs anywhere.
 
-$font-family-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
-$font-family-base: 'Montserrat', Arial, 'Helvetica Neue', sans-serif;
+$font-family-base:    'Barlow', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+$font-family-display: 'Barlow Condensed', 'Barlow', Arial, sans-serif;
+$font-family-mono:    'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace;
 
-// Type Scale Reference (implemented via Bootstrap overrides)
-// Display:  48-72px desktop → 36px mobile
-// H1:       36-48px desktop → 32px mobile
-// H2:       24-32px desktop → 24px mobile
-// H3:       20-24px desktop → 20px mobile
-// Body:     17px desktop    → 16px mobile
-// Small:    14px
-// Button:   14-15px
-
-// Line Heights
-// Body: 1.55-1.65
-// Headings: 1.2-1.3
-
-// Letter Spacing
-// Display/headlines: +0.02em
-// All-caps labels: +0.05em
+// Type Scale Reference
+// H1:       Barlow Condensed 700–800, uppercase, max 6 words
+// H2:       Barlow Condensed 700, uppercase
+// H3/H4:    Barlow 600
+// Body:     Barlow 400, 15–16px, line-height 1.6
+// Buttons:  Barlow 600, 14px, uppercase, letter-spacing 0.05em
+// Overlines: JetBrains Mono 500, 10–11px, uppercase, letter-spacing 0.1em
+// Stats:    JetBrains Mono 500–700
 
 // ==========================================================================
-// Color Palette
+// Color Palette — Rhino Custom Builds
 // ==========================================================================
-// Default: dark luxury aesthetic (70% dark / 20% neutral / 10% accent).
-// Update these values per client brand.
+// "Rhino Red meets asphalt" — rugged, premium, industrial.
+// Warm white backgrounds, deep black dark sections.
+// Red is for CTAs and links only — never a section background.
+// Amber is for phone CTAs and stat badges only — never primary buttons.
 
-// Primary Brand Colors
-$bmg-obsidian:       #0A0A0A;   // Client primary dark
-$bmg-charcoal:       #1C1C1C;   // Client secondary dark
-$bmg-gunmetal:       #2C3E50;   // Depth/sophistication
+// Neutrals
+$brand-warm-white:    #F5F2EE;   // Primary light background
+$brand-white:         #FFFFFF;   // Secondary light background (Features, Process)
+$brand-surface:       #E8E4DE;   // Subtle surface tone
+$brand-dark:          #1A1A1A;   // Primary dark background (never #000)
+$brand-dark-lighter:  #242424;   // Footer / dark surface lift
 
-// Accent Colors
-$bmg-silver:         #A8A9AD;   // Client accent / highlight (use sparingly ~10%)
-$bmg-platinum:       #E5E4E2;   // Light accent
+// Brand accents
+$brand-primary:       #C41E2A;   // Rhino Red — CTAs & links only
+$brand-accent:        #E8913A;   // Amber — phone CTAs & stat badges only
 
-// Support Colors
-$bmg-warm-gray:      #8B8B8B;   // Captions, metadata
-$bmg-white:          #FFFFFF;   // Text on dark backgrounds
+// Borders
+$border-color:        #D1CCC5;   // Card and section borders
+$border-light:        #E8E4DE;   // Hairlines and subtle dividers
 
-// Website-Specific
-$bmg-off-white:      #FAFAFA;   // Main page background
-$bmg-dark-gray:      #2D2D2D;   // Subheadings
-$bmg-medium-gray:    #6B6B6B;   // Tertiary text
-$bmg-accent-light:   #E8E8E8;   // Borders, separators
+// Text
+$text-primary:        #1A1A1A;   // Body text on light
+$text-secondary:      #5A5651;   // Muted body, metadata
+$text-on-dark:        #F5F2EE;   // Body text on dark sections
 
 // Error State
-$bmg-error:          #8B4049;
+$brand-error:         #8B4049;
 
-// Set Bootstrap primary
-$primary: $bmg-obsidian;
+// --------------------------------------------------------------------------
+// Legacy $bmg-* aliases — mapped to Rhino tokens so existing SCSS in the
+// starter theme continues to compile. New code should use $brand-* / $text-*.
+// --------------------------------------------------------------------------
+$bmg-obsidian:       $brand-dark;
+$bmg-charcoal:       $brand-dark-lighter;
+$bmg-gunmetal:       $brand-dark-lighter;
+$bmg-silver:         $text-secondary;
+$bmg-platinum:       $brand-surface;
+$bmg-warm-gray:      $text-secondary;
+$bmg-white:          $brand-white;
+$bmg-off-white:      $brand-warm-white;
+$bmg-dark-gray:      $brand-dark-lighter;
+$bmg-medium-gray:    $text-secondary;
+$bmg-accent-light:   $border-light;
+$bmg-error:          $brand-error;
+
+// Set Bootstrap primary to Rhino Red (drives btn-primary, links, accents)
+$primary: $brand-primary;
 
 // ==========================================================================
 // Light Mode Colors (Primary site mode)
@@ -188,21 +203,27 @@ $form-height: 52px;
 $form-error: $bmg-error;
 
 // ==========================================================================
-// Button Tokens
+// Button Tokens — Rhino Custom Builds
 // ==========================================================================
-// Primary: Black bg, white text, square edges
-$btn-primary-bg: $bmg-obsidian;
-$btn-primary-text: $bmg-white;
-$btn-primary-hover-bg: $bmg-charcoal;
-$btn-primary-padding-y: 1rem;    // 16px
-$btn-primary-padding-x: 2rem;    // 32px
+// Primary: Rhino Red bg, white text, square edges, underline sweep on hover
+// (no scale transforms — see CLAUDE.md non-negotiables)
+$btn-primary-bg:          $brand-primary;
+$btn-primary-text:        $brand-white;
+$btn-primary-hover-bg:    darken($brand-primary, 8%);
+$btn-primary-padding-y:   1.125rem;   // 18px
+$btn-primary-padding-x:   2rem;       // 32px
 
-// Secondary: Transparent bg, 1px black border
-$btn-secondary-bg: transparent;
-$btn-secondary-text: $bmg-obsidian;
-$btn-secondary-border: $bmg-obsidian;
-$btn-secondary-hover-bg: $bmg-obsidian;
-$btn-secondary-hover-text: $bmg-white;
+// Secondary (ghost on light): Transparent bg, 1px dark border
+$btn-secondary-bg:          transparent;
+$btn-secondary-text:        $brand-dark;
+$btn-secondary-border:      $brand-dark;
+$btn-secondary-hover-bg:    $brand-dark;
+$btn-secondary-hover-text:  $brand-white;
+
+// Urgency / Phone (Amber): Used only for phone CTAs & scarcity moments
+$btn-phone-bg:        $brand-accent;
+$btn-phone-text:      $brand-dark;    // dark text for contrast (8.2:1)
+$btn-phone-hover-bg:  darken($brand-accent, 6%);
 
 // ==========================================================================
 // Layout Tokens

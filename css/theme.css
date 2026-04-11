@@ -53,7 +53,7 @@
   --bs-gray-700: #495057;
   --bs-gray-800: #343a40;
   --bs-gray-900: #212529;
-  --bs-primary: #0A0A0A;
+  --bs-primary: #C41E2A;
   --bs-secondary: #6c757d;
   --bs-success: #198754;
   --bs-info: #0dcaf0;
@@ -61,7 +61,7 @@
   --bs-danger: #dc3545;
   --bs-light: #f8f9fa;
   --bs-dark: #212529;
-  --bs-primary-rgb: 10, 10, 10;
+  --bs-primary-rgb: 196, 30, 42;
   --bs-secondary-rgb: 108, 117, 125;
   --bs-success-rgb: 25, 135, 84;
   --bs-info-rgb: 13, 202, 240;
@@ -76,7 +76,7 @@
   --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
-  --bs-body-font-family: Montserrat, Arial, Helvetica Neue, sans-serif;
+  --bs-body-font-family: Barlow, -apple-system, BlinkMacSystemFont, Helvetica Neue, Arial, sans-serif;
   --bs-body-font-size: 1rem;
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.5;
@@ -84,7 +84,7 @@
   --bs-body-bg: #fff;
   --bs-border-width: 1px;
   --bs-border-style: solid;
-  --bs-border-color: #dee2e6;
+  --bs-border-color: #D1CCC5;
   --bs-border-color-translucent: rgba(0, 0, 0, 0.175);
   --bs-border-radius: 0.375rem;
   --bs-border-radius-sm: 0.25rem;
@@ -92,8 +92,8 @@
   --bs-border-radius-xl: 1rem;
   --bs-border-radius-2xl: 2rem;
   --bs-border-radius-pill: 50rem;
-  --bs-link-color: #0A0A0A;
-  --bs-link-hover-color: #080808;
+  --bs-link-color: #C41E2A;
+  --bs-link-hover-color: rgb(156.8, 24, 33.6);
   --bs-code-color: #d63384;
   --bs-highlight-bg: rgb(255, 242.6, 205.4);
 }
@@ -1856,13 +1856,13 @@ progress {
 
 .table-primary {
   --bs-table-color: #000;
-  --bs-table-bg: #cecece;
-  --bs-table-border-color: rgb(185.4, 185.4, 185.4);
-  --bs-table-striped-bg: rgb(195.7, 195.7, 195.7);
+  --bs-table-bg: rgb(243.2, 210, 212.4);
+  --bs-table-border-color: rgb(218.88, 189, 191.16);
+  --bs-table-striped-bg: rgb(231.04, 199.5, 201.78);
   --bs-table-striped-color: #000;
-  --bs-table-active-bg: rgb(185.4, 185.4, 185.4);
+  --bs-table-active-bg: rgb(218.88, 189, 191.16);
   --bs-table-active-color: #000;
-  --bs-table-hover-bg: rgb(190.55, 190.55, 190.55);
+  --bs-table-hover-bg: rgb(224.96, 194.25, 196.47);
   --bs-table-hover-color: #000;
   color: var(--bs-table-color);
   border-color: var(--bs-table-border-color);
@@ -2119,9 +2119,9 @@ progress {
 .wpcf7 textarea:focus {
   color: #212529;
   background-color: #fff;
-  border-color: rgb(132.5, 132.5, 132.5);
+  border-color: rgb(225.5, 142.5, 148.5);
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(10, 10, 10, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(196, 30, 42, 0.25);
 }
 .form-control::-webkit-date-and-time-value, .wpcf7 .wpcf7-validation-errors::-webkit-date-and-time-value, .wpcf7 input[type=text]::-webkit-date-and-time-value,
 .wpcf7 input[type=search]::-webkit-date-and-time-value,
@@ -2406,9 +2406,9 @@ textarea.form-control-lg {
   appearance: none;
 }
 .form-select:focus {
-  border-color: rgb(132.5, 132.5, 132.5);
+  border-color: rgb(225.5, 142.5, 148.5);
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(10, 10, 10, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(196, 30, 42, 0.25);
 }
 .form-select[multiple], .form-select[size]:not([size="1"]) {
   padding-right: 0.75rem;
@@ -2487,13 +2487,13 @@ textarea.form-control-lg {
   filter: brightness(90%);
 }
 .form-check-input:focus {
-  border-color: rgb(132.5, 132.5, 132.5);
+  border-color: rgb(225.5, 142.5, 148.5);
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(10, 10, 10, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(196, 30, 42, 0.25);
 }
 .form-check-input:checked {
-  background-color: #0A0A0A;
-  border-color: #0A0A0A;
+  background-color: #C41E2A;
+  border-color: #C41E2A;
 }
 .form-check-input:checked[type=checkbox] {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
@@ -2502,8 +2502,8 @@ textarea.form-control-lg {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23fff'/%3e%3c/svg%3e");
 }
 .form-check-input[type=checkbox]:indeterminate {
-  background-color: #0A0A0A;
-  border-color: #0A0A0A;
+  background-color: #C41E2A;
+  border-color: #C41E2A;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/%3e%3c/svg%3e");
 }
 .form-check-input:disabled {
@@ -2533,7 +2533,7 @@ textarea.form-control-lg {
   }
 }
 .form-switch .form-check-input:focus {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgb%28132.5, 132.5, 132.5%29'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgb%28225.5, 142.5, 148.5%29'/%3e%3c/svg%3e");
 }
 .form-switch .form-check-input:checked {
   background-position: right center;
@@ -2577,10 +2577,10 @@ textarea.form-control-lg {
   outline: 0;
 }
 .form-range:focus::-webkit-slider-thumb {
-  box-shadow: 0 0 0 1px #fff, 0 0 0 0.25rem rgba(10, 10, 10, 0.25);
+  box-shadow: 0 0 0 1px #fff, 0 0 0 0.25rem rgba(196, 30, 42, 0.25);
 }
 .form-range:focus::-moz-range-thumb {
-  box-shadow: 0 0 0 1px #fff, 0 0 0 0.25rem rgba(10, 10, 10, 0.25);
+  box-shadow: 0 0 0 1px #fff, 0 0 0 0.25rem rgba(196, 30, 42, 0.25);
 }
 .form-range::-moz-focus-outer {
   border: 0;
@@ -2589,7 +2589,7 @@ textarea.form-control-lg {
   width: 1rem;
   height: 1rem;
   margin-top: -0.25rem;
-  background-color: #0A0A0A;
+  background-color: #C41E2A;
   border: 0;
   border-radius: 1rem;
   -webkit-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -2606,7 +2606,7 @@ textarea.form-control-lg {
   appearance: none;
 }
 .form-range::-webkit-slider-thumb:active {
-  background-color: rgb(181.5, 181.5, 181.5);
+  background-color: rgb(237.3, 187.5, 191.1);
 }
 .form-range::-webkit-slider-runnable-track {
   width: 100%;
@@ -2620,7 +2620,7 @@ textarea.form-control-lg {
 .form-range::-moz-range-thumb {
   width: 1rem;
   height: 1rem;
-  background-color: #0A0A0A;
+  background-color: #C41E2A;
   border: 0;
   border-radius: 1rem;
   -moz-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -2637,7 +2637,7 @@ textarea.form-control-lg {
   appearance: none;
 }
 .form-range::-moz-range-thumb:active {
-  background-color: rgb(181.5, 181.5, 181.5);
+  background-color: rgb(237.3, 187.5, 191.1);
 }
 .form-range::-moz-range-track {
   width: 100%;
@@ -3678,19 +3678,19 @@ textarea.form-control-lg {
 
 .btn-primary {
   --bs-btn-color: #fff;
-  --bs-btn-bg: #0A0A0A;
-  --bs-btn-border-color: #0A0A0A;
+  --bs-btn-bg: #C41E2A;
+  --bs-btn-border-color: #C41E2A;
   --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: rgb(8.5, 8.5, 8.5);
-  --bs-btn-hover-border-color: #080808;
-  --bs-btn-focus-shadow-rgb: 47, 47, 47;
+  --bs-btn-hover-bg: rgb(166.6, 25.5, 35.7);
+  --bs-btn-hover-border-color: rgb(156.8, 24, 33.6);
+  --bs-btn-focus-shadow-rgb: 205, 64, 74;
   --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #080808;
-  --bs-btn-active-border-color: rgb(7.5, 7.5, 7.5);
+  --bs-btn-active-bg: rgb(156.8, 24, 33.6);
+  --bs-btn-active-border-color: rgb(147, 22.5, 31.5);
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
   --bs-btn-disabled-color: #fff;
-  --bs-btn-disabled-bg: #0A0A0A;
-  --bs-btn-disabled-border-color: #0A0A0A;
+  --bs-btn-disabled-bg: #C41E2A;
+  --bs-btn-disabled-border-color: #C41E2A;
 }
 
 .btn-secondary {
@@ -3813,19 +3813,19 @@ textarea.form-control-lg {
 }
 
 .btn-outline-primary, .wpcf7 input[type=submit] {
-  --bs-btn-color: #0A0A0A;
-  --bs-btn-border-color: #0A0A0A;
+  --bs-btn-color: #C41E2A;
+  --bs-btn-border-color: #C41E2A;
   --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #0A0A0A;
-  --bs-btn-hover-border-color: #0A0A0A;
-  --bs-btn-focus-shadow-rgb: 10, 10, 10;
+  --bs-btn-hover-bg: #C41E2A;
+  --bs-btn-hover-border-color: #C41E2A;
+  --bs-btn-focus-shadow-rgb: 196, 30, 42;
   --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #0A0A0A;
-  --bs-btn-active-border-color: #0A0A0A;
+  --bs-btn-active-bg: #C41E2A;
+  --bs-btn-active-border-color: #C41E2A;
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #0A0A0A;
+  --bs-btn-disabled-color: #C41E2A;
   --bs-btn-disabled-bg: transparent;
-  --bs-btn-disabled-border-color: #0A0A0A;
+  --bs-btn-disabled-border-color: #C41E2A;
   --bs-gradient: none;
 }
 
@@ -3960,7 +3960,7 @@ textarea.form-control-lg {
   --bs-btn-disabled-color: #6c757d;
   --bs-btn-disabled-border-color: transparent;
   --bs-btn-box-shadow: none;
-  --bs-btn-focus-shadow-rgb: 47, 47, 47;
+  --bs-btn-focus-shadow-rgb: 205, 64, 74;
   text-decoration: underline;
 }
 .btn-link:focus-visible {
@@ -4067,7 +4067,7 @@ textarea.form-control-lg {
   --bs-dropdown-link-hover-color: rgb(29.7, 33.3, 36.9);
   --bs-dropdown-link-hover-bg: #e9ecef;
   --bs-dropdown-link-active-color: #fff;
-  --bs-dropdown-link-active-bg: #0A0A0A;
+  --bs-dropdown-link-active-bg: #C41E2A;
   --bs-dropdown-link-disabled-color: #adb5bd;
   --bs-dropdown-item-padding-x: 1rem;
   --bs-dropdown-item-padding-y: 0.25rem;
@@ -4332,7 +4332,7 @@ textarea.form-control-lg {
   --bs-dropdown-divider-bg: var(--bs-border-color-translucent);
   --bs-dropdown-link-hover-bg: rgba(255, 255, 255, 0.15);
   --bs-dropdown-link-active-color: #fff;
-  --bs-dropdown-link-active-bg: #0A0A0A;
+  --bs-dropdown-link-active-bg: #C41E2A;
   --bs-dropdown-link-disabled-color: #adb5bd;
   --bs-dropdown-header-color: #adb5bd;
 }
@@ -4533,7 +4533,7 @@ textarea.form-control-lg {
 .nav-pills {
   --bs-nav-pills-border-radius: 0.375rem;
   --bs-nav-pills-link-active-color: #fff;
-  --bs-nav-pills-link-active-bg: #0A0A0A;
+  --bs-nav-pills-link-active-bg: #C41E2A;
 }
 .nav-pills .nav-link {
   background: none;
@@ -5197,13 +5197,13 @@ textarea.form-control-lg {
   --bs-accordion-btn-icon-width: 1.25rem;
   --bs-accordion-btn-icon-transform: rotate(-180deg);
   --bs-accordion-btn-icon-transition: transform 0.2s ease-in-out;
-  --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23090909'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
-  --bs-accordion-btn-focus-border-color: rgb(132.5, 132.5, 132.5);
-  --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem rgba(10, 10, 10, 0.25);
+  --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='rgb%28176.4, 27, 37.8%29'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+  --bs-accordion-btn-focus-border-color: rgb(225.5, 142.5, 148.5);
+  --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem rgba(196, 30, 42, 0.25);
   --bs-accordion-body-padding-x: 1.25rem;
   --bs-accordion-body-padding-y: 1rem;
-  --bs-accordion-active-color: #090909;
-  --bs-accordion-active-bg: rgb(230.5, 230.5, 230.5);
+  --bs-accordion-active-color: rgb(176.4, 27, 37.8);
+  --bs-accordion-active-bg: rgb(249.1, 232.5, 233.7);
 }
 
 .accordion-button {
@@ -5362,10 +5362,10 @@ textarea.form-control-lg {
   --bs-pagination-hover-border-color: #dee2e6;
   --bs-pagination-focus-color: var(--bs-link-hover-color);
   --bs-pagination-focus-bg: #e9ecef;
-  --bs-pagination-focus-box-shadow: 0 0 0 0.25rem rgba(10, 10, 10, 0.25);
+  --bs-pagination-focus-box-shadow: 0 0 0 0.25rem rgba(196, 30, 42, 0.25);
   --bs-pagination-active-color: #fff;
-  --bs-pagination-active-bg: #0A0A0A;
-  --bs-pagination-active-border-color: #0A0A0A;
+  --bs-pagination-active-bg: #C41E2A;
+  --bs-pagination-active-border-color: #C41E2A;
   --bs-pagination-disabled-color: #6c757d;
   --bs-pagination-disabled-bg: #fff;
   --bs-pagination-disabled-border-color: #dee2e6;
@@ -5507,12 +5507,12 @@ textarea.form-control-lg {
 }
 
 .alert-primary {
-  --bs-alert-color: #060606;
-  --bs-alert-bg: #cecece;
-  --bs-alert-border-color: rgb(181.5, 181.5, 181.5);
+  --bs-alert-color: rgb(117.6, 18, 25.2);
+  --bs-alert-bg: rgb(243.2, 210, 212.4);
+  --bs-alert-border-color: rgb(237.3, 187.5, 191.1);
 }
 .alert-primary .alert-link {
-  color: rgb(4.8, 4.8, 4.8);
+  color: rgb(94.08, 14.4, 20.16);
 }
 
 .alert-secondary {
@@ -5590,7 +5590,7 @@ textarea.form-control-lg {
   --bs-progress-border-radius: 0.375rem;
   --bs-progress-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
   --bs-progress-bar-color: #fff;
-  --bs-progress-bar-bg: #0A0A0A;
+  --bs-progress-bar-bg: #C41E2A;
   --bs-progress-bar-transition: width 0.6s ease;
   display: flex;
   height: var(--bs-progress-height);
@@ -5647,8 +5647,8 @@ textarea.form-control-lg {
   --bs-list-group-disabled-color: #6c757d;
   --bs-list-group-disabled-bg: #fff;
   --bs-list-group-active-color: #fff;
-  --bs-list-group-active-bg: #0A0A0A;
-  --bs-list-group-active-border-color: #0A0A0A;
+  --bs-list-group-active-bg: #C41E2A;
+  --bs-list-group-active-border-color: #C41E2A;
   display: flex;
   flex-direction: column;
   padding-left: 0;
@@ -5871,17 +5871,17 @@ textarea.form-control-lg {
 }
 
 .list-group-item-primary {
-  color: #060606;
-  background-color: #cecece;
+  color: rgb(117.6, 18, 25.2);
+  background-color: rgb(243.2, 210, 212.4);
 }
 .list-group-item-primary.list-group-item-action:hover, .list-group-item-primary.list-group-item-action:focus {
-  color: #060606;
-  background-color: rgb(185.4, 185.4, 185.4);
+  color: rgb(117.6, 18, 25.2);
+  background-color: rgb(218.88, 189, 191.16);
 }
 .list-group-item-primary.list-group-item-action.active {
   color: #fff;
-  background-color: #060606;
-  border-color: #060606;
+  background-color: rgb(117.6, 18, 25.2);
+  border-color: rgb(117.6, 18, 25.2);
 }
 
 .list-group-item-secondary {
@@ -6000,7 +6000,7 @@ textarea.form-control-lg {
 }
 .btn-close:focus {
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(10, 10, 10, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(196, 30, 42, 0.25);
   opacity: 1;
 }
 .btn-close:disabled, .btn-close.disabled {
@@ -6395,7 +6395,7 @@ textarea.form-control-lg {
   display: block;
   padding: var(--bs-tooltip-arrow-height);
   margin: var(--bs-tooltip-margin);
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -6505,7 +6505,7 @@ textarea.form-control-lg {
   z-index: var(--bs-popover-zindex);
   display: block;
   max-width: var(--bs-popover-max-width);
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -7460,7 +7460,7 @@ textarea.form-control-lg {
 
 .text-bg-primary {
   color: #fff !important;
-  background-color: RGBA(10, 10, 10, var(--bs-bg-opacity, 1)) !important;
+  background-color: RGBA(196, 30, 42, var(--bs-bg-opacity, 1)) !important;
 }
 
 .text-bg-secondary {
@@ -7499,10 +7499,10 @@ textarea.form-control-lg {
 }
 
 .link-primary {
-  color: #0A0A0A !important;
+  color: #C41E2A !important;
 }
 .link-primary:hover, .link-primary:focus {
-  color: #080808 !important;
+  color: rgb(156.8, 24, 33.6) !important;
 }
 
 .link-secondary {
@@ -11727,9 +11727,9 @@ body {
   appearance: none;
 }
 .widget_archive select:focus {
-  border-color: rgb(132.5, 132.5, 132.5);
+  border-color: rgb(225.5, 142.5, 148.5);
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(10, 10, 10, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(196, 30, 42, 0.25);
 }
 .widget_archive select:-moz-focusring {
   color: transparent;
@@ -11781,7 +11781,7 @@ a.skip-link:not(:focus):not(:focus-within) {
 .navbar-dark .navbar-nav .dropdown-menu .nav-link.active, .navbar-dark .navbar-nav .dropdown-menu .nav-link:active {
   color: #fff !important;
   text-decoration: none;
-  background-color: #0A0A0A;
+  background-color: #C41E2A;
 }
 .navbar-dark .navbar-nav .dropdown-menu .nav-link.disabled, .navbar-dark .navbar-nav .dropdown-menu .nav-link:disabled {
   color: #adb5bd !important;
@@ -12059,16 +12059,16 @@ a.skip-link:not(:focus):not(:focus-within) {
 
 .has-primary-color,
 .has-primary-color:visited {
-  color: #0A0A0A;
+  color: #C41E2A;
 }
 
 .has-primary-background-color {
-  background-color: #0A0A0A;
-  border-color: #0A0A0A;
+  background-color: #C41E2A;
+  border-color: #C41E2A;
 }
 
 .wp-block-button:hover .wp-block-button__link.has-white-background-color.has-primary-color {
-  color: #0A0A0A;
+  color: #C41E2A;
 }
 
 .has-secondary-color,
@@ -12311,14 +12311,14 @@ body.understrap-no-sidebar .wp-block-cover.alignwide {
   margin: 0;
   padding: 0;
   background: #FFFFFF;
-  border: 1px solid #E8E8E8;
+  border: 1px solid #E8E4DE;
   border-radius: 8px;
   overflow: hidden;
   transition: all 200ms ease;
 }
 .woocommerce ul.products li.product:hover {
-  border-color: #A8A9AD;
-  box-shadow: 0 4px 12px rgba(10, 10, 10, 0.06);
+  border-color: #5A5651;
+  box-shadow: 0 4px 12px rgba(26, 26, 26, 0.06);
 }
 .woocommerce ul.products li.product a.woocommerce-LoopProduct-link {
   display: block;
@@ -12331,10 +12331,10 @@ body.understrap-no-sidebar .wp-block-cover.alignwide {
   display: block;
 }
 .woocommerce ul.products li.product .woocommerce-loop-product__title {
-  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-family: "Barlow Condensed", "Barlow", Arial, sans-serif;
   font-size: 1.25rem;
   font-weight: 600;
-  color: #0A0A0A;
+  color: #1A1A1A;
   margin: 1.5rem 1.5rem 0.5rem;
   padding: 0;
 }
@@ -12342,11 +12342,11 @@ body.understrap-no-sidebar .wp-block-cover.alignwide {
   display: block;
   font-size: 1.125rem;
   font-weight: 600;
-  color: #0A0A0A;
+  color: #1A1A1A;
   margin: 0 1.5rem 1.5rem;
 }
 .woocommerce ul.products li.product .price del {
-  color: #6B6B6B;
+  color: #5A5651;
   font-weight: 400;
 }
 .woocommerce ul.products li.product .price ins {
@@ -12357,9 +12357,9 @@ body.understrap-no-sidebar .wp-block-cover.alignwide {
   width: calc(100% - 2rem);
   margin: 0 1.5rem 1.5rem;
   padding: 1rem 1.5rem;
-  background: #0A0A0A;
+  background: #1A1A1A;
   color: #FFFFFF;
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.875rem;
   font-weight: 600;
   text-align: center;
@@ -12370,15 +12370,15 @@ body.understrap-no-sidebar .wp-block-cover.alignwide {
   transition: background 200ms ease;
 }
 .woocommerce ul.products li.product .button:hover {
-  background: #1C1C1C;
+  background: #242424;
   color: #FFFFFF;
 }
 .woocommerce .subscription-badge,
 .woocommerce .wcs-badge {
   display: inline-block;
   padding: 0.5rem 1rem;
-  background: rgba(168, 169, 173, 0.2);
-  color: #0A0A0A;
+  background: rgba(90, 86, 81, 0.2);
+  color: #1A1A1A;
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -12391,22 +12391,22 @@ body.understrap-no-sidebar .wp-block-cover.alignwide {
   margin-bottom: 3rem;
 }
 .woocommerce div.product .product_title {
-  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-family: "Barlow Condensed", "Barlow", Arial, sans-serif;
   font-size: 2.5rem;
   font-weight: 600;
-  color: #0A0A0A;
+  color: #1A1A1A;
   margin-bottom: 1.5rem;
 }
 .woocommerce div.product .price {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #0A0A0A;
+  color: #1A1A1A;
   margin-bottom: 2rem;
 }
 .woocommerce div.product .woocommerce-product-details__short-description {
   font-size: 1.125rem;
   line-height: 1.6;
-  color: #2D2D2D;
+  color: #242424;
   margin-bottom: 2rem;
 }
 .woocommerce div.product form.cart {
@@ -12419,21 +12419,21 @@ body.understrap-no-sidebar .wp-block-cover.alignwide {
   width: 80px;
   height: 52px;
   padding: 1rem;
-  border: 1px solid #A8A9AD;
+  border: 1px solid #5A5651;
   border-radius: 4px;
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
   text-align: center;
 }
 .woocommerce div.product form.cart .quantity input.qty:focus {
   outline: none;
-  border-color: #0A0A0A;
+  border-color: #1A1A1A;
 }
 .woocommerce div.product form.cart .single_add_to_cart_button {
-  padding: 1rem 2rem;
-  background: #0A0A0A;
+  padding: 1.125rem 2rem;
+  background: #1A1A1A;
   color: #FFFFFF;
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
   font-weight: 600;
   border: none;
@@ -12442,7 +12442,7 @@ body.understrap-no-sidebar .wp-block-cover.alignwide {
   transition: background 200ms ease;
 }
 .woocommerce div.product form.cart .single_add_to_cart_button:hover {
-  background: #1C1C1C;
+  background: #242424;
 }
 
 .woocommerce-cart .woocommerce table.cart {
@@ -12450,18 +12450,18 @@ body.understrap-no-sidebar .wp-block-cover.alignwide {
   border-collapse: collapse;
 }
 .woocommerce-cart .woocommerce table.cart th {
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.875rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #6B6B6B;
+  color: #5A5651;
   padding: 1.5rem;
-  border-bottom: 2px solid #E8E8E8;
+  border-bottom: 2px solid #E8E4DE;
 }
 .woocommerce-cart .woocommerce table.cart td {
   padding: 1.5rem;
-  border-bottom: 1px solid #E8E8E8;
+  border-bottom: 1px solid #E8E4DE;
   vertical-align: middle;
 }
 .woocommerce-cart .woocommerce table.cart .product-thumbnail img {
@@ -12470,16 +12470,16 @@ body.understrap-no-sidebar .wp-block-cover.alignwide {
   border-radius: 4px;
 }
 .woocommerce-cart .woocommerce table.cart .product-name a {
-  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-family: "Barlow Condensed", "Barlow", Arial, sans-serif;
   font-weight: 600;
-  color: #0A0A0A;
+  color: #1A1A1A;
   text-decoration: none;
 }
 .woocommerce-cart .woocommerce table.cart .product-name a:hover {
-  color: #1C1C1C;
+  color: #242424;
 }
 .woocommerce-cart .woocommerce table.cart .product-remove a {
-  color: #6B6B6B;
+  color: #5A5651;
   font-size: 1.5rem;
   text-decoration: none;
 }
@@ -12490,7 +12490,7 @@ body.understrap-no-sidebar .wp-block-cover.alignwide {
   margin-top: 3rem;
 }
 .woocommerce-cart .woocommerce .cart-collaterals .cart_totals h2, .woocommerce-cart .woocommerce .cart-collaterals .cart_totals .h2 {
-  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-family: "Barlow Condensed", "Barlow", Arial, sans-serif;
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 2rem;
@@ -12500,7 +12500,7 @@ body.understrap-no-sidebar .wp-block-cover.alignwide {
 }
 .woocommerce-cart .woocommerce .cart-collaterals .cart_totals table th, .woocommerce-cart .woocommerce .cart-collaterals .cart_totals table td {
   padding: 1rem 0;
-  border-bottom: 1px solid #E8E8E8;
+  border-bottom: 1px solid #E8E4DE;
 }
 .woocommerce-cart .woocommerce .cart-collaterals .cart_totals table th {
   font-weight: 600;
@@ -12512,10 +12512,10 @@ body.understrap-no-sidebar .wp-block-cover.alignwide {
 .woocommerce-cart .woocommerce .wc-proceed-to-checkout a.checkout-button {
   display: block;
   width: 100%;
-  padding: 1rem 2rem;
-  background: #0A0A0A;
+  padding: 1.125rem 2rem;
+  background: #1A1A1A;
   color: #FFFFFF;
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
   font-weight: 600;
   text-align: center;
@@ -12524,7 +12524,7 @@ body.understrap-no-sidebar .wp-block-cover.alignwide {
   transition: background 200ms ease;
 }
 .woocommerce-cart .woocommerce .wc-proceed-to-checkout a.checkout-button:hover {
-  background: #1C1C1C;
+  background: #242424;
 }
 
 .woocommerce-checkout .woocommerce form.checkout .form-row {
@@ -12534,7 +12534,7 @@ body.understrap-no-sidebar .wp-block-cover.alignwide {
   display: block;
   font-size: 0.875rem;
   font-weight: 600;
-  color: #0A0A0A;
+  color: #1A1A1A;
   margin-bottom: 0.5rem;
 }
 .woocommerce-checkout .woocommerce form.checkout .form-row input.input-text,
@@ -12544,18 +12544,18 @@ body.understrap-no-sidebar .wp-block-cover.alignwide {
   height: 52px;
   padding: 1rem 1.5rem;
   background: #FFFFFF;
-  border: 1px solid #A8A9AD;
+  border: 1px solid #5A5651;
   border-radius: 4px;
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
-  color: #0A0A0A;
+  color: #1A1A1A;
   transition: border-color 150ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .woocommerce-checkout .woocommerce form.checkout .form-row input.input-text:focus,
 .woocommerce-checkout .woocommerce form.checkout .form-row select:focus,
 .woocommerce-checkout .woocommerce form.checkout .form-row textarea:focus {
   outline: none;
-  border-color: #0A0A0A;
+  border-color: #1A1A1A;
 }
 .woocommerce-checkout .woocommerce form.checkout .form-row textarea {
   height: auto;
@@ -12566,19 +12566,19 @@ body.understrap-no-sidebar .wp-block-cover.alignwide {
   border-color: #8B4049;
 }
 .woocommerce-checkout .woocommerce form.checkout h3, .woocommerce-checkout .woocommerce form.checkout .h3 {
-  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-family: "Barlow Condensed", "Barlow", Arial, sans-serif;
   font-size: 1.5rem;
   font-weight: 600;
-  color: #0A0A0A;
+  color: #1A1A1A;
   margin-bottom: 2rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid #E8E8E8;
+  border-bottom: 1px solid #E8E4DE;
 }
 .woocommerce-checkout .woocommerce #order_review_heading {
-  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-family: "Barlow Condensed", "Barlow", Arial, sans-serif;
   font-size: 1.5rem;
   font-weight: 600;
-  color: #0A0A0A;
+  color: #1A1A1A;
   margin-bottom: 2rem;
 }
 .woocommerce-checkout .woocommerce table.shop_table {
@@ -12587,13 +12587,13 @@ body.understrap-no-sidebar .wp-block-cover.alignwide {
 }
 .woocommerce-checkout .woocommerce table.shop_table th, .woocommerce-checkout .woocommerce table.shop_table td {
   padding: 1rem;
-  border-bottom: 1px solid #E8E8E8;
+  border-bottom: 1px solid #E8E4DE;
 }
 .woocommerce-checkout .woocommerce table.shop_table tfoot th {
   text-align: left;
 }
 .woocommerce-checkout .woocommerce #payment {
-  background: #FAFAFA;
+  background: #F5F2EE;
   border-radius: 8px;
   padding: 2rem;
   margin-top: 3rem;
@@ -12605,7 +12605,7 @@ body.understrap-no-sidebar .wp-block-cover.alignwide {
 }
 .woocommerce-checkout .woocommerce #payment ul.payment_methods li {
   padding: 1.5rem;
-  border: 1px solid #E8E8E8;
+  border: 1px solid #E8E4DE;
   border-radius: 4px;
   margin-bottom: 1rem;
 }
@@ -12619,10 +12619,10 @@ body.understrap-no-sidebar .wp-block-cover.alignwide {
 .woocommerce-checkout .woocommerce #payment #place_order {
   display: block;
   width: 100%;
-  padding: 1rem 2rem;
-  background: #0A0A0A;
+  padding: 1.125rem 2rem;
+  background: #1A1A1A;
   color: #FFFFFF;
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
   font-weight: 600;
   text-align: center;
@@ -12632,42 +12632,42 @@ body.understrap-no-sidebar .wp-block-cover.alignwide {
   transition: background 200ms ease;
 }
 .woocommerce-checkout .woocommerce #payment #place_order:hover {
-  background: #1C1C1C;
+  background: #242424;
 }
 
 .woocommerce-account .woocommerce .woocommerce-MyAccount-navigation ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  background: #FAFAFA;
+  background: #F5F2EE;
   border-radius: 8px;
   overflow: hidden;
 }
 .woocommerce-account .woocommerce .woocommerce-MyAccount-navigation ul li {
-  border-bottom: 1px solid #E8E8E8;
+  border-bottom: 1px solid #E8E4DE;
 }
 .woocommerce-account .woocommerce .woocommerce-MyAccount-navigation ul li:last-child {
   border-bottom: none;
 }
 .woocommerce-account .woocommerce .woocommerce-MyAccount-navigation ul li.is-active a {
-  background: #0A0A0A;
+  background: #1A1A1A;
   color: #FFFFFF;
 }
 .woocommerce-account .woocommerce .woocommerce-MyAccount-navigation ul li a {
   display: block;
   padding: 1.5rem 2rem;
-  color: #0A0A0A;
+  color: #1A1A1A;
   text-decoration: none;
   font-weight: 500;
   transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .woocommerce-account .woocommerce .woocommerce-MyAccount-navigation ul li a:hover {
-  background: #E5E4E2;
+  background: #E8E4DE;
 }
 .woocommerce-account .woocommerce .woocommerce-MyAccount-content h2, .woocommerce-account .woocommerce .woocommerce-MyAccount-content .h2, .woocommerce-account .woocommerce .woocommerce-MyAccount-content h3, .woocommerce-account .woocommerce .woocommerce-MyAccount-content .h3 {
-  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-family: "Barlow Condensed", "Barlow", Arial, sans-serif;
   font-weight: 600;
-  color: #0A0A0A;
+  color: #1A1A1A;
   margin-bottom: 2rem;
 }
 .woocommerce-account .woocommerce .woocommerce-MyAccount-content table {
@@ -12676,19 +12676,19 @@ body.understrap-no-sidebar .wp-block-cover.alignwide {
 }
 .woocommerce-account .woocommerce .woocommerce-MyAccount-content table th, .woocommerce-account .woocommerce .woocommerce-MyAccount-content table td {
   padding: 1rem 1.5rem;
-  border-bottom: 1px solid #E8E8E8;
+  border-bottom: 1px solid #E8E4DE;
   text-align: left;
 }
 .woocommerce-account .woocommerce .woocommerce-MyAccount-content table th {
   font-weight: 600;
-  color: #0A0A0A;
+  color: #1A1A1A;
 }
 .woocommerce-account .woocommerce .woocommerce-MyAccount-content .button {
   display: inline-block;
   padding: 1rem 1.5rem;
-  background: #0A0A0A;
+  background: #1A1A1A;
   color: #FFFFFF;
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.875rem;
   font-weight: 600;
   text-decoration: none;
@@ -12698,7 +12698,7 @@ body.understrap-no-sidebar .wp-block-cover.alignwide {
   transition: background 200ms ease;
 }
 .woocommerce-account .woocommerce .woocommerce-MyAccount-content .button:hover {
-  background: #1C1C1C;
+  background: #242424;
   color: #FFFFFF;
 }
 @media (min-width: 768px) {
@@ -12714,13 +12714,13 @@ body.understrap-no-sidebar .wp-block-cover.alignwide {
   margin: 0 auto;
   padding: 3rem;
   background: #FFFFFF;
-  border: 1px solid #E8E8E8;
+  border: 1px solid #E8E4DE;
   border-radius: 8px;
 }
 .woocommerce-account .woocommerce-form-login h2, .woocommerce-account .woocommerce-form-login .h2,
 .woocommerce-account .woocommerce-form-register h2,
 .woocommerce-account .woocommerce-form-register .h2 {
-  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-family: "Barlow Condensed", "Barlow", Arial, sans-serif;
   font-size: 1.5rem;
   font-weight: 600;
   text-align: center;
@@ -12742,25 +12742,25 @@ body.understrap-no-sidebar .wp-block-cover.alignwide {
   width: 100%;
   height: 52px;
   padding: 1rem 1.5rem;
-  border: 1px solid #A8A9AD;
+  border: 1px solid #5A5651;
   border-radius: 4px;
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
 }
 .woocommerce-account .woocommerce-form-login .form-row input:focus,
 .woocommerce-account .woocommerce-form-register .form-row input:focus {
   outline: none;
-  border-color: #0A0A0A;
+  border-color: #1A1A1A;
 }
 .woocommerce-account .woocommerce-form-login button.woocommerce-form-login__submit,
 .woocommerce-account .woocommerce-form-login button.woocommerce-form-register__submit,
 .woocommerce-account .woocommerce-form-register button.woocommerce-form-login__submit,
 .woocommerce-account .woocommerce-form-register button.woocommerce-form-register__submit {
   width: 100%;
-  padding: 1rem 2rem;
-  background: #0A0A0A;
+  padding: 1.125rem 2rem;
+  background: #1A1A1A;
   color: #FFFFFF;
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
   font-weight: 600;
   border: none;
@@ -12772,7 +12772,7 @@ body.understrap-no-sidebar .wp-block-cover.alignwide {
 .woocommerce-account .woocommerce-form-login button.woocommerce-form-register__submit:hover,
 .woocommerce-account .woocommerce-form-register button.woocommerce-form-login__submit:hover,
 .woocommerce-account .woocommerce-form-register button.woocommerce-form-register__submit:hover {
-  background: #1C1C1C;
+  background: #242424;
 }
 
 .woocommerce .woocommerce-message,
@@ -12789,19 +12789,19 @@ body.understrap-no-sidebar .wp-block-cover.alignwide {
   display: none;
 }
 .woocommerce .woocommerce-message {
-  background: rgba(168, 169, 173, 0.1);
-  border-color: #A8A9AD;
-  color: #0A0A0A;
+  background: rgba(90, 86, 81, 0.1);
+  border-color: #5A5651;
+  color: #1A1A1A;
 }
 .woocommerce .woocommerce-info {
-  background: rgba(168, 169, 173, 0.1);
-  border-color: #A8A9AD;
-  color: #0A0A0A;
+  background: rgba(90, 86, 81, 0.1);
+  border-color: #5A5651;
+  color: #1A1A1A;
 }
 .woocommerce .woocommerce-error {
   background: rgba(139, 64, 73, 0.1);
   border-color: #8B4049;
-  color: #0A0A0A;
+  color: #1A1A1A;
 }
 .woocommerce .woocommerce-error li {
   list-style: none;
@@ -12812,15 +12812,15 @@ body.understrap-no-sidebar .wp-block-cover.alignwide {
 
 .woocommerce .woocommerce-breadcrumb {
   font-size: 0.875rem;
-  color: #6B6B6B;
+  color: #5A5651;
   margin-bottom: 2rem;
 }
 .woocommerce .woocommerce-breadcrumb a {
-  color: #6B6B6B;
+  color: #5A5651;
   text-decoration: none;
 }
 .woocommerce .woocommerce-breadcrumb a:hover {
-  color: #0A0A0A;
+  color: #1A1A1A;
 }
 
 .woocommerce nav.woocommerce-pagination {
@@ -12838,19 +12838,19 @@ body.understrap-no-sidebar .wp-block-cover.alignwide {
   display: block;
   padding: 1rem 1.5rem;
   background: #FFFFFF;
-  border: 1px solid #E8E8E8;
+  border: 1px solid #E8E4DE;
   border-radius: 4px;
-  color: #0A0A0A;
+  color: #1A1A1A;
   text-decoration: none;
   transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .woocommerce nav.woocommerce-pagination ul li a:hover {
-  background: #FAFAFA;
-  border-color: #A8A9AD;
+  background: #F5F2EE;
+  border-color: #5A5651;
 }
 .woocommerce nav.woocommerce-pagination ul li span.current {
-  background: #0A0A0A;
-  border-color: #0A0A0A;
+  background: #1A1A1A;
+  border-color: #1A1A1A;
   color: #FFFFFF;
 }
 
@@ -15872,33 +15872,33 @@ body.understrap-no-sidebar .wp-block-cover.alignwide {
 
 :root,
 [data-bs-theme=light] {
-  --us-bg-primary: #FAFAFA;
-  --us-bg-secondary: #E5E4E2;
-  --us-bg-tertiary: #E8E8E8;
-  --us-text-primary: #0A0A0A;
-  --us-text-secondary: #2D2D2D;
-  --us-border-color: rgba(10, 10, 10, 0.08);
-  --bs-body-bg: #FAFAFA;
-  --bs-body-color: #0A0A0A;
-  --bs-secondary-bg: #E5E4E2;
-  --bs-tertiary-bg: #E8E8E8;
-  --bs-border-color: rgba(10, 10, 10, 0.08);
+  --us-bg-primary: #F5F2EE;
+  --us-bg-secondary: #E8E4DE;
+  --us-bg-tertiary: #E8E4DE;
+  --us-text-primary: #1A1A1A;
+  --us-text-secondary: #242424;
+  --us-border-color: rgba(26, 26, 26, 0.08);
+  --bs-body-bg: #F5F2EE;
+  --bs-body-color: #1A1A1A;
+  --bs-secondary-bg: #E8E4DE;
+  --bs-tertiary-bg: #E8E4DE;
+  --bs-border-color: rgba(26, 26, 26, 0.08);
 }
 
 [data-bs-theme=dark] {
-  --us-bg-primary: #0A0A0A;
-  --us-bg-secondary: #1C1C1C;
-  --us-bg-tertiary: #2C3E50;
+  --us-bg-primary: #1A1A1A;
+  --us-bg-secondary: #242424;
+  --us-bg-tertiary: #242424;
   --us-text-primary: #FFFFFF;
-  --us-text-secondary: #E5E4E2;
+  --us-text-secondary: #E8E4DE;
   --us-border-color: rgba(255, 255, 255, 0.08);
-  --bs-body-bg: #0A0A0A;
+  --bs-body-bg: #1A1A1A;
   --bs-body-color: #FFFFFF;
-  --bs-secondary-bg: #1C1C1C;
-  --bs-tertiary-bg: #2C3E50;
+  --bs-secondary-bg: #242424;
+  --bs-tertiary-bg: #242424;
   --bs-border-color: rgba(255, 255, 255, 0.08);
   --bs-heading-color: #FFFFFF;
-  --bs-code-color: #A8A9AD;
+  --bs-code-color: #5A5651;
 }
 
 body {
@@ -15994,7 +15994,7 @@ body {
   --bs-navbar-active-color: #FFFFFF;
 }
 [data-bs-theme=dark] .card {
-  --bs-card-bg: #1C1C1C;
+  --bs-card-bg: #242424;
   --bs-card-border-color: rgba(255, 255, 255, 0.08);
   --bs-card-color: #FFFFFF;
 }
@@ -16034,7 +16034,7 @@ body {
 [data-bs-theme=dark] .wpcf7 textarea,
 .wpcf7 [data-bs-theme=dark] textarea, [data-bs-theme=dark] .wpcf7 .wpcf7-validation-errors, .wpcf7 [data-bs-theme=dark] .wpcf7-validation-errors,
 [data-bs-theme=dark] .form-select {
-  background-color: #1C1C1C;
+  background-color: #242424;
   border-color: rgba(255, 255, 255, 0.08);
   color: #FFFFFF;
 }
@@ -16074,11 +16074,11 @@ body {
 [data-bs-theme=dark] .wpcf7 textarea:focus,
 .wpcf7 [data-bs-theme=dark] textarea:focus, [data-bs-theme=dark] .wpcf7 .wpcf7-validation-errors:focus, .wpcf7 [data-bs-theme=dark] .wpcf7-validation-errors:focus,
 [data-bs-theme=dark] .form-select:focus {
-  background-color: #1C1C1C;
+  background-color: #242424;
   color: #FFFFFF;
 }
 [data-bs-theme=dark] .form-control::-moz-placeholder, [data-bs-theme=dark] .wpcf7 input[type=text]::-moz-placeholder, .wpcf7 [data-bs-theme=dark] input[type=text]::-moz-placeholder, [data-bs-theme=dark] .wpcf7 input[type=search]::-moz-placeholder, .wpcf7 [data-bs-theme=dark] input[type=search]::-moz-placeholder, [data-bs-theme=dark] .wpcf7 input[type=url]::-moz-placeholder, .wpcf7 [data-bs-theme=dark] input[type=url]::-moz-placeholder, [data-bs-theme=dark] .wpcf7 input[type=tel]::-moz-placeholder, .wpcf7 [data-bs-theme=dark] input[type=tel]::-moz-placeholder, [data-bs-theme=dark] .wpcf7 input[type=number]::-moz-placeholder, .wpcf7 [data-bs-theme=dark] input[type=number]::-moz-placeholder, [data-bs-theme=dark] .wpcf7 input[type=range]::-moz-placeholder, .wpcf7 [data-bs-theme=dark] input[type=range]::-moz-placeholder, [data-bs-theme=dark] .wpcf7 input[type=date]::-moz-placeholder, .wpcf7 [data-bs-theme=dark] input[type=date]::-moz-placeholder, [data-bs-theme=dark] .wpcf7 input[type=month]::-moz-placeholder, .wpcf7 [data-bs-theme=dark] input[type=month]::-moz-placeholder, [data-bs-theme=dark] .wpcf7 input[type=week]::-moz-placeholder, .wpcf7 [data-bs-theme=dark] input[type=week]::-moz-placeholder, [data-bs-theme=dark] .wpcf7 input[type=time]::-moz-placeholder, .wpcf7 [data-bs-theme=dark] input[type=time]::-moz-placeholder, [data-bs-theme=dark] .wpcf7 input[type=datetime]::-moz-placeholder, .wpcf7 [data-bs-theme=dark] input[type=datetime]::-moz-placeholder, [data-bs-theme=dark] .wpcf7 input[type=datetime-local]::-moz-placeholder, .wpcf7 [data-bs-theme=dark] input[type=datetime-local]::-moz-placeholder, [data-bs-theme=dark] .wpcf7 input[type=color]::-moz-placeholder, .wpcf7 [data-bs-theme=dark] input[type=color]::-moz-placeholder, [data-bs-theme=dark] .wpcf7 input[type=email]::-moz-placeholder, .wpcf7 [data-bs-theme=dark] input[type=email]::-moz-placeholder, [data-bs-theme=dark] .wpcf7 input[type=file]::-moz-placeholder, .wpcf7 [data-bs-theme=dark] input[type=file]::-moz-placeholder, [data-bs-theme=dark] .wpcf7 input[type=submit]::-moz-placeholder, .wpcf7 [data-bs-theme=dark] input[type=submit]::-moz-placeholder, [data-bs-theme=dark] .wpcf7 select::-moz-placeholder, .wpcf7 [data-bs-theme=dark] select::-moz-placeholder, [data-bs-theme=dark] .wpcf7 textarea::-moz-placeholder, .wpcf7 [data-bs-theme=dark] textarea::-moz-placeholder, [data-bs-theme=dark] .wpcf7 .wpcf7-validation-errors::-moz-placeholder, .wpcf7 [data-bs-theme=dark] .wpcf7-validation-errors::-moz-placeholder, [data-bs-theme=dark] .form-select::-moz-placeholder {
-  color: #E5E4E2;
+  color: #E8E4DE;
 }
 [data-bs-theme=dark] .form-control::placeholder, [data-bs-theme=dark] .wpcf7 input[type=text]::placeholder, .wpcf7 [data-bs-theme=dark] input[type=text]::placeholder,
 [data-bs-theme=dark] .wpcf7 input[type=search]::placeholder,
@@ -16116,42 +16116,42 @@ body {
 [data-bs-theme=dark] .wpcf7 textarea::placeholder,
 .wpcf7 [data-bs-theme=dark] textarea::placeholder, [data-bs-theme=dark] .wpcf7 .wpcf7-validation-errors::placeholder, .wpcf7 [data-bs-theme=dark] .wpcf7-validation-errors::placeholder,
 [data-bs-theme=dark] .form-select::placeholder {
-  color: #E5E4E2;
+  color: #E8E4DE;
 }
 [data-bs-theme=dark] .dropdown-menu {
-  --bs-dropdown-bg: #1C1C1C;
+  --bs-dropdown-bg: #242424;
   --bs-dropdown-border-color: rgba(255, 255, 255, 0.08);
   --bs-dropdown-link-color: #FFFFFF;
-  --bs-dropdown-link-hover-bg: #2C3E50;
+  --bs-dropdown-link-hover-bg: #242424;
 }
 [data-bs-theme=dark] .table, [data-bs-theme=dark] .wp-block-table table, .wp-block-table [data-bs-theme=dark] table {
   --bs-table-bg: transparent;
   --bs-table-color: #FFFFFF;
   --bs-table-border-color: rgba(255, 255, 255, 0.08);
-  --bs-table-striped-bg: #1C1C1C;
-  --bs-table-hover-bg: #2C3E50;
+  --bs-table-striped-bg: #242424;
+  --bs-table-hover-bg: #242424;
 }
 [data-bs-theme=dark] .modal-content {
-  --bs-modal-bg: #0A0A0A;
+  --bs-modal-bg: #1A1A1A;
   --bs-modal-border-color: rgba(255, 255, 255, 0.08);
   --bs-modal-color: #FFFFFF;
 }
 [data-bs-theme=dark] .list-group-item {
-  --bs-list-group-bg: #1C1C1C;
+  --bs-list-group-bg: #242424;
   --bs-list-group-border-color: rgba(255, 255, 255, 0.08);
   --bs-list-group-color: #FFFFFF;
-  --bs-list-group-action-hover-bg: #2C3E50;
+  --bs-list-group-action-hover-bg: #242424;
 }
 [data-bs-theme=dark] .accordion-item {
-  background-color: #1C1C1C;
+  background-color: #242424;
   border-color: rgba(255, 255, 255, 0.08);
 }
 [data-bs-theme=dark] .accordion-button {
-  background-color: #1C1C1C;
+  background-color: #242424;
   color: #FFFFFF;
 }
 [data-bs-theme=dark] .accordion-button:not(.collapsed) {
-  background-color: #2C3E50;
+  background-color: #242424;
   color: #FFFFFF;
 }
 
@@ -16162,7 +16162,7 @@ html {
 .silver-rule {
   width: 60px;
   height: 1px;
-  background-color: #A8A9AD;
+  background-color: #5A5651;
   margin: 1.5rem auto;
 }
 
@@ -16173,15 +16173,15 @@ html {
   color: var(--us-text-primary);
   text-decoration: none;
   padding-bottom: 2px;
-  border-bottom: 1px solid #A8A9AD;
+  border-bottom: 1px solid #5A5651;
   transition: border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .text-link:hover {
   border-color: var(--us-text-primary);
 }
 .section-dark .text-link, .section-charcoal .text-link {
-  color: #E5E4E2;
-  border-color: rgba(168, 169, 173, 0.5);
+  color: #E8E4DE;
+  border-color: rgba(90, 86, 81, 0.5);
 }
 .section-dark .text-link:hover, .section-charcoal .text-link:hover {
   color: #FFFFFF;
@@ -16294,7 +16294,7 @@ html {
   opacity: 0.8;
 }
 [data-bs-theme=dark] .section-light {
-  background: radial-gradient(ellipse at center, #1C1C1C 0%, #0A0A0A 100%);
+  background: radial-gradient(ellipse at center, #242424 0%, #1A1A1A 100%);
 }
 [data-bs-theme=dark] .section-light::after {
   background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.02));
@@ -16311,13 +16311,13 @@ html {
   color: var(--us-text-secondary);
 }
 [data-bs-theme=dark] .section-light-warm {
-  background: radial-gradient(ellipse at center, #1C1C1C 0%, #0A0A0A 100%);
+  background: radial-gradient(ellipse at center, #242424 0%, #1A1A1A 100%);
 }
 [data-bs-theme=dark] .section-light-warm h1, [data-bs-theme=dark] .section-light-warm .h1, [data-bs-theme=dark] .section-light-warm h2, [data-bs-theme=dark] .section-light-warm .h2, [data-bs-theme=dark] .section-light-warm h3, [data-bs-theme=dark] .section-light-warm .h3, [data-bs-theme=dark] .section-light-warm h4, [data-bs-theme=dark] .section-light-warm .h4, [data-bs-theme=dark] .section-light-warm h5, [data-bs-theme=dark] .section-light-warm .h5, [data-bs-theme=dark] .section-light-warm h6, [data-bs-theme=dark] .section-light-warm .h6 {
   color: #FFFFFF;
 }
 [data-bs-theme=dark] .section-light-warm p, [data-bs-theme=dark] .section-light-warm li {
-  color: #E5E4E2;
+  color: #E8E4DE;
 }
 
 .section-dark {
@@ -16328,33 +16328,33 @@ html {
   color: #FFFFFF;
 }
 .section-dark p, .section-dark li {
-  color: #E5E4E2;
+  color: #E8E4DE;
 }
 .section-dark .text-muted {
-  color: #8B8B8B !important;
+  color: #5A5651 !important;
 }
 .section-dark a:not(.btn):not(.text-link) {
-  color: #E5E4E2;
+  color: #E8E4DE;
 }
 .section-dark a:not(.btn):not(.text-link):hover {
   color: #FFFFFF;
 }
 
 .section-charcoal {
-  background-color: #1C1C1C;
+  background-color: #242424;
   color: #FFFFFF;
 }
 .section-charcoal h1, .section-charcoal .h1, .section-charcoal h2, .section-charcoal .h2, .section-charcoal h3, .section-charcoal .h3, .section-charcoal h4, .section-charcoal .h4, .section-charcoal h5, .section-charcoal .h5, .section-charcoal h6, .section-charcoal .h6 {
   color: #FFFFFF;
 }
 .section-charcoal p, .section-charcoal li {
-  color: #E5E4E2;
+  color: #E8E4DE;
 }
 .section-charcoal .text-muted {
-  color: #8B8B8B !important;
+  color: #5A5651 !important;
 }
 .section-charcoal a:not(.btn):not(.text-link) {
-  color: #E5E4E2;
+  color: #E8E4DE;
 }
 .section-charcoal a:not(.btn):not(.text-link):hover {
   color: #FFFFFF;
@@ -16367,7 +16367,7 @@ html {
 }
 
 .display-text {
-  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-family: "Barlow Condensed", "Barlow", Arial, sans-serif;
   font-weight: 300;
   letter-spacing: 0.02em;
   line-height: 1.2;
@@ -16379,7 +16379,7 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #0A0A0A;
+  background-color: #1A1A1A;
   overflow: hidden;
 }
 .section-hero__background {
@@ -16388,7 +16388,7 @@ html {
   left: 0;
   width: 100%;
   height: 120%;
-  background: radial-gradient(ellipse at 30% 50%, #1C1C1C 0%, #0A0A0A 70%);
+  background: radial-gradient(ellipse at 30% 50%, #242424 0%, #1A1A1A 70%);
   background-size: cover;
   background-position: center;
   animation: heroZoom 20s linear infinite alternate;
@@ -16398,18 +16398,18 @@ html {
 .section-hero__overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at center, #1C1C1C 0%, #0A0A0A 70%);
+  background: radial-gradient(ellipse at center, #242424 0%, #1A1A1A 70%);
   pointer-events: none;
   z-index: 1;
 }
 .section-hero__overlay--image {
-  background: #0A0A0A;
+  background: #1A1A1A;
 }
 .section-hero > .container {
   z-index: 2;
 }
 .section-hero__headline {
-  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-family: "Barlow Condensed", "Barlow", Arial, sans-serif;
   font-weight: 300;
   font-size: clamp(2.5rem, 6vw, 4.5rem);
   line-height: 1.1;
@@ -16418,11 +16418,11 @@ html {
   margin-bottom: 0;
 }
 .section-hero__subtitle {
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: clamp(1rem, 2vw, 1.25rem);
   font-weight: 400;
   letter-spacing: 0.04em;
-  color: #E5E4E2;
+  color: #E8E4DE;
   margin-bottom: 0;
   max-width: 600px;
   margin-left: auto;
@@ -16446,7 +16446,7 @@ html {
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 0;
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.06em;
@@ -16458,11 +16458,11 @@ html {
 .section-hero__btn:hover {
   background: #FFFFFF;
   border-color: #FFFFFF;
-  color: #0A0A0A;
+  color: #1A1A1A;
 }
 .section-hero__btn--secondary {
   border-color: rgba(255, 255, 255, 0.25);
-  color: #E5E4E2;
+  color: #E8E4DE;
 }
 .section-hero__btn--secondary:hover {
   background: rgba(255, 255, 255, 0.1);
@@ -16539,22 +16539,22 @@ html {
 }
 
 .pillar {
-  background: rgba(168, 169, 173, 0.05);
+  background: rgba(90, 86, 81, 0.05);
   padding: 2rem;
-  border-left: 2px solid #A8A9AD;
+  border-left: 2px solid #5A5651;
   border-radius: 4px;
   height: 100%;
 }
 .pillar__icon {
-  color: #A8A9AD;
+  color: #5A5651;
   margin-bottom: 1.5rem;
   line-height: 0;
 }
 .pillar__title {
-  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-family: "Barlow Condensed", "Barlow", Arial, sans-serif;
   font-size: 1.375rem;
   font-weight: 600;
-  color: #0A0A0A;
+  color: #1A1A1A;
   margin-bottom: 12px;
   line-height: 1.3;
 }
@@ -16564,11 +16564,11 @@ html {
 .pillar__text {
   font-size: 0.9375rem;
   line-height: 1.7;
-  color: #2D2D2D;
+  color: #242424;
   margin: 0;
 }
 .section-dark .pillar__text, [data-bs-theme=dark] .pillar__text {
-  color: #E5E4E2;
+  color: #E8E4DE;
 }
 
 .plan-card-home {
@@ -16590,10 +16590,10 @@ html {
 }
 .plan-card-home:hover {
   transform: translateY(-2px);
-  border-color: rgba(168, 169, 173, 0.2);
+  border-color: rgba(90, 86, 81, 0.2);
 }
 .plan-card-home--featured {
-  border-top: 3px solid #A8A9AD;
+  border-top: 3px solid #5A5651;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
 }
 .plan-card-home--featured:hover {
@@ -16605,9 +16605,9 @@ html {
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 6px 20px;
-  background: #0A0A0A;
+  background: #1A1A1A;
   color: #FFFFFF;
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
@@ -16618,23 +16618,23 @@ html {
 }
 [data-bs-theme=dark] .plan-card-home__badge {
   background: #FFFFFF;
-  color: #0A0A0A;
+  color: #1A1A1A;
 }
 .plan-card-home__name {
-  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-family: "Barlow Condensed", "Barlow", Arial, sans-serif;
   font-size: 1.75rem;
   font-weight: 600;
-  color: #0A0A0A;
+  color: #1A1A1A;
   margin-bottom: 1rem;
 }
 [data-bs-theme=dark] .plan-card-home__name {
   color: #FFFFFF;
 }
 .plan-card-home__description {
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.9375rem;
   line-height: 1.7;
-  color: #6B6B6B;
+  color: #5A5651;
   margin-bottom: 1.5rem;
 }
 .plan-card-home__pricing {
@@ -16643,12 +16643,12 @@ html {
   margin-bottom: 1.5rem;
 }
 .plan-card-home__pricing-tbd {
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.875rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #A8A9AD;
+  color: #5A5651;
 }
 .plan-card-home__features {
   list-style: none;
@@ -16660,45 +16660,45 @@ html {
   padding: 0.5rem 0;
   font-size: 0.9375rem;
   line-height: 1.5;
-  color: #2D2D2D;
+  color: #242424;
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 .plan-card-home__features li:first-child {
   font-weight: 600;
-  color: #0A0A0A;
+  color: #1A1A1A;
 }
 .plan-card-home__features li:last-child {
   border-bottom: none;
 }
 [data-bs-theme=dark] .plan-card-home__features li {
-  color: #E5E4E2;
+  color: #E8E4DE;
   border-color: rgba(255, 255, 255, 0.06);
 }
 [data-bs-theme=dark] .plan-card-home__features li:first-child {
   color: #FFFFFF;
 }
 .plan-card-home__currency {
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
   font-weight: 400;
-  color: #6B6B6B;
+  color: #5A5651;
   margin-right: 2px;
 }
 .plan-card-home__amount {
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 2.25rem;
   font-weight: 700;
-  color: #0A0A0A;
+  color: #1A1A1A;
   line-height: 1;
 }
 [data-bs-theme=dark] .plan-card-home__amount {
   color: #FFFFFF;
 }
 .plan-card-home__period {
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
-  color: #8B8B8B;
+  color: #5A5651;
   margin-left: 4px;
 }
 .plan-card-home__btn {
@@ -16708,28 +16708,28 @@ html {
   width: 100%;
   height: 52px;
   background: transparent;
-  border: 2px solid #0A0A0A;
+  border: 2px solid #1A1A1A;
   border-radius: 4px;
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.03em;
   text-transform: uppercase;
-  color: #0A0A0A;
+  color: #1A1A1A;
   text-decoration: none;
   transition: all 0.2s ease;
 }
 .plan-card-home__btn:hover {
-  background: #0A0A0A;
+  background: #1A1A1A;
   color: #FFFFFF;
 }
 .plan-card-home__btn--filled {
-  background: #0A0A0A;
+  background: #1A1A1A;
   color: #FFFFFF;
 }
 .plan-card-home__btn--filled:hover {
-  background: #1C1C1C;
-  border-color: #1C1C1C;
+  background: #242424;
+  border-color: #242424;
 }
 [data-bs-theme=dark] .plan-card-home__btn {
   border-color: #FFFFFF;
@@ -16737,18 +16737,18 @@ html {
 }
 [data-bs-theme=dark] .plan-card-home__btn:hover {
   background: #FFFFFF;
-  color: #0A0A0A;
+  color: #1A1A1A;
 }
 [data-bs-theme=dark] .plan-card-home__btn--filled {
   background: #FFFFFF;
-  color: #0A0A0A;
+  color: #1A1A1A;
 }
 [data-bs-theme=dark] .plan-card-home__btn--filled:hover {
-  background: #E5E4E2;
-  border-color: #E5E4E2;
+  background: #E8E4DE;
+  border-color: #E8E4DE;
 }
 [data-bs-theme=dark] .plan-card-home {
-  background: #1C1C1C;
+  background: #242424;
   border-color: rgba(255, 255, 255, 0.08);
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
 }
@@ -16764,7 +16764,7 @@ html {
 
 .billing-toggle-home {
   display: inline-flex;
-  background: #0A0A0A;
+  background: #1A1A1A;
   border-radius: 100px;
   padding: 4px;
   margin-top: 1rem;
@@ -16778,57 +16778,57 @@ html {
   background: transparent;
   border: none;
   border-radius: 100px;
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.875rem;
   font-weight: 500;
   letter-spacing: 0.02em;
-  color: #A8A9AD;
+  color: #5A5651;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 .billing-toggle-home__btn:hover:not(.active) {
-  color: #E5E4E2;
+  color: #E8E4DE;
 }
 .billing-toggle-home__btn.active {
   background: #FFFFFF;
-  color: #0A0A0A;
+  color: #1A1A1A;
 }
 .billing-toggle-home__save {
   display: inline-block;
   padding: 3px 8px;
-  background: rgba(168, 169, 173, 0.3);
+  background: rgba(90, 86, 81, 0.3);
   border-radius: 4px;
   font-size: 0.6875rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.03em;
-  color: #A8A9AD;
+  color: #5A5651;
   transition: all 0.2s ease;
 }
 .active .billing-toggle-home__save {
-  background: rgba(10, 10, 10, 0.1);
-  color: #0A0A0A;
+  background: rgba(26, 26, 26, 0.1);
+  color: #1A1A1A;
 }
 [data-bs-theme=dark] .billing-toggle-home {
   background: rgba(255, 255, 255, 0.1);
 }
 [data-bs-theme=dark] .billing-toggle-home .billing-toggle-home__btn {
-  color: #8B8B8B;
+  color: #5A5651;
 }
 [data-bs-theme=dark] .billing-toggle-home .billing-toggle-home__btn:hover:not(.active) {
-  color: #E5E4E2;
+  color: #E8E4DE;
 }
 [data-bs-theme=dark] .billing-toggle-home .billing-toggle-home__btn.active {
   background: #FFFFFF;
-  color: #0A0A0A;
+  color: #1A1A1A;
 }
 [data-bs-theme=dark] .billing-toggle-home .billing-toggle-home__save {
   background: rgba(255, 255, 255, 0.1);
-  color: #8B8B8B;
+  color: #5A5651;
 }
 .active [data-bs-theme=dark] .billing-toggle-home .billing-toggle-home__save {
-  background: rgba(10, 10, 10, 0.1);
-  color: #0A0A0A;
+  background: rgba(26, 26, 26, 0.1);
+  color: #1A1A1A;
 }
 
 .plan-card-home__pricing {
@@ -16866,7 +16866,7 @@ html {
   text-align: center;
 }
 .plans-cta__text {
-  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-family: "Barlow Condensed", "Barlow", Arial, sans-serif;
   font-size: 1.25rem;
   font-weight: 400;
   color: var(--us-text-primary);
@@ -16874,7 +16874,7 @@ html {
 }
 .plans-cta__subtext {
   font-size: 0.875rem;
-  color: #6B6B6B;
+  color: #5A5651;
   margin-top: 1rem;
   margin-bottom: 0;
 }
@@ -16884,10 +16884,10 @@ html {
   align-items: center;
   justify-content: center;
   padding: 16px 40px;
-  background: #0A0A0A;
+  background: #1A1A1A;
   border: none;
   border-radius: 4px;
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.05em;
@@ -16897,25 +16897,25 @@ html {
   transition: background 0.2s ease;
 }
 .btn-compare:hover {
-  background: #1C1C1C;
+  background: #242424;
   color: #FFFFFF;
 }
 [data-bs-theme=dark] .btn-compare {
   background: #FFFFFF;
-  color: #0A0A0A;
+  color: #1A1A1A;
 }
 [data-bs-theme=dark] .btn-compare:hover {
-  background: #E5E4E2;
+  background: #E8E4DE;
 }
 
 .physician-preview__eyebrow {
   display: block;
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #A8A9AD;
+  color: #5A5651;
   margin-bottom: 1.5rem;
 }
 .physician-preview__heading {
@@ -16926,7 +16926,7 @@ html {
 .physician-preview__bio {
   font-size: 1.0625rem;
   line-height: 1.8;
-  color: #E5E4E2;
+  color: #E8E4DE;
   margin-bottom: 2rem;
 }
 .physician-preview__bio p {
@@ -16956,14 +16956,14 @@ html {
   transform: translateY(-50%);
   width: 6px;
   height: 6px;
-  background: #A8A9AD;
+  background: #5A5651;
 }
 .physician-preview__values li strong {
   color: #FFFFFF;
   font-weight: 500;
 }
 .physician-preview__values li {
-  color: #E5E4E2;
+  color: #E8E4DE;
 }
 .physician-preview__link {
   display: inline-flex;
@@ -16971,10 +16971,10 @@ html {
   gap: 0.5em;
   font-size: 0.9375rem;
   font-weight: 500;
-  color: #E5E4E2;
+  color: #E8E4DE;
   text-decoration: none;
   padding-bottom: 2px;
-  border-bottom: 1px solid rgba(168, 169, 173, 0.5);
+  border-bottom: 1px solid rgba(90, 86, 81, 0.5);
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .physician-preview__link:hover {
@@ -16986,7 +16986,7 @@ html {
   align-items: center;
   justify-content: center;
   min-height: 500px;
-  background: #1C1C1C;
+  background: #242424;
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 4px;
   overflow: hidden;
@@ -17008,12 +17008,12 @@ html {
   filter: grayscale(0%);
 }
 .physician-preview__portrait-text {
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.8125rem;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: #A8A9AD;
+  color: #5A5651;
 }
 
 .faq-accordion .accordion-item {
@@ -17031,14 +17031,14 @@ html {
   border-color: rgba(0, 0, 0, 0.12);
 }
 [data-bs-theme=dark] .faq-accordion .accordion-item {
-  background: #1C1C1C;
+  background: #242424;
   border-color: rgba(255, 255, 255, 0.1);
 }
 [data-bs-theme=dark] .faq-accordion .accordion-item:hover {
   border-color: rgba(255, 255, 255, 0.15);
 }
 .faq-accordion .accordion-button {
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-weight: 500;
   font-size: 1rem;
   padding: 20px 24px;
@@ -17079,16 +17079,16 @@ html {
 }
 .faq-accordion .accordion-body {
   padding: 0 24px 20px;
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.9375rem;
   line-height: 1.7;
-  color: #2D2D2D;
+  color: #242424;
 }
 .faq-accordion .accordion-body p {
   margin: 0;
 }
 [data-bs-theme=dark] .faq-accordion .accordion-body {
-  color: #E5E4E2;
+  color: #E8E4DE;
 }
 .faq-accordion .accordion-collapse {
   transition: height 0.3s ease;
@@ -17097,7 +17097,7 @@ html {
 .section-cta {
   position: relative;
   overflow: hidden;
-  background-color: #0A0A0A;
+  background-color: #1A1A1A;
   color: #FFFFFF;
   padding: 10rem 0;
 }
@@ -17122,7 +17122,7 @@ html {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(10, 10, 10, 0.82);
+  background: rgba(26, 26, 26, 0.82);
   z-index: 1;
 }
 
@@ -17135,7 +17135,7 @@ html {
 .cta__text {
   font-size: 1.0625rem;
   line-height: 1.7;
-  color: #E5E4E2;
+  color: #E8E4DE;
   max-width: 640px;
   margin: 0 auto 3rem;
 }
@@ -17146,9 +17146,9 @@ html {
   justify-content: center;
   padding: 18px 48px;
   background: transparent;
-  border: 1px solid rgba(168, 169, 173, 0.4);
+  border: 1px solid rgba(90, 86, 81, 0.4);
   border-radius: 0;
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.06em;
@@ -17159,8 +17159,8 @@ html {
   transition: background-color 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94), border-color 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94), color 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 100ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .cta__button:hover {
-  border-color: #A8A9AD;
-  background: rgba(168, 169, 173, 0.08);
+  border-color: #5A5651;
+  background: rgba(90, 86, 81, 0.08);
   color: #FFFFFF;
 }
 .cta__button:active {
@@ -17169,11 +17169,11 @@ html {
 
 .cta__phone {
   font-size: 0.9375rem;
-  color: #A8A9AD;
+  color: #5A5651;
   margin: 0;
 }
 .cta__phone a {
-  color: #A8A9AD;
+  color: #5A5651;
   text-decoration: none;
   transition: color 0.2s ease;
 }
@@ -17201,8 +17201,8 @@ html {
   height: auto;
 }
 .site-footer .footer-title {
-  color: #A8A9AD;
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  color: #5A5651;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.1em;
@@ -17211,14 +17211,14 @@ html {
 .site-footer .footer-address {
   font-style: normal;
   font-size: 0.9375rem;
-  color: #E5E4E2;
+  color: #E8E4DE;
   line-height: 1.6;
 }
 .site-footer .footer-contact {
   font-size: 0.9375rem;
 }
 .site-footer .footer-contact a {
-  color: #E5E4E2;
+  color: #E8E4DE;
   text-decoration: none;
   transition: color 0.2s ease;
 }
@@ -17228,13 +17228,13 @@ html {
 .site-footer .footer-hours {
   font-size: 0.9375rem;
   line-height: 1.8;
-  color: #E5E4E2;
+  color: #E8E4DE;
 }
 .site-footer .footer-menu li {
   margin-bottom: 0.5rem;
 }
 .site-footer .footer-menu li a {
-  color: #E5E4E2;
+  color: #E8E4DE;
   text-decoration: none;
   font-size: 0.9375rem;
   transition: color 0.2s ease;
@@ -17246,51 +17246,51 @@ html {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 .site-footer .footer-copyright {
-  color: #8B8B8B;
+  color: #5A5651;
 }
 .site-footer .footer-legal {
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 .site-footer .footer-legal a {
-  color: rgba(168, 169, 173, 0.5);
+  color: rgba(90, 86, 81, 0.5);
   text-decoration: none;
   transition: color 200ms ease;
 }
 .site-footer .footer-legal a:hover {
-  color: #A8A9AD;
+  color: #5A5651;
 }
 .site-footer .footer-legal__sep {
-  color: rgba(168, 169, 173, 0.25);
+  color: rgba(90, 86, 81, 0.25);
   margin: 0 1rem;
 }
 .site-footer .footer-credit {
   margin-top: 1.5rem;
   padding-top: 1.5rem;
-  border-top: 1px solid rgba(168, 169, 173, 0.08);
+  border-top: 1px solid rgba(90, 86, 81, 0.08);
   text-align: center;
 }
 .site-footer .footer-credit p {
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 11px;
-  color: rgba(168, 169, 173, 0.35);
+  color: rgba(90, 86, 81, 0.35);
 }
 .site-footer .footer-credit a {
-  color: rgba(168, 169, 173, 0.35);
+  color: rgba(90, 86, 81, 0.35);
   text-decoration: none;
   transition: color 200ms ease;
 }
 .site-footer .footer-credit a:hover {
-  color: rgba(168, 169, 173, 0.6);
+  color: rgba(90, 86, 81, 0.6);
 }
 
 #main-nav {
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
 }
 #main-nav .navbar-brand {
-  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-family: "Barlow Condensed", "Barlow", Arial, sans-serif;
   font-size: 1.25rem;
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -17300,7 +17300,7 @@ html {
   color: #FFFFFF;
 }
 #main-nav .navbar-nav .nav-link {
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.875rem;
   font-weight: 500;
   letter-spacing: 0.03em;
@@ -17315,7 +17315,7 @@ html {
   color: #FFFFFF;
 }
 #main-nav .navbar-nav .dropdown-menu {
-  background: #0A0A0A;
+  background: #1A1A1A;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 4px;
 }
@@ -17362,8 +17362,8 @@ html {
 #main-nav.is-condensed {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  background-color: rgba(10, 10, 10, 0.98) !important;
-  box-shadow: 0 1px 0 rgba(168, 169, 173, 0.1);
+  background-color: rgba(26, 26, 26, 0.98) !important;
+  box-shadow: 0 1px 0 rgba(90, 86, 81, 0.1);
 }
 #main-nav.is-condensed .navbar-brand img {
   transform: scale(0.85);
@@ -17388,7 +17388,7 @@ html {
 .btn-outline-light:hover, .btn-outline-light:focus {
   background-color: #FFFFFF;
   border-color: #FFFFFF;
-  color: #0A0A0A;
+  color: #1A1A1A;
 }
 
 .btn-outline-dark {
@@ -17405,15 +17405,15 @@ html {
 }
 
 .btn-dark {
-  background-color: #0A0A0A;
-  border-color: #0A0A0A;
+  background-color: #1A1A1A;
+  border-color: #1A1A1A;
   color: #FFFFFF;
   border-radius: 4px;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .btn-dark:hover, .btn-dark:focus {
-  background-color: #1C1C1C;
-  border-color: #1C1C1C;
+  background-color: #242424;
+  border-color: #242424;
   color: #FFFFFF;
 }
 
@@ -17429,13 +17429,13 @@ html {
   transition: all 0.2s ease;
 }
 .plan-card:hover {
-  border-color: #A8A9AD;
-  box-shadow: 0 4px 12px rgba(10, 10, 10, 0.06);
+  border-color: #5A5651;
+  box-shadow: 0 4px 12px rgba(26, 26, 26, 0.06);
 }
 .plan-card--featured {
   border-color: var(--us-text-primary);
   border-width: 2px;
-  box-shadow: 0 8px 24px rgba(10, 10, 10, 0.08);
+  box-shadow: 0 8px 24px rgba(26, 26, 26, 0.08);
 }
 .plan-card__badge {
   position: absolute;
@@ -17443,7 +17443,7 @@ html {
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 0.5rem 1.5rem;
-  background: #A8A9AD;
+  background: #5A5651;
   color: #FFFFFF;
   font-size: 0.6875rem;
   font-weight: 600;
@@ -17457,7 +17457,7 @@ html {
   border-bottom: 1px solid var(--us-border-color);
 }
 .plan-card__name {
-  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-family: "Barlow Condensed", "Barlow", Arial, sans-serif;
   font-size: 1.75rem;
   font-weight: 600;
   color: var(--us-text-primary);
@@ -17478,7 +17478,7 @@ html {
   gap: 0.5rem;
 }
 .plan-card__amount {
-  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-family: "Barlow Condensed", "Barlow", Arial, sans-serif;
   font-size: 2.5rem;
   font-weight: 600;
   color: var(--us-text-primary);
@@ -17515,7 +17515,7 @@ html {
   flex-shrink: 0;
   width: 18px;
   height: 18px;
-  color: #A8A9AD;
+  color: #5A5651;
   margin-top: 2px;
 }
 .plan-card__footer {
@@ -17548,33 +17548,33 @@ html {
   width: 20%;
   padding: 1.5rem;
   text-align: center;
-  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-family: "Barlow Condensed", "Barlow", Arial, sans-serif;
   font-size: 1.25rem;
   font-weight: 600;
   color: var(--us-text-primary);
   vertical-align: bottom;
 }
 .plans-table__plan-col--featured {
-  background: rgba(168, 169, 173, 0.06);
+  background: rgba(90, 86, 81, 0.06);
 }
 .plans-table__badge {
   display: block;
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.6875rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #A8A9AD;
+  color: #5A5651;
   margin-top: 0.5rem;
 }
 .plans-table__category-row td {
   padding: 2rem 1.5rem 1rem 0;
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #A8A9AD;
+  color: #5A5651;
   border-bottom: 1px solid var(--us-border-color);
 }
 .plans-table__feature-name {
@@ -17591,11 +17591,11 @@ html {
   border-bottom: 1px solid var(--us-border-color);
 }
 .plans-table__cell--featured {
-  background: rgba(168, 169, 173, 0.06);
+  background: rgba(90, 86, 81, 0.06);
 }
 .plans-table__cell--pricing {
   font-weight: 600;
-  color: #A8A9AD;
+  color: #5A5651;
 }
 .plans-table__note {
   font-size: 0.875rem;
@@ -17616,7 +17616,7 @@ html {
   background: transparent;
   border: none;
   border-radius: 100px;
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.9375rem;
   font-weight: 500;
   color: var(--us-text-secondary);
@@ -17634,7 +17634,7 @@ html {
   display: inline-block;
   margin-left: 0.5rem;
   padding: 2px 0.5rem;
-  background: rgba(168, 169, 173, 0.3);
+  background: rgba(90, 86, 81, 0.3);
   border-radius: 4px;
   font-size: 0.6875rem;
   font-weight: 600;
@@ -17664,12 +17664,12 @@ html {
   filter: grayscale(0%);
 }
 .physician-section .physician-credentials-label {
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.875rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #A8A9AD;
+  color: #5A5651;
   margin-bottom: 1rem;
 }
 .physician-section .physician-name {
@@ -17696,8 +17696,8 @@ html {
 }
 
 .physician-credentials-sidebar {
-  background: rgba(168, 169, 173, 0.05);
-  border-left: 2px solid #A8A9AD;
+  background: rgba(90, 86, 81, 0.05);
+  border-left: 2px solid #5A5651;
   padding: 2rem;
   border-radius: 2px;
 }
@@ -17714,19 +17714,19 @@ html {
   display: block;
 }
 .physician-credentials-sidebar__title {
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #A8A9AD;
+  color: #5A5651;
   margin-bottom: 1.5rem;
 }
 .physician-credentials-sidebar__list {
   margin: 0;
 }
 .physician-credentials-sidebar__list dt {
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
@@ -17735,7 +17735,7 @@ html {
   margin-bottom: 2px;
 }
 .physician-credentials-sidebar__list dd {
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 15px;
   font-weight: 400;
   color: var(--us-text-secondary);
@@ -17759,7 +17759,7 @@ html {
   margin-bottom: 2rem;
 }
 .service-block__link {
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.875rem;
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -17777,16 +17777,16 @@ html {
   color: #FFFFFF;
 }
 .section-dark .service-block__body {
-  color: #E5E4E2;
+  color: #E8E4DE;
 }
 .section-dark .service-block__link {
-  color: #A8A9AD;
+  color: #5A5651;
 }
 .section-light .service-block__body {
   color: var(--us-text-secondary);
 }
 .section-light .service-block__link {
-  color: #0A0A0A;
+  color: #1A1A1A;
 }
 
 .silver-rule--left {
@@ -17858,7 +17858,7 @@ html {
   padding: 1.5rem 2rem;
   background: var(--us-bg-secondary);
   border-radius: 4px;
-  border-left: 3px solid #A8A9AD;
+  border-left: 3px solid #5A5651;
 }
 .contact-info-section .contact-after-hours p {
   font-size: 0.875rem;
@@ -17908,7 +17908,7 @@ html {
   padding: 3rem;
 }
 .contact-form-section .contact-form .form-label {
-  color: #E5E4E2;
+  color: #E8E4DE;
   font-size: 0.875rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
@@ -17957,7 +17957,7 @@ html {
   height: 52px;
 }
 .contact-form-section .contact-form .form-control::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=text]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=text]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=search]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=search]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=url]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=url]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=tel]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=tel]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=number]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=number]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=range]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=range]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=date]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=date]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=month]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=month]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=week]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=week]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=time]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=time]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=datetime]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=datetime]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=datetime-local]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=datetime-local]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=color]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=color]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=email]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=email]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=file]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=file]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 input[type=submit]::-moz-placeholder, .wpcf7 .contact-form-section .contact-form input[type=submit]::-moz-placeholder, .contact-form-section .contact-form .wpcf7 select::-moz-placeholder, .wpcf7 .contact-form-section .contact-form select::-moz-placeholder, .contact-form-section .contact-form .wpcf7 textarea::-moz-placeholder, .wpcf7 .contact-form-section .contact-form textarea::-moz-placeholder, .contact-form-section .contact-form .wpcf7 .wpcf7-validation-errors::-moz-placeholder, .wpcf7 .contact-form-section .contact-form .wpcf7-validation-errors::-moz-placeholder, .contact-form-section .contact-form .form-select::-moz-placeholder {
-  color: #8B8B8B;
+  color: #5A5651;
 }
 .contact-form-section .contact-form .form-control::placeholder, .contact-form-section .contact-form .wpcf7 input[type=text]::placeholder, .wpcf7 .contact-form-section .contact-form input[type=text]::placeholder,
 .contact-form-section .contact-form .wpcf7 input[type=search]::placeholder,
@@ -17995,7 +17995,7 @@ html {
 .contact-form-section .contact-form .wpcf7 textarea::placeholder,
 .wpcf7 .contact-form-section .contact-form textarea::placeholder, .contact-form-section .contact-form .wpcf7 .wpcf7-validation-errors::placeholder, .wpcf7 .contact-form-section .contact-form .wpcf7-validation-errors::placeholder,
 .contact-form-section .contact-form .form-select::placeholder {
-  color: #8B8B8B;
+  color: #5A5651;
 }
 .contact-form-section .contact-form .form-control:focus, .contact-form-section .contact-form .wpcf7 input[type=text]:focus, .wpcf7 .contact-form-section .contact-form input[type=text]:focus,
 .contact-form-section .contact-form .wpcf7 input[type=search]:focus,
@@ -18034,7 +18034,7 @@ html {
 .wpcf7 .contact-form-section .contact-form textarea:focus, .contact-form-section .contact-form .wpcf7 .wpcf7-validation-errors:focus, .wpcf7 .contact-form-section .contact-form .wpcf7-validation-errors:focus,
 .contact-form-section .contact-form .form-select:focus {
   background: rgba(255, 255, 255, 0.08);
-  border-color: #A8A9AD;
+  border-color: #5A5651;
   box-shadow: none;
 }
 .contact-form-section .contact-form .form-select {
@@ -18049,7 +18049,7 @@ html {
 .contact-form-section .contact-urgent-note p {
   font-size: 0.875rem;
   line-height: 1.6;
-  color: #A8A9AD;
+  color: #5A5651;
   margin: 0;
 }
 .contact-form-section .contact-urgent-note p a {
@@ -18061,7 +18061,7 @@ html {
 }
 
 .faq-section .faq-category__title {
-  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-family: "Barlow Condensed", "Barlow", Arial, sans-serif;
   font-weight: 600;
   color: var(--us-text-primary);
   padding-bottom: 1rem;
@@ -18087,7 +18087,7 @@ html {
   margin-bottom: 0;
 }
 .faq-section .accordion-button {
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-weight: 600;
   font-size: 1rem;
   padding: 1.5rem 2rem;
@@ -18121,7 +18121,7 @@ html {
   width: 48px;
   height: 48px;
   margin: 0 auto 2rem;
-  color: #A8A9AD;
+  color: #5A5651;
   text-align: center;
 }
 .enroll-form-section .enroll-placeholder__icon svg {
@@ -18129,7 +18129,7 @@ html {
   height: 100%;
 }
 .enroll-form-section .enroll-placeholder > h3, .enroll-form-section .enroll-placeholder > .h3 {
-  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-family: "Barlow Condensed", "Barlow", Arial, sans-serif;
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 1rem;
@@ -18150,12 +18150,12 @@ html {
   border-top: 1px solid var(--us-border-color);
 }
 .enroll-form-section .enroll-placeholder__section h4, .enroll-form-section .enroll-placeholder__section .h4 {
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.8125rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: #A8A9AD;
+  color: #5A5651;
   margin-bottom: 1.5rem;
 }
 .enroll-form-section .enroll-placeholder__section ul {
@@ -18171,7 +18171,7 @@ html {
 .enroll-form-section .enroll-placeholder__section ul li::before {
   content: "–";
   margin-right: 1rem;
-  color: #A8A9AD;
+  color: #5A5651;
 }
 .enroll-form-section .enroll-placeholder__note {
   font-size: 0.875rem;
@@ -18208,7 +18208,7 @@ html {
 }
 
 .legal-content h2, .legal-content .h2 {
-  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-family: "Barlow Condensed", "Barlow", Arial, sans-serif;
   font-size: 1.5rem;
   font-weight: 600;
   margin-top: 3rem;
@@ -18222,7 +18222,7 @@ html {
   border-top: none;
 }
 .legal-content h3, .legal-content .h3 {
-  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-family: "Barlow Condensed", "Barlow", Arial, sans-serif;
   font-size: 1.25rem;
   font-weight: 600;
   margin-top: 2rem;
@@ -18286,14 +18286,14 @@ html {
   margin: 0;
   padding: 0;
   background: #FFFFFF;
-  border: 1px solid #E8E8E8;
+  border: 1px solid #E8E4DE;
   border-radius: 8px;
   overflow: hidden;
   transition: all 200ms ease;
 }
 .woocommerce ul.products li.product:hover {
-  border-color: #A8A9AD;
-  box-shadow: 0 4px 12px rgba(10, 10, 10, 0.06);
+  border-color: #5A5651;
+  box-shadow: 0 4px 12px rgba(26, 26, 26, 0.06);
 }
 .woocommerce ul.products li.product a.woocommerce-LoopProduct-link {
   display: block;
@@ -18306,10 +18306,10 @@ html {
   display: block;
 }
 .woocommerce ul.products li.product .woocommerce-loop-product__title {
-  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-family: "Barlow Condensed", "Barlow", Arial, sans-serif;
   font-size: 1.25rem;
   font-weight: 600;
-  color: #0A0A0A;
+  color: #1A1A1A;
   margin: 1.5rem 1.5rem 0.5rem;
   padding: 0;
 }
@@ -18317,11 +18317,11 @@ html {
   display: block;
   font-size: 1.125rem;
   font-weight: 600;
-  color: #0A0A0A;
+  color: #1A1A1A;
   margin: 0 1.5rem 1.5rem;
 }
 .woocommerce ul.products li.product .price del {
-  color: #6B6B6B;
+  color: #5A5651;
   font-weight: 400;
 }
 .woocommerce ul.products li.product .price ins {
@@ -18332,9 +18332,9 @@ html {
   width: calc(100% - 2rem);
   margin: 0 1.5rem 1.5rem;
   padding: 1rem 1.5rem;
-  background: #0A0A0A;
+  background: #1A1A1A;
   color: #FFFFFF;
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.875rem;
   font-weight: 600;
   text-align: center;
@@ -18345,15 +18345,15 @@ html {
   transition: background 200ms ease;
 }
 .woocommerce ul.products li.product .button:hover {
-  background: #1C1C1C;
+  background: #242424;
   color: #FFFFFF;
 }
 .woocommerce .subscription-badge,
 .woocommerce .wcs-badge {
   display: inline-block;
   padding: 0.5rem 1rem;
-  background: rgba(168, 169, 173, 0.2);
-  color: #0A0A0A;
+  background: rgba(90, 86, 81, 0.2);
+  color: #1A1A1A;
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -18366,22 +18366,22 @@ html {
   margin-bottom: 3rem;
 }
 .woocommerce div.product .product_title {
-  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-family: "Barlow Condensed", "Barlow", Arial, sans-serif;
   font-size: 2.5rem;
   font-weight: 600;
-  color: #0A0A0A;
+  color: #1A1A1A;
   margin-bottom: 1.5rem;
 }
 .woocommerce div.product .price {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #0A0A0A;
+  color: #1A1A1A;
   margin-bottom: 2rem;
 }
 .woocommerce div.product .woocommerce-product-details__short-description {
   font-size: 1.125rem;
   line-height: 1.6;
-  color: #2D2D2D;
+  color: #242424;
   margin-bottom: 2rem;
 }
 .woocommerce div.product form.cart {
@@ -18394,21 +18394,21 @@ html {
   width: 80px;
   height: 52px;
   padding: 1rem;
-  border: 1px solid #A8A9AD;
+  border: 1px solid #5A5651;
   border-radius: 4px;
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
   text-align: center;
 }
 .woocommerce div.product form.cart .quantity input.qty:focus {
   outline: none;
-  border-color: #0A0A0A;
+  border-color: #1A1A1A;
 }
 .woocommerce div.product form.cart .single_add_to_cart_button {
-  padding: 1rem 2rem;
-  background: #0A0A0A;
+  padding: 1.125rem 2rem;
+  background: #1A1A1A;
   color: #FFFFFF;
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
   font-weight: 600;
   border: none;
@@ -18417,7 +18417,7 @@ html {
   transition: background 200ms ease;
 }
 .woocommerce div.product form.cart .single_add_to_cart_button:hover {
-  background: #1C1C1C;
+  background: #242424;
 }
 
 .woocommerce-cart .woocommerce table.cart {
@@ -18425,18 +18425,18 @@ html {
   border-collapse: collapse;
 }
 .woocommerce-cart .woocommerce table.cart th {
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.875rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #6B6B6B;
+  color: #5A5651;
   padding: 1.5rem;
-  border-bottom: 2px solid #E8E8E8;
+  border-bottom: 2px solid #E8E4DE;
 }
 .woocommerce-cart .woocommerce table.cart td {
   padding: 1.5rem;
-  border-bottom: 1px solid #E8E8E8;
+  border-bottom: 1px solid #E8E4DE;
   vertical-align: middle;
 }
 .woocommerce-cart .woocommerce table.cart .product-thumbnail img {
@@ -18445,16 +18445,16 @@ html {
   border-radius: 4px;
 }
 .woocommerce-cart .woocommerce table.cart .product-name a {
-  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-family: "Barlow Condensed", "Barlow", Arial, sans-serif;
   font-weight: 600;
-  color: #0A0A0A;
+  color: #1A1A1A;
   text-decoration: none;
 }
 .woocommerce-cart .woocommerce table.cart .product-name a:hover {
-  color: #1C1C1C;
+  color: #242424;
 }
 .woocommerce-cart .woocommerce table.cart .product-remove a {
-  color: #6B6B6B;
+  color: #5A5651;
   font-size: 1.5rem;
   text-decoration: none;
 }
@@ -18465,7 +18465,7 @@ html {
   margin-top: 3rem;
 }
 .woocommerce-cart .woocommerce .cart-collaterals .cart_totals h2, .woocommerce-cart .woocommerce .cart-collaterals .cart_totals .h2 {
-  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-family: "Barlow Condensed", "Barlow", Arial, sans-serif;
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 2rem;
@@ -18475,7 +18475,7 @@ html {
 }
 .woocommerce-cart .woocommerce .cart-collaterals .cart_totals table th, .woocommerce-cart .woocommerce .cart-collaterals .cart_totals table td {
   padding: 1rem 0;
-  border-bottom: 1px solid #E8E8E8;
+  border-bottom: 1px solid #E8E4DE;
 }
 .woocommerce-cart .woocommerce .cart-collaterals .cart_totals table th {
   font-weight: 600;
@@ -18487,10 +18487,10 @@ html {
 .woocommerce-cart .woocommerce .wc-proceed-to-checkout a.checkout-button {
   display: block;
   width: 100%;
-  padding: 1rem 2rem;
-  background: #0A0A0A;
+  padding: 1.125rem 2rem;
+  background: #1A1A1A;
   color: #FFFFFF;
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
   font-weight: 600;
   text-align: center;
@@ -18499,7 +18499,7 @@ html {
   transition: background 200ms ease;
 }
 .woocommerce-cart .woocommerce .wc-proceed-to-checkout a.checkout-button:hover {
-  background: #1C1C1C;
+  background: #242424;
 }
 
 .woocommerce-checkout .woocommerce form.checkout .form-row {
@@ -18509,7 +18509,7 @@ html {
   display: block;
   font-size: 0.875rem;
   font-weight: 600;
-  color: #0A0A0A;
+  color: #1A1A1A;
   margin-bottom: 0.5rem;
 }
 .woocommerce-checkout .woocommerce form.checkout .form-row input.input-text,
@@ -18519,18 +18519,18 @@ html {
   height: 52px;
   padding: 1rem 1.5rem;
   background: #FFFFFF;
-  border: 1px solid #A8A9AD;
+  border: 1px solid #5A5651;
   border-radius: 4px;
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
-  color: #0A0A0A;
+  color: #1A1A1A;
   transition: border-color 150ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .woocommerce-checkout .woocommerce form.checkout .form-row input.input-text:focus,
 .woocommerce-checkout .woocommerce form.checkout .form-row select:focus,
 .woocommerce-checkout .woocommerce form.checkout .form-row textarea:focus {
   outline: none;
-  border-color: #0A0A0A;
+  border-color: #1A1A1A;
 }
 .woocommerce-checkout .woocommerce form.checkout .form-row textarea {
   height: auto;
@@ -18541,19 +18541,19 @@ html {
   border-color: #8B4049;
 }
 .woocommerce-checkout .woocommerce form.checkout h3, .woocommerce-checkout .woocommerce form.checkout .h3 {
-  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-family: "Barlow Condensed", "Barlow", Arial, sans-serif;
   font-size: 1.5rem;
   font-weight: 600;
-  color: #0A0A0A;
+  color: #1A1A1A;
   margin-bottom: 2rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid #E8E8E8;
+  border-bottom: 1px solid #E8E4DE;
 }
 .woocommerce-checkout .woocommerce #order_review_heading {
-  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-family: "Barlow Condensed", "Barlow", Arial, sans-serif;
   font-size: 1.5rem;
   font-weight: 600;
-  color: #0A0A0A;
+  color: #1A1A1A;
   margin-bottom: 2rem;
 }
 .woocommerce-checkout .woocommerce table.shop_table {
@@ -18562,13 +18562,13 @@ html {
 }
 .woocommerce-checkout .woocommerce table.shop_table th, .woocommerce-checkout .woocommerce table.shop_table td {
   padding: 1rem;
-  border-bottom: 1px solid #E8E8E8;
+  border-bottom: 1px solid #E8E4DE;
 }
 .woocommerce-checkout .woocommerce table.shop_table tfoot th {
   text-align: left;
 }
 .woocommerce-checkout .woocommerce #payment {
-  background: #FAFAFA;
+  background: #F5F2EE;
   border-radius: 8px;
   padding: 2rem;
   margin-top: 3rem;
@@ -18580,7 +18580,7 @@ html {
 }
 .woocommerce-checkout .woocommerce #payment ul.payment_methods li {
   padding: 1.5rem;
-  border: 1px solid #E8E8E8;
+  border: 1px solid #E8E4DE;
   border-radius: 4px;
   margin-bottom: 1rem;
 }
@@ -18594,10 +18594,10 @@ html {
 .woocommerce-checkout .woocommerce #payment #place_order {
   display: block;
   width: 100%;
-  padding: 1rem 2rem;
-  background: #0A0A0A;
+  padding: 1.125rem 2rem;
+  background: #1A1A1A;
   color: #FFFFFF;
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
   font-weight: 600;
   text-align: center;
@@ -18607,42 +18607,42 @@ html {
   transition: background 200ms ease;
 }
 .woocommerce-checkout .woocommerce #payment #place_order:hover {
-  background: #1C1C1C;
+  background: #242424;
 }
 
 .woocommerce-account .woocommerce .woocommerce-MyAccount-navigation ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  background: #FAFAFA;
+  background: #F5F2EE;
   border-radius: 8px;
   overflow: hidden;
 }
 .woocommerce-account .woocommerce .woocommerce-MyAccount-navigation ul li {
-  border-bottom: 1px solid #E8E8E8;
+  border-bottom: 1px solid #E8E4DE;
 }
 .woocommerce-account .woocommerce .woocommerce-MyAccount-navigation ul li:last-child {
   border-bottom: none;
 }
 .woocommerce-account .woocommerce .woocommerce-MyAccount-navigation ul li.is-active a {
-  background: #0A0A0A;
+  background: #1A1A1A;
   color: #FFFFFF;
 }
 .woocommerce-account .woocommerce .woocommerce-MyAccount-navigation ul li a {
   display: block;
   padding: 1.5rem 2rem;
-  color: #0A0A0A;
+  color: #1A1A1A;
   text-decoration: none;
   font-weight: 500;
   transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .woocommerce-account .woocommerce .woocommerce-MyAccount-navigation ul li a:hover {
-  background: #E5E4E2;
+  background: #E8E4DE;
 }
 .woocommerce-account .woocommerce .woocommerce-MyAccount-content h2, .woocommerce-account .woocommerce .woocommerce-MyAccount-content .h2, .woocommerce-account .woocommerce .woocommerce-MyAccount-content h3, .woocommerce-account .woocommerce .woocommerce-MyAccount-content .h3 {
-  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-family: "Barlow Condensed", "Barlow", Arial, sans-serif;
   font-weight: 600;
-  color: #0A0A0A;
+  color: #1A1A1A;
   margin-bottom: 2rem;
 }
 .woocommerce-account .woocommerce .woocommerce-MyAccount-content table {
@@ -18651,19 +18651,19 @@ html {
 }
 .woocommerce-account .woocommerce .woocommerce-MyAccount-content table th, .woocommerce-account .woocommerce .woocommerce-MyAccount-content table td {
   padding: 1rem 1.5rem;
-  border-bottom: 1px solid #E8E8E8;
+  border-bottom: 1px solid #E8E4DE;
   text-align: left;
 }
 .woocommerce-account .woocommerce .woocommerce-MyAccount-content table th {
   font-weight: 600;
-  color: #0A0A0A;
+  color: #1A1A1A;
 }
 .woocommerce-account .woocommerce .woocommerce-MyAccount-content .button {
   display: inline-block;
   padding: 1rem 1.5rem;
-  background: #0A0A0A;
+  background: #1A1A1A;
   color: #FFFFFF;
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.875rem;
   font-weight: 600;
   text-decoration: none;
@@ -18673,7 +18673,7 @@ html {
   transition: background 200ms ease;
 }
 .woocommerce-account .woocommerce .woocommerce-MyAccount-content .button:hover {
-  background: #1C1C1C;
+  background: #242424;
   color: #FFFFFF;
 }
 @media (min-width: 768px) {
@@ -18689,13 +18689,13 @@ html {
   margin: 0 auto;
   padding: 3rem;
   background: #FFFFFF;
-  border: 1px solid #E8E8E8;
+  border: 1px solid #E8E4DE;
   border-radius: 8px;
 }
 .woocommerce-account .woocommerce-form-login h2, .woocommerce-account .woocommerce-form-login .h2,
 .woocommerce-account .woocommerce-form-register h2,
 .woocommerce-account .woocommerce-form-register .h2 {
-  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-family: "Barlow Condensed", "Barlow", Arial, sans-serif;
   font-size: 1.5rem;
   font-weight: 600;
   text-align: center;
@@ -18717,25 +18717,25 @@ html {
   width: 100%;
   height: 52px;
   padding: 1rem 1.5rem;
-  border: 1px solid #A8A9AD;
+  border: 1px solid #5A5651;
   border-radius: 4px;
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
 }
 .woocommerce-account .woocommerce-form-login .form-row input:focus,
 .woocommerce-account .woocommerce-form-register .form-row input:focus {
   outline: none;
-  border-color: #0A0A0A;
+  border-color: #1A1A1A;
 }
 .woocommerce-account .woocommerce-form-login button.woocommerce-form-login__submit,
 .woocommerce-account .woocommerce-form-login button.woocommerce-form-register__submit,
 .woocommerce-account .woocommerce-form-register button.woocommerce-form-login__submit,
 .woocommerce-account .woocommerce-form-register button.woocommerce-form-register__submit {
   width: 100%;
-  padding: 1rem 2rem;
-  background: #0A0A0A;
+  padding: 1.125rem 2rem;
+  background: #1A1A1A;
   color: #FFFFFF;
-  font-family: "Montserrat", Arial, "Helvetica Neue", sans-serif;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
   font-weight: 600;
   border: none;
@@ -18747,7 +18747,7 @@ html {
 .woocommerce-account .woocommerce-form-login button.woocommerce-form-register__submit:hover,
 .woocommerce-account .woocommerce-form-register button.woocommerce-form-login__submit:hover,
 .woocommerce-account .woocommerce-form-register button.woocommerce-form-register__submit:hover {
-  background: #1C1C1C;
+  background: #242424;
 }
 
 .woocommerce .woocommerce-message,
@@ -18764,19 +18764,19 @@ html {
   display: none;
 }
 .woocommerce .woocommerce-message {
-  background: rgba(168, 169, 173, 0.1);
-  border-color: #A8A9AD;
-  color: #0A0A0A;
+  background: rgba(90, 86, 81, 0.1);
+  border-color: #5A5651;
+  color: #1A1A1A;
 }
 .woocommerce .woocommerce-info {
-  background: rgba(168, 169, 173, 0.1);
-  border-color: #A8A9AD;
-  color: #0A0A0A;
+  background: rgba(90, 86, 81, 0.1);
+  border-color: #5A5651;
+  color: #1A1A1A;
 }
 .woocommerce .woocommerce-error {
   background: rgba(139, 64, 73, 0.1);
   border-color: #8B4049;
-  color: #0A0A0A;
+  color: #1A1A1A;
 }
 .woocommerce .woocommerce-error li {
   list-style: none;
@@ -18787,15 +18787,15 @@ html {
 
 .woocommerce .woocommerce-breadcrumb {
   font-size: 0.875rem;
-  color: #6B6B6B;
+  color: #5A5651;
   margin-bottom: 2rem;
 }
 .woocommerce .woocommerce-breadcrumb a {
-  color: #6B6B6B;
+  color: #5A5651;
   text-decoration: none;
 }
 .woocommerce .woocommerce-breadcrumb a:hover {
-  color: #0A0A0A;
+  color: #1A1A1A;
 }
 
 .woocommerce nav.woocommerce-pagination {
@@ -18813,19 +18813,19 @@ html {
   display: block;
   padding: 1rem 1.5rem;
   background: #FFFFFF;
-  border: 1px solid #E8E8E8;
+  border: 1px solid #E8E4DE;
   border-radius: 4px;
-  color: #0A0A0A;
+  color: #1A1A1A;
   text-decoration: none;
   transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .woocommerce nav.woocommerce-pagination ul li a:hover {
-  background: #FAFAFA;
-  border-color: #A8A9AD;
+  background: #F5F2EE;
+  border-color: #5A5651;
 }
 .woocommerce nav.woocommerce-pagination ul li span.current {
-  background: #0A0A0A;
-  border-color: #0A0A0A;
+  background: #1A1A1A;
+  border-color: #1A1A1A;
   color: #FFFFFF;
 }
 
@@ -18840,9 +18840,9 @@ body {
   width: 40px;
   height: 40px;
   border-radius: 9999px;
-  border: 1px solid rgba(168, 169, 173, 0.4);
+  border: 1px solid rgba(90, 86, 81, 0.4);
   background: transparent;
-  color: #A8A9AD;
+  color: #5A5651;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18857,8 +18857,8 @@ body {
   pointer-events: auto;
 }
 .bmg-back-to-top:hover {
-  background: rgba(168, 169, 173, 0.08);
-  border-color: #A8A9AD;
+  background: rgba(90, 86, 81, 0.08);
+  border-color: #5A5651;
 }
 .bmg-back-to-top:active {
   transform: scale(0.95);

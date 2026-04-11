@@ -75,10 +75,10 @@ function bmg_enqueue_scripts() {
 	wp_dequeue_script( 'understrap-scripts' );
 	wp_deregister_script( 'understrap-scripts' );
 
-	// Enqueue Google Fonts: Cormorant Garamond + Montserrat.
+	// Enqueue Google Fonts: Barlow, Barlow Condensed, JetBrains Mono.
 	wp_enqueue_style(
 		'bmg-fonts',
-		'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap',
+		'https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap',
 		array(),
 		null
 	);
