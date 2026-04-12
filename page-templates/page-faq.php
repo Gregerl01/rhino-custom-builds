@@ -170,37 +170,7 @@ $faq_groups = array(
 		</div>
 	</section>
 
-	<?php // ===== 4. Contact CTA ================================================ ?>
-	<section class="section-faq-contact" data-section="faq-contact">
-		<div class="container">
-			<div class="row g-4 align-items-stretch">
-
-				<div class="col-md-6">
-					<a class="section-faq-contact__card section-faq-contact__card--phone" href="tel:<?php echo esc_attr( $phone_link ); ?>">
-						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-							<path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 6a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
-						</svg>
-						<span class="section-faq-contact__card-label"><?php esc_html_e( 'CALL US', 'bmg-theme' ); ?></span>
-						<span class="section-faq-contact__card-value"><?php echo esc_html( $phone_display ); ?></span>
-					</a>
-				</div>
-
-				<div class="col-md-6">
-					<a class="section-faq-contact__card section-faq-contact__card--message" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">
-						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-							<path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
-							<path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
-						</svg>
-						<span class="section-faq-contact__card-label"><?php esc_html_e( 'SEND A MESSAGE', 'bmg-theme' ); ?></span>
-						<span class="section-faq-contact__card-value"><?php esc_html_e( 'Go to Contact page →', 'bmg-theme' ); ?></span>
-					</a>
-				</div>
-
-			</div>
-		</div>
-	</section>
-
-	<?php // ===== 5. CTA ========================================================= ?>
+	<?php // ===== 4. CTA ========================================================= ?>
 	<section class="section-cta section-cta--dark" data-section="cta">
 		<div class="section-cta__grain" aria-hidden="true"></div>
 		<div class="container position-relative">
