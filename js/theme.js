@@ -6558,8 +6558,134 @@
     }
   })();
 
-  // Vehicle Type Selector IIFE removed from the homepage hero.
-  // Re-add when vehicle selector pills are implemented on /shop/.
+  /**
+   * Gallery — filter pills + lightbox
+   *
+   * Filter pills toggle data-hidden on gallery cards by matching
+   * data-filter on the pill against data-category on the card.
+   * Lightbox opens when a gallery card is clicked or Enter is pressed.
+   */
+  (function () {
+
+    function init() {
+      // ----- Filters -----
+      var filterBar = document.querySelector('[data-gallery-filters]');
+      var grid = document.querySelector('[data-gallery-grid]');
+      if (filterBar && grid) {
+        var pills = filterBar.querySelectorAll('.gallery-filters__pill');
+        var cards = grid.querySelectorAll('[data-category]');
+        filterBar.addEventListener('click', function (e) {
+          var pill = e.target.closest('.gallery-filters__pill');
+          if (!pill) {
+            return;
+          }
+          var filter = pill.getAttribute('data-filter');
+          pills.forEach(function (p) {
+            p.classList.remove('gallery-filters__pill--active');
+            p.setAttribute('aria-selected', 'false');
+          });
+          pill.classList.add('gallery-filters__pill--active');
+          pill.setAttribute('aria-selected', 'true');
+          cards.forEach(function (card) {
+            if (filter === 'all' || card.getAttribute('data-category') === filter) {
+              card.removeAttribute('data-hidden');
+            } else {
+              card.setAttribute('data-hidden', 'true');
+            }
+          });
+        });
+      }
+
+      // ----- Lightbox -----
+      var lightbox = document.querySelector('[data-gallery-lightbox]');
+      var closeBtn = document.querySelector('[data-gallery-lightbox-close]');
+      if (!lightbox || !grid) {
+        return;
+      }
+      var lbMedia = lightbox.querySelector('.gallery-lightbox__media');
+      var lbTag = lightbox.querySelector('.gallery-lightbox__tag');
+      var lbTitle = lightbox.querySelector('.gallery-lightbox__title');
+      var lbVeh = lightbox.querySelector('.gallery-lightbox__vehicle');
+      var lbDesc = lightbox.querySelector('.gallery-lightbox__description');
+      function openLightbox(card) {
+        var media = card.querySelector('.gallery-card__media');
+        var img = media ? media.querySelector('img') : null;
+        var overlay = card.querySelector('.gallery-card__overlay');
+        var tag = overlay ? overlay.querySelector('.gallery-card__tag') : null;
+        var title = overlay ? overlay.querySelector('.gallery-card__title') : null;
+        var vehicle = overlay ? overlay.querySelector('.gallery-card__vehicle') : null;
+
+        // Populate
+        if (lbMedia) {
+          lbMedia.innerHTML = img ? '<img src="' + img.src + '" alt="' + (img.alt || '') + '">' : '<div class="gallery-card__placeholder" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#E8E4DE"><span style="font-family:monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(26,26,26,0.3)">NO IMAGE</span></div>';
+        }
+        if (lbTag) {
+          lbTag.textContent = tag ? tag.textContent : '';
+        }
+        if (lbTitle) {
+          lbTitle.textContent = title ? title.textContent : '';
+        }
+        if (lbVeh) {
+          lbVeh.textContent = vehicle ? vehicle.textContent : '';
+        }
+
+        // Description from the content array is stored as a data attribute
+        var desc = card.getAttribute('data-description') || '';
+        if (lbDesc) {
+          lbDesc.textContent = desc;
+        }
+        lightbox.classList.add('is-open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('lightbox-open');
+        if (closeBtn) {
+          window.setTimeout(function () {
+            closeBtn.focus();
+          }, 50);
+        }
+      }
+      function closeLightbox() {
+        lightbox.classList.remove('is-open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('lightbox-open');
+      }
+
+      // Card click / Enter
+      grid.addEventListener('click', function (e) {
+        var card = e.target.closest('[data-gallery-item]');
+        if (card) {
+          openLightbox(card);
+        }
+      });
+      grid.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+          var card = e.target.closest('[data-gallery-item]');
+          if (card) {
+            openLightbox(card);
+          }
+        }
+      });
+
+      // Close
+      if (closeBtn) {
+        closeBtn.addEventListener('click', closeLightbox);
+      }
+      lightbox.addEventListener('click', function (e) {
+        if (e.target === lightbox) {
+          closeLightbox();
+        }
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && lightbox.classList.contains('is-open')) {
+          closeLightbox();
+        }
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
 
   /**
    * Back to Top Button

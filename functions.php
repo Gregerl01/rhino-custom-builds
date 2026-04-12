@@ -135,6 +135,7 @@ $bmg_includes = array(
 	'/template-helpers.php',         // Shared template helpers (e.g. trust-item parser).
 	'/service-content.php',          // Service detail content registry (bmg_get_service_content).
 	'/shop-content.php',             // Shop category + product content registry (bmg_get_shop_category_content).
+	'/gallery-content.php',          // Gallery project showcase content (bmg_get_gallery_projects).
 	'/quote-form-setup.php',         // Gravity Forms — auto-create 3-step quote form on first run.
 	'/custom-post-types.php',        // Custom post types for homepage sections.
 	'/customizer-site-identity.php', // Site Identity settings (logo size).

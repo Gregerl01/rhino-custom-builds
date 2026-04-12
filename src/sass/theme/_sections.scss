@@ -2954,6 +2954,373 @@ html {
 // PAGE: FAQ (standalone /faq/ page)
 // ==========================================================================
 
+// ==========================================================================
+// PAGE: Gallery
+// ==========================================================================
+
+.section-gallery {
+	background-color: $brand-warm-white;
+	color: $text-primary;
+	padding: 128px 0 120px;
+
+	@media (max-width: 767.98px) {
+		padding: 80px 0;
+	}
+}
+
+// Filter pills
+.gallery-filters {
+	display: flex;
+	flex-wrap: wrap;
+	gap: $space-xs;
+	margin-bottom: $space-2xl;
+
+	@media (max-width: 575.98px) {
+		overflow-x: auto;
+		flex-wrap: nowrap;
+		scroll-snap-type: x mandatory;
+		-webkit-overflow-scrolling: touch;
+		padding-bottom: 4px;
+		scrollbar-width: none;
+		&::-webkit-scrollbar { display: none; }
+	}
+
+	&__pill {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 44px;
+		padding: 10px 20px;
+		background: transparent;
+		border: 1px solid $border-color;
+		border-radius: 0;
+		font-family: $font-family-base;
+		font-size: 13px;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: $text-secondary;
+		cursor: pointer;
+		transition:
+			background-color $motion-fast $ease-out-expo,
+			border-color $motion-fast $ease-out-expo,
+			color $motion-fast $ease-out-expo;
+		scroll-snap-align: start;
+		flex-shrink: 0;
+
+		&:hover,
+		&:focus-visible {
+			color: $text-primary;
+			border-color: $brand-dark;
+			outline: none;
+		}
+
+		&--active {
+			background-color: $brand-primary;
+			border-color: $brand-primary;
+			color: $text-on-dark;
+
+			&:hover,
+			&:focus-visible {
+				background-color: darken($brand-primary, 8%);
+				border-color: darken($brand-primary, 8%);
+				color: $text-on-dark;
+			}
+		}
+	}
+}
+
+// Gallery grid
+.gallery-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: $space-md;
+
+	@media (max-width: 991.98px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	@media (max-width: 575.98px) {
+		grid-template-columns: 1fr;
+		gap: $space-sm;
+	}
+}
+
+// Gallery card
+.gallery-card {
+	margin: 0;
+	position: relative;
+	overflow: hidden;
+	border-radius: $radius-sm;
+	transition: opacity $motion-moderate $ease-out-expo, transform $motion-moderate $ease-out-expo;
+
+	// Hidden by filter
+	&[data-hidden='true'] {
+		display: none;
+	}
+
+	&__media {
+		position: relative;
+		aspect-ratio: 4 / 3;
+		overflow: hidden;
+		background-color: $brand-surface;
+		cursor: pointer;
+
+		img {
+			position: absolute;
+			inset: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+			filter: saturate(0.9) contrast(1.08);
+			transition: transform $motion-moderate $ease-out-expo;
+		}
+
+		&:hover img,
+		&:focus-visible img {
+			transform: scale(1.03);
+		}
+	}
+
+	&__placeholder {
+		position: absolute;
+		inset: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: $brand-surface;
+		background-image: repeating-linear-gradient(
+			45deg,
+			rgba($brand-dark, 0.03) 0,
+			rgba($brand-dark, 0.03) 1px,
+			transparent 1px,
+			transparent 14px
+		);
+	}
+
+	&__placeholder-label {
+		font-family: $font-family-display;
+		font-weight: 800;
+		font-size: 0.875rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: rgba($brand-dark, 0.2);
+	}
+
+	&__overlay {
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(0deg, rgba($brand-dark, 0.85) 0%, transparent 60%);
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		padding: $space-md;
+		opacity: 0;
+		transition: opacity $motion-fast $ease-out-expo;
+		pointer-events: none;
+
+		.gallery-card__media:hover &,
+		.gallery-card__media:focus-visible & {
+			opacity: 1;
+		}
+	}
+
+	&__tag {
+		font-family: $font-family-mono;
+		font-weight: 700;
+		font-size: 9px;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: $brand-primary;
+		margin-bottom: $space-xs;
+	}
+
+	&__title {
+		font-family: $font-family-display;
+		font-weight: 700;
+		font-size: 1.125rem;
+		line-height: 1.1;
+		letter-spacing: 0.01em;
+		text-transform: uppercase;
+		color: $text-on-dark;
+		margin: 0 0 4px;
+	}
+
+	&__vehicle {
+		font-family: $font-family-base;
+		font-size: 0.8125rem;
+		font-weight: 400;
+		color: rgba($text-on-dark, 0.7);
+		margin: 0;
+	}
+}
+
+// Lightbox
+.gallery-lightbox {
+	position: fixed;
+	inset: 0;
+	z-index: 2000;
+	background-color: rgba(0, 0, 0, 0.9);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+	transition: opacity $motion-moderate $ease-out-expo, visibility 0s linear $motion-moderate;
+
+	&.is-open {
+		opacity: 1;
+		visibility: visible;
+		pointer-events: auto;
+		transition: opacity $motion-moderate $ease-out-expo, visibility 0s;
+	}
+
+	&__close {
+		position: absolute;
+		top: $space-lg;
+		right: $space-lg;
+		width: 44px;
+		height: 44px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: transparent;
+		border: 1px solid rgba($text-on-dark, 0.3);
+		color: $text-on-dark;
+		cursor: pointer;
+		z-index: 2;
+		transition: background-color $motion-fast $ease-out-expo, border-color $motion-fast $ease-out-expo;
+
+		&:hover,
+		&:focus-visible {
+			background-color: rgba($text-on-dark, 0.1);
+			border-color: $text-on-dark;
+			outline: none;
+		}
+	}
+
+	&__content {
+		max-width: 900px;
+		width: 90%;
+		max-height: 85vh;
+		overflow: hidden;
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__media {
+		aspect-ratio: 4 / 3;
+		background-color: $brand-dark;
+		overflow: hidden;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+		}
+	}
+
+	&__info {
+		background-color: $brand-dark-lighter;
+		padding: $space-lg;
+	}
+
+	&__tag {
+		display: inline-block;
+		font-family: $font-family-mono;
+		font-weight: 700;
+		font-size: 9px;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: $brand-primary;
+		margin-bottom: $space-xs;
+	}
+
+	&__title {
+		font-family: $font-family-display;
+		font-weight: 700;
+		font-size: 1.5rem;
+		line-height: 1.1;
+		letter-spacing: 0.01em;
+		text-transform: uppercase;
+		color: $text-on-dark;
+		margin: 0 0 $space-xs;
+	}
+
+	&__vehicle {
+		font-family: $font-family-base;
+		font-size: 0.875rem;
+		font-weight: 500;
+		color: rgba($text-on-dark, 0.7);
+		margin: 0 0 $space-sm;
+	}
+
+	&__description {
+		font-family: $font-family-base;
+		font-size: 0.9375rem;
+		line-height: 1.6;
+		color: rgba($text-on-dark, 0.82);
+		margin: 0;
+	}
+}
+
+// Social callout
+.section-gallery-social {
+	background-color: $brand-white;
+	padding: $space-3xl 0;
+
+	@media (max-width: 767.98px) {
+		padding: $space-2xl 0;
+	}
+
+	&__card {
+		text-align: center;
+		padding: $space-xl;
+		border: 1px solid $border-color;
+		max-width: 640px;
+		margin: 0 auto;
+	}
+
+	&__label {
+		display: block;
+		font-family: $font-family-mono;
+		font-size: 10px;
+		font-weight: 500;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: $brand-primary;
+		margin-bottom: $space-sm;
+	}
+
+	&__body {
+		font-family: $font-family-base;
+		font-size: 1.0625rem;
+		line-height: 1.6;
+		color: $text-secondary;
+		margin: 0 0 $space-lg;
+	}
+
+	&__cta {
+		display: inline-flex;
+	}
+}
+
+// Stagger for gallery grid
+.gallery-grid > .bmg-reveal {
+	transform: translateY(16px);
+}
+.gallery-grid > .bmg-reveal.is-visible {
+	transform: translateY(0);
+}
+.gallery-grid > .bmg-reveal:nth-child(1) { transition-delay: 0ms; }
+.gallery-grid > .bmg-reveal:nth-child(2) { transition-delay: 60ms; }
+.gallery-grid > .bmg-reveal:nth-child(3) { transition-delay: 120ms; }
+.gallery-grid > .bmg-reveal:nth-child(4) { transition-delay: 180ms; }
+.gallery-grid > .bmg-reveal:nth-child(5) { transition-delay: 240ms; }
+.gallery-grid > .bmg-reveal:nth-child(6) { transition-delay: 300ms; }
+
 .section-faq-page {
 	background-color: $brand-warm-white;
 	color: $text-primary;
@@ -6806,7 +7173,8 @@ html {
 }
 
 // Body scroll lock while the drawer is open.
-body.drawer-open {
+body.drawer-open,
+body.lightbox-open {
 	overflow: hidden;
 	touch-action: none;
 }
