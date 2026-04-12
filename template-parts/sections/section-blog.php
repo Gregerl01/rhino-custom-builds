@@ -70,9 +70,7 @@ if ( ! $blog_query->have_posts() ) {
 							<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 						</h3>
 
-						<?php if ( has_excerpt() ) : ?>
-							<p class="blog-card__excerpt"><?php echo esc_html( get_the_excerpt() ); ?></p>
-						<?php endif; ?>
+						<p class="blog-card__excerpt"><?php echo esc_html( wp_trim_words( wp_strip_all_tags( get_the_excerpt() ), 25 ) ); ?></p>
 
 						<div class="blog-card__meta">
 							<time class="blog-card__date" datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>">
