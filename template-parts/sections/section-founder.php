@@ -16,13 +16,13 @@ defined( 'ABSPATH' ) || exit;
 
 $overline    = get_theme_mod( 'bmg_founder_overline', __( 'THE SHOP', 'bmg-theme' ) );
 $headline    = get_theme_mod( 'bmg_founder_headline', __( 'RUN BY BUILDERS. NOT SALESPEOPLE.', 'bmg-theme' ) );
-$paragraph_1 = get_theme_mod( 'bmg_founder_paragraph_1', __( 'Rhino Custom Builds started in 2014 with one spray gun, a two-bay garage, and a beat-up F-150 that needed a bedliner. The liner held. Friends asked. Friends of friends asked. Twelve years later, we run three install bays, a full parts inventory built for trucks, and a team that only hires installers with manufacturer certifications on the products they touch.', 'bmg-theme' ) );
+$paragraph_1 = get_theme_mod( 'bmg_founder_paragraph_1', __( 'Rhino Custom Builds started in 1989 with one spray gun, a two-bay garage, and a beat-up F-150 that needed a bedliner. The liner held. Friends asked. Friends of friends asked. Three decades later, we run three install bays, a full parts inventory built for trucks, and a team that only hires installers with manufacturer certifications on the products they touch.', 'bmg-theme' ) );
 $paragraph_2 = get_theme_mod( 'bmg_founder_paragraph_2', __( 'We don\'t subcontract. We don\'t outsource. Every coating, every bumper, every winch, every wiring harness — it all comes off our floor. If we installed it, we stand behind it. If we didn\'t, we\'ll still fix it. Walk into the shop any day and the person who\'ll work on your truck is the person who\'ll talk to you about it.', 'bmg-theme' ) );
 
 // Three credential badges.
 $badges = array(
 	array(
-		'number' => get_theme_mod( 'bmg_founder_badge_1_number', __( '12+', 'bmg-theme' ) ),
+		'number' => get_theme_mod( 'bmg_founder_badge_1_number', __( '35+', 'bmg-theme' ) ),
 		'label'  => get_theme_mod( 'bmg_founder_badge_1_label', __( 'YEARS IN BUSINESS', 'bmg-theme' ) ),
 	),
 	array(

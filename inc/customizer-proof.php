@@ -237,7 +237,7 @@ function bmg_theme_proof_customizer( $wp_customize ) {
 	// ----------------------------------------------------------------------
 	$stat_defaults = array(
 		1 => array( '4,200+', 'INSTALLS COMPLETED' ),
-		2 => array( '12 YRS', 'IN BUSINESS' ),
+		2 => array( '35 YRS', 'IN BUSINESS' ),
 		3 => array( '4.9★', 'GOOGLE RATING' ),
 		4 => array( 'LIFETIME', 'COATING WARRANTY' ),
 	);

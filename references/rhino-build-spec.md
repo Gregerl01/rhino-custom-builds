@@ -15,7 +15,7 @@ ENTRY: Google search "spray on bedliner [city]"
   ↓
 LANDING: Homepage (/)
   · Hero: dark section, "BUILT FOR WHERE THE ROAD ENDS." headline
-  · Trust strip: LIFETIME WARRANTY · 12+ YEARS · 4,200+ INSTALLS · 4.9★ GOOGLE
+  · Trust strip: LIFETIME WARRANTY · 35+ YEARS · 4,200+ INSTALLS · 4.9★ GOOGLE
   · Dual CTA: "Get a Quote" (red) + "Explore Services" (ghost)
   · Vehicle selector pills visible — does not tap, keeps scrolling
   ↓

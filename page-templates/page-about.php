@@ -27,7 +27,7 @@ $credentials = array(
 
 // Stats.
 $stats = array(
-	array( 'number' => '12+',      'label' => __( 'YEARS IN BUSINESS', 'bmg-theme' ) ),
+	array( 'number' => '35+',      'label' => __( 'YEARS IN BUSINESS', 'bmg-theme' ) ),
 	array( 'number' => '4,200+',   'label' => __( 'INSTALLS COMPLETED', 'bmg-theme' ) ),
 	array( 'number' => '4.9★',     'label' => __( 'GOOGLE RATING', 'bmg-theme' ) ),
 	array( 'number' => 'LIFETIME', 'label' => __( 'COATING WARRANTY', 'bmg-theme' ) ),
@@ -73,7 +73,7 @@ for ( $i = 1; $i <= 3; $i++ ) {
 					</h2>
 
 					<p class="section-about-story__paragraph bmg-reveal">
-						<?php esc_html_e( 'Rhino Custom Builds started in 2014 with one spray gun, a two-bay garage, and a beat-up F-150 that needed a bedliner. The liner held. Friends asked. Friends of friends asked. Twelve years later, we run three bays, a dedicated parts program, and a team that only hires installers with manufacturer certifications on the products they touch.', 'bmg-theme' ); ?>
+						<?php esc_html_e( 'Rhino Custom Builds started in 1989 with one spray gun, a two-bay garage, and a beat-up F-150 that needed a bedliner. The liner held. Friends asked. Friends of friends asked. Three decades later, we run three install bays, a full parts inventory built for trucks, and a team that only hires installers with manufacturer certifications on the products they touch.', 'bmg-theme' ); ?>
 					</p>
 
 					<p class="section-about-story__paragraph bmg-reveal">

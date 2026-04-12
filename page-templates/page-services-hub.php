@@ -50,7 +50,7 @@ foreach ( $card_defaults as $i => $defaults ) {
 
 // Stats — same as the homepage proof strip, rendered standalone here.
 $stats = array(
-	array( 'number' => '12+',      'label' => __( 'YEARS IN BUSINESS', 'bmg-theme' ) ),
+	array( 'number' => '35+',      'label' => __( 'YEARS IN BUSINESS', 'bmg-theme' ) ),
 	array( 'number' => '4,200+',   'label' => __( 'INSTALLS COMPLETED', 'bmg-theme' ) ),
 	array( 'number' => '4.9★',     'label' => __( 'GOOGLE RATING', 'bmg-theme' ) ),
 	array( 'number' => 'LIFETIME', 'label' => __( 'COATING WARRANTY', 'bmg-theme' ) ),

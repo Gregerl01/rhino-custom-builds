@@ -171,7 +171,7 @@ if ( ! function_exists( 'bmg_get_service_content' ) ) {
 					'proof' => array(
 						'stats'        => array(
 							array( 'number' => '4,200+',   'label' => __( 'BEDLINERS INSTALLED', 'bmg-theme' ) ),
-							array( 'number' => '12 YRS',   'label' => __( 'IN BUSINESS', 'bmg-theme' ) ),
+							array( 'number' => '35 YRS',   'label' => __( 'IN BUSINESS', 'bmg-theme' ) ),
 							array( 'number' => 'LIFETIME', 'label' => __( 'WARRANTY', 'bmg-theme' ) ),
 							array( 'number' => '1 DAY',    'label' => __( 'AVG TURNAROUND', 'bmg-theme' ) ),
 						),
@@ -373,7 +373,7 @@ if ( ! function_exists( 'bmg_get_service_content' ) ) {
 					'proof' => array(
 						'stats'        => array(
 							array( 'number' => '47',       'label' => __( 'FLEET ACCOUNTS', 'bmg-theme' ) ),
-							array( 'number' => '12 YRS',   'label' => __( 'IN BUSINESS', 'bmg-theme' ) ),
+							array( 'number' => '35 YRS',   'label' => __( 'IN BUSINESS', 'bmg-theme' ) ),
 							array( 'number' => 'LIFETIME', 'label' => __( 'WARRANTY', 'bmg-theme' ) ),
 							array( 'number' => '1-2 DAYS', 'label' => __( 'AVG TURNAROUND', 'bmg-theme' ) ),
 						),
@@ -559,7 +559,7 @@ if ( ! function_exists( 'bmg_get_service_content' ) ) {
 					'proof' => array(
 						'stats'        => array(
 							array( 'number' => '4,200+', 'label' => __( 'INSTALLS COMPLETED', 'bmg-theme' ) ),
-							array( 'number' => '12 YRS', 'label' => __( 'IN BUSINESS', 'bmg-theme' ) ),
+							array( 'number' => '35 YRS', 'label' => __( 'IN BUSINESS', 'bmg-theme' ) ),
 							array( 'number' => '9 BRANDS', 'label' => __( 'AUTHORIZED DEALER', 'bmg-theme' ) ),
 							array( 'number' => '1 YEAR', 'label' => __( 'LABOR WARRANTY', 'bmg-theme' ) ),
 						),
@@ -737,7 +737,7 @@ if ( ! function_exists( 'bmg_get_service_content' ) ) {
 					'proof' => array(
 						'stats'        => array(
 							array( 'number' => '850+',    'label' => __( 'OFF-ROAD BUILDS', 'bmg-theme' ) ),
-							array( 'number' => '12 YRS',  'label' => __( 'IN BUSINESS', 'bmg-theme' ) ),
+							array( 'number' => '35 YRS',  'label' => __( 'IN BUSINESS', 'bmg-theme' ) ),
 							array( 'number' => '4.9★',    'label' => __( 'GOOGLE RATING', 'bmg-theme' ) ),
 							array( 'number' => '10 BRANDS','label' => __( 'AUTHORIZED', 'bmg-theme' ) ),
 						),

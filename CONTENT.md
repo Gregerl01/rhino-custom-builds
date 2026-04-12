@@ -102,7 +102,7 @@ Read `CLAUDE.md` before editing templates. Read `references/rhino-build-spec.md`
 - **Overline:** CUSTOM TRUCK & OFF-ROAD SHOP
 - **H1:** BUILT FOR WHERE THE ROAD ENDS.
 - **Subline:** Spray-on bedliners, protective coatings, off-road gear, and full upfitting — installed in-house by certified builders.
-- **Proof snippet:** 12+ YEARS · 4,200+ INSTALLS · 4.9★ GOOGLE
+- **Proof snippet:** 35+ YEARS · 4,200+ INSTALLS · 4.9★ GOOGLE
 - **CTA Primary:** Get a Quote →
 - **CTA Secondary:** Explore Services ↓
 - **Trust strip items:** LIFETIME WARRANTY · 4,200+ INSTALLS · CERTIFIED INSTALLERS · 4.9★ GOOGLE
@@ -161,13 +161,13 @@ Read `CLAUDE.md` before editing templates. Read `references/rhino-build-spec.md`
 - **H2:** RUN BY BUILDERS. NOT SALESPEOPLE.
 
 **Paragraph 1:**
-Rhino Custom Builds started in 2014 with one spray gun, a two-bay garage, and a beat-up F-150 that needed a bedliner. The liner held. Friends asked. Friends of friends asked. Twelve years later, we run three install bays, a full parts inventory built for trucks, and a team that only hires installers with manufacturer certifications on the products they touch.
+Rhino Custom Builds started in 1989 with one spray gun, a two-bay garage, and a beat-up F-150 that needed a bedliner. The liner held. Friends asked. Friends of friends asked. Three decades later, we run three install bays, a full parts inventory built for trucks, and a team that only hires installers with manufacturer certifications on the products they touch.
 
 **Paragraph 2:**
 We don't subcontract. We don't outsource. Every coating, every bumper, every winch, every wiring harness — it all comes off our floor. If we installed it, we stand behind it. If we didn't, we'll still fix it. Walk into the shop any day and the person who'll work on your truck is the person who'll talk to you about it.
 
 **Credential badges:**
-- 12+ / YEARS IN BUSINESS
+- 35+ / YEARS IN BUSINESS
 - 4,200+ / INSTALLS COMPLETED
 - [CITY, ST] / LOCALLY OWNED
 
@@ -253,7 +253,7 @@ We don't subcontract. We don't outsource. Every coating, every bumper, every win
 | Number | Label |
 |--------|-------|
 | 4,200+ | INSTALLS COMPLETED |
-| 12 YRS | IN BUSINESS |
+| 35 YRS | IN BUSINESS |
 | 4.9★ | GOOGLE RATING |
 | LIFETIME | COATING WARRANTY |
 
@@ -656,7 +656,7 @@ Bedliners · Undercoating · Rocker Protection · Upfitting · Scheduled Mainten
 ## Section — Founder Story
 
 **Paragraph 1:**
-Rhino Custom Builds started in 2014 with one spray gun, a two-bay garage, and a beat-up F-150 that needed a bedliner. The liner held. Friends asked. Friends of friends asked. Twelve years later, we run three bays, a dedicated parts program, and a team that only hires installers with manufacturer certifications on the products they touch.
+Rhino Custom Builds started in 1989 with one spray gun, a two-bay garage, and a beat-up F-150 that needed a bedliner. The liner held. Friends asked. Friends of friends asked. Three decades later, we run three bays, a dedicated parts program, and a team that only hires installers with manufacturer certifications on the products they touch.
 
 **Paragraph 2:**
 We didn't get here by outsourcing. Every coating, every bumper, every winch, every wiring harness — it all comes off our floor. If we installed it, we stand behind it. If we didn't, we'll fix it anyway.

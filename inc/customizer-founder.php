@@ -72,7 +72,7 @@ function bmg_theme_founder_customizer( $wp_customize ) {
 	$wp_customize->add_setting(
 		'bmg_founder_paragraph_1',
 		array(
-			'default'           => 'Rhino Custom Builds started in 2014 with one spray gun, a two-bay garage, and a beat-up F-150 that needed a bedliner. The liner held. Friends asked. Friends of friends asked. Twelve years later, we run three install bays, a full parts inventory built for trucks, and a team that only hires installers with manufacturer certifications on the products they touch.',
+			'default'           => 'Rhino Custom Builds started in 1989 with one spray gun, a two-bay garage, and a beat-up F-150 that needed a bedliner. The liner held. Friends asked. Friends of friends asked. Three decades later, we run three install bays, a full parts inventory built for trucks, and a team that only hires installers with manufacturer certifications on the products they touch.',
 			'sanitize_callback' => 'sanitize_textarea_field',
 			'transport'         => 'postMessage',
 		)
@@ -108,7 +108,7 @@ function bmg_theme_founder_customizer( $wp_customize ) {
 	// ----------------------------------------------------------------------
 
 	$badge_defaults = array(
-		1 => array( '12+', 'YEARS IN BUSINESS' ),
+		1 => array( '35+', 'YEARS IN BUSINESS' ),
 		2 => array( '4,200+', 'INSTALLS COMPLETED' ),
 		3 => array( 'San Diego, CA', 'LOCALLY OWNED' ),
 	);

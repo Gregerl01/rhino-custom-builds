@@ -106,7 +106,7 @@ $stat_defaults = array(
 		'label'  => 'INSTALLS COMPLETED',
 	),
 	2 => array(
-		'number' => '12 YRS',
+		'number' => '35 YRS',
 		'label'  => 'IN BUSINESS',
 	),
 	3 => array(
