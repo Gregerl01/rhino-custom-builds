@@ -31,23 +31,17 @@ $cta_primary   = isset( $hero['cta_primary'] ) ? $hero['cta_primary'] : array();
 $cta_secondary = isset( $hero['cta_secondary'] ) ? $hero['cta_secondary'] : array();
 $trust_strip   = isset( $hero['trust_strip'] ) && is_array( $hero['trust_strip'] ) ? $hero['trust_strip'] : array();
 
-// Phone auto-fill markers. The content array can set:
-//   url => 'tel:'       → auto-fill from bmg_phone (general line)
-//   url => 'tel:fleet'  → auto-fill from bmg_phone_fleet (fleet line)
-// In either case the label is regenerated as "Call {number}" so the
-// content array doesn't have to duplicate the phone number or keep
-// it in sync with the Customizer.
-if ( ! empty( $cta_secondary['url'] ) && in_array( $cta_secondary['url'], array( 'tel:', 'tel:fleet' ), true ) ) {
-	$is_fleet      = ( 'tel:fleet' === $cta_secondary['url'] );
-	$phone_display = get_theme_mod(
-		$is_fleet ? 'bmg_phone_fleet' : 'bmg_phone',
-		$is_fleet ? '(555) 555-0199' : '(555) 555-0123'
-	);
+// Phone auto-fill: url => 'tel:' fills from bmg_phone so the content
+// array doesn't have to duplicate the phone number.
+if ( ! empty( $cta_secondary['url'] ) && 'tel:' === $cta_secondary['url'] ) {
+	$phone_display = get_theme_mod( 'bmg_phone', '(555) 555-0123' );
 	$phone_link    = preg_replace( '/[^0-9+]/', '', (string) $phone_display );
 	$cta_secondary['url']   = 'tel:' . $phone_link;
-	$cta_secondary['label'] = $is_fleet
-		? sprintf( /* translators: %s: fleet phone number */ __( 'Call Fleet Line: %s', 'bmg-theme' ), $phone_display )
-		: sprintf( /* translators: %s: phone number */ __( 'Call %s', 'bmg-theme' ), $phone_display );
+	$cta_secondary['label'] = sprintf(
+		/* translators: %s: phone number */
+		__( 'Call %s', 'bmg-theme' ),
+		$phone_display
+	);
 }
 
 // Background image — optional, pulled from post meta so each service

@@ -15,8 +15,6 @@ get_header();
 // Business Info Customizer values.
 $phone_display    = get_theme_mod( 'bmg_phone', '(555) 555-0123' );
 $phone_link       = preg_replace( '/[^0-9+]/', '', (string) $phone_display );
-$phone_fleet      = get_theme_mod( 'bmg_phone_fleet', '(555) 555-0199' );
-$phone_fleet_link = preg_replace( '/[^0-9+]/', '', (string) $phone_fleet );
 $email            = get_theme_mod( 'bmg_email', 'hello@rhinocustombuilds.com' );
 $address_street   = get_theme_mod( 'bmg_address_street', '[Street Address]' );
 $address_city     = get_theme_mod( 'bmg_address_city', '[City, ST ZIP]' );
@@ -44,7 +42,7 @@ $contact_faq = array(
 	),
 	array(
 		'question' => __( 'Are you the right shop for fleet accounts?', 'bmg-theme' ),
-		'answer'   => __( 'Yes. Use the fleet line — (555) 555-0199 — and a dedicated project manager will respond within one business day with volume pricing, scheduling, and Net-30 billing options.', 'bmg-theme' ),
+		'answer'   => __( 'Yes. Call or submit a quote request mentioning your fleet size, and a dedicated project manager will respond within one business day with volume pricing, scheduling, and Net-30 billing options.', 'bmg-theme' ),
 	),
 	array(
 		'question' => __( 'Can I drop off my truck and come back later?', 'bmg-theme' ),
@@ -119,14 +117,6 @@ $contact_faq = array(
 									<?php echo esc_html( $phone_display ); ?>
 								</a>
 							</li>
-							<?php if ( $phone_fleet ) : ?>
-								<li>
-									<span class="section-contact__contact-label"><?php esc_html_e( 'Fleet', 'bmg-theme' ); ?></span>
-									<a class="section-contact__phone" href="tel:<?php echo esc_attr( $phone_fleet_link ); ?>">
-										<?php echo esc_html( $phone_fleet ); ?>
-									</a>
-								</li>
-							<?php endif; ?>
 							<li>
 								<span class="section-contact__contact-label"><?php esc_html_e( 'Email', 'bmg-theme' ); ?></span>
 								<a class="section-contact__email" href="mailto:<?php echo esc_attr( $email ); ?>">

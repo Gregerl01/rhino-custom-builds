@@ -135,8 +135,7 @@ ENTRY: Google search "fleet truck upfitter [region]" OR trade network referral
   ↓
 LANDS: /services/fleet/
   · Hero: "BUILT FOR THE JOB. BACKED BY WARRANTY."
-  · Dedicated fleet line visible: (555) 555-0199
-  · Dual CTA: "Request Fleet Quote" (red) + "Call Fleet Line" (amber)
+  · Dual CTA: "Request Fleet Quote" (red) + "Call Us" (ghost)
   · Trust strip: 1,800+ TRUCKS SERVICED · 47 ACTIVE FLEET ACCOUNTS · NET 30 BILLING · INSURED & BONDED
   ↓
 SCROLLS: Problem section
@@ -159,23 +158,22 @@ SCROLLS: Stats strip
 SCROLLS: Fleet Inquiry Card
   · 2-column: pitch on left, form on right
   · Fills out: company, fleet size, services, contact
-  · OR taps "Call Fleet Line"
+  · OR calls the main number
   ↓
 SCROLLS: FAQ (6 B2B questions)
   · Checks: insurance, terms, scheduling, COI requirements
   ↓
-CONVERSION: Submits fleet inquiry form OR calls fleet line
+CONVERSION: Submits fleet inquiry form OR calls directly
 ```
 
 **What he needs to see before converting:**
-1. Dedicated fleet line (separate from consumer phone) — signals B2B commitment
-2. Capabilities matrix with explicit B2B terms (Net-30, PM, scheduling)
+1. Capabilities matrix with explicit B2B terms (Net-30, PM, scheduling)
 3. Insurance/bonding mention (COI requirements)
 4. Case study with a similar fleet size
 5. Stats proving scale (trucks serviced, active accounts)
 6. Dedicated fleet form (not the consumer quote form)
 
-**CTAs encountered:** Hero "Request Fleet Quote" + "Call Fleet Line" → Capabilities matrix (implicit) → Case study → Fleet inquiry form OR dedicated phone line.
+**CTAs encountered:** Hero "Request Fleet Quote" + "Call Us" → Capabilities matrix (implicit) → Case study → Fleet inquiry form OR phone call.
 
 **Trust signals encountered:** Fleet-specific trust strip → Problem acknowledgment → Capabilities matrix → Case study with measurable outcomes → Stats strip → Insurance/bonding callout → B2B-specific FAQ.
 

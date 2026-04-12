@@ -83,7 +83,7 @@ Staging and production domains are TBD until the hosting provider is chosen and 
 | 4 | Protective Coatings | `/services/protective-coatings/` | `page-service-detail.php` (NEW) | Undercoating, rocker panels, frame protection |
 | 5 | Truck Accessories & Upfitting | `/services/truck-accessories/` | `page-service-detail.php` (NEW) | Tonneau, running boards, toolboxes, upfitting — Shop cross-sell |
 | 6 | Off-Road & Overland | `/services/off-road-overland/` | `page-service-detail.php` (NEW) | Lifts, bumpers, winches, overland kits — capability selector |
-| 7 | Fleet Services | `/services/fleet/` | `page-service-detail.php` (NEW, B2B variant) | Commercial conversion — matrix, case study, dedicated fleet line |
+| 7 | Fleet Services | `/services/fleet/` | `page-service-detail.php` (NEW, B2B variant) | Commercial conversion — matrix, case study, Net-30 billing |
 | 8 | Gallery | `/gallery/` | `page-gallery.php` (NEW, replaces `page-portfolio.php`) | Filterable project showcase |
 | 9 | Single Project | `/gallery/[slug]/` | `single-project.php` (NEW CPT single) | Build detail — images, parts list, vehicle info, cross-sell |
 | 10 | Shop | `/shop/` | `archive-product.php` (WC override) | WooCommerce storefront |
@@ -185,7 +185,7 @@ get_template_part('template-parts/sections/section', 'cta');
 | [Street Address] | Protective Coatings | Gallery | Saturday 8AM – 2PM |
 | [City, ST ZIP] | Truck Accessories | Blog | Sunday Closed |
 | (555) 555-0123 general | Off-Road & Overland | FAQ | [Map thumbnail →] |
-| (555) 555-0199 fleet | Fleet Services | Financing | |
+| | Fleet Services | | |
 | hello@rhinocustombuilds.com | Custom Builds | Warranty | |
 | ★★★★★ 4.9 Google Rating | Shop Parts & Gear | Contact | |
 | | | Request a Quote | |
@@ -273,7 +273,6 @@ All fields use the `bmg_` prefix. Merge of Document A field map + Document B hom
 | **Site Identity** | logo | image | Site logo |
 | **Site Identity** | tagline | text | Site tagline |
 | **Business Information** | `bmg_phone` | text | General phone line — (555) 555-0123 |
-| **Business Information** | `bmg_phone_fleet` | text | Dedicated fleet line — (555) 555-0199 |
 | **Business Information** | `bmg_email` | email | `hello@rhinocustombuilds.com` (public-facing display email — NOT for form notifications) |
 | **Business Information** | `bmg_address_street` | text | Street address |
 | **Business Information** | `bmg_address_city` | text | City, state, ZIP |

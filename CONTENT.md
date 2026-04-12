@@ -589,7 +589,7 @@ ARB · Fox · Warn · Rigid Industries · Method Race Wheels · BFGoodrich · Ro
 - **H1:** BUILT FOR THE JOB. BACKED BY WARRANTY.
 - **Subline:** Volume pricing. Dedicated project management. Scheduled install windows. Net-30 billing. One shop for every truck in your fleet.
 - **CTA Primary:** Request Fleet Quote →
-- **CTA Secondary:** Call Fleet Line: (555) 555-0199
+- **CTA Secondary:** Call Us
 
 ## Section — Problem
 
@@ -636,7 +636,7 @@ Bedliners · Undercoating · Rocker Protection · Upfitting · Scheduled Mainten
 
 - **Label:** START A FLEET CONVERSATION
 - **Body:** Tell us about your fleet. A dedicated PM will follow up within one business day with pricing and scheduling.
-- **CTA:** Request Fleet Quote → / Phone: (555) 555-0199
+- **CTA:** Request Fleet Quote →
 
 ## Section — FAQ
 
@@ -696,7 +696,6 @@ Same pattern as homepage CTA section.
 - [Street Address]
 - [City, ST ZIP]
 - **(555) 555-0123** — General
-- **(555) 555-0199** — Fleet
 - `hello@rhinocustombuilds.com`
 - Hours: Mon–Fri 7AM–6PM · Sat 8AM–2PM · Sun Closed
 
@@ -828,7 +827,6 @@ Structure: Build guides, product education, install spotlights. Warm white heade
 - [Street Address]
 - [City, ST ZIP]
 - (555) 555-0123 (general)
-- (555) 555-0199 (fleet)
 - `hello@rhinocustombuilds.com`
 - ★★★★★ 4.9 Google Rating
 
@@ -875,7 +873,6 @@ All business data managed via Customizer > Business Information (`inc/customizer
 | Key | Type | Value |
 |-----|------|-------|
 | `bmg_phone` | text | (555) 555-0123 |
-| `bmg_phone_fleet` | text | (555) 555-0199 |
 | `bmg_email` | email | hello@rhinocustombuilds.com (public-facing display email) |
 | `bmg_address_street` | text | [Street Address TBD] |
 | `bmg_address_city` | text | [City, ST ZIP TBD] |

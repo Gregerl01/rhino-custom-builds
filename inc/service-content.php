@@ -827,7 +827,7 @@ if ( ! function_exists( 'bmg_get_service_content' ) ) {
 						'headline'      => __( 'BUILT FOR THE JOB. BACKED BY WARRANTY.', 'bmg-theme' ),
 						'subline'       => __( 'Volume pricing. Dedicated project management. Scheduled install windows. Net-30 billing. One shop for every truck in your fleet.', 'bmg-theme' ),
 						'cta_primary'   => array( 'label' => __( 'Request Fleet Quote', 'bmg-theme' ), 'url' => '/quote/' ),
-						'cta_secondary' => array( 'label' => __( 'Call Fleet Line', 'bmg-theme' ),    'url' => 'tel:fleet' ),
+						'cta_secondary' => array( 'label' => __( 'Call Us', 'bmg-theme' ),    'url' => 'tel:' ),
 						'trust_strip'   => array(
 							__( '1,800+ TRUCKS SERVICED', 'bmg-theme' ),
 							__( '47 ACTIVE ACCOUNTS', 'bmg-theme' ),
