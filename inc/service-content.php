@@ -339,8 +339,8 @@ if ( ! function_exists( 'bmg_get_service_content' ) ) {
 						'body'     => __( 'Drag the slider to reveal the finished coating.', 'bmg-theme' ),
 						'images'   => array(
 							array(
-								'before' => '',
-								'after'  => '',
+								'before' => home_url( '/wp-content/uploads/2026/04/protective-liner-before_v01.webp' ),
+								'after'  => home_url( '/wp-content/uploads/2026/04/protective-liner-after_v01.webp' ),
 								'label'  => __( '2019 Chevy Silverado — Frame Rail', 'bmg-theme' ),
 								'tier'   => 'UNDERCOATING',
 							),
