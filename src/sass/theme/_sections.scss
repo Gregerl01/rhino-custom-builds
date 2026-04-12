@@ -494,38 +494,76 @@ html {
 		margin: 0 0 $space-lg;
 	}
 
-	// ----- Sticky sidebar ---------------------------------------------------
+	// Sidebar is now its own top-level .quote-sidebar block (below).
+}
 
-	&__sidebar-col {
-		@media (min-width: 992px) {
-			position: sticky;
-			top: 120px;
-		}
+// --------------------------------------------------------------------------
+// Quote Sidebar — dark premium trust panel
+// --------------------------------------------------------------------------
+// Single cohesive dark card with noise grain, trust items, phone CTA,
+// hours, address, and Google rating. Sticky on desktop, full-width
+// band below the form on mobile.
+// --------------------------------------------------------------------------
+
+.quote-sidebar-col {
+	@media (min-width: 992px) {
+		position: sticky;
+		top: 120px;
+		align-self: flex-start;
 	}
+}
 
-	&__sidebar {
-		display: flex;
-		flex-direction: column;
-		gap: $space-md;
-	}
+.quote-sidebar {
+	position: relative;
+	background-color: $brand-dark;
+	color: $text-on-dark;
+	padding: $space-xl;
+	overflow: hidden;
 
-	&__sidebar-card {
-		background-color: $brand-white;
-		border: 1px solid $border-color;
+	@media (max-width: 575.98px) {
 		padding: $space-lg;
 	}
 
-	&__sidebar-heading {
+	// Noise grain — same as hero/founder/cta sections
+	&__grain {
+		position: absolute;
+		inset: 0;
+		background-image: url('../img/noise.png');
+		background-repeat: repeat;
+		opacity: 0.04;
+		pointer-events: none;
+		mix-blend-mode: overlay;
+		z-index: 0;
+	}
+
+	// All content above grain
+	> *:not(.quote-sidebar__grain) {
+		position: relative;
+		z-index: 1;
+	}
+
+	// Shared overline
+	&__overline {
+		display: block;
 		font-family: $font-family-mono;
 		font-size: 10px;
 		font-weight: 500;
-		letter-spacing: 0.15em;
+		letter-spacing: 0.18em;
 		text-transform: uppercase;
 		color: $brand-primary;
-		margin: 0 0 $space-md;
+		margin-bottom: $space-sm;
 	}
 
-	&__sidebar-list {
+	// Divider
+	&__divider {
+		border: 0;
+		height: 1px;
+		background-color: rgba($text-on-dark, 0.1);
+		margin: $space-lg 0;
+	}
+
+	// Trust list
+	&__trust {
 		list-style: none;
 		padding: 0;
 		margin: 0;
@@ -534,11 +572,12 @@ html {
 			display: flex;
 			align-items: flex-start;
 			gap: $space-sm;
-			padding: $space-xs 0;
+			padding: 6px 0;
 			font-family: $font-family-base;
 			font-size: 0.9375rem;
+			font-weight: 400;
 			line-height: 1.5;
-			color: $text-primary;
+			color: rgba($text-on-dark, 0.85);
 
 			svg {
 				flex-shrink: 0;
@@ -548,66 +587,98 @@ html {
 		}
 	}
 
-	&__sidebar-phone {
+	// Phone CTA — amber block
+	&__phone {
 		display: flex;
+		flex-direction: column;
 		align-items: center;
-		justify-content: center;
-		gap: $space-xs;
-		padding: $space-md;
+		gap: 4px;
+		padding: $space-lg $space-md;
 		background-color: $brand-accent;
 		color: $brand-dark;
 		text-decoration: none;
+		text-align: center;
 		transition: background-color $motion-fast $ease-out-expo;
 
 		&:hover,
 		&:focus-visible {
 			background-color: darken($brand-accent, 6%);
 			color: $brand-dark;
+			outline: none;
 		}
 
 		svg {
 			flex-shrink: 0;
+			margin-bottom: 4px;
 		}
 	}
 
-	&__sidebar-phone-label {
-		font-family: $font-family-base;
-		font-weight: 600;
-		font-size: 13px;
-		letter-spacing: 0.05em;
-		text-transform: uppercase;
-	}
-
-	&__sidebar-phone-number {
+	&__phone-number {
 		font-family: $font-family-mono;
 		font-weight: 700;
-		font-size: 15px;
+		font-size: 1.25rem;
 		letter-spacing: 0.02em;
 	}
 
-	&__sidebar-hours {
-		padding: $space-sm $space-md;
-		border: 1px solid $border-color;
-		background-color: $brand-white;
+	&__phone-sub {
+		font-family: $font-family-base;
+		font-weight: 500;
+		font-size: 0.8125rem;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		opacity: 0.75;
 	}
 
-	&__sidebar-hours-label {
-		display: block;
+	// Detail text (hours, etc.)
+	&__detail {
+		font-family: $font-family-base;
+		font-size: 0.9375rem;
+		font-weight: 400;
+		line-height: 1.6;
+		color: rgba($text-on-dark, 0.78);
+		margin: 0;
+	}
+
+	// Address
+	&__address {
+		font-style: normal;
+		font-family: $font-family-base;
+		font-size: 0.9375rem;
+		line-height: 1.6;
+		color: rgba($text-on-dark, 0.78);
+		margin: 0;
+	}
+
+	// Google rating
+	&__rating {
+		display: flex;
+		align-items: baseline;
+		gap: 8px;
+		margin-top: $space-lg;
+		padding-top: $space-lg;
+		border-top: 1px solid rgba($text-on-dark, 0.1);
+	}
+
+	&__rating-stars {
+		color: $brand-accent;
+		font-size: 14px;
+		letter-spacing: 2px;
+	}
+
+	&__rating-value {
+		font-family: $font-family-mono;
+		font-weight: 700;
+		font-size: 14px;
+		color: $text-on-dark;
+	}
+
+	&__rating-label {
 		font-family: $font-family-mono;
 		font-size: 9px;
 		font-weight: 500;
 		letter-spacing: 0.15em;
 		text-transform: uppercase;
-		color: $brand-primary;
-		margin-bottom: $space-xs;
-	}
-
-	&__sidebar-hours p {
-		font-family: $font-family-base;
-		font-size: 0.875rem;
-		color: $text-primary;
-		line-height: 1.6;
-		margin: 0;
+		color: rgba($text-on-dark, 0.5);
 	}
 }
 
