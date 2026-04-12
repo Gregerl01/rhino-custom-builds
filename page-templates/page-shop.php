@@ -63,7 +63,7 @@ $brand_names = array(
 					<?php esc_html_e( 'BROWSE BY CATEGORY', 'bmg-theme' ); ?>
 				</span>
 				<h2 class="section-features__headline bmg-reveal">
-					<?php esc_html_e( 'NINE CATEGORIES. ONE SHOP.', 'bmg-theme' ); ?>
+					<?php esc_html_e( 'EVERYTHING YOUR RIG NEEDS.', 'bmg-theme' ); ?>
 				</h2>
 			</header>
 
