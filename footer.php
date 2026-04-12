@@ -21,15 +21,12 @@ $address_street = get_theme_mod( 'bmg_address_street', '[Street Address]' );
 $address_city   = get_theme_mod( 'bmg_address_city', '[City, ST ZIP]' );
 $phone_display  = get_theme_mod( 'bmg_phone', '(555) 555-0123' );
 $phone_link     = preg_replace( '/[^0-9+]/', '', (string) $phone_display );
-$phone_fleet    = get_theme_mod( 'bmg_phone_fleet', '(555) 555-0199' );
-$phone_fleet_link = preg_replace( '/[^0-9+]/', '', (string) $phone_fleet );
 $email          = get_theme_mod( 'bmg_email', 'hello@rhinocustombuilds.com' );
 $rating         = get_theme_mod( 'bmg_google_rating', '4.9' );
 
 // Hours (with Rhino defaults).
-$hours_weekday  = get_theme_mod( 'bmg_office_hours', 'Mon–Fri: 7AM – 6PM' );
-$hours_saturday = get_theme_mod( 'bmg_office_hours_sat', 'Saturday: 8AM – 2PM' );
-$hours_sunday   = get_theme_mod( 'bmg_office_hours_sun', 'Sunday: Closed' );
+$hours_weekday  = get_theme_mod( 'bmg_office_hours', 'Mon–Fri: 8:00 AM – 5:00 PM PST' );
+$hours_weekend  = get_theme_mod( 'bmg_office_hours_sun', 'Weekends: Closed' );
 
 // Column link lists.
 $col_services = array(
@@ -47,8 +44,6 @@ $col_company = array(
 	array( 'label' => __( 'Gallery', 'bmg-theme' ),        'url' => '/gallery/' ),
 	array( 'label' => __( 'Blog', 'bmg-theme' ),           'url' => '/blog/' ),
 	array( 'label' => __( 'FAQ', 'bmg-theme' ),            'url' => '/faq/' ),
-	array( 'label' => __( 'Financing', 'bmg-theme' ),      'url' => '/financing/' ),
-	array( 'label' => __( 'Warranty', 'bmg-theme' ),       'url' => '/warranty/' ),
 	array( 'label' => __( 'Contact', 'bmg-theme' ),        'url' => '/contact/' ),
 	array( 'label' => __( 'Request a Quote', 'bmg-theme' ), 'url' => '/quote/' ),
 );
@@ -79,19 +74,10 @@ $col_company = array(
 
 					<ul class="site-footer__contact" role="list">
 						<li>
-							<span class="site-footer__contact-label"><?php esc_html_e( 'General', 'bmg-theme' ); ?></span>
 							<a class="site-footer__phone" href="tel:<?php echo esc_attr( $phone_link ); ?>">
 								<?php echo esc_html( $phone_display ); ?>
 							</a>
 						</li>
-						<?php if ( $phone_fleet ) : ?>
-							<li>
-								<span class="site-footer__contact-label"><?php esc_html_e( 'Fleet', 'bmg-theme' ); ?></span>
-								<a class="site-footer__phone" href="tel:<?php echo esc_attr( $phone_fleet_link ); ?>">
-									<?php echo esc_html( $phone_fleet ); ?>
-								</a>
-							</li>
-						<?php endif; ?>
 						<li>
 							<a class="site-footer__email" href="mailto:<?php echo esc_attr( $email ); ?>">
 								<?php echo esc_html( $email ); ?>
@@ -140,8 +126,7 @@ $col_company = array(
 					<h4 class="site-footer__heading"><?php esc_html_e( 'Hours', 'bmg-theme' ); ?></h4>
 					<ul class="site-footer__hours" role="list">
 						<li><?php echo esc_html( $hours_weekday ); ?></li>
-						<li><?php echo esc_html( $hours_saturday ); ?></li>
-						<li><?php echo esc_html( $hours_sunday ); ?></li>
+						<li><?php echo esc_html( $hours_weekend ); ?></li>
 					</ul>
 
 					<div class="site-footer__social">

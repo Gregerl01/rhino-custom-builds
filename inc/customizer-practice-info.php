@@ -461,7 +461,7 @@ function bmg_practice_info_customizer( $wp_customize ) {
 	$wp_customize->add_setting(
 		'bmg_office_hours',
 		array(
-			'default'           => 'Monday – Friday: 8:00 AM – 5:00 PM',
+			'default'           => 'Mon–Fri: 8:00 AM – 5:00 PM PST',
 			'sanitize_callback' => 'sanitize_text_field',
 		)
 	);
@@ -475,29 +475,11 @@ function bmg_practice_info_customizer( $wp_customize ) {
 		)
 	);
 
-	// Saturday Hours.
-	$wp_customize->add_setting(
-		'bmg_office_hours_sat',
-		array(
-			'default'           => 'By appointment',
-			'sanitize_callback' => 'sanitize_text_field',
-		)
-	);
-
-	$wp_customize->add_control(
-		'bmg_office_hours_sat',
-		array(
-			'label'   => __( 'Saturday Hours', 'bmg-theme' ),
-			'section' => 'bmg_section_hours',
-			'type'    => 'text',
-		)
-	);
-
-	// Sunday Hours.
+	// Weekend Hours.
 	$wp_customize->add_setting(
 		'bmg_office_hours_sun',
 		array(
-			'default'           => 'Closed',
+			'default'           => 'Weekends: Closed',
 			'sanitize_callback' => 'sanitize_text_field',
 		)
 	);
@@ -505,7 +487,7 @@ function bmg_practice_info_customizer( $wp_customize ) {
 	$wp_customize->add_control(
 		'bmg_office_hours_sun',
 		array(
-			'label'   => __( 'Sunday Hours', 'bmg-theme' ),
+			'label'   => __( 'Weekend Hours', 'bmg-theme' ),
 			'section' => 'bmg_section_hours',
 			'type'    => 'text',
 		)
