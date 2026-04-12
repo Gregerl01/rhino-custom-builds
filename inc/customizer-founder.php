@@ -110,7 +110,7 @@ function bmg_theme_founder_customizer( $wp_customize ) {
 	$badge_defaults = array(
 		1 => array( '12+', 'YEARS IN BUSINESS' ),
 		2 => array( '4,200+', 'INSTALLS COMPLETED' ),
-		3 => array( '[CITY, ST]', 'LOCALLY OWNED' ),
+		3 => array( 'San Diego, CA', 'LOCALLY OWNED' ),
 	);
 
 	foreach ( $badge_defaults as $i => $pair ) {

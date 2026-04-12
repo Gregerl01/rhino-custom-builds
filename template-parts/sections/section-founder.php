@@ -30,7 +30,7 @@ $badges = array(
 		'label'  => get_theme_mod( 'bmg_founder_badge_2_label', __( 'INSTALLS COMPLETED', 'bmg-theme' ) ),
 	),
 	array(
-		'number' => get_theme_mod( 'bmg_founder_badge_3_number', __( '[CITY, ST]', 'bmg-theme' ) ),
+		'number' => get_theme_mod( 'bmg_founder_badge_3_number', __( 'San Diego, CA', 'bmg-theme' ) ),
 		'label'  => get_theme_mod( 'bmg_founder_badge_3_label', __( 'LOCALLY OWNED', 'bmg-theme' ) ),
 	),
 );
