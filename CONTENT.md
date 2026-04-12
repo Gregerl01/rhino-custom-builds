@@ -876,7 +876,7 @@ All business data managed via Customizer > Business Information (`inc/customizer
 |-----|------|-------|
 | `bmg_phone` | text | (555) 555-0123 |
 | `bmg_phone_fleet` | text | (555) 555-0199 |
-| `bmg_email` | email | hello@rhinocustombuilds.com |
+| `bmg_email` | email | hello@rhinocustombuilds.com (public-facing display email) |
 | `bmg_address_street` | text | [Street Address TBD] |
 | `bmg_address_city` | text | [City, ST ZIP TBD] |
 | `bmg_office_hours` | textarea | Mon–Fri 7AM – 6PM |

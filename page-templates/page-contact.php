@@ -86,74 +86,19 @@ $contact_faq = array(
 					</p>
 
 					<?php
-					// If Gravity Forms is active, render a form by ID stored in
-					// the bmg_contact_gf_id Customizer field. Otherwise fall back
-					// to a styled HTML form placeholder.
-					$gf_id = get_theme_mod( 'bmg_contact_gf_id', 0 );
-					if ( $gf_id && function_exists( 'gravity_form' ) ) :
-						gravity_form( (int) $gf_id, false, false, false, null, true );
+					// Gravity Forms contact form — auto-created by
+					// inc/quote-form-setup.php, stored in bmg_gf_contact_form_id.
+					$gf_contact_id = (int) get_theme_mod( 'bmg_gf_contact_form_id', 0 );
+					if ( $gf_contact_id && function_exists( 'gravity_form' ) ) :
+						gravity_form( $gf_contact_id, false, false, false, null, true, 0, true );
 					else :
 						?>
-						<form class="contact-form bmg-reveal" action="#" method="post" novalidate>
-
-							<div class="contact-form__row">
-								<label class="contact-form__label" for="contact-name">
-									<?php esc_html_e( 'Name', 'bmg-theme' ); ?>
-									<span aria-hidden="true">*</span>
-								</label>
-								<input class="contact-form__input" type="text" id="contact-name" name="name" required>
-							</div>
-
-							<div class="contact-form__grid">
-								<div class="contact-form__row">
-									<label class="contact-form__label" for="contact-email">
-										<?php esc_html_e( 'Email', 'bmg-theme' ); ?>
-										<span aria-hidden="true">*</span>
-									</label>
-									<input class="contact-form__input" type="email" id="contact-email" name="email" required>
-								</div>
-
-								<div class="contact-form__row">
-									<label class="contact-form__label" for="contact-phone">
-										<?php esc_html_e( 'Phone', 'bmg-theme' ); ?>
-									</label>
-									<input class="contact-form__input" type="tel" id="contact-phone" name="phone" inputmode="tel">
-								</div>
-							</div>
-
-							<div class="contact-form__row">
-								<label class="contact-form__label" for="contact-vehicle">
-									<?php esc_html_e( 'Vehicle', 'bmg-theme' ); ?>
-									<span class="contact-form__label-hint"><?php esc_html_e( 'Year, Make, Model', 'bmg-theme' ); ?></span>
-								</label>
-								<input class="contact-form__input" type="text" id="contact-vehicle" name="vehicle" placeholder="2022 Ford F-150">
-							</div>
-
-							<div class="contact-form__row">
-								<label class="contact-form__label" for="contact-message">
-									<?php esc_html_e( 'Message', 'bmg-theme' ); ?>
-									<span aria-hidden="true">*</span>
-								</label>
-								<textarea class="contact-form__input contact-form__input--textarea" id="contact-message" name="message" rows="6" required></textarea>
-							</div>
-
-							<div class="contact-form__footer">
-								<button type="submit" class="btn-rhino btn-rhino--primary">
-									<span><?php esc_html_e( 'Send Message', 'bmg-theme' ); ?></span>
-									<svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-										<path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
-									</svg>
-								</button>
-								<p class="contact-form__microcopy">
-									<?php esc_html_e( "We review every message within one business day. Urgent? Call us.", 'bmg-theme' ); ?>
-								</p>
-							</div>
-
-							<p class="contact-form__placeholder-notice" role="status">
-								<?php esc_html_e( '[ Form placeholder — connect Gravity Forms or a handler before launch ]', 'bmg-theme' ); ?>
-							</p>
-
-						</form>
+						<div class="section-contact__fallback bmg-reveal">
+							<p><?php esc_html_e( 'Contact form is loading. If it doesn\'t appear, call or email us directly.', 'bmg-theme' ); ?></p>
+							<a href="tel:<?php echo esc_attr( $phone_link ); ?>" class="btn-rhino btn-rhino--phone">
+								<span><?php echo esc_html( sprintf( __( 'Call %s', 'bmg-theme' ), $phone_display ) ); ?></span>
+							</a>
+						</div>
 						<?php
 					endif;
 					?>

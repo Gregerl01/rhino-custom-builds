@@ -274,7 +274,7 @@ All fields use the `bmg_` prefix. Merge of Document A field map + Document B hom
 | **Site Identity** | tagline | text | Site tagline |
 | **Business Information** | `bmg_phone` | text | General phone line — (555) 555-0123 |
 | **Business Information** | `bmg_phone_fleet` | text | Dedicated fleet line — (555) 555-0199 |
-| **Business Information** | `bmg_email` | email | `hello@rhinocustombuilds.com` |
+| **Business Information** | `bmg_email` | email | `hello@rhinocustombuilds.com` (public-facing display email — NOT for form notifications) |
 | **Business Information** | `bmg_address_street` | text | Street address |
 | **Business Information** | `bmg_address_city` | text | City, state, ZIP |
 | **Business Information** | `bmg_office_hours` | textarea | Mon–Fri 7AM–6PM |
@@ -323,6 +323,11 @@ All fields use the `bmg_` prefix. Merge of Document A field map + Document B hom
 | **Fleet** | `bmg_fleet_case_study` | group (title, body, outcome, image) | Fleet case study block |
 | **Footer** | `bmg_footer_menu_services` | nav menu | Services column menu |
 | **Footer** | `bmg_footer_menu_company` | nav menu | Company column menu |
+
+**Gravity Forms (auto-created by `inc/quote-form-setup.php`):**
+- Quote form ID stored in `bmg_quote_form_id` theme_mod
+- Contact form ID stored in `bmg_gf_contact_form_id` theme_mod
+- **All form notifications route to `info@rhinocustombuilds.com`** (internal notification address — separate from the public-facing `hello@rhinocustombuilds.com` displayed on the site)
 
 **Page meta boxes:**
 - Service detail page — hero background image, overline, tier table fields, before/after image pairs

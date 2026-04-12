@@ -339,7 +339,7 @@ function bmg_maybe_create_quote_form() {
 				'name'     => 'Admin Notification',
 				'event'    => 'form_submission',
 				'toType'   => 'email',
-				'to'       => get_option( 'admin_email', 'hello@rhinocustombuilds.com' ),
+				'to'       => 'info@rhinocustombuilds.com',
 				'from'     => '{admin_email}',
 				'subject'  => 'New Quote Request — {Name:14} — {Make:2} {Model:3}',
 				'message'  => '{all_fields}',
@@ -358,3 +358,138 @@ function bmg_maybe_create_quote_form() {
 	set_theme_mod( 'bmg_quote_form_id', (int) $result );
 }
 add_action( 'init', 'bmg_maybe_create_quote_form' );
+
+// =====================================================================
+// Contact Form
+// =====================================================================
+
+/**
+ * Create the Contact form if it doesn't exist.
+ */
+function bmg_maybe_create_contact_form() {
+	if ( ! class_exists( 'GFAPI' ) ) {
+		return;
+	}
+
+	$existing_id = (int) get_theme_mod( 'bmg_gf_contact_form_id', 0 );
+	if ( $existing_id > 0 ) {
+		$existing = GFAPI::get_form( $existing_id );
+		if ( $existing && ! is_wp_error( $existing ) ) {
+			return;
+		}
+	}
+
+	$forms = GFAPI::get_forms();
+	foreach ( $forms as $form ) {
+		if ( 'Contact' === $form['title'] ) {
+			set_theme_mod( 'bmg_gf_contact_form_id', (int) $form['id'] );
+			return;
+		}
+	}
+
+	$form = array(
+		'title'                => 'Contact',
+		'description'          => '',
+		'labelPlacement'       => 'top_label',
+		'descriptionPlacement' => 'below',
+		'subLabelPlacement'    => 'below',
+		'requiredIndicator'    => 'asterisk',
+		'cssClass'             => 'rhino-contact-form',
+
+		'button' => array(
+			'type' => 'text',
+			'text' => __( 'Send Message', 'bmg-theme' ),
+		),
+
+		'fields' => array(
+			array(
+				'type'       => 'text',
+				'id'         => 1,
+				'label'      => __( 'Name', 'bmg-theme' ),
+				'isRequired' => true,
+				'size'       => 'large',
+				'pageNumber' => 1,
+				'placeholder' => __( 'Your full name', 'bmg-theme' ),
+			),
+			array(
+				'type'       => 'email',
+				'id'         => 2,
+				'label'      => __( 'Email', 'bmg-theme' ),
+				'isRequired' => true,
+				'size'       => 'medium',
+				'pageNumber' => 1,
+				'placeholder' => 'you@example.com',
+			),
+			array(
+				'type'        => 'phone',
+				'id'          => 3,
+				'label'       => __( 'Phone', 'bmg-theme' ),
+				'isRequired'  => true,
+				'size'        => 'medium',
+				'pageNumber'  => 1,
+				'phoneFormat' => 'standard',
+				'placeholder' => '(555) 555-0123',
+			),
+			array(
+				'type'       => 'text',
+				'id'         => 4,
+				'label'      => __( 'Vehicle', 'bmg-theme' ),
+				'isRequired' => false,
+				'size'       => 'large',
+				'pageNumber' => 1,
+				'placeholder' => '2022 Ford F-150',
+				'description' => __( 'Optional — Year, Make, Model helps us prepare.', 'bmg-theme' ),
+			),
+			array(
+				'type'       => 'textarea',
+				'id'         => 5,
+				'label'      => __( 'Message', 'bmg-theme' ),
+				'isRequired' => true,
+				'size'       => 'medium',
+				'pageNumber' => 1,
+				'placeholder' => __( 'Tell us about your project, question, or what you need.', 'bmg-theme' ),
+			),
+		),
+
+		'confirmations' => array(
+			array(
+				'id'        => '0',
+				'name'      => 'Default Confirmation',
+				'isDefault' => true,
+				'type'      => 'message',
+				'message'   => '<div class="contact-confirmation">'
+					. '<h3 class="contact-confirmation__headline">'
+					. esc_html__( 'MESSAGE SENT.', 'bmg-theme' )
+					. '</h3>'
+					. '<p class="contact-confirmation__body">'
+					. esc_html__( 'A builder reviews every message within one business day. If your project is urgent, call us directly.', 'bmg-theme' )
+					. '</p>'
+					. '</div>',
+			),
+		),
+
+		'notifications' => array(
+			array(
+				'id'       => '0',
+				'isActive' => true,
+				'name'     => 'Admin Notification',
+				'event'    => 'form_submission',
+				'toType'   => 'email',
+				'to'       => 'info@rhinocustombuilds.com',
+				'from'     => '{admin_email}',
+				'subject'  => 'New Contact — {Name:1}',
+				'message'  => '{all_fields}',
+			),
+		),
+	);
+
+	$result = GFAPI::add_form( $form );
+
+	if ( is_wp_error( $result ) ) {
+		error_log( 'Rhino: Failed to create contact form — ' . $result->get_error_message() );
+		return;
+	}
+
+	set_theme_mod( 'bmg_gf_contact_form_id', (int) $result );
+}
+add_action( 'init', 'bmg_maybe_create_contact_form' );
