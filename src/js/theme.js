@@ -541,6 +541,55 @@ import 'bootstrap';
 } )();
 
 /**
+ * Quote Form — querystring pre-fill note
+ *
+ * When the URL has ?category=slug&product=name (from shop product
+ * cards), show a pre-fill note in the GF form's HTML field:
+ * "You're requesting a quote for: [Product] in [Category]."
+ * The note is purely informational — GF handles the actual field
+ * population via its native allowsPrepopulate feature.
+ */
+( function() {
+	'use strict';
+
+	function init() {
+		var note = document.getElementById( 'quote-prefill-note' );
+		if ( ! note ) {
+			return;
+		}
+
+		try {
+			var params = new URLSearchParams( window.location.search );
+			var category = params.get( 'category' );
+			var product  = params.get( 'product' );
+
+			if ( ! category && ! product ) {
+				return;
+			}
+
+			var parts = [];
+			if ( product ) {
+				parts.push( '<strong>' + product.replace( /-/g, ' ' ) + '</strong>' );
+			}
+			if ( category ) {
+				parts.push( 'in <strong>' + category.replace( /-/g, ' ' ) + '</strong>' );
+			}
+
+			note.innerHTML = "You\u2019re requesting a quote for: " + parts.join( ' ' ) + '.';
+			note.style.display = 'block';
+		} catch ( e ) {
+			// URLSearchParams not available — skip silently.
+		}
+	}
+
+	if ( document.readyState === 'loading' ) {
+		document.addEventListener( 'DOMContentLoaded', init );
+	} else {
+		init();
+	}
+} )();
+
+/**
  * Before/After Slider — Rhino Service Detail pages
  *
  * The heavy lifting (drag, touch, keyboard) is handled by a native

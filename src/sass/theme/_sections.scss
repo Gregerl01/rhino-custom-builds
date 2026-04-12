@@ -555,6 +555,584 @@ html {
 }
 
 // ==========================================================================
+// PAGE: Quote — form section, GF overrides, sidebar, confirmation
+// ==========================================================================
+
+.section-quote-form {
+	background-color: $brand-warm-white;
+	color: $text-primary;
+	padding: 128px 0 120px; // +8 top for dark→light transition
+
+	@media (max-width: 767.98px) {
+		padding: 80px 0;
+	}
+
+	&__fallback {
+		text-align: center;
+		padding: $space-xl;
+		background-color: $brand-white;
+		border: 1px solid $border-color;
+	}
+
+	&__fallback-text {
+		font-family: $font-family-mono;
+		font-size: 11px;
+		font-weight: 500;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: $text-secondary;
+		margin: 0 0 $space-lg;
+	}
+
+	// ----- Sticky sidebar ---------------------------------------------------
+
+	&__sidebar-col {
+		@media (min-width: 992px) {
+			position: sticky;
+			top: 120px;
+		}
+	}
+
+	&__sidebar {
+		display: flex;
+		flex-direction: column;
+		gap: $space-md;
+	}
+
+	&__sidebar-card {
+		background-color: $brand-white;
+		border: 1px solid $border-color;
+		padding: $space-lg;
+	}
+
+	&__sidebar-heading {
+		font-family: $font-family-mono;
+		font-size: 10px;
+		font-weight: 500;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: $brand-primary;
+		margin: 0 0 $space-md;
+	}
+
+	&__sidebar-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+
+		> li {
+			display: flex;
+			align-items: flex-start;
+			gap: $space-sm;
+			padding: $space-xs 0;
+			font-family: $font-family-base;
+			font-size: 0.9375rem;
+			line-height: 1.5;
+			color: $text-primary;
+
+			svg {
+				flex-shrink: 0;
+				color: $brand-primary;
+				margin-top: 2px;
+			}
+		}
+	}
+
+	&__sidebar-phone {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: $space-xs;
+		padding: $space-md;
+		background-color: $brand-accent;
+		color: $brand-dark;
+		text-decoration: none;
+		transition: background-color $motion-fast $ease-out-expo;
+
+		&:hover,
+		&:focus-visible {
+			background-color: darken($brand-accent, 6%);
+			color: $brand-dark;
+		}
+
+		svg {
+			flex-shrink: 0;
+		}
+	}
+
+	&__sidebar-phone-label {
+		font-family: $font-family-base;
+		font-weight: 600;
+		font-size: 13px;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+	}
+
+	&__sidebar-phone-number {
+		font-family: $font-family-mono;
+		font-weight: 700;
+		font-size: 15px;
+		letter-spacing: 0.02em;
+	}
+
+	&__sidebar-hours {
+		padding: $space-sm $space-md;
+		border: 1px solid $border-color;
+		background-color: $brand-white;
+	}
+
+	&__sidebar-hours-label {
+		display: block;
+		font-family: $font-family-mono;
+		font-size: 9px;
+		font-weight: 500;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: $brand-primary;
+		margin-bottom: $space-xs;
+	}
+
+	&__sidebar-hours p {
+		font-family: $font-family-base;
+		font-size: 0.875rem;
+		color: $text-primary;
+		line-height: 1.6;
+		margin: 0;
+	}
+}
+
+// --------------------------------------------------------------------------
+// Gravity Forms overrides — scoped to the quote page form
+// --------------------------------------------------------------------------
+.section-quote-form .gform_wrapper {
+	// Kill GF's default margin/padding
+	margin: 0;
+	padding: 0;
+
+	// ----- Progress bar (GF multi-page steps) -----
+	.gf_progressbar_wrapper {
+		margin: 0 0 $space-xl;
+		padding: 0;
+	}
+
+	.gf_progressbar {
+		background-color: $brand-surface;
+		height: 4px;
+		border-radius: 0;
+		overflow: hidden;
+	}
+
+	.gf_progressbar_percentage {
+		background-color: $brand-primary;
+		height: 100%;
+		border-radius: 0;
+		transition: width $motion-slow $ease-out-expo;
+		font-size: 0;
+		line-height: 0;
+
+		span {
+			display: none; // hide default "33%" text
+		}
+	}
+
+	.gf_step {
+		font-family: $font-family-mono;
+		font-size: 10px;
+		font-weight: 500;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: $text-secondary;
+		opacity: 0.5;
+
+		&.gf_step_active {
+			color: $brand-primary;
+			opacity: 1;
+		}
+
+		&.gf_step_completed {
+			color: $text-primary;
+			opacity: 0.7;
+		}
+
+		.gf_step_number {
+			font-family: $font-family-mono;
+			font-weight: 700;
+			color: inherit;
+			background: transparent;
+			border: 1px solid currentColor;
+			border-radius: 0;
+			width: 28px;
+			height: 28px;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			margin-right: $space-xs;
+		}
+
+		&.gf_step_active .gf_step_number {
+			background-color: $brand-primary;
+			border-color: $brand-primary;
+			color: $text-on-dark;
+		}
+	}
+
+	// ----- Fields -----
+	.gform_body {
+		background-color: $brand-white;
+		border: 1px solid $border-color;
+		padding: $space-xl;
+
+		@media (max-width: 575.98px) {
+			padding: $space-lg;
+		}
+	}
+
+	.gfield {
+		margin-bottom: $space-md;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	.gfield_label {
+		font-family: $font-family-mono;
+		font-size: 10px;
+		font-weight: 500;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: $text-primary;
+		margin-bottom: 6px;
+
+		.gfield_required {
+			color: $brand-primary;
+			padding-left: 2px;
+		}
+	}
+
+	.gfield_description {
+		font-family: $font-family-mono;
+		font-size: 9px;
+		font-weight: 500;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: $text-secondary;
+		margin-top: 4px;
+	}
+
+	input[type='text'],
+	input[type='email'],
+	input[type='tel'],
+	input[type='number'],
+	input[type='url'],
+	select,
+	textarea {
+		width: 100%;
+		padding: 14px 16px;
+		background-color: $brand-warm-white;
+		border: 1px solid $border-color;
+		border-radius: 0;
+		font-family: $font-family-base;
+		font-size: 1rem;
+		line-height: 1.4;
+		color: $text-primary;
+		transition: border-color $motion-fast $ease-out-expo, background-color $motion-fast $ease-out-expo;
+		min-height: 48px; // 48px tap target
+
+		&:focus,
+		&:focus-visible {
+			outline: none;
+			border-color: $brand-dark;
+			background-color: $brand-white;
+			box-shadow: inset 0 -2px 0 $brand-primary;
+		}
+
+		&::placeholder {
+			color: rgba($text-primary, 0.35);
+		}
+	}
+
+	textarea {
+		resize: vertical;
+		min-height: 120px;
+	}
+
+	select {
+		appearance: none;
+		background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%231A1A1A' stroke-width='1.5'/%3E%3C/svg%3E");
+		background-repeat: no-repeat;
+		background-position: right 16px center;
+		padding-right: 40px;
+	}
+
+	// Checkboxes and radios
+	.gfield_checkbox,
+	.gfield_radio {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-wrap: wrap;
+		gap: $space-xs $space-md;
+
+		> li {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+		}
+
+		label {
+			font-family: $font-family-base;
+			font-size: 0.9375rem;
+			font-weight: 500;
+			color: $text-primary;
+			cursor: pointer;
+		}
+
+		input[type='checkbox'],
+		input[type='radio'] {
+			width: 20px;
+			height: 20px;
+			accent-color: $brand-primary;
+			cursor: pointer;
+			flex-shrink: 0;
+		}
+	}
+
+	// Two-column fields on desktop
+	.gform_fields {
+		display: flex;
+		flex-wrap: wrap;
+		gap: $space-md;
+
+		> .gfield {
+			width: 100%;
+		}
+
+		> .gfield.gfield--width-half {
+			width: calc(50% - #{$space-md} / 2);
+
+			@media (max-width: 575.98px) {
+				width: 100%;
+			}
+		}
+	}
+
+	// ----- Navigation buttons (Next / Back / Submit) -----
+	.gform_page_footer,
+	.gform_footer {
+		display: flex;
+		align-items: center;
+		gap: $space-md;
+		flex-wrap: wrap;
+		padding: $space-lg 0 0;
+		margin: $space-lg 0 0;
+		border-top: 1px solid $border-light;
+	}
+
+	.gform_next_button,
+	.gform_button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: $space-xs;
+		padding: 18px 32px;
+		background-color: $brand-primary;
+		color: $text-on-dark;
+		border: none;
+		border-radius: 0;
+		font-family: $font-family-base;
+		font-size: 14px;
+		font-weight: 600;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+		cursor: pointer;
+		position: relative;
+		overflow: hidden;
+		transition: background-color $motion-fast $ease-out-expo;
+
+		&:hover,
+		&:focus-visible {
+			background-color: darken($brand-primary, 8%);
+		}
+
+		&:active {
+			transform: translateY(1px);
+		}
+	}
+
+	.gform_previous_button {
+		display: inline-flex;
+		align-items: center;
+		gap: $space-xs;
+		padding: 18px 24px;
+		background-color: transparent;
+		color: $text-primary;
+		border: 1px solid $border-color;
+		border-radius: 0;
+		font-family: $font-family-base;
+		font-size: 14px;
+		font-weight: 600;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+		cursor: pointer;
+		transition: background-color $motion-fast $ease-out-expo, border-color $motion-fast $ease-out-expo;
+
+		&:hover,
+		&:focus-visible {
+			border-color: $brand-dark;
+			background-color: rgba($brand-dark, 0.04);
+		}
+	}
+
+	// ----- Validation -----
+	.gfield_error {
+		.gfield_label {
+			color: $brand-primary;
+		}
+
+		input,
+		select,
+		textarea {
+			border-color: $brand-primary;
+		}
+	}
+
+	.validation_error {
+		font-family: $font-family-base;
+		font-size: 0.875rem;
+		color: $brand-primary;
+		border: 1px solid $brand-primary;
+		padding: $space-md;
+		margin: 0 0 $space-lg;
+		background-color: rgba($brand-primary, 0.04);
+	}
+
+	.validation_message {
+		font-family: $font-family-mono;
+		font-size: 10px;
+		font-weight: 500;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: $brand-primary;
+		margin-top: 4px;
+	}
+}
+
+// --------------------------------------------------------------------------
+// Post-submit confirmation (rendered by GF inside the form wrapper)
+// --------------------------------------------------------------------------
+.quote-confirmation {
+	text-align: center;
+	padding: $space-xl;
+
+	&__headline {
+		font-family: $font-family-display;
+		font-weight: 800;
+		font-size: clamp(2rem, 5vw, 3rem);
+		line-height: 1.0;
+		letter-spacing: 0.01em;
+		text-transform: uppercase;
+		color: $text-primary;
+		margin: 0 0 $space-sm;
+	}
+
+	&__subline {
+		font-family: $font-family-base;
+		font-size: 1.0625rem;
+		line-height: 1.6;
+		color: $text-secondary;
+		margin: 0 0 $space-xl;
+	}
+
+	&__steps {
+		list-style: none;
+		padding: 0;
+		margin: 0 auto $space-xl;
+		max-width: 520px;
+		text-align: left;
+		counter-reset: confirm-step;
+
+		> li {
+			display: flex;
+			align-items: flex-start;
+			gap: $space-md;
+			padding: $space-md 0;
+			border-bottom: 1px solid $border-light;
+			font-family: $font-family-base;
+			font-size: 0.9375rem;
+			line-height: 1.6;
+			color: $text-secondary;
+
+			&::before {
+				counter-increment: confirm-step;
+				content: '0' counter(confirm-step);
+				font-family: $font-family-mono;
+				font-weight: 700;
+				font-size: 0.875rem;
+				color: $brand-primary;
+				flex-shrink: 0;
+				margin-top: 2px;
+			}
+
+			strong {
+				color: $text-primary;
+			}
+
+			&:last-child {
+				border-bottom: 0;
+			}
+		}
+	}
+
+	&__phone {
+		margin-bottom: $space-xl;
+
+		p {
+			font-family: $font-family-mono;
+			font-size: 11px;
+			font-weight: 500;
+			letter-spacing: 0.12em;
+			text-transform: uppercase;
+			color: $text-secondary;
+			margin: 0 0 $space-sm;
+		}
+	}
+
+	&__home {
+		font-family: $font-family-mono;
+		font-size: 11px;
+		font-weight: 500;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: $text-secondary;
+		text-decoration: none;
+		transition: color $motion-fast $ease-out-expo;
+
+		&:hover,
+		&:focus-visible {
+			color: $brand-primary;
+		}
+	}
+}
+
+// Querystring pre-fill note
+.quote-prefill-note {
+	background-color: $brand-warm-white;
+	border-left: 3px solid $brand-primary;
+	padding: $space-sm $space-md;
+	margin-bottom: $space-md;
+	font-family: $font-family-base;
+	font-size: 0.875rem;
+	color: $text-primary;
+	line-height: 1.5;
+
+	strong {
+		font-weight: 600;
+	}
+}
+
+// ==========================================================================
 // SECTION: Page Header — Rhino Custom Builds
 // ==========================================================================
 // Short dark inner-page header (About, Contact, Quote, Gallery, FAQ, etc.).
