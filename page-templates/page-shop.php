@@ -40,19 +40,13 @@ $brand_names = array(
 	?>
 
 	<?php // ===== Install callout bar =========================================== ?>
-	<div class="shop-callout" data-section="shop-callout">
-		<div class="container">
-			<p class="shop-callout__text">
-				<?php esc_html_e( 'All products include optional in-bay installation by certified builders.', 'bmg-theme' ); ?>
-				<a class="shop-callout__link" href="<?php echo esc_url( home_url( '/quote/' ) ); ?>">
-					<?php esc_html_e( 'Request a quote', 'bmg-theme' ); ?>
-					<svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-						<path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
-					</svg>
-				</a>
-			</p>
-		</div>
-	</div>
+	<?php
+	get_template_part(
+		'template-parts/components/callout',
+		'install-bar',
+		array( 'text' => __( 'All products include optional in-bay installation by certified builders.', 'bmg-theme' ) )
+	);
+	?>
 
 	<?php // ===== 2. Category grid ============================================== ?>
 	<section class="section-features section-features--shop" data-section="shop-categories">

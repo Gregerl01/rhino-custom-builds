@@ -60,6 +60,15 @@ $phone_link    = preg_replace( '/[^0-9+]/', '', (string) $phone_display );
 	);
 	?>
 
+	<?php // ===== Install callout bar =========================================== ?>
+	<?php
+	get_template_part(
+		'template-parts/components/callout',
+		'install-bar',
+		array( 'text' => __( 'Free quotes. One business day response. No obligation.', 'bmg-theme' ) )
+	);
+	?>
+
 	<?php // ===== 2. Problem ===================================================== ?>
 	<?php if ( ! empty( $service['problem'] ) ) :
 		$problem = $service['problem'];

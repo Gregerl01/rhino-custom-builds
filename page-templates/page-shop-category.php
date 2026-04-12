@@ -97,6 +97,15 @@ $brands   = $category['brands'] ?? array();
 	);
 	?>
 
+	<?php // ===== Install callout bar =========================================== ?>
+	<?php
+	get_template_part(
+		'template-parts/components/callout',
+		'install-bar',
+		array( 'text' => __( 'All products include optional in-bay installation by certified builders.', 'bmg-theme' ) )
+	);
+	?>
+
 	<?php // ===== 2. Brand strip ================================================ ?>
 	<?php if ( ! empty( $brands ) ) : ?>
 		<section class="section-shop-brand-strip" data-section="shop-brand-strip">

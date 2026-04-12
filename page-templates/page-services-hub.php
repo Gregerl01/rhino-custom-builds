@@ -72,6 +72,15 @@ $stats = array(
 	);
 	?>
 
+	<?php // ===== Install callout bar =========================================== ?>
+	<?php
+	get_template_part(
+		'template-parts/components/callout',
+		'install-bar',
+		array( 'text' => __( 'Every service backed by certified installers and a lifetime coating warranty.', 'bmg-theme' ) )
+	);
+	?>
+
 	<?php // ===== 2. Service cards grid (reuses .section-features + .service-card-xl) ?>
 	<section class="section-features" data-section="services-grid">
 		<div class="container">
