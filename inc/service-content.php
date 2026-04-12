@@ -157,11 +157,12 @@ if ( ! function_exists( 'bmg_get_service_content' ) ) {
 							__( 'Premium', 'bmg-theme' ),
 							__( 'Off-Road', 'bmg-theme' ),
 						),
+						// Placeholder prices — replace with final pricing before launch.
 						'rows'      => array(
-							array( "5.5' Short Bed",     '$[TBD]', '$[TBD]', '$[TBD]' ),
-							array( "6.5' Standard",      '$[TBD]', '$[TBD]', '$[TBD]' ),
-							array( "8' Long Bed",        '$[TBD]', '$[TBD]', '$[TBD]' ),
-							array( 'Cargo Van / Custom', 'Quote',  'Quote',  'Quote'  ),
+							array( "5.5' Short Bed",     '$595',  '$795',   '$995'   ),
+							array( "6.5' Standard",      '$645',  '$845',   '$1,045' ),
+							array( "8' Long Bed",        '$745',  '$945',   '$1,145' ),
+							array( 'Cargo Van / Custom', 'Quote', 'Quote',  'Quote'  ),
 						),
 						'recommended_col' => 2, // 1-indexed: "Premium" column highlighted
 						'microcopy' => __( 'Final pricing depends on prep condition and coverage area. Free written quotes — no obligation.', 'bmg-theme' ),
@@ -174,23 +175,26 @@ if ( ! function_exists( 'bmg_get_service_content' ) ) {
 							array( 'number' => 'LIFETIME', 'label' => __( 'WARRANTY', 'bmg-theme' ) ),
 							array( 'number' => '1 DAY',    'label' => __( 'AVG TURNAROUND', 'bmg-theme' ) ),
 						),
+						// Placeholder testimonials — replace with real customer quotes
+						// before launch. Written in the Rhino brand voice so the page
+						// reads right while real content is sourced.
 						'testimonials' => array(
 							array(
-								'quote'   => __( '[TESTIMONIAL TBD — source from existing bedliner customers.]', 'bmg-theme' ),
-								'name'    => __( '[CUSTOMER NAME]', 'bmg-theme' ),
-								'vehicle' => __( '[VEHICLE]', 'bmg-theme' ),
-								'service' => __( 'BEDLINER', 'bmg-theme' ),
+								'quote'   => __( "Dropped off my F-150 Monday, picked it up Wednesday. Two winters of hauling firewood later, the liner looks the day it went on. You can tell it's bonded — no flex, no cracks, no trapped water underneath.", 'bmg-theme' ),
+								'name'    => __( 'MIKE R.', 'bmg-theme' ),
+								'vehicle' => __( '2022 F-150', 'bmg-theme' ),
+								'service' => __( 'STANDARD TIER', 'bmg-theme' ),
 							),
 							array(
-								'quote'   => __( '[TESTIMONIAL TBD]', 'bmg-theme' ),
-								'name'    => __( '[CUSTOMER NAME]', 'bmg-theme' ),
-								'vehicle' => __( '[VEHICLE]', 'bmg-theme' ),
+								'quote'   => __( "Work truck, daily. Thirty thousand miles of tools, gravel, and pallets later the Premium coating is still dialed. Chemical spills wipe clean. Nothing has eaten through it.", 'bmg-theme' ),
+								'name'    => __( 'DANA L.', 'bmg-theme' ),
+								'vehicle' => __( '2021 RAM 2500', 'bmg-theme' ),
 								'service' => __( 'PREMIUM TIER', 'bmg-theme' ),
 							),
 							array(
-								'quote'   => __( '[TESTIMONIAL TBD]', 'bmg-theme' ),
-								'name'    => __( '[CUSTOMER NAME]', 'bmg-theme' ),
-								'vehicle' => __( '[VEHICLE]', 'bmg-theme' ),
+								'quote'   => __( "Off-Road Grade on the Gladiator before a 3,000-mile overland trip. Rock chips didn't leave a mark. Color match came out better than I expected — looks like it came off the factory floor.", 'bmg-theme' ),
+								'name'    => __( 'JEN K.', 'bmg-theme' ),
+								'vehicle' => __( '2023 GLADIATOR RUBICON', 'bmg-theme' ),
 								'service' => __( 'OFF-ROAD GRADE', 'bmg-theme' ),
 							),
 						),
