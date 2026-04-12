@@ -106,6 +106,11 @@ $render_nav_list = function ( $nav_services, $nav_shop ) {
 			</a>
 		</li>
 		<li class="nav-item">
+			<a class="nav-link" href="<?php echo esc_url( home_url( '/blog/' ) ); ?>">
+				<?php esc_html_e( 'News', 'bmg-theme' ); ?>
+			</a>
+		</li>
+		<li class="nav-item">
 			<a class="nav-link" href="<?php echo esc_url( home_url( '/about/' ) ); ?>">
 				<?php esc_html_e( 'About', 'bmg-theme' ); ?>
 			</a>
