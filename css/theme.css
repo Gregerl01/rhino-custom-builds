@@ -16599,6 +16599,543 @@ html {
   opacity: 0.6;
 }
 
+.section-page-header {
+  position: relative;
+  background-color: #1A1A1A;
+  color: #F5F2EE;
+  padding: 180px 0 6rem;
+  overflow: hidden;
+}
+@media (max-width: 767.98px) {
+  .section-page-header {
+    padding: 140px 0 4rem;
+  }
+}
+.section-page-header__background {
+  position: absolute;
+  inset: 0;
+  background-color: #1A1A1A;
+  background-image: radial-gradient(ellipse at 30% 40%, #242424 0%, #1A1A1A 70%);
+  background-size: cover;
+  background-position: center;
+  filter: saturate(0.9) contrast(1.08);
+  z-index: 0;
+}
+.section-page-header__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(26, 26, 26, 0.55) 0%, rgba(26, 26, 26, 0.85) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+.section-page-header__grain {
+  position: absolute;
+  inset: 0;
+  background-image: url("../img/noise.png");
+  background-repeat: repeat;
+  opacity: 0.04;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  z-index: 2;
+}
+.section-page-header > .container {
+  position: relative;
+  z-index: 3;
+}
+.section-page-header__overline {
+  display: inline-block;
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #C41E2A;
+  margin-bottom: 1rem;
+}
+.section-page-header__headline {
+  font-family: "Barlow Condensed", "Barlow", Arial, sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.25rem, 5.5vw, 4rem);
+  line-height: 0.95;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  color: #F5F2EE;
+  margin: 0 0 1.5rem;
+  max-width: 18ch;
+}
+.section-page-header__subline {
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(245, 242, 238, 0.78);
+  margin: 0;
+  max-width: 58ch;
+}
+
+.section-about-story {
+  background-color: #F5F2EE;
+  color: #1A1A1A;
+  padding: 128px 0 120px;
+}
+@media (max-width: 767.98px) {
+  .section-about-story {
+    padding: 80px 0;
+  }
+}
+.section-about-story__overline {
+  display: inline-block;
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #C41E2A;
+  margin-bottom: 1rem;
+}
+.section-about-story__headline {
+  font-family: "Barlow Condensed", "Barlow", Arial, sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: #1A1A1A;
+  margin: 0 0 2rem;
+  max-width: 18ch;
+}
+.section-about-story__paragraph {
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: #5A5651;
+  margin: 0 0 1.5rem;
+  max-width: 60ch;
+}
+.section-about-story__paragraph:last-child {
+  margin-bottom: 0;
+}
+.section-about-story__media {
+  position: relative;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  border-radius: 4px;
+  background-color: #E8E4DE;
+}
+.section-about-story__media img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.9) contrast(1.08);
+}
+.section-about-story__placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #E8E4DE;
+  background-image: repeating-linear-gradient(45deg, rgba(26, 26, 26, 0.04) 0, rgba(26, 26, 26, 0.04) 1px, transparent 1px, transparent 14px);
+  border: 1px solid #D1CCC5;
+}
+.section-about-story__placeholder-label {
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(26, 26, 26, 0.35);
+}
+
+.section-about-credentials {
+  background-color: #FFFFFF;
+  color: #1A1A1A;
+  padding: 120px 0;
+}
+@media (max-width: 767.98px) {
+  .section-about-credentials {
+    padding: 80px 0;
+  }
+}
+.section-about-credentials__overline {
+  display: inline-block;
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #C41E2A;
+  margin-bottom: 1rem;
+}
+.section-about-credentials__headline {
+  font-family: "Barlow Condensed", "Barlow", Arial, sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: #1A1A1A;
+  margin: 0 0 2rem;
+}
+.section-about-credentials__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.section-about-credentials__list > li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid #E8E4DE;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #1A1A1A;
+}
+.section-about-credentials__list > li:last-child {
+  border-bottom: 0;
+}
+.section-about-credentials__list > li svg {
+  flex-shrink: 0;
+  color: #C41E2A;
+  margin-top: 2px;
+}
+.section-about-credentials__stats {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+.section-about-credentials__stats > li {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 1.5rem;
+  background-color: #F5F2EE;
+  border: 1px solid #D1CCC5;
+  border-top: 3px solid #C41E2A;
+}
+.section-about-credentials__stat-number {
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-weight: 700;
+  font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+  line-height: 1;
+  color: #C41E2A;
+  display: inline-flex;
+  align-items: baseline;
+}
+.section-about-credentials__stat-label {
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #5A5651;
+}
+
+.section-about-testimonials {
+  background-color: #F5F2EE;
+  color: #1A1A1A;
+  padding: 120px 0;
+}
+@media (max-width: 767.98px) {
+  .section-about-testimonials {
+    padding: 80px 0;
+  }
+}
+.section-about-testimonials__header {
+  max-width: 720px;
+  margin: 0 0 4rem;
+}
+.section-about-testimonials__overline {
+  display: inline-block;
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #C41E2A;
+  margin-bottom: 1rem;
+}
+.section-about-testimonials__headline {
+  font-family: "Barlow Condensed", "Barlow", Arial, sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: #1A1A1A;
+  margin: 0;
+}
+.section-about-testimonials__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+@media (max-width: 991.98px) {
+  .section-about-testimonials__grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.section-contact {
+  background-color: #F5F2EE;
+  color: #1A1A1A;
+  padding: 128px 0 120px;
+}
+@media (max-width: 767.98px) {
+  .section-contact {
+    padding: 80px 0;
+  }
+}
+.section-contact__overline {
+  display: inline-block;
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #C41E2A;
+  margin-bottom: 1rem;
+}
+.section-contact__headline {
+  font-family: "Barlow Condensed", "Barlow", Arial, sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: #1A1A1A;
+  margin: 0 0 1.5rem;
+  max-width: 18ch;
+}
+.section-contact__body {
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #5A5651;
+  margin: 0 0 3rem;
+  max-width: 55ch;
+}
+@media (min-width: 992px) {
+  .section-contact__info-col {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 120px;
+  }
+}
+.section-contact__info-card {
+  background-color: #FFFFFF;
+  border: 1px solid #D1CCC5;
+  padding: 2rem;
+}
+@media (max-width: 575.98px) {
+  .section-contact__info-card {
+    padding: 1.5rem;
+  }
+}
+.section-contact__info-heading {
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #C41E2A;
+  margin: 0 0 1rem;
+}
+.section-contact__contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.section-contact__contact-list > li {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 1rem;
+}
+.section-contact__contact-list > li:last-child {
+  margin-bottom: 0;
+}
+.section-contact__contact-list a {
+  color: #1A1A1A;
+  text-decoration: none;
+  transition: color 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.section-contact__contact-list a:hover, .section-contact__contact-list a:focus-visible {
+  color: #C41E2A;
+  outline: none;
+}
+.section-contact__contact-label {
+  display: block;
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #5A5651;
+}
+.section-contact__phone {
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+}
+.section-contact__email {
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.9375rem;
+  word-break: break-word;
+}
+.section-contact__divider {
+  height: 1px;
+  background-color: #E8E4DE;
+  margin: 1.5rem 0;
+}
+.section-contact__address {
+  font-style: normal;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: #1A1A1A;
+  margin: 0;
+}
+.section-contact__hours {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.section-contact__hours > li {
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: #1A1A1A;
+}
+.section-contact__quote-cta {
+  width: 100%;
+  justify-content: center;
+}
+
+.contact-form {
+  background-color: #FFFFFF;
+  border: 1px solid #D1CCC5;
+  padding: 2rem;
+}
+@media (max-width: 575.98px) {
+  .contact-form {
+    padding: 1.5rem;
+  }
+}
+.contact-form__row {
+  margin-bottom: 1.5rem;
+}
+.contact-form__row:last-of-type {
+  margin-bottom: 0;
+}
+.contact-form__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.contact-form__grid > .contact-form__row {
+  margin-bottom: 0;
+}
+@media (max-width: 575.98px) {
+  .contact-form__grid {
+    grid-template-columns: 1fr;
+  }
+}
+.contact-form__label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #1A1A1A;
+  margin-bottom: 6px;
+}
+.contact-form__label span[aria-hidden=true] {
+  color: #C41E2A;
+}
+.contact-form__label-hint {
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #5A5651;
+}
+.contact-form__input {
+  width: 100%;
+  padding: 14px 16px;
+  background-color: #F5F2EE;
+  border: 1px solid #D1CCC5;
+  border-radius: 0;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: #1A1A1A;
+  transition: border-color 200ms cubic-bezier(0.16, 1, 0.3, 1), background-color 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.contact-form__input:focus, .contact-form__input:focus-visible {
+  outline: none;
+  border-color: #1A1A1A;
+  background-color: #FFFFFF;
+  box-shadow: inset 0 -2px 0 #C41E2A;
+}
+.contact-form__input--textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+.contact-form__input::-moz-placeholder {
+  color: rgba(26, 26, 26, 0.35);
+}
+.contact-form__input::placeholder {
+  color: rgba(26, 26, 26, 0.35);
+}
+.contact-form__footer {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #E8E4DE;
+}
+.contact-form__microcopy {
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #5A5651;
+  margin: 0;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.contact-form__placeholder-notice {
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(90, 86, 81, 0.6);
+  text-align: center;
+  margin: 1.5rem 0 0;
+  padding: 0.5rem 0 0;
+  border-top: 1px dashed #D1CCC5;
+}
+
 .section-service-hero {
   position: relative;
   min-height: 70vh;
