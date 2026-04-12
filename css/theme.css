@@ -19573,8 +19573,7 @@ html {
 
 .single-post-hero-image {
   background-color: #F5F2EE;
-  padding: 0;
-  margin-top: -3rem;
+  padding: 4rem 0 0;
   position: relative;
   z-index: 4;
 }
@@ -19582,9 +19581,11 @@ html {
   max-width: 960px;
 }
 .single-post-hero-image__img {
-  width: 100%;
+  width: 85%;
+  max-width: 800px;
   height: auto;
   display: block;
+  margin: 0 auto;
   border-radius: 4px;
   filter: saturate(0.9) contrast(1.08);
 }
