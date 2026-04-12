@@ -16,6 +16,14 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
+ * Strip the quotes around the required-field asterisk.
+ * GF default: "* indicates required fields" → we want: * indicates required fields.
+ */
+add_filter( 'gform_required_legend', function ( $legend ) {
+	return preg_replace( '/&quot;|"/', '', $legend );
+} );
+
+/**
  * Create the Request a Quote form if it doesn't exist.
  */
 function bmg_maybe_create_quote_form() {

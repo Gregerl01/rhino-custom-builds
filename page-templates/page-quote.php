@@ -15,8 +15,8 @@ get_header();
 
 $phone_display = get_theme_mod( 'bmg_phone', '(555) 555-0123' );
 $phone_link    = preg_replace( '/[^0-9+]/', '', (string) $phone_display );
-$hours_weekday = get_theme_mod( 'bmg_office_hours', 'Mon–Fri: 7AM – 6PM' );
-$hours_sat     = get_theme_mod( 'bmg_office_hours_sat', 'Saturday: 8AM – 2PM' );
+$hours_weekday = get_theme_mod( 'bmg_office_hours', 'Mon–Fri: 8:00 AM – 5:00 PM PST' );
+$hours_weekend = get_theme_mod( 'bmg_office_hours_sun', 'Weekends: Closed' );
 
 $form_id = (int) get_theme_mod( 'bmg_quote_form_id', 0 );
 ?>
@@ -123,7 +123,7 @@ $form_id = (int) get_theme_mod( 'bmg_quote_form_id', 0 );
 								<?php esc_html_e( 'HOURS', 'bmg-theme' ); ?>
 							</span>
 							<p><?php echo esc_html( $hours_weekday ); ?></p>
-							<p><?php echo esc_html( $hours_sat ); ?></p>
+							<p><?php echo esc_html( $hours_weekend ); ?></p>
 						</div>
 
 					</div>

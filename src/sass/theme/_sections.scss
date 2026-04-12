@@ -842,30 +842,37 @@ html {
 		border-top: 1px solid $border-light;
 	}
 
+	// GF adds .gform-theme-button with its own specificity. We need to
+	// beat it with a more specific selector + !important on visual props.
 	.gform_next_button,
-	.gform_button {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
+	.gform_button,
+	input.gform-theme-button.gform_next_button,
+	input.gform-theme-button.gform_button {
+		display: inline-flex !important;
+		align-items: center !important;
+		justify-content: center !important;
 		gap: $space-xs;
-		padding: 18px 32px;
-		background-color: $brand-primary;
-		color: $text-on-dark;
-		border: none;
-		border-radius: 0;
-		font-family: $font-family-base;
-		font-size: 14px;
-		font-weight: 600;
-		letter-spacing: 0.05em;
-		text-transform: uppercase;
+		padding: 18px 32px !important;
+		background-color: $brand-primary !important;
+		background-image: none !important;
+		color: $text-on-dark !important;
+		border: none !important;
+		border-radius: 0 !important;
+		font-family: $font-family-base !important;
+		font-size: 14px !important;
+		font-weight: 600 !important;
+		letter-spacing: 0.05em !important;
+		text-transform: uppercase !important;
 		cursor: pointer;
 		position: relative;
 		overflow: hidden;
+		box-shadow: none !important;
 		transition: background-color $motion-fast $ease-out-expo;
 
 		&:hover,
 		&:focus-visible {
-			background-color: darken($brand-primary, 8%);
+			background-color: darken($brand-primary, 8%) !important;
+			color: $text-on-dark !important;
 		}
 
 		&:active {
@@ -873,20 +880,23 @@ html {
 		}
 	}
 
-	.gform_previous_button {
-		display: inline-flex;
-		align-items: center;
+	.gform_previous_button,
+	input.gform-theme-button--secondary.gform_previous_button {
+		display: inline-flex !important;
+		align-items: center !important;
 		gap: $space-xs;
-		padding: 18px 24px;
-		background-color: transparent;
-		color: $text-primary;
-		border: 1px solid $border-color;
-		border-radius: 0;
-		font-family: $font-family-base;
-		font-size: 14px;
-		font-weight: 600;
-		letter-spacing: 0.05em;
-		text-transform: uppercase;
+		padding: 18px 24px !important;
+		background-color: transparent !important;
+		background-image: none !important;
+		color: $text-primary !important;
+		border: 1px solid $border-color !important;
+		border-radius: 0 !important;
+		font-family: $font-family-base !important;
+		font-size: 14px !important;
+		font-weight: 600 !important;
+		letter-spacing: 0.05em !important;
+		text-transform: uppercase !important;
+		box-shadow: none !important;
 		cursor: pointer;
 		transition: background-color $motion-fast $ease-out-expo, border-color $motion-fast $ease-out-expo;
 

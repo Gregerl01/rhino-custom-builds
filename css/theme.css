@@ -16929,63 +16929,90 @@ html {
 }
 .section-quote-form .gform_wrapper .gform_next_button,
 .section-quote-form .gform_wrapper .gform_button,
+.section-quote-form .gform_wrapper input.gform-theme-button.gform_next_button,
+.section-quote-form .gform_wrapper input.gform-theme-button.gform_button,
 .section-contact .gform_wrapper .gform_next_button,
-.section-contact .gform_wrapper .gform_button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+.section-contact .gform_wrapper .gform_button,
+.section-contact .gform_wrapper input.gform-theme-button.gform_next_button,
+.section-contact .gform_wrapper input.gform-theme-button.gform_button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   gap: 0.5rem;
-  padding: 18px 32px;
-  background-color: #C41E2A;
-  color: #F5F2EE;
-  border: none;
-  border-radius: 0;
-  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  padding: 18px 32px !important;
+  background-color: #C41E2A !important;
+  background-image: none !important;
+  color: #F5F2EE !important;
+  border: none !important;
+  border-radius: 0 !important;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  box-shadow: none !important;
   transition: background-color 200ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 .section-quote-form .gform_wrapper .gform_next_button:hover, .section-quote-form .gform_wrapper .gform_next_button:focus-visible,
 .section-quote-form .gform_wrapper .gform_button:hover,
 .section-quote-form .gform_wrapper .gform_button:focus-visible,
+.section-quote-form .gform_wrapper input.gform-theme-button.gform_next_button:hover,
+.section-quote-form .gform_wrapper input.gform-theme-button.gform_next_button:focus-visible,
+.section-quote-form .gform_wrapper input.gform-theme-button.gform_button:hover,
+.section-quote-form .gform_wrapper input.gform-theme-button.gform_button:focus-visible,
 .section-contact .gform_wrapper .gform_next_button:hover,
 .section-contact .gform_wrapper .gform_next_button:focus-visible,
 .section-contact .gform_wrapper .gform_button:hover,
-.section-contact .gform_wrapper .gform_button:focus-visible {
-  background-color: rgb(160.6159292035, 24.5840707965, 34.417699115);
+.section-contact .gform_wrapper .gform_button:focus-visible,
+.section-contact .gform_wrapper input.gform-theme-button.gform_next_button:hover,
+.section-contact .gform_wrapper input.gform-theme-button.gform_next_button:focus-visible,
+.section-contact .gform_wrapper input.gform-theme-button.gform_button:hover,
+.section-contact .gform_wrapper input.gform-theme-button.gform_button:focus-visible {
+  background-color: rgb(160.6159292035, 24.5840707965, 34.417699115) !important;
+  color: #F5F2EE !important;
 }
 .section-quote-form .gform_wrapper .gform_next_button:active,
 .section-quote-form .gform_wrapper .gform_button:active,
+.section-quote-form .gform_wrapper input.gform-theme-button.gform_next_button:active,
+.section-quote-form .gform_wrapper input.gform-theme-button.gform_button:active,
 .section-contact .gform_wrapper .gform_next_button:active,
-.section-contact .gform_wrapper .gform_button:active {
+.section-contact .gform_wrapper .gform_button:active,
+.section-contact .gform_wrapper input.gform-theme-button.gform_next_button:active,
+.section-contact .gform_wrapper input.gform-theme-button.gform_button:active {
   transform: translateY(1px);
 }
 .section-quote-form .gform_wrapper .gform_previous_button,
-.section-contact .gform_wrapper .gform_previous_button {
-  display: inline-flex;
-  align-items: center;
+.section-quote-form .gform_wrapper input.gform-theme-button--secondary.gform_previous_button,
+.section-contact .gform_wrapper .gform_previous_button,
+.section-contact .gform_wrapper input.gform-theme-button--secondary.gform_previous_button {
+  display: inline-flex !important;
+  align-items: center !important;
   gap: 0.5rem;
-  padding: 18px 24px;
-  background-color: transparent;
-  color: #1A1A1A;
-  border: 1px solid #D1CCC5;
-  border-radius: 0;
-  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  padding: 18px 24px !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  color: #1A1A1A !important;
+  border: 1px solid #D1CCC5 !important;
+  border-radius: 0 !important;
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  box-shadow: none !important;
   cursor: pointer;
   transition: background-color 200ms cubic-bezier(0.16, 1, 0.3, 1), border-color 200ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 .section-quote-form .gform_wrapper .gform_previous_button:hover, .section-quote-form .gform_wrapper .gform_previous_button:focus-visible,
+.section-quote-form .gform_wrapper input.gform-theme-button--secondary.gform_previous_button:hover,
+.section-quote-form .gform_wrapper input.gform-theme-button--secondary.gform_previous_button:focus-visible,
 .section-contact .gform_wrapper .gform_previous_button:hover,
-.section-contact .gform_wrapper .gform_previous_button:focus-visible {
+.section-contact .gform_wrapper .gform_previous_button:focus-visible,
+.section-contact .gform_wrapper input.gform-theme-button--secondary.gform_previous_button:hover,
+.section-contact .gform_wrapper input.gform-theme-button--secondary.gform_previous_button:focus-visible {
   border-color: #1A1A1A;
   background-color: rgba(26, 26, 26, 0.04);
 }
