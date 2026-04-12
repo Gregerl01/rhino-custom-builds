@@ -34,13 +34,13 @@ $nav_services = array(
 );
 
 $nav_shop = array(
-	array( 'label' => __( 'Bumpers & Armor', 'bmg-theme' ),    'url' => '/shop/category/bumpers-armor/' ),
-	array( 'label' => __( 'Lighting', 'bmg-theme' ),           'url' => '/shop/category/lighting/' ),
-	array( 'label' => __( 'Suspension & Lifts', 'bmg-theme' ), 'url' => '/shop/category/suspension-lifts/' ),
-	array( 'label' => __( 'Wheels & Tires', 'bmg-theme' ),     'url' => '/shop/category/wheels-tires/' ),
-	array( 'label' => __( 'Recovery & Winches', 'bmg-theme' ), 'url' => '/shop/category/recovery-winches/' ),
-	array( 'label' => __( 'Bed & Cargo', 'bmg-theme' ),        'url' => '/shop/category/bed-cargo/' ),
-	array( 'label' => __( 'Overland Gear', 'bmg-theme' ),      'url' => '/shop/category/overland-gear/' ),
+	array( 'label' => __( 'Bumpers & Armor', 'bmg-theme' ),    'url' => '/shop/bumpers-armor/' ),
+	array( 'label' => __( 'Lighting', 'bmg-theme' ),           'url' => '/shop/lighting/' ),
+	array( 'label' => __( 'Suspension & Lifts', 'bmg-theme' ), 'url' => '/shop/suspension-lifts/' ),
+	array( 'label' => __( 'Wheels & Tires', 'bmg-theme' ),     'url' => '/shop/wheels-tires/' ),
+	array( 'label' => __( 'Recovery & Winches', 'bmg-theme' ), 'url' => '/shop/recovery-winches/' ),
+	array( 'label' => __( 'Bed & Cargo', 'bmg-theme' ),        'url' => '/shop/bed-cargo/' ),
+	array( 'label' => __( 'Overland Gear', 'bmg-theme' ),      'url' => '/shop/overland-gear/' ),
 );
 
 /**

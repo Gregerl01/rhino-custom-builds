@@ -134,6 +134,7 @@ $bmg_inc_dir = 'inc';
 $bmg_includes = array(
 	'/template-helpers.php',         // Shared template helpers (e.g. trust-item parser).
 	'/service-content.php',          // Service detail content registry (bmg_get_service_content).
+	'/shop-content.php',             // Shop category + product content registry (bmg_get_shop_category_content).
 	'/custom-post-types.php',        // Custom post types for homepage sections.
 	'/customizer-site-identity.php', // Site Identity settings (logo size).
 	'/customizer-practice-info.php', // Business Information panel (provider, contact, hours).
