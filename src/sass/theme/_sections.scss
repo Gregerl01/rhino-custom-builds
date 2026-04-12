@@ -361,13 +361,13 @@ html {
 	&__headline {
 		font-family: $font-family-display;
 		font-weight: 800;
-		font-size: clamp(3rem, 8vw, 6.25rem); // ~48 → 100px
+		font-size: clamp(2.5rem, 6vw, 4.5rem); // 40 → 72 — matches service hero
 		line-height: 0.95;
 		letter-spacing: 0.005em;
 		text-transform: uppercase;
 		color: $text-on-dark;
 		margin: 0 0 $space-md; // 24px → subline
-		max-width: 14ch;
+		max-width: 18ch;
 	}
 
 	&__subline {
@@ -460,98 +460,8 @@ html {
 		}
 	}
 
-	// ----- Vehicle selector -------------------------------------------------
-
-	&__vehicle-selector {
-		position: absolute;
-		left: 0;
-		right: 0;
-		bottom: $space-xl; // 40px from bottom of hero (inside padding)
-		display: flex;
-		align-items: center;
-		gap: $space-md;
-		padding: 0 var(--bs-gutter-x, 1.5rem);
-
-		@media (max-width: 767.98px) {
-			position: static;
-			flex-direction: column;
-			align-items: flex-start;
-			margin-top: $space-xl;
-			padding: 0;
-		}
-	}
-
-	&__vehicle-selector-label {
-		font-family: $font-family-mono;
-		font-size: 10px;
-		font-weight: 500;
-		letter-spacing: 0.15em;
-		text-transform: uppercase;
-		color: rgba($text-on-dark, 0.6);
-		flex-shrink: 0;
-	}
-
-	&__vehicle-selector-pills {
-		display: flex;
-		gap: $space-xs; // 8
-		flex-wrap: nowrap;
-
-		@media (max-width: 767.98px) {
-			overflow-x: auto;
-			scroll-snap-type: x mandatory;
-			-webkit-overflow-scrolling: touch;
-			padding-bottom: 4px;
-			width: 100%;
-
-			// hide scrollbar
-			scrollbar-width: none;
-			&::-webkit-scrollbar { display: none; }
-		}
-	}
-
-	&__vehicle-pill {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		min-height: 44px;
-		min-width: 44px;
-		padding: 10px 20px;
-		background: transparent;
-		border: 1px solid rgba($text-on-dark, 0.25);
-		border-radius: 0;
-		font-family: $font-family-base;
-		font-size: 13px;
-		font-weight: 600;
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
-		color: rgba($text-on-dark, 0.75);
-		cursor: pointer;
-		transition:
-			background-color $motion-fast $ease-out-expo,
-			border-color $motion-fast $ease-out-expo,
-			color $motion-fast $ease-out-expo,
-			opacity $motion-fast $ease-out-expo;
-		scroll-snap-align: start;
-		flex-shrink: 0;
-
-		&:hover,
-		&:focus-visible {
-			color: $text-on-dark;
-			border-color: rgba($text-on-dark, 0.5);
-			outline: none;
-		}
-
-		&[aria-selected='true'] {
-			background-color: $brand-primary;
-			border-color: $brand-primary;
-			color: $text-on-dark;
-		}
-
-		// When any pill is active, dim the non-active siblings
-		[data-vehicle-selector][data-active='true'] &:not([aria-selected='true']) {
-			opacity: 0.6;
-		}
-	}
+	// Vehicle selector removed from the homepage hero.
+	// Styles kept in .vehicle-selector for future use on /shop/ if needed.
 }
 
 // ==========================================================================

@@ -25,10 +25,8 @@ $cta_primary_url   = get_theme_mod( 'bmg_hero_cta_primary_url', '/quote/' );
 $cta_secondary_text = get_theme_mod( 'bmg_hero_cta_secondary_text', __( 'Explore Services', 'bmg-theme' ) );
 $cta_secondary_url = get_theme_mod( 'bmg_hero_cta_secondary_url', '#features' );
 $background_image  = get_theme_mod( 'bmg_hero_background_image', '' );
-$selector_enabled  = (bool) get_theme_mod( 'bmg_hero_vehicle_selector_enabled', true );
 
-// Trust strip — 4 flat Customizer fields (the spec calls for a repeater; we
-// model it as four discrete fields for simplicity in core Customizer).
+// Trust strip — 4 flat Customizer fields.
 $trust_items = array(
 	get_theme_mod( 'bmg_hero_trust_item_1', __( 'LIFETIME WARRANTY', 'bmg-theme' ) ),
 	get_theme_mod( 'bmg_hero_trust_item_2', __( '4,200+ INSTALLS', 'bmg-theme' ) ),
@@ -36,14 +34,6 @@ $trust_items = array(
 	get_theme_mod( 'bmg_hero_trust_item_4', __( '4.9★ GOOGLE', 'bmg-theme' ) ),
 );
 $trust_items = array_filter( array_map( 'trim', $trust_items ) );
-
-// Vehicle selector pills — static list.
-$vehicle_pills = array(
-	'truck' => __( 'Trucks', 'bmg-theme' ),
-	'jeep'  => __( 'Jeeps', 'bmg-theme' ),
-	'suv'   => __( 'SUVs', 'bmg-theme' ),
-	'fleet' => __( 'Fleet', 'bmg-theme' ),
-);
 
 // Background inline style.
 $bg_style = $background_image
@@ -127,18 +117,7 @@ $bg_style = $background_image
 			</div>
 		</div>
 
-		<?php if ( $selector_enabled && ! empty( $vehicle_pills ) ) : ?>
-			<div class="section-hero__vehicle-selector hero-animate hero-animate--delay-5" role="tablist" aria-label="<?php esc_attr_e( 'Filter by vehicle type', 'bmg-theme' ); ?>" data-vehicle-selector>
-				<span class="section-hero__vehicle-selector-label"><?php esc_html_e( 'I drive a', 'bmg-theme' ); ?></span>
-				<div class="section-hero__vehicle-selector-pills">
-					<?php foreach ( $vehicle_pills as $slug => $label ) : ?>
-						<button type="button" class="section-hero__vehicle-pill" role="tab" aria-selected="false" data-vehicle="<?php echo esc_attr( $slug ); ?>">
-							<?php echo esc_html( $label ); ?>
-						</button>
-					<?php endforeach; ?>
-				</div>
-			</div>
-		<?php endif; ?>
+		<?php // Vehicle selector removed — available for future use on /shop/ if needed. ?>
 
 	</div>
 

@@ -16436,13 +16436,13 @@ html {
 .section-hero__headline {
   font-family: "Barlow Condensed", "Barlow", Arial, sans-serif;
   font-weight: 800;
-  font-size: clamp(3rem, 8vw, 6.25rem);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
   line-height: 0.95;
   letter-spacing: 0.005em;
   text-transform: uppercase;
   color: #F5F2EE;
   margin: 0 0 1.5rem;
-  max-width: 14ch;
+  max-width: 18ch;
 }
 .section-hero__subline {
   font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
@@ -16517,86 +16517,6 @@ html {
 }
 .section-hero__trust-item-prefix, .section-hero__trust-item-suffix {
   white-space: nowrap;
-}
-.section-hero__vehicle-selector {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 3rem;
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  padding: 0 var(--bs-gutter-x, 1.5rem);
-}
-@media (max-width: 767.98px) {
-  .section-hero__vehicle-selector {
-    position: static;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-top: 3rem;
-    padding: 0;
-  }
-}
-.section-hero__vehicle-selector-label {
-  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: rgba(245, 242, 238, 0.6);
-  flex-shrink: 0;
-}
-.section-hero__vehicle-selector-pills {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: nowrap;
-}
-@media (max-width: 767.98px) {
-  .section-hero__vehicle-selector-pills {
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 4px;
-    width: 100%;
-    scrollbar-width: none;
-  }
-  .section-hero__vehicle-selector-pills::-webkit-scrollbar {
-    display: none;
-  }
-}
-.section-hero__vehicle-pill {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 44px;
-  min-width: 44px;
-  padding: 10px 20px;
-  background: transparent;
-  border: 1px solid rgba(245, 242, 238, 0.25);
-  border-radius: 0;
-  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(245, 242, 238, 0.75);
-  cursor: pointer;
-  transition: background-color 200ms cubic-bezier(0.16, 1, 0.3, 1), border-color 200ms cubic-bezier(0.16, 1, 0.3, 1), color 200ms cubic-bezier(0.16, 1, 0.3, 1), opacity 200ms cubic-bezier(0.16, 1, 0.3, 1);
-  scroll-snap-align: start;
-  flex-shrink: 0;
-}
-.section-hero__vehicle-pill:hover, .section-hero__vehicle-pill:focus-visible {
-  color: #F5F2EE;
-  border-color: rgba(245, 242, 238, 0.5);
-  outline: none;
-}
-.section-hero__vehicle-pill[aria-selected=true] {
-  background-color: #C41E2A;
-  border-color: #C41E2A;
-  color: #F5F2EE;
-}
-[data-vehicle-selector][data-active=true] .section-hero__vehicle-pill:not([aria-selected=true]) {
-  opacity: 0.6;
 }
 
 .section-quote-form {
