@@ -498,11 +498,12 @@ html {
 }
 
 // --------------------------------------------------------------------------
-// Quote Sidebar — dark premium trust panel
+// Quote Sidebar — warm credential panel
 // --------------------------------------------------------------------------
-// Single cohesive dark card with noise grain, trust items, phone CTA,
-// hours, address, and Google rating. Sticky on desktop, full-width
-// band below the form on mobile.
+// Matches the site's card language: white bg, 1px border, 3px red top
+// accent. Same visual family as the contact info card, founder badges,
+// and about-page credentials. Structured info blocks separated by
+// hairline dividers with mono red overlines.
 // --------------------------------------------------------------------------
 
 .quote-sidebar-col {
@@ -514,55 +515,31 @@ html {
 }
 
 .quote-sidebar {
-	position: relative;
-	background-color: $brand-dark;
-	color: $text-on-dark;
-	padding: $space-xl;
-	overflow: hidden;
+	background-color: $brand-white;
+	border: 1px solid $border-color;
+	border-top: 3px solid $brand-primary;
 
-	@media (max-width: 575.98px) {
+	// ----- Section container -----
+	&__section {
 		padding: $space-lg;
+
+		@media (max-width: 575.98px) {
+			padding: $space-md;
+		}
 	}
 
-	// Noise grain — same as hero/founder/cta sections
-	&__grain {
-		position: absolute;
-		inset: 0;
-		background-image: url('../img/noise.png');
-		background-repeat: repeat;
-		opacity: 0.04;
-		pointer-events: none;
-		mix-blend-mode: overlay;
-		z-index: 0;
-	}
-
-	// All content above grain
-	> *:not(.quote-sidebar__grain) {
-		position: relative;
-		z-index: 1;
-	}
-
-	// Shared overline
-	&__overline {
-		display: block;
+	// ----- Shared heading -----
+	&__heading {
 		font-family: $font-family-mono;
 		font-size: 10px;
 		font-weight: 500;
 		letter-spacing: 0.18em;
 		text-transform: uppercase;
 		color: $brand-primary;
-		margin-bottom: $space-sm;
+		margin: 0 0 $space-sm;
 	}
 
-	// Divider
-	&__divider {
-		border: 0;
-		height: 1px;
-		background-color: rgba($text-on-dark, 0.1);
-		margin: $space-lg 0;
-	}
-
-	// Trust list
+	// ----- Trust list -----
 	&__trust {
 		list-style: none;
 		padding: 0;
@@ -572,113 +549,161 @@ html {
 			display: flex;
 			align-items: flex-start;
 			gap: $space-sm;
-			padding: 6px 0;
+			padding: 8px 0;
 			font-family: $font-family-base;
 			font-size: 0.9375rem;
 			font-weight: 400;
-			line-height: 1.5;
-			color: rgba($text-on-dark, 0.85);
+			line-height: 1.45;
+			color: $text-primary;
+			border-bottom: 1px solid $border-light;
+
+			&:last-child {
+				border-bottom: 0;
+				padding-bottom: 0;
+			}
 
 			svg {
 				flex-shrink: 0;
 				color: $brand-primary;
 				margin-top: 2px;
 			}
+
+			span {
+				flex: 1 1 auto;
+			}
 		}
 	}
 
-	// Phone CTA — amber block
+	// ----- Phone CTA -----
 	&__phone {
 		display: flex;
-		flex-direction: column;
 		align-items: center;
-		gap: 4px;
-		padding: $space-lg $space-md;
+		gap: $space-md;
+		padding: $space-md $space-lg;
 		background-color: $brand-accent;
 		color: $brand-dark;
 		text-decoration: none;
-		text-align: center;
 		transition: background-color $motion-fast $ease-out-expo;
 
 		&:hover,
 		&:focus-visible {
-			background-color: darken($brand-accent, 6%);
+			background-color: darken($brand-accent, 5%);
 			color: $brand-dark;
 			outline: none;
 		}
 
-		svg {
-			flex-shrink: 0;
-			margin-bottom: 4px;
+		@media (max-width: 575.98px) {
+			padding: $space-md;
 		}
+	}
+
+	&__phone-icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 40px;
+		height: 40px;
+		flex-shrink: 0;
+		background-color: rgba($brand-dark, 0.1);
+		border-radius: 50%;
+
+		svg {
+			display: block;
+		}
+	}
+
+	&__phone-text {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__phone-label {
+		font-family: $font-family-mono;
+		font-size: 9px;
+		font-weight: 500;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		opacity: 0.7;
 	}
 
 	&__phone-number {
 		font-family: $font-family-mono;
 		font-weight: 700;
-		font-size: 1.25rem;
+		font-size: 1.125rem;
 		letter-spacing: 0.02em;
 	}
 
-	&__phone-sub {
-		font-family: $font-family-base;
-		font-weight: 500;
-		font-size: 0.8125rem;
-		letter-spacing: 0.04em;
-		text-transform: uppercase;
-		opacity: 0.75;
+	// ----- Info grid (hours + location) -----
+	&__info {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		border-top: 1px solid $border-light;
+
+		@media (max-width: 575.98px) {
+			grid-template-columns: 1fr;
+		}
 	}
 
-	// Detail text (hours, etc.)
-	&__detail {
+	&__info-block {
+		padding: $space-lg;
+
+		&:first-child {
+			border-right: 1px solid $border-light;
+
+			@media (max-width: 575.98px) {
+				border-right: 0;
+				border-bottom: 1px solid $border-light;
+			}
+		}
+
+		@media (max-width: 575.98px) {
+			padding: $space-md;
+		}
+	}
+
+	&__text {
 		font-family: $font-family-base;
-		font-size: 0.9375rem;
+		font-size: 0.875rem;
 		font-weight: 400;
 		line-height: 1.6;
-		color: rgba($text-on-dark, 0.78);
+		color: $text-secondary;
 		margin: 0;
 	}
 
-	// Address
-	&__address {
-		font-style: normal;
-		font-family: $font-family-base;
-		font-size: 0.9375rem;
-		line-height: 1.6;
-		color: rgba($text-on-dark, 0.78);
-		margin: 0;
-	}
-
-	// Google rating
+	// ----- Rating footer -----
 	&__rating {
 		display: flex;
-		align-items: baseline;
+		align-items: center;
 		gap: 8px;
-		margin-top: $space-lg;
-		padding-top: $space-lg;
-		border-top: 1px solid rgba($text-on-dark, 0.1);
+		padding: $space-sm $space-lg;
+		border-top: 1px solid $border-light;
+		background-color: $brand-warm-white;
+
+		@media (max-width: 575.98px) {
+			padding: $space-sm $space-md;
+		}
 	}
 
 	&__rating-stars {
 		color: $brand-accent;
-		font-size: 14px;
-		letter-spacing: 2px;
+		font-size: 13px;
+		letter-spacing: 1px;
 	}
 
-	&__rating-value {
+	&__rating-score {
 		font-family: $font-family-mono;
 		font-weight: 700;
-		font-size: 14px;
-		color: $text-on-dark;
+		font-size: 13px;
+		color: $text-primary;
 	}
 
 	&__rating-label {
 		font-family: $font-family-mono;
 		font-size: 9px;
 		font-weight: 500;
-		letter-spacing: 0.15em;
+		letter-spacing: 0.12em;
 		text-transform: uppercase;
-		color: rgba($text-on-dark, 0.5);
+		color: $text-secondary;
 	}
 }
 

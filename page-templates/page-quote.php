@@ -73,63 +73,66 @@ $form_id = (int) get_theme_mod( 'bmg_quote_form_id', 0 );
 					?>
 				</div>
 
-				<?php // Sticky dark sidebar — single cohesive trust panel ?>
+				<?php // Sidebar — warm credential panel matching the site's card language ?>
 				<aside class="col-lg-4 quote-sidebar-col">
 					<div class="quote-sidebar">
-						<div class="quote-sidebar__grain" aria-hidden="true"></div>
 
-						<?php // Trust items ?>
-						<span class="quote-sidebar__overline"><?php esc_html_e( 'WHY RHINO', 'bmg-theme' ); ?></span>
-						<ul class="quote-sidebar__trust" role="list">
-							<?php
-							$trust_items = array(
-								__( 'Free, no-obligation quote', 'bmg-theme' ),
-								__( 'Response within one business day', 'bmg-theme' ),
-								__( 'Written quote with itemized pricing', 'bmg-theme' ),
-								__( 'No pressure, no upsell', 'bmg-theme' ),
-							);
-							foreach ( $trust_items as $item ) :
-								?>
-								<li>
-									<svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-										<path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="miter"/>
-									</svg>
-									<?php echo esc_html( $item ); ?>
-								</li>
-							<?php endforeach; ?>
-						</ul>
+						<?php // ---- Trust section ---- ?>
+						<div class="quote-sidebar__section">
+							<h3 class="quote-sidebar__heading"><?php esc_html_e( 'WHY RHINO', 'bmg-theme' ); ?></h3>
+							<ul class="quote-sidebar__trust" role="list">
+								<?php
+								$trust_items = array(
+									__( 'Free, no-obligation quote', 'bmg-theme' ),
+									__( 'Response within one business day', 'bmg-theme' ),
+									__( 'Written quote with itemized pricing', 'bmg-theme' ),
+									__( 'No pressure, no upsell', 'bmg-theme' ),
+								);
+								foreach ( $trust_items as $item ) :
+									?>
+									<li>
+										<svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+											<path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="miter"/>
+										</svg>
+										<span><?php echo esc_html( $item ); ?></span>
+									</li>
+								<?php endforeach; ?>
+							</ul>
+						</div>
 
-						<hr class="quote-sidebar__divider" aria-hidden="true">
-
-						<?php // Phone CTA ?>
+						<?php // ---- Phone CTA ---- ?>
 						<a class="quote-sidebar__phone" href="tel:<?php echo esc_attr( $phone_link ); ?>">
-							<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-								<path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 6a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
-							</svg>
-							<span class="quote-sidebar__phone-number"><?php echo esc_html( $phone_display ); ?></span>
-							<span class="quote-sidebar__phone-sub"><?php esc_html_e( 'Talk to a builder', 'bmg-theme' ); ?></span>
+							<div class="quote-sidebar__phone-icon">
+								<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+									<path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 6a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+								</svg>
+							</div>
+							<div class="quote-sidebar__phone-text">
+								<span class="quote-sidebar__phone-label"><?php esc_html_e( 'TALK TO A BUILDER', 'bmg-theme' ); ?></span>
+								<span class="quote-sidebar__phone-number"><?php echo esc_html( $phone_display ); ?></span>
+							</div>
 						</a>
 
-						<hr class="quote-sidebar__divider" aria-hidden="true">
+						<?php // ---- Info grid: Hours + Location ---- ?>
+						<div class="quote-sidebar__info">
+							<div class="quote-sidebar__info-block">
+								<h3 class="quote-sidebar__heading"><?php esc_html_e( 'HOURS', 'bmg-theme' ); ?></h3>
+								<p class="quote-sidebar__text"><?php echo esc_html( $hours_weekday ); ?></p>
+								<p class="quote-sidebar__text"><?php echo esc_html( $hours_weekend ); ?></p>
+							</div>
+							<div class="quote-sidebar__info-block">
+								<h3 class="quote-sidebar__heading"><?php esc_html_e( 'LOCATION', 'bmg-theme' ); ?></h3>
+								<address class="quote-sidebar__text" style="font-style:normal">
+									<?php echo esc_html( $address_street ); ?><br>
+									<?php echo esc_html( $address_city ); ?>
+								</address>
+							</div>
+						</div>
 
-						<?php // Hours ?>
-						<span class="quote-sidebar__overline"><?php esc_html_e( 'HOURS', 'bmg-theme' ); ?></span>
-						<p class="quote-sidebar__detail"><?php echo esc_html( $hours_weekday ); ?></p>
-						<p class="quote-sidebar__detail"><?php echo esc_html( $hours_weekend ); ?></p>
-
-						<hr class="quote-sidebar__divider" aria-hidden="true">
-
-						<?php // Address ?>
-						<span class="quote-sidebar__overline"><?php esc_html_e( 'VISIT THE SHOP', 'bmg-theme' ); ?></span>
-						<address class="quote-sidebar__address">
-							<?php echo esc_html( $address_street ); ?><br>
-							<?php echo esc_html( $address_city ); ?>
-						</address>
-
-						<?php // Rating ?>
+						<?php // ---- Rating footer ---- ?>
 						<div class="quote-sidebar__rating">
 							<span class="quote-sidebar__rating-stars" aria-hidden="true">★★★★★</span>
-							<span class="quote-sidebar__rating-value"><?php echo esc_html( $google_rating ); ?></span>
+							<span class="quote-sidebar__rating-score"><?php echo esc_html( $google_rating ); ?></span>
 							<span class="quote-sidebar__rating-label"><?php esc_html_e( 'Google Rating', 'bmg-theme' ); ?></span>
 						</div>
 

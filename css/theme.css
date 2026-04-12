@@ -16555,46 +16555,26 @@ html {
 }
 
 .quote-sidebar {
-  position: relative;
-  background-color: #1A1A1A;
-  color: #F5F2EE;
-  padding: 3rem;
-  overflow: hidden;
+  background-color: #FFFFFF;
+  border: 1px solid #D1CCC5;
+  border-top: 3px solid #C41E2A;
+}
+.quote-sidebar__section {
+  padding: 2rem;
 }
 @media (max-width: 575.98px) {
-  .quote-sidebar {
-    padding: 2rem;
+  .quote-sidebar__section {
+    padding: 1.5rem;
   }
 }
-.quote-sidebar__grain {
-  position: absolute;
-  inset: 0;
-  background-image: url("../img/noise.png");
-  background-repeat: repeat;
-  opacity: 0.04;
-  pointer-events: none;
-  mix-blend-mode: overlay;
-  z-index: 0;
-}
-.quote-sidebar > *:not(.quote-sidebar__grain) {
-  position: relative;
-  z-index: 1;
-}
-.quote-sidebar__overline {
-  display: block;
+.quote-sidebar__heading {
   font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: #C41E2A;
-  margin-bottom: 1rem;
-}
-.quote-sidebar__divider {
-  border: 0;
-  height: 1px;
-  background-color: rgba(245, 242, 238, 0.1);
-  margin: 2rem 0;
+  margin: 0 0 1rem;
 }
 .quote-sidebar__trust {
   list-style: none;
@@ -16605,95 +16585,143 @@ html {
   display: flex;
   align-items: flex-start;
   gap: 1rem;
-  padding: 6px 0;
+  padding: 8px 0;
   font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.9375rem;
   font-weight: 400;
-  line-height: 1.5;
-  color: rgba(245, 242, 238, 0.85);
+  line-height: 1.45;
+  color: #1A1A1A;
+  border-bottom: 1px solid #E8E4DE;
+}
+.quote-sidebar__trust > li:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
 }
 .quote-sidebar__trust > li svg {
   flex-shrink: 0;
   color: #C41E2A;
   margin-top: 2px;
 }
+.quote-sidebar__trust > li span {
+  flex: 1 1 auto;
+}
 .quote-sidebar__phone {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 4px;
-  padding: 2rem 1.5rem;
+  gap: 1.5rem;
+  padding: 1.5rem 2rem;
   background-color: #E8913A;
   color: #1A1A1A;
   text-decoration: none;
-  text-align: center;
   transition: background-color 200ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 .quote-sidebar__phone:hover, .quote-sidebar__phone:focus-visible {
-  background-color: rgb(228.8009090909, 129.7, 30.5990909091);
+  background-color: rgb(229.3340909091, 132.25, 35.1659090909);
   color: #1A1A1A;
   outline: none;
 }
-.quote-sidebar__phone svg {
-  flex-shrink: 0;
-  margin-bottom: 4px;
+@media (max-width: 575.98px) {
+  .quote-sidebar__phone {
+    padding: 1.5rem;
+  }
 }
-.quote-sidebar__phone-number {
-  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
-  font-weight: 700;
-  font-size: 1.25rem;
-  letter-spacing: 0.02em;
-}
-.quote-sidebar__phone-sub {
-  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-  font-weight: 500;
-  font-size: 0.8125rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  opacity: 0.75;
-}
-.quote-sidebar__detail {
-  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-  font-size: 0.9375rem;
-  font-weight: 400;
-  line-height: 1.6;
-  color: rgba(245, 242, 238, 0.78);
-  margin: 0;
-}
-.quote-sidebar__address {
-  font-style: normal;
-  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-  font-size: 0.9375rem;
-  line-height: 1.6;
-  color: rgba(245, 242, 238, 0.78);
-  margin: 0;
-}
-.quote-sidebar__rating {
+.quote-sidebar__phone-icon {
   display: flex;
-  align-items: baseline;
-  gap: 8px;
-  margin-top: 2rem;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(245, 242, 238, 0.1);
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  background-color: rgba(26, 26, 26, 0.1);
+  border-radius: 50%;
 }
-.quote-sidebar__rating-stars {
-  color: #E8913A;
-  font-size: 14px;
-  letter-spacing: 2px;
+.quote-sidebar__phone-icon svg {
+  display: block;
 }
-.quote-sidebar__rating-value {
-  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
-  font-weight: 700;
-  font-size: 14px;
-  color: #F5F2EE;
+.quote-sidebar__phone-text {
+  display: flex;
+  flex-direction: column;
 }
-.quote-sidebar__rating-label {
+.quote-sidebar__phone-label {
   font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
   font-size: 9px;
   font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: rgba(245, 242, 238, 0.5);
+  opacity: 0.7;
+}
+.quote-sidebar__phone-number {
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-weight: 700;
+  font-size: 1.125rem;
+  letter-spacing: 0.02em;
+}
+.quote-sidebar__info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid #E8E4DE;
+}
+@media (max-width: 575.98px) {
+  .quote-sidebar__info {
+    grid-template-columns: 1fr;
+  }
+}
+.quote-sidebar__info-block {
+  padding: 2rem;
+}
+.quote-sidebar__info-block:first-child {
+  border-right: 1px solid #E8E4DE;
+}
+@media (max-width: 575.98px) {
+  .quote-sidebar__info-block:first-child {
+    border-right: 0;
+    border-bottom: 1px solid #E8E4DE;
+  }
+}
+@media (max-width: 575.98px) {
+  .quote-sidebar__info-block {
+    padding: 1.5rem;
+  }
+}
+.quote-sidebar__text {
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #5A5651;
+  margin: 0;
+}
+.quote-sidebar__rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 1rem 2rem;
+  border-top: 1px solid #E8E4DE;
+  background-color: #F5F2EE;
+}
+@media (max-width: 575.98px) {
+  .quote-sidebar__rating {
+    padding: 1rem 1.5rem;
+  }
+}
+.quote-sidebar__rating-stars {
+  color: #E8913A;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+.quote-sidebar__rating-score {
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-weight: 700;
+  font-size: 13px;
+  color: #1A1A1A;
+}
+.quote-sidebar__rating-label {
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #5A5651;
 }
 
 .section-quote-form .gform_wrapper,
