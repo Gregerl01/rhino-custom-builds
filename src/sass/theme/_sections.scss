@@ -888,6 +888,87 @@ html {
 // PAGE: Contact
 // ==========================================================================
 
+// ==========================================================================
+// PAGE: Services Hub
+// ==========================================================================
+// Two new blocks scoped to the /services/ hub page. The hub page also
+// reuses .section-features + .service-card-xl (from the homepage) and
+// .section-proof__stats (from the homepage proof section) directly.
+// ==========================================================================
+
+.section-install-callout {
+	background-color: $brand-warm-white;
+	color: $text-primary;
+	padding: 120px 0;
+	text-align: center;
+
+	@media (max-width: 767.98px) {
+		padding: 80px 0;
+	}
+
+	&__overline {
+		display: inline-block;
+		font-family: $font-family-mono;
+		font-size: 11px;
+		font-weight: 500;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: $brand-primary;
+		margin-bottom: $space-sm;
+	}
+
+	&__headline {
+		font-family: $font-family-display;
+		font-weight: 700;
+		font-size: clamp(2rem, 4.5vw, 3rem); // 32 → 48
+		line-height: 1.0;
+		letter-spacing: 0.01em;
+		text-transform: uppercase;
+		color: $text-primary;
+		margin: 0 auto $space-md;
+		max-width: 18ch;
+	}
+
+	&__body {
+		font-family: $font-family-base;
+		font-size: 1.0625rem; // 17
+		font-weight: 400;
+		line-height: 1.65;
+		color: $text-secondary;
+		margin: 0 auto $space-xl; // 40 → CTA
+		max-width: 60ch;
+	}
+
+	&__cta {
+		display: inline-flex;
+	}
+}
+
+// Standalone stats strip — wraps the .section-proof__stats list so it
+// can live outside the homepage proof section with its own padding and
+// section-level margins. The list + card internals (dot separators,
+// mono numbers, [data-count-to] animation) come from
+// .section-proof__stats directly, no duplication.
+.section-services-stats {
+	background-color: $brand-white;
+	color: $text-primary;
+	padding: $space-3xl 0; // 96 top+bottom — tighter than a full section
+
+	@media (max-width: 767.98px) {
+		padding: $space-2xl 0; // 64
+	}
+
+	// Override the vertical borders + margin-bottom that the proof
+	// section applies to the stats list by default. Here the list is
+	// the whole section, no sibling elements above or below it.
+	.section-proof__stats {
+		margin: 0;
+		padding: 0;
+		border-top: 0;
+		border-bottom: 0;
+	}
+}
+
 .section-contact {
 	background-color: $brand-warm-white;
 	color: $text-primary;
