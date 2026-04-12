@@ -18780,6 +18780,104 @@ html {
   line-height: 1.6;
 }
 
+.section-faq-page {
+  background-color: #F5F2EE;
+  color: #1A1A1A;
+  padding: 128px 0 120px;
+}
+@media (max-width: 767.98px) {
+  .section-faq-page {
+    padding: 80px 0;
+  }
+}
+.section-faq-page__group {
+  max-width: 820px;
+  margin: 0 auto 6rem;
+}
+.section-faq-page__group:last-child {
+  margin-bottom: 0;
+}
+.section-faq-page__group-title {
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #C41E2A;
+  margin: 0 0 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #D1CCC5;
+}
+
+.section-faq-contact {
+  background-color: #FFFFFF;
+  color: #1A1A1A;
+  padding: 6rem 0;
+}
+@media (max-width: 767.98px) {
+  .section-faq-contact {
+    padding: 4rem 0;
+  }
+}
+.section-faq-contact__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 3rem;
+  text-decoration: none;
+  border: 1px solid #D1CCC5;
+  transition: border-color 200ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  height: 100%;
+  text-align: center;
+}
+.section-faq-contact__card:hover, .section-faq-contact__card:focus-visible {
+  outline: none;
+  border-color: transparent;
+  box-shadow: 0 8px 32px rgba(26, 26, 26, 0.08);
+}
+.section-faq-contact__card svg {
+  flex-shrink: 0;
+  margin-bottom: 0.5rem;
+}
+.section-faq-contact__card--phone {
+  background-color: #E8913A;
+  color: #1A1A1A;
+  border-color: #E8913A;
+}
+.section-faq-contact__card--phone:hover, .section-faq-contact__card--phone:focus-visible {
+  background-color: rgb(228.8009090909, 129.7, 30.5990909091);
+  color: #1A1A1A;
+  border-color: transparent;
+}
+.section-faq-contact__card--message {
+  background-color: #FFFFFF;
+  color: #1A1A1A;
+}
+.section-faq-contact__card--message:hover, .section-faq-contact__card--message:focus-visible {
+  color: #1A1A1A;
+}
+.section-faq-contact__card-label {
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.section-faq-contact__card-value {
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-weight: 700;
+  font-size: 1.125rem;
+  letter-spacing: 0.02em;
+}
+.section-faq-contact__card--message .section-faq-contact__card-value {
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: #C41E2A;
+}
+
 .section-service-faq {
   background-color: #FFFFFF;
   color: #1A1A1A;

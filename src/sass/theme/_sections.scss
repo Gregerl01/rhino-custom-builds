@@ -2950,6 +2950,122 @@ html {
 // SECTION: Service FAQ (scoped accordion reusing .section-process styles)
 // ==========================================================================
 
+// ==========================================================================
+// PAGE: FAQ (standalone /faq/ page)
+// ==========================================================================
+
+.section-faq-page {
+	background-color: $brand-warm-white;
+	color: $text-primary;
+	padding: 128px 0 120px;
+
+	@media (max-width: 767.98px) {
+		padding: 80px 0;
+	}
+
+	&__group {
+		max-width: 820px;
+		margin: 0 auto $space-3xl;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	&__group-title {
+		font-family: $font-family-mono;
+		font-size: 10px;
+		font-weight: 500;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		color: $brand-primary;
+		margin: 0 0 $space-md;
+		padding-bottom: $space-sm;
+		border-bottom: 1px solid $border-color;
+	}
+}
+
+.section-faq-contact {
+	background-color: $brand-white;
+	color: $text-primary;
+	padding: $space-3xl 0;
+
+	@media (max-width: 767.98px) {
+		padding: $space-2xl 0;
+	}
+
+	&__card {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: $space-xs;
+		padding: $space-xl;
+		text-decoration: none;
+		border: 1px solid $border-color;
+		transition: border-color $motion-fast $ease-out-expo, box-shadow $motion-fast $ease-out-expo;
+		height: 100%;
+		text-align: center;
+
+		&:hover,
+		&:focus-visible {
+			outline: none;
+			border-color: transparent;
+			box-shadow: 0 8px 32px rgba($brand-dark, 0.08);
+		}
+
+		svg {
+			flex-shrink: 0;
+			margin-bottom: $space-xs;
+		}
+
+		&--phone {
+			background-color: $brand-accent;
+			color: $brand-dark;
+			border-color: $brand-accent;
+
+			&:hover,
+			&:focus-visible {
+				background-color: darken($brand-accent, 6%);
+				color: $brand-dark;
+				border-color: transparent;
+			}
+		}
+
+		&--message {
+			background-color: $brand-white;
+			color: $text-primary;
+
+			&:hover,
+			&:focus-visible {
+				color: $text-primary;
+			}
+		}
+	}
+
+	&__card-label {
+		font-family: $font-family-mono;
+		font-size: 10px;
+		font-weight: 500;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+	}
+
+	&__card-value {
+		font-family: $font-family-mono;
+		font-weight: 700;
+		font-size: 1.125rem;
+		letter-spacing: 0.02em;
+	}
+
+	.section-faq-contact__card--message &__card-value {
+		font-family: $font-family-base;
+		font-weight: 600;
+		font-size: 0.9375rem;
+		color: $brand-primary;
+	}
+}
+
 .section-service-faq {
 	background-color: $brand-white;
 	color: $text-primary;
