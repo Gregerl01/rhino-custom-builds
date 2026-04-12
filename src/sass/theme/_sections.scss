@@ -1304,22 +1304,24 @@ html {
 
 	&__media {
 		position: relative;
-		width: 100%;
+		aspect-ratio: 4 / 5;
 		overflow: hidden;
-		border-radius: $radius-sm;
 		background-color: $brand-surface;
 
 		img {
+			position: absolute;
+			inset: 0;
 			width: 100%;
-			height: auto;
+			height: 100%;
+			object-fit: cover;
 			display: block;
 			filter: saturate(0.9) contrast(1.08);
 		}
 	}
 
 	&__placeholder {
-		aspect-ratio: 4 / 5; // only lock aspect on the placeholder
-		position: relative;
+		position: absolute;
+		inset: 0;
 		display: flex;
 		align-items: center;
 		justify-content: center;

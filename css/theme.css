@@ -17340,20 +17340,23 @@ html {
 }
 .section-about-story__media {
   position: relative;
-  width: 100%;
+  aspect-ratio: 4/5;
   overflow: hidden;
-  border-radius: 4px;
   background-color: #E8E4DE;
 }
 .section-about-story__media img {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: auto;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
   display: block;
   filter: saturate(0.9) contrast(1.08);
 }
 .section-about-story__placeholder {
-  aspect-ratio: 4/5;
-  position: relative;
+  position: absolute;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
