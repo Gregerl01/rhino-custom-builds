@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - **Theme:** Rhino Custom Builds Theme
 - **Client:** Rhino Custom Builds
-- **Type:** WordPress + WooCommerce website — truck/off-road services + accessories ecommerce
+- **Type:** WordPress website — truck/off-road services + accessories (V1 uses content arrays, WooCommerce is V2 scope)
 - **Compliance:** Standard (no HIPAA/PHI)
 - **Base:** Understrap child theme (Bootstrap 5 + SCSS)
 - **Parent Theme:** Understrap
@@ -27,7 +27,7 @@ Rhino Custom Builds is a one-stop truck, Jeep, SUV, and off-road shop. The site 
 
 1. **Services** — Spray-on bedliners, protective coatings, truck accessories & upfitting, off-road & overland builds, fleet services
 2. **Custom builds** — Full-build project showcase via a `project` CPT
-3. **Parts & gear (WooCommerce)** — Bumpers, lighting, lifts, wheels, winches, cargo systems, overland kits, from brands like ARB, Fox, Warn, Rigid, Method, Baja Designs
+3. **Parts & gear (V1: content arrays / V2: WooCommerce)** — Bumpers, lighting, lifts, wheels, winches, cargo systems, overland kits, from brands like ARB, Fox, Warn, Rigid, Method, Baja Designs. V1 uses a category-first discovery experience with content arrays (same pattern as the service detail pages). WooCommerce is V2 scope — the V1 content model (category names, brand names, product fields, vehicle type labels) is kept disciplined so migration is clean.
 
 **Primary conversion:** Quote requests + phone calls (general line for consumer, dedicated line for fleet).
 **Secondary conversion:** Ecommerce purchases, with in-bay install cross-sell on every product.
@@ -218,9 +218,22 @@ Archive: `/gallery/`. Single: `/gallery/[slug]/`.
 
 ---
 
-## WooCommerce
+## Shop / Product Discovery (V1 Strategy)
 
-### Top-Level Product Categories
+> **V1 does not use WooCommerce.** The shop section uses content arrays (same pattern as the service detail pages in `inc/service-content.php`). WooCommerce is V2 scope — when the time comes, the V1 content model migrates cleanly because category names, brand names, product fields, and vehicle type labels are kept consistent with the WooCommerce taxonomy conventions.
+
+### V1 Shop Architecture
+
+- **Category-first discovery** at `/shop/` — 9 category tiles on the landing page, each linking to a category page
+- **Category pages** show: category description, relevant brand logos, 3–5 featured/example products, "Request a Quote" CTA
+- **Content source:** Content arrays in a shop content registry (like `inc/service-content.php` but for shop categories + products)
+- **Quote flow:** Gravity Forms powers the existing `/quote/` form. Product interest carries into the form as hidden fields or pre-selected service categories
+- **Vehicle selector pills** (Truck / Jeep / SUV / Van) optionally filter which categories are highlighted on the shop landing page
+- **Brands** shown as logo strips and trust signals on category pages — not browsable catalog pages in V1
+- **No Build List** — that's V2 scope (sessionStorage-based product collection → quote submission)
+- **No vehicle fitment filter** — that's V3 scope (Year → Make → Model → Trim cascading selects)
+
+### Top-Level Product Categories (V1 — consistent naming for V2 migration)
 
 1. Bumpers & Armor — Front bumpers, rear bumpers, skid plates, rock sliders, grille guards
 2. Lighting — Light bars, pods, fog lights, rock lights, auxiliary headlights
@@ -232,20 +245,22 @@ Archive: `/gallery/`. Single: `/gallery/[slug]/`.
 8. Interior & Electrical — Switch panels, dash mounts, USB kits, radio mounts
 9. Exterior Accessories — Running boards, fender flares, mud flaps, grilles
 
-### Filtering Strategy
+### V1 Content Discipline (for clean V2 WooCommerce migration)
 
-- **V1 ships:** Category filter, brand filter, price range, capability (off-road products)
-- **V1.5 ships:** Vehicle Fitment Filter (Year → Make → Model → Trim). Stored in sessionStorage as `rhino_vehicle`. Shop header shows "Showing products that fit: 2023 Ford F-150 Lariat · [Change] · [Clear]". Non-fitment-tagged products labeled "Universal Fit." Progressive enhancement — shop still works without JS.
+When building V1 content arrays, use these exact names and conventions so V2 migration to WooCommerce taxonomies is a 1:1 map:
 
-### Service ↔ Shop Cross-Sell Strategy
+- **Category slugs:** `bumpers-armor`, `lighting`, `suspension-lifts`, `wheels-tires`, `recovery-winches`, `bed-cargo`, `overland-gear`, `interior-electrical`, `exterior-accessories`
+- **Brand slugs:** `arb`, `fox`, `warn`, `rigid-industries`, `method-race-wheels`, `bfgoodrich`, `rough-country`, `baja-designs`, `smittybilt`, `rhino-rack`
+- **Vehicle types:** `truck`, `jeep`, `suv`, `van`, `universal`
+- **Product fields:** `title`, `description`, `short_description`, `price` (starting-at, optional), `sku` (optional), `brand`, `categories` (array), `vehicle_types` (array), `gallery` (array of URLs), `install_available` (boolean)
 
-- **Service detail pages:** "Products We Install" section with 6–8 featured WC products from relevant category + "Buy + Install" CTAs
-- **Single product pages:** Install Cross-Sell Banner below price/Add to Cart: "Need this installed? Our certified builders can install your [Product Name] in-bay with warranty coverage on labor. [Add Installation to Quote →]"
+### Service ↔ Shop Cross-Sell Strategy (V1)
+
+- **Service detail pages:** "Products We Install" section with 3–5 featured products from the relevant category + "Request a Quote" CTAs (V1 renders from content arrays, not WooCommerce queries)
 - **Homepage:** 6th service card in features grid = "Shop Parts & Gear" → `/shop/`
-- **Shop archive header:** Persistent callout "All products include optional in-bay installation. Ask about installation →"
-- **Cart page:** Below line items, before checkout: "Want these installed? Add a quote request to your order."
+- **Shop landing header:** Persistent callout "All products include optional in-bay installation. Ask about installation →"
 
-See `references/rhino-build-spec.md` §4 for full WooCommerce spec.
+See `references/rhino-build-spec.md` §4 for the full shop spec including V2/V3 scope.
 
 ---
 

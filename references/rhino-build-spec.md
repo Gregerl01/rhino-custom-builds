@@ -523,92 +523,144 @@ HAMBURGER MENU (full-screen drawer, dark background)
 
 ---
 
-## 4. WooCommerce Detail
+## 4. Shop / Product Discovery
 
-### 4.1 Top-Level Product Categories
+> **V1 does not use WooCommerce.** The shop section uses content arrays (same pattern as the service detail pages). WooCommerce is V2 scope. The V1 content model is kept disciplined (consistent category slugs, brand slugs, product fields, vehicle type labels) so V2 migration to WooCommerce taxonomies is a clean 1:1 map.
 
-1. **Bumpers & Armor** — Front bumpers, rear bumpers, skid plates, rock sliders, grille guards
-2. **Lighting** — Light bars, pods, fog lights, rock lights, auxiliary headlights
-3. **Suspension & Lifts** — Lift kits, leveling kits, shocks, struts, control arms
-4. **Wheels & Tires** — Off-road wheels, all-terrain tires, mud tires, beadlocks
-5. **Recovery & Winches** — Winches, straps, shackles, recovery boards, D-rings
-6. **Bed & Cargo** — Tonneau covers, bed racks, toolboxes, cargo management, tie-downs
-7. **Overland Gear** — Roof tents, awnings, roof racks, fridges, water storage
-8. **Interior & Electrical** — Switch panels, dash mounts, USB kits, radio mounts
-9. **Exterior Accessories** — Running boards, fender flares, mud flaps, grilles
+### 4.1 V1 Shop Architecture
 
-### 4.2 Product Filtering
+- **Category-first discovery** at `/shop/` — 9 category tiles on the landing page
+- **Category pages** at `/shop/{category-slug}/` — category description, relevant brand logos, 3–5 featured/example products, "Request a Quote" CTA
+- **Content source:** Content arrays in a shop content registry file (like `inc/service-content.php` but for shop categories + products)
+- **Quote flow:** Gravity Forms powers the existing `/quote/` form. Product interest carries into the form as hidden fields or pre-selected service categories
+- **Vehicle selector pills** (Truck / Jeep / SUV / Van) optionally filter which categories are highlighted on the shop landing page — reuses the existing `rhino:vehicle-change` JS event from the homepage hero
+- **Brands** shown as logo strips and trust signals on category pages — not browsable catalog pages in V1
+- **No Build List in V1** — V2 scope (sessionStorage-based product collection → quote submission)
+- **No vehicle fitment filter in V1** — V3 scope (Year → Make → Model → Trim cascading selects)
 
-- **By Category** — standard WC taxonomy (left sidebar desktop, top filter bar mobile)
-- **By Vehicle Type** — custom taxonomy `product_vehicle_type` (Truck / Jeep / SUV / Van / Universal)
-- **By Brand** — custom taxonomy `product_brand` (ARB, Fox, Warn, Rigid, Method, Baja Designs, etc.)
-- **By Capability** (off-road products only) — Mild / Moderate / Extreme
-- **By Price** — standard WC price range filter
+### 4.2 Top-Level Product Categories (9 categories — naming locked for V2 migration)
 
-### 4.3 Vehicle Fitment Filter — V1.5 SCOPE
+1. **Bumpers & Armor** (`bumpers-armor`) — Front bumpers, rear bumpers, skid plates, rock sliders, grille guards
+2. **Lighting** (`lighting`) — Light bars, pods, fog lights, rock lights, auxiliary headlights
+3. **Suspension & Lifts** (`suspension-lifts`) — Lift kits, leveling kits, shocks, struts, control arms
+4. **Wheels & Tires** (`wheels-tires`) — Off-road wheels, all-terrain tires, mud tires, beadlocks
+5. **Recovery & Winches** (`recovery-winches`) — Winches, straps, shackles, recovery boards, D-rings
+6. **Bed & Cargo** (`bed-cargo`) — Tonneau covers, bed racks, toolboxes, cargo management, tie-downs
+7. **Overland Gear** (`overland-gear`) — Roof tents, awnings, roof racks, fridges, water storage
+8. **Interior & Electrical** (`interior-electrical`) — Switch panels, dash mounts, USB kits, radio mounts
+9. **Exterior Accessories** (`exterior-accessories`) — Running boards, fender flares, mud flaps, grilles
 
-Top-of-shop bar: Year → Make → Model → Trim. Stored in sessionStorage as `rhino_vehicle`. If set, subsequent shop pages show pill "Showing products that fit: 2023 Ford F-150 Lariat · [Change] · [Clear]". Non-fitment-tagged products still display, labeled "Universal Fit." Implementation: custom post meta on products with fitment arrays; progressive enhancement — shop still works without JS.
+### 4.3 V1 Product Data Shape (content arrays)
 
-**V1 ships with category + brand filtering only. Vehicle fitment ships in V1.5.**
+Each featured product in the V1 content array uses this structure so the data migrates 1:1 to WooCommerce in V2:
 
-### 4.4 Service ↔ Shop Cross-Sell Strategy
+```php
+array(
+    'title'             => 'ARB Deluxe Front Bumper',
+    'short_description' => 'Bull-bar style bumper with winch mount and fog light provisions.',
+    'price'             => '$1,895',             // "Starting at" — optional, blank = "Quote for pricing"
+    'sku'               => 'ARB-3462020',        // optional
+    'brand'             => 'arb',                // slug — matches V2 product_brand taxonomy
+    'categories'        => array( 'bumpers-armor' ), // slugs — match V2 product_cat taxonomy
+    'vehicle_types'     => array( 'truck', 'suv' ),  // slugs — match V2 product_vehicle_type taxonomy
+    'image'             => '/wp-content/uploads/...', // featured image URL
+    'install_available' => true,
+)
+```
 
-**On every service detail page:**
-- "Products We Install" section shows 6–8 featured WC products from the relevant category with "Buy + Install" CTAs
-- Product cards link to single product pages with install cross-sell banner attached
+### 4.4 Brand List (slugs locked for V2 migration)
 
-**On every single product page:**
-- Install Cross-Sell Banner appears below price/add-to-cart:
-  - "Need this installed?"
-  - "Our certified builders can install your [Product Name] in-bay with warranty coverage on labor."
-  - "Add Installation to Quote →"
-- Clicking pre-populates the quote form with product info and parent service category
+| Display Name | Slug |
+|---|---|
+| ARB | `arb` |
+| Fox | `fox` |
+| Warn | `warn` |
+| Rigid Industries | `rigid-industries` |
+| Method Race Wheels | `method-race-wheels` |
+| BFGoodrich | `bfgoodrich` |
+| Rough Country | `rough-country` |
+| Baja Designs | `baja-designs` |
+| Smittybilt | `smittybilt` |
+| Rhino-Rack | `rhino-rack` |
+
+### 4.5 Service ↔ Shop Cross-Sell Strategy (V1)
+
+**On service detail pages:**
+- "Products We Install" section with 3–5 featured products from the relevant category + "Request a Quote" CTAs (rendered from content arrays, not WooCommerce queries)
 
 **On the homepage:**
-- 6th service card in features grid is "Shop Parts & Gear" → /shop/
+- 6th service card in features grid = "Shop Parts & Gear" → `/shop/`
 
-**On shop archive:**
-- Persistent callout bar at top of /shop/: "All products include optional in-bay installation. Ask about installation →"
+**On shop landing page:**
+- Persistent callout bar: "All products include optional in-bay installation. Ask about installation →"
 
-**On cart page:**
-- Below line items, before checkout: "Want these installed? Add a quote request to your order."
+### 4.6 V2 WooCommerce Migration Plan
+
+When the business is ready for a richer product catalog (100+ products, build lists, eventual online sales), migrate to WooCommerce:
+
+1. Install WooCommerce in catalog-only mode (disable cart/checkout/payments/shipping/tax)
+2. Dequeue all WC front-end assets (CSS, JS, cart fragments) — Rhino's custom front-end handles everything
+3. Register `product_brand` and `product_vehicle_type` as custom taxonomies on the `product` post type
+4. Migrate content-array products → WC products (1:1 field map)
+5. Replace content-array queries with `wc_get_products()` or `WP_Query` against the `product` post type
+6. Keep the existing custom front-end templates — do NOT fall back to WooCommerce's template hierarchy
+7. Build the sessionStorage-based "Build List" (replaces the traditional WC cart)
+8. Build the Build List → quote form submission flow
+
+### 4.7 V3 Vehicle Fitment Filter
+
+Year → Make → Model → Trim cascading selects. Stored in sessionStorage as `rhino_vehicle`. Shop header shows "Showing products that fit: 2023 Ford F-150 Lariat · [Change] · [Clear]". Non-fitment-tagged products still display, labeled "Universal Fit." Implementation: custom post meta on products with fitment arrays; progressive enhancement — shop still works without JS.
 
 ---
 
 ## 5. Build Priority Notes
 
-### V1 Core (build first)
+### V1 Core (build first) — MOSTLY COMPLETE
 
-- Homepage (all 7 sections)
-- 5 service detail pages (Spray-On Bedliners, Protective Coatings, Truck Accessories, Off-Road & Overland, Fleet Services)
-- About page
-- Contact page
-- Quote page (multi-step form — without localStorage draft save)
-- Gallery (project CPT archive)
-- FAQ page
-- Footer
-- Global nav (header desktop megamenu + mobile drawer)
-- Sticky header behavior
-- Contact drawer
-- Sticky mobile quote bar
+- ✅ Homepage (all 7 sections)
+- ✅ 5 service detail pages (Spray-On Bedliners, Protective Coatings, Truck Accessories, Off-Road & Overland, Fleet Services)
+- ✅ Services Hub page
+- ✅ About page
+- ✅ Contact page
+- ✅ Footer (4-column + social icons + GSL credit)
+- ✅ Global nav (header desktop megamenu + mobile drawer)
+- ✅ Sticky header behavior (frosted glass → condensed on scroll)
+- ⬜ Quote page (multi-step form — Gravity Forms)
+- ⬜ Gallery (project CPT archive)
+- ⬜ FAQ page (standalone, expanding on the homepage 8-question FAQ)
+- ⬜ Sticky mobile quote bar
+- ⬜ 404 page
 
-### V1 Shop (build second)
+### V1 Shop (build second) — NO WOOCOMMERCE
 
-- WooCommerce setup and base configuration
-- Shop archive styling (brand-matched product cards)
-- Single product page styling
-- Cart page styling
-- Checkout page styling
-- Install cross-sell banner (product page + cart + archive header)
-- Cart icon badge in header
-- Mini cart dropdown
-- Category + brand filtering
-- **No vehicle fitment filter yet**
+> **Strategy change:** V1 does not use WooCommerce. The shop section uses content arrays (same pattern as the service detail pages). This keeps the build lightweight, avoids WooCommerce front-end overhead, and delivers a category-first discovery experience that matches how a local install shop operates. WooCommerce is V2 scope.
 
-### V1.5 (after launch)
+- ⬜ Shop content registry (like `inc/service-content.php` but for categories + products)
+- ⬜ Shop landing page (`/shop/`) — 9 category tiles, vehicle selector pills, install callout
+- ⬜ Category pages (`/shop/{category-slug}/`) — description, brand logos, 3–5 featured products, quote CTA
+- ⬜ "Products We Install" cross-sell sections on service detail pages (rendered from content arrays)
+- ⬜ Brand logo strips on category pages (trust signals, not browsable catalog pages)
+- ⬜ Vehicle selector pill filtering on shop landing page (reuses existing `rhino:vehicle-change` event)
+- **No Build List** — V2 scope
+- **No single product pages** — V2 scope (V1 product cards link to the quote form, not to detail pages)
+- **No cart, checkout, or payment flow** — V2 scope
 
-- Vehicle Fitment Filter (Year/Make/Model/Trim)
+### V2 (post-launch — WooCommerce migration)
+
+- Install WooCommerce as headless catalog engine (catalog-only mode, all front-end assets dequeued)
+- Migrate V1 content-array products → WooCommerce `product` post type (1:1 field map)
+- Register `product_brand` + `product_vehicle_type` as WooCommerce taxonomies
+- Build sessionStorage-based "Build List" (replaces the traditional WC cart concept)
+- Build List → quote form submission flow (products + vehicle info + contact → lead)
+- Single product pages (`/shop/{product-slug}/`) with install cross-sell banner
+- Brand archive pages (`/shop/brand/{brand-slug}/`)
+- Category + brand + price filtering
+- Header build-list icon with count badge
 - Quote form pre-population from product pages
+
+### V3 (future)
+
+- Vehicle Fitment Filter (Year → Make → Model → Trim cascading selects)
 - localStorage draft save on quote form ("Resume your quote" banner)
 - Blog (home.php + single.php + archive.php)
 - Financing page
