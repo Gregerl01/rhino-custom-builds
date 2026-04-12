@@ -70,15 +70,23 @@ $brand_names = array(
 			<div class="section-features__grid bmg-reveal-stagger" role="list">
 				<?php foreach ( $categories as $cat ) :
 					$product_count = count( $cat['products'] ?? array() );
+
+					// Look up the category's WP page by slug to get its Featured Image.
+					$cat_page = get_page_by_path( 'shop/' . $cat['slug'] );
+					$cat_thumb = $cat_page ? get_the_post_thumbnail_url( $cat_page->ID, 'large' ) : '';
 					?>
 					<a href="<?php echo esc_url( home_url( '/shop/' . $cat['slug'] . '/' ) ); ?>" class="service-card-xl bmg-reveal" role="listitem">
 
 						<div class="service-card-xl__media">
-							<div class="service-card-xl__placeholder" aria-hidden="true">
-								<span class="service-card-xl__placeholder-label">
-									<?php echo esc_html( $cat['overline'] ); ?>
-								</span>
-							</div>
+							<?php if ( $cat_thumb ) : ?>
+								<img src="<?php echo esc_url( $cat_thumb ); ?>" alt="<?php echo esc_attr( $cat['name'] ); ?>" loading="lazy" decoding="async">
+							<?php else : ?>
+								<div class="service-card-xl__placeholder" aria-hidden="true">
+									<span class="service-card-xl__placeholder-label">
+										<?php echo esc_html( $cat['overline'] ); ?>
+									</span>
+								</div>
+							<?php endif; ?>
 						</div>
 
 						<div class="service-card-xl__body">
