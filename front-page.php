@@ -37,7 +37,10 @@ get_header();
 	// Section 6: Process + FAQ — 4-step process with integrated accordion.
 	get_template_part( 'template-parts/sections/section', 'process' );
 
-	// Section 7: CTA — dual-CTA band (red primary + amber phone).
+	// Section 7.5: Blog Preview — 3 most recent posts.
+	get_template_part( 'template-parts/sections/section', 'blog' );
+
+	// Section 8: CTA — dual-CTA band (red primary + amber phone).
 	get_template_part( 'template-parts/sections/section', 'cta' );
 	?>
 
