@@ -10,6 +10,21 @@
  *
  * Product data sourced from: rhino-featured-products-shortlist.xlsx
  *
+ * HOW TO ADD IMAGES:
+ *   1. Upload product photos to wp-admin → Media Library.
+ *   2. Copy the file URL from the Media Library edit screen.
+ *   3. Paste it into the 'image' field for the matching product below.
+ *   4. Save the file and hard-refresh the page — no build step needed.
+ *
+ *   Example:
+ *     'image' => 'https://rhino-custom-build.local/wp-content/uploads/2026/04/arb-deluxe-bumper.jpg',
+ *
+ *   For production, use home_url():
+ *     'image' => home_url( '/wp-content/uploads/2026/04/arb-deluxe-bumper.jpg' ),
+ *
+ *   Photos render at 4:3 aspect via object-fit: cover inside .product-card__media.
+ *   Recommended minimum: 800×600px. WebP preferred for performance.
+ *
  * @package rhino-custom-builds-theme
  */
 
@@ -62,6 +77,7 @@ if ( ! function_exists( 'bmg_get_shop_categories' ) ) {
 				'description'   => __( 'Front bumpers, rear bumpers, skid plates, rock sliders, and grille guards — installed by certified builders.', 'bmg-theme' ),
 				'brands'        => array( 'arb', 'smittybilt', 'rough-country' ),
 				'vehicle_types' => array( 'truck', 'jeep', 'suv' ),
+				// To add images: upload to Media Library → paste URL into 'image' below.
 				'products'      => array(
 					array(
 						'name'          => __( 'Deluxe Bumper', 'bmg-theme' ),
@@ -104,6 +120,7 @@ if ( ! function_exists( 'bmg_get_shop_categories' ) ) {
 				'description'   => __( 'Light bars, pods, fog lights, rock lights, and auxiliary headlights — wired clean with OEM-style connectors.', 'bmg-theme' ),
 				'brands'        => array( 'baja-designs', 'rigid-industries' ),
 				'vehicle_types' => array( 'truck', 'jeep', 'suv', 'van', 'universal' ),
+				// To add images: upload to Media Library → paste URL into 'image' below.
 				'products'      => array(
 					array(
 						'name'          => __( 'LP6 Pro LED Auxiliary Light Pod', 'bmg-theme' ),
@@ -146,6 +163,7 @@ if ( ! function_exists( 'bmg_get_shop_categories' ) ) {
 				'description'   => __( 'Lift kits, leveling kits, shocks, struts, and control arms — geometry and alignment dialed on every install.', 'bmg-theme' ),
 				'brands'        => array( 'fox', 'rough-country' ),
 				'vehicle_types' => array( 'truck', 'jeep', 'suv' ),
+				// To add images: upload to Media Library → paste URL into 'image' below.
 				'products'      => array(
 					array(
 						'name'          => __( '2.0 Performance Series IFP', 'bmg-theme' ),
@@ -197,6 +215,7 @@ if ( ! function_exists( 'bmg_get_shop_categories' ) ) {
 				'description'   => __( 'Off-road wheels, all-terrain tires, mud tires, and beadlocks — mounted, balanced, and aligned in-house.', 'bmg-theme' ),
 				'brands'        => array( 'method-race-wheels', 'bfgoodrich' ),
 				'vehicle_types' => array( 'truck', 'jeep', 'suv' ),
+				// To add images: upload to Media Library → paste URL into 'image' below.
 				'products'      => array(
 					array(
 						'name'          => __( '305 NV', 'bmg-theme' ),
@@ -248,6 +267,7 @@ if ( ! function_exists( 'bmg_get_shop_categories' ) ) {
 				'description'   => __( 'Winches, straps, shackles, recovery boards, and D-rings — tested gear for when the trail fights back.', 'bmg-theme' ),
 				'brands'        => array( 'warn', 'smittybilt', 'arb' ),
 				'vehicle_types' => array( 'truck', 'jeep', 'suv', 'universal' ),
+				// To add images: upload to Media Library → paste URL into 'image' below.
 				'products'      => array(
 					array(
 						'name'          => __( 'ZEON XD 10-S Winch', 'bmg-theme' ),
@@ -299,6 +319,7 @@ if ( ! function_exists( 'bmg_get_shop_categories' ) ) {
 				'description'   => __( 'Tonneau covers, bed racks, toolboxes, cargo management, and tie-downs — installed right the first time.', 'bmg-theme' ),
 				'brands'        => array( 'rough-country', 'arb' ),
 				'vehicle_types' => array( 'truck', 'jeep', 'suv' ),
+				// To add images: upload to Media Library → paste URL into 'image' below.
 				'products'      => array(
 					array(
 						'name'          => __( 'Soft Tri-Fold Bed Cover', 'bmg-theme' ),
@@ -350,6 +371,7 @@ if ( ! function_exists( 'bmg_get_shop_categories' ) ) {
 				'description'   => __( 'Roof tents, awnings, roof racks, fridges, and water storage — outfitted for expeditions.', 'bmg-theme' ),
 				'brands'        => array( 'rhino-rack' ),
 				'vehicle_types' => array( 'truck', 'jeep', 'suv', 'van', 'universal' ),
+				// To add images: upload to Media Library → paste URL into 'image' below.
 				'products'      => array(
 					array(
 						'name'          => __( 'Pioneer 6 Platform', 'bmg-theme' ),
@@ -392,6 +414,7 @@ if ( ! function_exists( 'bmg_get_shop_categories' ) ) {
 				'description'   => __( 'Switch panels, dash mounts, USB kits, and radio mounts — installed with OEM-style connectors.', 'bmg-theme' ),
 				'brands'        => array( 'rough-country', 'smittybilt' ),
 				'vehicle_types' => array( 'truck', 'jeep', 'suv', 'universal' ),
+				// To add images: upload to Media Library → paste URL into 'image' below.
 				'products'      => array(
 					array(
 						'name'          => __( 'Seat Covers', 'bmg-theme' ),
@@ -443,6 +466,7 @@ if ( ! function_exists( 'bmg_get_shop_categories' ) ) {
 				'description'   => __( 'Running boards, fender flares, mud flaps, and grilles — installed clean, torqued to spec.', 'bmg-theme' ),
 				'brands'        => array( 'rough-country', 'smittybilt' ),
 				'vehicle_types' => array( 'truck', 'jeep', 'suv', 'universal' ),
+				// To add images: upload to Media Library → paste URL into 'image' below.
 				'products'      => array(
 					array(
 						'name'          => __( 'RPT2 Running Boards', 'bmg-theme' ),

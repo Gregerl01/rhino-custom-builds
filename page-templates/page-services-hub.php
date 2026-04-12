@@ -25,47 +25,28 @@ get_header();
 $phone_display = get_theme_mod( 'bmg_phone', '(555) 555-0123' );
 $phone_link    = preg_replace( '/[^0-9+]/', '', (string) $phone_display );
 
-// Six service cards — same data shape as bmg_service_{1..6}_* on the
-// homepage. Defined here directly so this page always reflects the
-// canonical sitemap regardless of Customizer state on the homepage.
-$cards = array(
-	array(
-		'overline' => __( 'SERVICE 01', 'bmg-theme' ),
-		'title'    => __( 'Spray-On Bedliners', 'bmg-theme' ),
-		'body'     => __( 'Permanent coatings bonded to bare metal. Standard, Premium, and off-road-grade finishes — all lifetime warranty.', 'bmg-theme' ),
-		'url'      => '/services/spray-on-bedliners/',
-	),
-	array(
-		'overline' => __( 'SERVICE 02', 'bmg-theme' ),
-		'title'    => __( 'Protective Coatings', 'bmg-theme' ),
-		'body'     => __( 'Undercoating, rocker panels, wheel wells, and frames sealed against rust, salt, and trail abuse.', 'bmg-theme' ),
-		'url'      => '/services/protective-coatings/',
-	),
-	array(
-		'overline' => __( 'SERVICE 03', 'bmg-theme' ),
-		'title'    => __( 'Truck Accessories', 'bmg-theme' ),
-		'body'     => __( 'Tonneau covers, running boards, toolboxes, racks, tow packages — installed clean and torqued to spec.', 'bmg-theme' ),
-		'url'      => '/services/truck-accessories/',
-	),
-	array(
-		'overline' => __( 'SERVICE 04', 'bmg-theme' ),
-		'title'    => __( 'Off-Road & Overland', 'bmg-theme' ),
-		'body'     => __( 'Lifts, bumpers, winches, armor, lighting, and full overland kits. Built to survive the trail.', 'bmg-theme' ),
-		'url'      => '/services/off-road-overland/',
-	),
-	array(
-		'overline' => __( 'SERVICE 05', 'bmg-theme' ),
-		'title'    => __( 'Fleet Services', 'bmg-theme' ),
-		'body'     => __( 'Volume pricing, dedicated project management, scheduled install windows, Net-30 billing.', 'bmg-theme' ),
-		'url'      => '/services/fleet/',
-	),
-	array(
-		'overline' => __( 'SHOP', 'bmg-theme' ),
-		'title'    => __( 'Shop Parts & Gear', 'bmg-theme' ),
-		'body'     => __( 'Browse thousands of parts from the brands we install. Ship to your door or install in-bay.', 'bmg-theme' ),
-		'url'      => '/shop/',
-	),
+// Six service cards — reads from the SAME bmg_service_{1..6}_* Customizer
+// fields as the homepage features section (section-features.php). One data
+// source, two render locations. Images set in Customizer show on both.
+$card_defaults = array(
+	1 => array( 'overline' => 'SERVICE 01', 'title' => 'Spray-On Bedliners',  'body' => 'Permanent coatings bonded to bare metal. Standard, Premium, and off-road-grade finishes — all lifetime warranty.', 'url' => '/services/spray-on-bedliners/' ),
+	2 => array( 'overline' => 'SERVICE 02', 'title' => 'Protective Coatings', 'body' => 'Undercoating, rocker panels, wheel wells, and frames sealed against rust, salt, and trail abuse.', 'url' => '/services/protective-coatings/' ),
+	3 => array( 'overline' => 'SERVICE 03', 'title' => 'Truck Accessories',   'body' => 'Tonneau covers, running boards, toolboxes, racks, tow packages — installed clean and torqued to spec.', 'url' => '/services/truck-accessories/' ),
+	4 => array( 'overline' => 'SERVICE 04', 'title' => 'Off-Road & Overland', 'body' => 'Lifts, bumpers, winches, armor, lighting, and full overland kits. Built to survive the trail.', 'url' => '/services/off-road-overland/' ),
+	5 => array( 'overline' => 'SERVICE 05', 'title' => 'Fleet Services',      'body' => 'Volume pricing, dedicated project management, scheduled install windows, Net-30 billing.', 'url' => '/services/fleet/' ),
+	6 => array( 'overline' => 'SHOP',       'title' => 'Shop Parts & Gear',   'body' => 'Browse thousands of parts from the brands we install. Ship to your door or install in-bay.', 'url' => '/shop/' ),
 );
+
+$cards = array();
+foreach ( $card_defaults as $i => $defaults ) {
+	$cards[] = array(
+		'overline' => get_theme_mod( 'bmg_service_' . $i . '_overline', $defaults['overline'] ),
+		'title'    => get_theme_mod( 'bmg_service_' . $i . '_title', $defaults['title'] ),
+		'body'     => get_theme_mod( 'bmg_service_' . $i . '_body', $defaults['body'] ),
+		'url'      => get_theme_mod( 'bmg_service_' . $i . '_url', $defaults['url'] ),
+		'image'    => get_theme_mod( 'bmg_service_' . $i . '_image', '' ),
+	);
+}
 
 // Stats — same as the homepage proof strip, rendered standalone here.
 $stats = array(
@@ -112,11 +93,15 @@ $stats = array(
 					<a href="<?php echo esc_url( home_url( $card['url'] ) ); ?>" class="service-card-xl bmg-reveal" role="listitem">
 
 						<div class="service-card-xl__media">
-							<div class="service-card-xl__placeholder" aria-hidden="true">
-								<span class="service-card-xl__placeholder-label">
-									<?php echo esc_html( $card['overline'] ); ?>
-								</span>
-							</div>
+							<?php if ( ! empty( $card['image'] ) ) : ?>
+								<img src="<?php echo esc_url( $card['image'] ); ?>" alt="<?php echo esc_attr( $card['title'] ); ?>" loading="lazy" decoding="async">
+							<?php else : ?>
+								<div class="service-card-xl__placeholder" aria-hidden="true">
+									<span class="service-card-xl__placeholder-label">
+										<?php echo esc_html( $card['overline'] ); ?>
+									</span>
+								</div>
+							<?php endif; ?>
 						</div>
 
 						<div class="service-card-xl__body">
