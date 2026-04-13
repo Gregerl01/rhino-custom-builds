@@ -18193,6 +18193,36 @@ html {
   border-top: 1px dashed #D1CCC5;
 }
 
+.service-detail-flow > .section-problem,
+.service-detail-flow > .section-coating-tiers,
+.service-detail-flow > .section-before-after,
+.service-detail-flow > .section-process,
+.service-detail-flow > .section-pricing-starting,
+.service-detail-flow > .section-service-faq,
+.service-detail-flow > .section-proof {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+@media (max-width: 767.98px) {
+  .service-detail-flow > .section-problem,
+  .service-detail-flow > .section-coating-tiers,
+  .service-detail-flow > .section-before-after,
+  .service-detail-flow > .section-process,
+  .service-detail-flow > .section-pricing-starting,
+  .service-detail-flow > .section-service-faq,
+  .service-detail-flow > .section-proof {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+}
+.service-detail-flow > .section-problem {
+  padding-top: 80px;
+}
+@media (max-width: 767.98px) {
+  .service-detail-flow > .section-problem {
+    padding-top: 56px;
+  }
+}
 .section-service-hero {
   position: relative;
   min-height: 70vh;

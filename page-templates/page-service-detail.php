@@ -49,7 +49,7 @@ $phone_display = get_theme_mod( 'bmg_phone', '(555) 555-0123' );
 $phone_link    = preg_replace( '/[^0-9+]/', '', (string) $phone_display );
 ?>
 
-<main id="main" class="site-main">
+<main id="main" class="site-main service-detail-flow">
 
 	<?php // ===== 1. Service Hero ================================================ ?>
 	<?php

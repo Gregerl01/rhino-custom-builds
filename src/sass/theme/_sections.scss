@@ -2242,6 +2242,49 @@ html {
 }
 
 // ==========================================================================
+// ==========================================================================
+// Service Detail Flow — tighter vertical spacing between sections
+// ==========================================================================
+// Service detail pages read as a continuous story, not discrete landing
+// page blocks. Reduce inter-section padding from 120px to 80px desktop
+// (48px mobile) so the content flows more tightly. Scoped via the
+// .service-detail-flow class on <main> in page-service-detail.php.
+// Does NOT affect homepage or other pages.
+// ==========================================================================
+
+.service-detail-flow {
+	> .section-problem,
+	> .section-coating-tiers,
+	> .section-before-after,
+	> .section-process,
+	> .section-pricing-starting,
+	> .section-service-faq,
+	> .section-proof {
+		padding-top: 80px;
+		padding-bottom: 80px;
+
+		@media (max-width: 767.98px) {
+			padding-top: 48px;
+			padding-bottom: 48px;
+		}
+	}
+
+	// The first section after the hero + callout bar needs less top padding
+	// since the callout already provides visual separation.
+	> .section-problem {
+		padding-top: 80px;
+
+		@media (max-width: 767.98px) {
+			padding-top: 56px;
+		}
+	}
+
+	// CTA at the bottom keeps standard spacing — it's a distinct closing band.
+	> .section-cta {
+		// no override — uses default 120px/80px
+	}
+}
+
 // SECTION: Service Hero (inner-page variant of .section-hero)
 // ==========================================================================
 // 70vh dark hero used on /services/{slug}/ pages. Same visual language
