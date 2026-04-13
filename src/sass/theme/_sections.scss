@@ -2253,6 +2253,8 @@ html {
 // ==========================================================================
 
 .service-detail-flow {
+	// Collapse adjacent section padding so consecutive sections share
+	// a single 64px gap instead of stacking 80+80=160px.
 	> .section-problem,
 	> .section-coating-tiers,
 	> .section-before-after,
@@ -2260,28 +2262,30 @@ html {
 	> .section-pricing-starting,
 	> .section-service-faq,
 	> .section-proof {
-		padding-top: 80px;
-		padding-bottom: 80px;
+		padding-top: 64px;
+		padding-bottom: 0; // bottom handled by next section's top padding
 
 		@media (max-width: 767.98px) {
 			padding-top: 48px;
-			padding-bottom: 48px;
+		}
+
+		// Last content section before the CTA needs its own bottom padding
+		&:last-of-type {
+			padding-bottom: 64px;
+
+			@media (max-width: 767.98px) {
+				padding-bottom: 48px;
+			}
 		}
 	}
 
-	// The first section after the hero + callout bar needs less top padding
-	// since the callout already provides visual separation.
+	// First section after the callout bar
 	> .section-problem {
-		padding-top: 80px;
+		padding-top: 64px;
 
 		@media (max-width: 767.98px) {
-			padding-top: 56px;
+			padding-top: 48px;
 		}
-	}
-
-	// CTA at the bottom keeps standard spacing — it's a distinct closing band.
-	> .section-cta {
-		// no override — uses default 120px/80px
 	}
 }
 
