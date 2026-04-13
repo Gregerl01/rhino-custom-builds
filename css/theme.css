@@ -18200,8 +18200,8 @@ html {
 .service-detail-flow > .section-pricing-starting,
 .service-detail-flow > .section-service-faq,
 .service-detail-flow > .section-proof {
-  padding-top: 64px;
-  padding-bottom: 0;
+  padding-top: 80px;
+  padding-bottom: 80px;
 }
 @media (max-width: 767.98px) {
   .service-detail-flow > .section-problem,
@@ -18211,35 +18211,8 @@ html {
   .service-detail-flow > .section-pricing-starting,
   .service-detail-flow > .section-service-faq,
   .service-detail-flow > .section-proof {
-    padding-top: 48px;
-  }
-}
-.service-detail-flow > .section-problem:last-of-type,
-.service-detail-flow > .section-coating-tiers:last-of-type,
-.service-detail-flow > .section-before-after:last-of-type,
-.service-detail-flow > .section-process:last-of-type,
-.service-detail-flow > .section-pricing-starting:last-of-type,
-.service-detail-flow > .section-service-faq:last-of-type,
-.service-detail-flow > .section-proof:last-of-type {
-  padding-bottom: 64px;
-}
-@media (max-width: 767.98px) {
-  .service-detail-flow > .section-problem:last-of-type,
-  .service-detail-flow > .section-coating-tiers:last-of-type,
-  .service-detail-flow > .section-before-after:last-of-type,
-  .service-detail-flow > .section-process:last-of-type,
-  .service-detail-flow > .section-pricing-starting:last-of-type,
-  .service-detail-flow > .section-service-faq:last-of-type,
-  .service-detail-flow > .section-proof:last-of-type {
-    padding-bottom: 48px;
-  }
-}
-.service-detail-flow > .section-problem {
-  padding-top: 64px;
-}
-@media (max-width: 767.98px) {
-  .service-detail-flow > .section-problem {
-    padding-top: 48px;
+    padding-top: 56px;
+    padding-bottom: 56px;
   }
 }
 
