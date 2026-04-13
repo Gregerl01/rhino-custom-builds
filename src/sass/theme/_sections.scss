@@ -3057,6 +3057,239 @@ html {
 // ==========================================================================
 
 // ==========================================================================
+// ==========================================================================
+// PAGE: 404
+// ==========================================================================
+
+.section-404 {
+	position: relative;
+	background-color: $brand-dark;
+	color: $text-on-dark;
+	padding: 200px 0 $space-3xl;
+	overflow: hidden;
+	text-align: center;
+
+	@media (max-width: 767.98px) {
+		padding: 160px 0 $space-2xl;
+	}
+
+	&__background {
+		position: absolute;
+		inset: 0;
+		background-color: $brand-dark;
+		background-image: radial-gradient(ellipse at 50% 40%, #{$brand-dark-lighter} 0%, #{$brand-dark} 70%);
+		z-index: 0;
+	}
+
+	&__overlay {
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(180deg, rgba($brand-dark, 0.5) 0%, rgba($brand-dark, 0.9) 100%);
+		pointer-events: none;
+		z-index: 1;
+	}
+
+	&__grain {
+		position: absolute;
+		inset: 0;
+		background-image: url('../img/noise.png');
+		background-repeat: repeat;
+		opacity: 0.04;
+		pointer-events: none;
+		mix-blend-mode: overlay;
+		z-index: 2;
+	}
+
+	> .container {
+		position: relative;
+		z-index: 3;
+	}
+
+	&__code {
+		display: block;
+		font-family: $font-family-display;
+		font-weight: 800;
+		font-size: clamp(6rem, 20vw, 14rem);
+		line-height: 0.85;
+		letter-spacing: -0.02em;
+		color: rgba($text-on-dark, 0.06);
+		margin-bottom: -$space-lg;
+		user-select: none;
+	}
+
+	&__headline {
+		font-family: $font-family-display;
+		font-weight: 800;
+		font-size: clamp(2.5rem, 6vw, 4.5rem);
+		line-height: 0.95;
+		letter-spacing: 0.005em;
+		text-transform: uppercase;
+		color: $text-on-dark;
+		margin: 0 0 $space-md;
+	}
+
+	&__subline {
+		font-family: $font-family-base;
+		font-size: clamp(1rem, 1.5vw, 1.125rem);
+		font-weight: 400;
+		line-height: 1.6;
+		color: rgba($text-on-dark, 0.75);
+		margin: 0 auto;
+		max-width: 50ch;
+	}
+}
+
+.section-404-nav {
+	background-color: $brand-warm-white;
+	color: $text-primary;
+	padding: 128px 0 120px;
+
+	@media (max-width: 767.98px) {
+		padding: 80px 0;
+	}
+
+	&__overline {
+		display: block;
+		font-family: $font-family-mono;
+		font-size: 10px;
+		font-weight: 500;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		color: $brand-primary;
+		margin-bottom: $space-lg;
+	}
+
+	// ----- Link list -----
+	&__links {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+
+		> li {
+			border-bottom: 1px solid $border-light;
+
+			&:first-child {
+				border-top: 1px solid $border-light;
+			}
+		}
+	}
+
+	&__link {
+		display: flex;
+		align-items: center;
+		gap: $space-md;
+		padding: $space-md 0;
+		text-decoration: none;
+		color: $text-primary;
+		transition: gap $motion-fast $ease-out-expo, color $motion-fast $ease-out-expo;
+
+		&:hover,
+		&:focus-visible {
+			gap: $space-lg;
+			color: $brand-primary;
+			outline: none;
+
+			.section-404-nav__link-arrow {
+				color: $brand-primary;
+				transform: translateX(4px);
+			}
+		}
+	}
+
+	&__link-label {
+		font-family: $font-family-display;
+		font-weight: 700;
+		font-size: 1.25rem;
+		letter-spacing: 0.01em;
+		text-transform: uppercase;
+		flex-shrink: 0;
+	}
+
+	&__link-desc {
+		font-family: $font-family-base;
+		font-size: 0.875rem;
+		color: $text-secondary;
+		flex: 1 1 auto;
+
+		@media (max-width: 575.98px) {
+			display: none; // hide descriptions on narrow mobile
+		}
+	}
+
+	&__link-arrow {
+		flex-shrink: 0;
+		color: $text-secondary;
+		transition: color $motion-fast $ease-out-expo, transform $motion-fast $ease-out-expo;
+	}
+
+	// ----- Search -----
+	&__search {
+		display: flex;
+		border: 1px solid $border-color;
+		background-color: $brand-white;
+		transition: border-color $motion-fast $ease-out-expo;
+
+		&:focus-within {
+			border-color: $brand-dark;
+		}
+	}
+
+	&__search-input {
+		flex: 1 1 auto;
+		min-width: 0;
+		padding: 16px $space-md;
+		border: 0;
+		background: transparent;
+		font-family: $font-family-base;
+		font-size: 1rem;
+		color: $text-primary;
+		outline: none;
+
+		&::placeholder {
+			color: rgba($text-primary, 0.35);
+		}
+	}
+
+	&__search-btn {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 56px;
+		flex-shrink: 0;
+		background-color: $brand-primary;
+		border: 0;
+		color: $text-on-dark;
+		cursor: pointer;
+		transition: background-color $motion-fast $ease-out-expo;
+
+		&:hover,
+		&:focus-visible {
+			background-color: darken($brand-primary, 8%);
+		}
+	}
+
+	&__phone-hint {
+		font-family: $font-family-mono;
+		font-size: 11px;
+		font-weight: 500;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: $text-secondary;
+		margin: $space-lg 0 0;
+
+		a {
+			color: $brand-primary;
+			text-decoration: none;
+			font-weight: 700;
+			transition: color $motion-fast $ease-out-expo;
+
+			&:hover {
+				color: darken($brand-primary, 10%);
+			}
+		}
+	}
+}
+
 // PAGE: FAQ (standalone /faq/ page)
 // ==========================================================================
 
