@@ -29,8 +29,8 @@ Rhino Custom Builds is a one-stop truck, Jeep, SUV, and off-road shop. The site 
 2. **Custom builds** — Full-build project showcase via a `project` CPT
 3. **Parts & gear (V1: content arrays / V2: WooCommerce)** — Bumpers, lighting, lifts, wheels, winches, cargo systems, overland kits, from brands like ARB, Fox, Warn, Rigid, Method, Baja Designs. V1 uses a category-first discovery experience with content arrays (same pattern as the service detail pages). WooCommerce is V2 scope — the V1 content model (category names, brand names, product fields, vehicle type labels) is kept disciplined so migration is clean.
 
-**Primary conversion:** Quote requests + phone calls (general line for consumer, dedicated line for fleet).
-**Secondary conversion:** Ecommerce purchases, with in-bay install cross-sell on every product.
+**Primary conversion:** Quote requests + phone calls.
+**Secondary conversion:** In-bay install cross-sell on every product card → quote form.
 
 **Target audience:**
 - Truck owners needing permanent bedliners, coatings, or accessory upfitting
@@ -130,7 +130,7 @@ get_template_part('template-parts/sections/section', 'cta');
 ### Header (Desktop)
 
 ```
-[LOGO]   Services ▾   Shop ▾   Gallery   About   Contact   [🛒 Cart(2)]   [GET A QUOTE →]
+[LOGO]   Services ▾   Shop ▾   Gallery   News   About   Contact   [GET A QUOTE →]
 ```
 
 - **Logo:** Links to `/`. White "RHINO CUSTOM BUILDS" on transparent background over dark hero, dark version on white pages.
@@ -693,5 +693,77 @@ Full brand voice reference lives in `CONTENT.md`. Quick summary:
 ## Content & Spec References
 
 - **`CONTENT.md`** — Full production copy for every page, brand voice reference, Customizer variable table. Read this before editing any template.
-- **`references/rhino-build-spec.md`** — Detailed interaction specs, design direction, user flows, WooCommerce detail, build priority notes. Read this before implementing any new interaction or component.
+- **`references/rhino-build-spec.md`** — Detailed interaction specs, design direction, user flows, shop/product spec, build priority notes. Read this before implementing any new interaction or component.
 - **`src/sass/theme/_theme_variables.scss`** — Source of truth for all design tokens.
+
+---
+
+## Current Build Status (as of April 2026)
+
+### Business Details
+- **Founded:** 1989 (35+ years in business)
+- **Location:** 5800 Kearny Villa Road, San Diego, CA 92123
+- **Phone:** 858-279-2300 (single number — no fleet line)
+- **Email (public):** hello@rhinocustombuilds.com
+- **Email (form notifications):** info@rhinocustombuilds.com
+- **Hours:** Mon–Fri 8:00 AM – 5:00 PM PST · Weekends Closed
+
+### Gravity Forms
+- **Quote form** (ID stored in `bmg_quote_form_id`) — 3-step multi-page: Vehicle → Services → Contact. Notifications → info@rhinocustombuilds.com.
+- **Contact form** (ID stored in `bmg_gf_contact_form_id`) — Single-page: Name, Email, Phone, Vehicle, Message. Notifications → info@rhinocustombuilds.com.
+- Both auto-created by `inc/quote-form-setup.php` on first page load.
+
+### SEO
+- **Rank Math** active with local business schema (AutomotiveBusiness), custom per-page titles + descriptions on all 23 pages, XML sitemap enabled.
+- Theme's `inc/seo-metadata.php` defers to Rank Math when active (`class_exists('RankMath')` check).
+
+### V1 Pages Built (all complete)
+
+| Page | Template | URL |
+|------|----------|-----|
+| Homepage | `front-page.php` | `/` |
+| Services Hub | `page-templates/page-services-hub.php` | `/services/` |
+| Spray-On Bedliners | `page-templates/page-service-detail.php` | `/services/spray-on-bedliners/` |
+| Protective Coatings | `page-templates/page-service-detail.php` | `/services/protective-coatings/` |
+| Truck Accessories | `page-templates/page-service-detail.php` | `/services/truck-accessories/` |
+| Off-Road & Overland | `page-templates/page-service-detail.php` | `/services/off-road-overland/` |
+| Fleet Services | `page-templates/page-service-detail.php` | `/services/fleet/` |
+| Shop Landing | `page-templates/page-shop.php` | `/shop/` |
+| 9 Shop Categories | `page-templates/page-shop-category.php` | `/shop/{slug}/` |
+| About | `page-templates/page-about.php` | `/about/` |
+| Contact | `page-templates/page-contact.php` | `/contact/` |
+| Request a Quote | `page-templates/page-quote.php` | `/quote/` |
+| Gallery | `page-templates/page-gallery.php` | `/gallery/` |
+| FAQ | `page-templates/page-faq.php` | `/faq/` |
+| Blog Archive | `home.php` | `/blog/` |
+| Single Post | `single.php` | `/blog/{slug}/` |
+
+### Key Files Inventory
+
+**Content registries (PHP data arrays — no WooCommerce):**
+- `inc/service-content.php` — 5 service detail pages (hero, problem, tiers, process, proof, FAQ, CTA per service)
+- `inc/shop-content.php` — 9 categories × 33 products with real data + manufacturer CDN images
+- `inc/gallery-content.php` — 12 placeholder gallery projects across 6 categories
+
+**Gravity Forms setup:**
+- `inc/quote-form-setup.php` — Auto-creates Quote + Contact forms via GFAPI
+
+**Reusable template parts:**
+- `template-parts/sections/section-page-header.php` — Dark inner-page header (used by About, Contact, FAQ, Gallery, Shop, Blog)
+- `template-parts/sections/section-service-hero.php` — 70vh service detail hero with breadcrumb
+- `template-parts/sections/section-before-after.php` — Drag-to-reveal slider (CSS clip-path + range input)
+- `template-parts/sections/section-pricing-starting.php` — Grid price table
+- `template-parts/sections/section-blog.php` — Homepage blog preview (3 latest posts)
+- `template-parts/components/callout-install-bar.php` — Red install callout bar (reused on 16+ pages)
+
+**Nav structure:**
+- `global-templates/navbar-collapse-bootstrap5.php` — Static nav with CSS hover dropdowns + custom mobile drawer (not Bootstrap collapse)
+- Desktop: Services ▾ · Shop ▾ · Gallery · News · About · Contact · [Get a Quote]
+- Mobile: Full-viewport drawer with accordion submenus + pinned CTAs
+
+### Blog
+- 3 categories: Tips, Builds, Guides
+- 3 sample posts with real content
+- Homepage preview section (`section-blog.php`) between Process/FAQ and CTA
+- Archive at `/blog/` with card grid + pagination
+- Single post template with dark header, centered reading column, related posts

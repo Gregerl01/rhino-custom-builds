@@ -613,35 +613,37 @@ Year → Make → Model → Trim cascading selects. Stored in sessionStorage as 
 
 ## 5. Build Priority Notes
 
-### V1 Core (build first) — MOSTLY COMPLETE
+### V1 Core — COMPLETE
 
-- ✅ Homepage (all 7 sections)
+- ✅ Homepage (8 sections: hero, problem, founder, features, proof, process+FAQ, blog preview, CTA)
 - ✅ 5 service detail pages (Spray-On Bedliners, Protective Coatings, Truck Accessories, Off-Road & Overland, Fleet Services)
-- ✅ Services Hub page
-- ✅ About page
-- ✅ Contact page
-- ✅ Footer (4-column + social icons + GSL credit)
-- ✅ Global nav (header desktop megamenu + mobile drawer)
-- ✅ Sticky header behavior (frosted glass → condensed on scroll)
-- ⬜ Quote page (multi-step form — Gravity Forms)
-- ⬜ Gallery (project CPT archive)
-- ⬜ FAQ page (standalone, expanding on the homepage 8-question FAQ)
-- ⬜ Sticky mobile quote bar
-- ⬜ 404 page
+- ✅ Services Hub page (/services/)
+- ✅ About page (/about/)
+- ✅ Contact page (/contact/) — Gravity Forms contact form
+- ✅ Quote page (/quote/) — 3-step Gravity Forms multi-page form + sticky sidebar
+- ✅ Gallery page (/gallery/) — 12 projects, 6 category filters, lightbox
+- ✅ FAQ page (/faq/) — 15 questions across 4 topic groups
+- ✅ Blog — homepage preview (3 latest), archive (/blog/), single post template, 3 sample posts
+- ✅ Footer (4-column + social icons + GSL Design credit)
+- ✅ Global nav (header desktop hover dropdowns + mobile drawer with accordion)
+- ✅ Sticky header (frosted glass → condensed on scroll, 120px threshold)
+- ✅ Red install callout bar (reusable component across services, shop, and service detail pages)
+- ✅ Rank Math SEO configured (local schema, per-page titles + descriptions)
+- ⬜ Sticky mobile quote bar (deferred)
+- ⬜ 404 page (uses parent Understrap 404 currently)
 
-### V1 Shop (build second) — NO WOOCOMMERCE
+### V1 Shop — COMPLETE
 
-> **Strategy change:** V1 does not use WooCommerce. The shop section uses content arrays (same pattern as the service detail pages). This keeps the build lightweight, avoids WooCommerce front-end overhead, and delivers a category-first discovery experience that matches how a local install shop operates. WooCommerce is V2 scope.
-
-- ⬜ Shop content registry (like `inc/service-content.php` but for categories + products)
-- ⬜ Shop landing page (`/shop/`) — 9 category tiles, vehicle selector pills, install callout
-- ⬜ Category pages (`/shop/{category-slug}/`) — description, brand logos, 3–5 featured products, quote CTA
-- ⬜ "Products We Install" cross-sell sections on service detail pages (rendered from content arrays)
-- ⬜ Brand logo strips on category pages (trust signals, not browsable catalog pages)
-- ⬜ Vehicle selector pill filtering on shop landing page (reuses existing `rhino:vehicle-change` event)
+- ✅ Shop content registry (`inc/shop-content.php` — 9 categories, 33 products with real data + images)
+- ✅ Shop landing page (`/shop/`) — 9 category tiles with featured images, brand carousel, install callout, CTA
+- ✅ 9 category pages (`/shop/{slug}/`) — header with breadcrumb, brand strip, product grid, "Don't see what you need?" callout, CTA
+- ✅ Product cards with brand badges, vehicle type pills, prices, and "Request Quote" CTAs linking to /quote/ with querystrings
+- ✅ Brand logo strips on category pages
+- ✅ Install callout bar on all shop pages
+- ✅ Nav Shop dropdown updated to V1 child-page paths
 - **No Build List** — V2 scope
-- **No single product pages** — V2 scope (V1 product cards link to the quote form, not to detail pages)
-- **No cart, checkout, or payment flow** — V2 scope
+- **No single product pages** — V2 scope
+- **No vehicle fitment filter** — V3 scope
 
 ### V2 (post-launch — WooCommerce migration)
 
@@ -649,9 +651,9 @@ Year → Make → Model → Trim cascading selects. Stored in sessionStorage as 
 - Migrate V1 content-array products → WooCommerce `product` post type (1:1 field map)
 - Register `product_brand` + `product_vehicle_type` as WooCommerce taxonomies
 - Build sessionStorage-based "Build List" (replaces the traditional WC cart concept)
-- Build List → quote form submission flow (products + vehicle info + contact → lead)
-- Single product pages (`/shop/{product-slug}/`) with install cross-sell banner
-- Brand archive pages (`/shop/brand/{brand-slug}/`)
+- Build List → quote form submission flow
+- Single product pages with install cross-sell banner
+- Brand archive pages
 - Category + brand + price filtering
 - Header build-list icon with count badge
 - Quote form pre-population from product pages
@@ -660,6 +662,7 @@ Year → Make → Model → Trim cascading selects. Stored in sessionStorage as 
 
 - Vehicle Fitment Filter (Year → Make → Model → Trim cascading selects)
 - localStorage draft save on quote form ("Resume your quote" banner)
-- Blog (home.php + single.php + archive.php)
+- Sticky mobile quote bar
+- Custom 404 page
 - Financing page
 - Warranty page
