@@ -61,13 +61,17 @@ Rhino Custom Builds is a one-stop truck, Jeep, SUV, and off-road shop. The site 
 
 ## Deployment Pipeline
 
-| Environment | Domain | Branch | Notes |
-|-------------|--------|--------|-------|
-| Local | `rhino-custom-builds-websitev2.local` | any | Local by Flywheel |
-| Staging | TBD | `staging` | Set up once hosting is provisioned |
-| Production | TBD (rhinocustombuilds.com) | `main` | Set up once hosting is provisioned |
+**Method:** GitHub Actions + SSH + rsync (theme files only)
+**Workflow files:** `.github/workflows/deploy-production.yml` and `.github/workflows/deploy-staging.yml`
+**Full docs:** `DEPLOYMENT.md`
 
-Staging and production domains are TBD until the hosting provider is chosen and BAA (if applicable) is not required for this project.
+| Environment | Domain | Branch | Deploy Trigger | Status |
+|-------------|--------|--------|---------------|--------|
+| Local | `rhino-custom-build.local` | any | Manual (Local by Flywheel) | Active |
+| Staging | `stg.rhinocustombuilds.com` | `dev` | Auto on push to `dev` | Not yet configured — set `STG_DEPLOY_PATH` in GitHub secrets |
+| Production | `rhinocustombuilds.com` | `main` | Auto on push to `main` | Active once secrets are set |
+
+Both workflows include three safety layers before rsync: path format validation, remote directory verification (checks for correct theme in `style.css`), and a dry-run deletion audit. See `DEPLOYMENT.md` for full details, GitHub secrets table, and release checklist.
 
 ---
 

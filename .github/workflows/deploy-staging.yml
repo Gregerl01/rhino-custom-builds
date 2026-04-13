@@ -1,0 +1,192 @@
+# ==========================================================================
+# Deploy to Staging — stg.rhinocustombuilds.com
+# ==========================================================================
+# Triggers on push to dev. Deploys theme files via SSH + rsync.
+# Same three safety layers as production.
+#
+# If STG_DEPLOY_PATH is not set, the workflow exits gracefully —
+# staging is optional until hosting is provisioned.
+#
+# Required GitHub secrets:
+#   SSH_HOST, SSH_PORT, SSH_USER, SSH_KEY, STG_DEPLOY_PATH
+# ==========================================================================
+
+name: Deploy to Staging
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  deploy:
+    name: Deploy theme to staging
+    runs-on: ubuntu-latest
+
+    steps:
+      # ------------------------------------------------------------------
+      # Checkout
+      # ------------------------------------------------------------------
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # ------------------------------------------------------------------
+      # Check if staging is configured
+      # ------------------------------------------------------------------
+      - name: Check staging configuration
+        id: config_check
+        run: |
+          if [ -z "${{ secrets.STG_DEPLOY_PATH }}" ]; then
+            echo "::notice::Staging is not configured yet. Set STG_DEPLOY_PATH in GitHub secrets when the staging server is provisioned. Skipping deploy."
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # ------------------------------------------------------------------
+      # SSH Setup
+      # ------------------------------------------------------------------
+      - name: Configure SSH
+        if: steps.config_check.outputs.configured == 'true'
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts 2>/dev/null
+
+      # ------------------------------------------------------------------
+      # SAFETY LAYER 1 — Path format validation (no SSH needed)
+      # ------------------------------------------------------------------
+      - name: "Safety: Validate deploy path format"
+        if: steps.config_check.outputs.configured == 'true'
+        run: |
+          DEPLOY_PATH="${{ secrets.STG_DEPLOY_PATH }}"
+
+          if [[ "$DEPLOY_PATH" != /home/* ]]; then
+            echo "::error::STG_DEPLOY_PATH must start with /home/ — got: $DEPLOY_PATH"
+            exit 1
+          fi
+
+          if [[ "$DEPLOY_PATH" != */wp-content/themes/rhino-custom-builds-theme/ ]]; then
+            echo "::error::STG_DEPLOY_PATH must end with wp-content/themes/rhino-custom-builds-theme/ — got: $DEPLOY_PATH"
+            exit 1
+          fi
+
+          echo "Deploy path format OK: $DEPLOY_PATH"
+
+      # ------------------------------------------------------------------
+      # SAFETY LAYER 2 — Remote directory verification (requires SSH)
+      # ------------------------------------------------------------------
+      - name: "Safety: Verify remote directory"
+        if: steps.config_check.outputs.configured == 'true'
+        run: |
+          DEPLOY_PATH="${{ secrets.STG_DEPLOY_PATH }}"
+
+          RESULT=$(ssh -i ~/.ssh/deploy_key -p ${{ secrets.SSH_PORT }} \
+            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
+            "if [ ! -d '$DEPLOY_PATH' ]; then
+               echo 'NO_DIR'
+             elif [ -z \"\$(ls -A '$DEPLOY_PATH' 2>/dev/null)\" ]; then
+               echo 'EMPTY_DIR'
+             elif [ -f '${DEPLOY_PATH}style.css' ]; then
+               if grep -qi 'Rhino Custom Builds' '${DEPLOY_PATH}style.css'; then
+                 echo 'MATCH'
+               else
+                 echo 'WRONG_THEME'
+               fi
+             else
+               echo 'NO_STYLE'
+             fi")
+
+          echo "Remote check result: $RESULT"
+
+          case "$RESULT" in
+            NO_DIR)
+              echo "::error::Deploy path does not exist on the server: $DEPLOY_PATH"
+              exit 1
+              ;;
+            WRONG_THEME)
+              echo "::error::style.css exists but does NOT contain 'Rhino Custom Builds'. Wrong theme directory — aborting."
+              exit 1
+              ;;
+            EMPTY_DIR)
+              echo "Directory exists but is empty — first deploy. Proceeding."
+              ;;
+            MATCH)
+              echo "Confirmed: remote directory contains Rhino Custom Builds theme."
+              ;;
+            NO_STYLE)
+              echo "::warning::Directory exists but style.css is missing. Proceeding with caution."
+              ;;
+            *)
+              echo "::error::Unexpected result from remote check: $RESULT"
+              exit 1
+              ;;
+          esac
+
+      # ------------------------------------------------------------------
+      # SAFETY LAYER 3 — Dry-run audit
+      # ------------------------------------------------------------------
+      - name: "Safety: Dry-run rsync audit"
+        if: steps.config_check.outputs.configured == 'true'
+        run: |
+          DEPLOY_PATH="${{ secrets.STG_DEPLOY_PATH }}"
+
+          DRY_OUTPUT=$(rsync -avz --delete --dry-run \
+            --exclude='node_modules/' \
+            --exclude='src/' \
+            --exclude='.env' \
+            --exclude='*.log' \
+            --exclude='.DS_Store' \
+            --exclude='Thumbs.db' \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            -e "ssh -i ~/.ssh/deploy_key -p ${{ secrets.SSH_PORT }}" \
+            ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:"$DEPLOY_PATH" 2>&1)
+
+          DELETE_COUNT=$(echo "$DRY_OUTPUT" | grep -c '^deleting ' || true)
+          echo "Dry run complete. Files that would be deleted: $DELETE_COUNT"
+
+          if [ "$DELETE_COUNT" -gt 100 ]; then
+            echo "::warning::Dry run shows $DELETE_COUNT deletions — more than 100. Review the deploy if this is unexpected."
+          fi
+
+      # ------------------------------------------------------------------
+      # DEPLOY — rsync theme files
+      # ------------------------------------------------------------------
+      - name: Deploy via rsync
+        if: steps.config_check.outputs.configured == 'true'
+        run: |
+          DEPLOY_PATH="${{ secrets.STG_DEPLOY_PATH }}"
+
+          rsync -avz --delete \
+            --exclude='node_modules/' \
+            --exclude='src/' \
+            --exclude='.env' \
+            --exclude='*.log' \
+            --exclude='.DS_Store' \
+            --exclude='Thumbs.db' \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            -e "ssh -i ~/.ssh/deploy_key -p ${{ secrets.SSH_PORT }}" \
+            ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:"$DEPLOY_PATH"
+
+          echo "Deploy complete."
+
+      # ------------------------------------------------------------------
+      # Post-deploy — purge LiteSpeed cache
+      # ------------------------------------------------------------------
+      - name: Purge LiteSpeed cache
+        if: steps.config_check.outputs.configured == 'true'
+        continue-on-error: true
+        run: |
+          ssh -i ~/.ssh/deploy_key -p ${{ secrets.SSH_PORT }} \
+            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
+            "cd '$(dirname $(dirname $(dirname ${{ secrets.STG_DEPLOY_PATH }})))' && wp litespeed-purge all 2>/dev/null || true"
+
+      # ------------------------------------------------------------------
+      # Cleanup
+      # ------------------------------------------------------------------
+      - name: Clean up SSH key
+        if: always()
+        run: rm -f ~/.ssh/deploy_key
