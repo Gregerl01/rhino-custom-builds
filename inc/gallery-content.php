@@ -30,14 +30,14 @@ if ( ! function_exists( 'bmg_get_gallery_projects' ) ) {
 				'vehicle'     => '2022 Ford F-150 Lariat',
 				'category'    => 'bedliners',
 				'description' => __( 'Premium-tier spray-on bedliner on a 6.5\' bed. UV-stable, chemical-resistant, lifetime warranty.', 'bmg-theme' ),
-				'image'       => '',
+				'image'       => '/wp-content/uploads/2026/04/galleryt-img-2022FordF-150Lariat.webp',
 			),
 			array(
 				'title'       => __( '2023 RAM 1500 — Off-Road Grade Bedliner', 'bmg-theme' ),
 				'vehicle'     => '2023 RAM 1500 TRX',
 				'category'    => 'bedliners',
 				'description' => __( 'Off-Road Grade coating with aggressive anti-slip texture and color-matched finish.', 'bmg-theme' ),
-				'image'       => '',
+				'image'       => '/wp-content/uploads/2026/04/galleryt-img-2023RAM1500TRX.webp',
 			),
 
 			// ---- Coatings ----
@@ -46,14 +46,14 @@ if ( ! function_exists( 'bmg_get_gallery_projects' ) ) {
 				'vehicle'     => '2019 Chevrolet Silverado 2500HD',
 				'category'    => 'coatings',
 				'description' => __( 'Frame rails, floor pans, inner fenders, and rocker panels sealed against salt and road chemicals.', 'bmg-theme' ),
-				'image'       => '',
+				'image'       => '/wp-content/uploads/2026/04/galleryt-img-2019ChevroletSilverado2500HD.webp',
 			),
 			array(
 				'title'       => __( '2021 Toyota Tacoma — Rocker & Wheel Wells', 'bmg-theme' ),
 				'vehicle'     => '2021 Toyota Tacoma TRD Off-Road',
 				'category'    => 'coatings',
 				'description' => __( 'High-impact zones sealed — rocker panels and wheel wells sprayed inside and out.', 'bmg-theme' ),
-				'image'       => '',
+				'image'       => '/wp-content/uploads/2026/04/galleryt-img-2021ToyotaTacomaTRD.webp',
 			),
 
 			// ---- Accessories ----
@@ -62,14 +62,14 @@ if ( ! function_exists( 'bmg_get_gallery_projects' ) ) {
 				'vehicle'     => '2023 Ford F-250 XLT',
 				'category'    => 'accessories',
 				'description' => __( 'Tonneau cover, headache rack, crossover toolbox, and running boards. Clean install, satin black matched.', 'bmg-theme' ),
-				'image'       => '',
+				'image'       => '/wp-content/uploads/2026/04/galleryt-img-2023FordF-250XLT.webp',
 			),
 			array(
 				'title'       => __( '2022 RAM 1500 — Tow Package', 'bmg-theme' ),
 				'vehicle'     => '2022 RAM 1500 Laramie',
 				'category'    => 'accessories',
 				'description' => __( 'Class V hitch, 7-pin wiring, integrated brake controller, and air bag suspension assist.', 'bmg-theme' ),
-				'image'       => '',
+				'image'       => '/wp-content/uploads/2026/04/galleryt-img-2022RAM1500Laramie.webp',
 			),
 
 			// ---- Off-Road ----
@@ -78,14 +78,14 @@ if ( ! function_exists( 'bmg_get_gallery_projects' ) ) {
 				'vehicle'     => '2023 Jeep Gladiator Rubicon',
 				'category'    => 'off-road',
 				'description' => __( 'ARB bumper, Warn winch, Rigid lighting, Rhino-Rack Pioneer platform, and rooftop tent. 3,000-mile expedition tested.', 'bmg-theme' ),
-				'image'       => '',
+				'image'       => '/wp-content/uploads/2026/04/galleryt-img-2023JeepGladiatorRubicon.webp',
 			),
 			array(
 				'title'       => __( '2022 Ford Bronco — Trail Build', 'bmg-theme' ),
 				'vehicle'     => '2022 Ford Bronco Badlands',
 				'category'    => 'off-road',
 				'description' => __( '3" lift, 35" BFGoodrich KO3s, Method 703 wheels, rock sliders, and Baja Designs light pods.', 'bmg-theme' ),
-				'image'       => '',
+				'image'       => '/wp-content/uploads/2026/04/galleryt-img-2022FordBroncoBadlands.webp',
 			),
 
 			// ---- Fleet ----

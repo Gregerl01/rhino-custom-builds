@@ -18,41 +18,49 @@ defined( 'ABSPATH' ) || exit;
  */
 function bmg_seo_page_data() {
 	return array(
-		'front-page'    => array(
-			'title'       => __( '[Business Name] — [Industry Tagline]', 'bmg-theme' ),
-			'description' => __( '[Homepage meta description — summarize services, location, and value proposition.]', 'bmg-theme' ),
+		'front-page'          => array(
+			'title'       => __( 'Rhino Custom Builds — Custom Truck & Off-Road Shop in San Diego, CA', 'bmg-theme' ),
+			'description' => __( 'Spray-on bedliners, protective coatings, truck accessories, off-road builds, and fleet services. Installed by certified builders in San Diego. Free quotes.', 'bmg-theme' ),
 		),
-		'page-about'    => array(
-			'title'       => __( 'About — [Business Name]', 'bmg-theme' ),
-			'description' => __( '[About page meta description — introduce the provider or team and their qualifications.]', 'bmg-theme' ),
+		'page-about'          => array(
+			'title'       => __( 'About — Rhino Custom Builds', 'bmg-theme' ),
+			'description' => __( '35+ years building trucks in San Diego. Manufacturer-certified installers, OEM-grade parts, lifetime coating warranty. Meet the Rhino team.', 'bmg-theme' ),
 		),
-		'page-plans'    => array(
-			'title'       => __( 'Plans — [Business Name]', 'bmg-theme' ),
-			'description' => __( '[Plans page meta description — summarize plan tiers and key benefits.]', 'bmg-theme' ),
+		'page-services-hub'   => array(
+			'title'       => __( 'Services — Rhino Custom Builds', 'bmg-theme' ),
+			'description' => __( 'Spray-on bedliners, protective coatings, truck accessories, off-road & overland builds, and fleet services. One shop, one warranty.', 'bmg-theme' ),
 		),
-		'page-services' => array(
-			'title'       => __( 'Services — [Business Name]', 'bmg-theme' ),
-			'description' => __( '[Services page meta description — summarize core service offerings.]', 'bmg-theme' ),
+		'page-service-detail' => array(
+			'title'       => '',  // Let WordPress use the page title + site name
+			'description' => '',
 		),
-		'page-enroll'   => array(
-			'title'       => __( 'Enroll — [Business Name]', 'bmg-theme' ),
-			'description' => __( '[Enrollment page meta description — describe the enrollment process.]', 'bmg-theme' ),
+		'page-shop'           => array(
+			'title'       => __( 'Shop Parts & Gear — Rhino Custom Builds', 'bmg-theme' ),
+			'description' => __( 'Browse truck and off-road parts from ARB, Fox, Warn, Rigid, Method, BFGoodrich, and more. All products include optional in-bay installation in San Diego.', 'bmg-theme' ),
 		),
-		'page-faq'      => array(
-			'title'       => __( 'FAQ — [Business Name]', 'bmg-theme' ),
-			'description' => __( '[FAQ page meta description — summarize common questions covered.]', 'bmg-theme' ),
+		'page-faq'            => array(
+			'title'       => __( 'FAQ — Rhino Custom Builds', 'bmg-theme' ),
+			'description' => __( 'Answers to common questions about bedliners, coatings, accessories, off-road builds, pricing, and the install process at Rhino Custom Builds.', 'bmg-theme' ),
 		),
-		'page-contact'  => array(
-			'title'       => __( 'Contact — [Business Name]', 'bmg-theme' ),
-			'description' => __( '[Contact page meta description — mention contact methods and location.]', 'bmg-theme' ),
+		'page-contact'        => array(
+			'title'       => __( 'Contact — Rhino Custom Builds', 'bmg-theme' ),
+			'description' => __( 'Contact Rhino Custom Builds in San Diego. Walk-ins welcome for quotes. Call or send a message — we respond within one business day.', 'bmg-theme' ),
 		),
-		'page-privacy'  => array(
-			'title'       => __( 'Privacy Policy — [Business Name]', 'bmg-theme' ),
-			'description' => __( '[Privacy page meta description — mention privacy practices and compliance.]', 'bmg-theme' ),
+		'page-quote'          => array(
+			'title'       => __( 'Request a Quote — Rhino Custom Builds', 'bmg-theme' ),
+			'description' => __( 'Get a free, no-obligation quote for bedliners, coatings, accessories, or off-road builds. Three steps, one business day response.', 'bmg-theme' ),
 		),
-		'page-terms'    => array(
-			'title'       => __( 'Terms of Use — [Business Name]', 'bmg-theme' ),
-			'description' => __( '[Terms page meta description — mention terms of use and disclaimers.]', 'bmg-theme' ),
+		'page-gallery'        => array(
+			'title'       => __( 'Gallery — Rhino Custom Builds', 'bmg-theme' ),
+			'description' => __( 'See completed builds from the Rhino shop floor. Bedliners, coatings, off-road builds, fleet upfits, and more. Real trucks, real results.', 'bmg-theme' ),
+		),
+		'page-privacy'        => array(
+			'title'       => __( 'Privacy Policy — Rhino Custom Builds', 'bmg-theme' ),
+			'description' => __( 'Privacy policy for Rhino Custom Builds website.', 'bmg-theme' ),
+		),
+		'page-terms'          => array(
+			'title'       => __( 'Terms of Use — Rhino Custom Builds', 'bmg-theme' ),
+			'description' => __( 'Terms of use for Rhino Custom Builds website.', 'bmg-theme' ),
 		),
 	);
 }
