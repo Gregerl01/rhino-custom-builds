@@ -620,17 +620,19 @@ Year → Make → Model → Trim cascading selects. Stored in sessionStorage as 
 - ✅ Services Hub page (/services/)
 - ✅ About page (/about/)
 - ✅ Contact page (/contact/) — Gravity Forms contact form
-- ✅ Quote page (/quote/) — 3-step Gravity Forms multi-page form + sticky sidebar
+- ✅ Quote page (/quote/) — 3-step Gravity Forms multi-page form + sidebar trust panel
 - ✅ Gallery page (/gallery/) — 12 projects, 6 category filters, lightbox
 - ✅ FAQ page (/faq/) — 15 questions across 4 topic groups
 - ✅ Blog — homepage preview (3 latest), archive (/blog/), single post template, 3 sample posts
-- ✅ Footer (4-column + social icons + GSL Design credit)
-- ✅ Global nav (header desktop hover dropdowns + mobile drawer with accordion)
+- ✅ 404 page — custom "WRONG TRAIL." with helpful nav links + search
+- ✅ Privacy Policy (/privacy-policy/) — Rhino-specific, no HIPAA
+- ✅ Terms of Use (/terms-of-use/) — Rhino-specific
+- ✅ Footer (4-column, GSL Design credit, social icons removed pending account setup)
+- ✅ Global nav (Services ▾ · Shop ▾ · Gallery · News · About · Contact · [Get a Quote])
 - ✅ Sticky header (frosted glass → condensed on scroll, 120px threshold)
-- ✅ Red install callout bar (reusable component across services, shop, and service detail pages)
-- ✅ Rank Math SEO configured (local schema, per-page titles + descriptions)
-- ⬜ Sticky mobile quote bar (deferred)
-- ⬜ 404 page (uses parent Understrap 404 currently)
+- ✅ Red install callout bar (reusable component on 16+ pages)
+- ✅ Rank Math SEO configured (local schema, 23 pages with custom titles + descriptions)
+- ⬜ Sticky mobile quote bar (deferred to V2)
 
 ### V1 Shop — COMPLETE
 
@@ -663,6 +665,6 @@ Year → Make → Model → Trim cascading selects. Stored in sessionStorage as 
 - Vehicle Fitment Filter (Year → Make → Model → Trim cascading selects)
 - localStorage draft save on quote form ("Resume your quote" banner)
 - Sticky mobile quote bar
-- Custom 404 page
+- Social media icons in footer (re-enable when accounts exist)
 - Financing page
 - Warranty page

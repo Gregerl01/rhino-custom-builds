@@ -737,6 +737,9 @@ Full brand voice reference lives in `CONTENT.md`. Quick summary:
 | FAQ | `page-templates/page-faq.php` | `/faq/` |
 | Blog Archive | `home.php` | `/blog/` |
 | Single Post | `single.php` | `/blog/{slug}/` |
+| 404 | `404.php` | (any non-existent URL) |
+| Privacy Policy | `page-templates/page-privacy.php` | `/privacy-policy/` |
+| Terms of Use | `page-templates/page-terms.php` | `/terms-of-use/` |
 
 ### Key Files Inventory
 
@@ -767,3 +770,34 @@ Full brand voice reference lives in `CONTENT.md`. Quick summary:
 - Homepage preview section (`section-blog.php`) between Process/FAQ and CTA
 - Archive at `/blog/` with card grid + pagination
 - Single post template with dark header, centered reading column, related posts
+
+### Known Deferred Items (not blocking V1 launch)
+- **Sticky mobile quote bar** — bottom-docked bar on service/product pages (deferred to V2)
+- **Social media icons in footer** — markup removed, SCSS preserved, re-enable when accounts are created
+- **Gallery project images** — some items have images, some use placeholders. Add real project photos as available.
+- **Service card images** — managed via Customizer (bmg_service_{1..6}_image). Upload via Customize → Features Section.
+- **Service hero backgrounds** — set via `bmg_service_hero_bg` post meta per service page (no admin UI — use Custom Fields panel or WP-CLI)
+
+### Legacy Starter Files (on disk but not used by Rhino)
+These files exist in the theme from the GSL starter but are not actively used:
+- `page-templates/page-enroll.php` — starter enrollment page (medical)
+- `page-templates/page-plans.php` — starter plans page (medical)
+- `page-templates/page-services.php` — starter services page (replaced by `page-services-hub.php`)
+- `template-parts/sections/section-explainer.php` — starter section
+- `template-parts/sections/section-pillars.php` — starter section
+- `template-parts/sections/section-plans-overview.php` — starter section
+- `template-parts/sections/section-plans-comparison.php` — starter section
+- `template-parts/sections/section-physician.php` — starter section (medical)
+- `template-parts/sections/section-physician-preview.php` — starter section (medical)
+- `template-parts/sections/section-philosophy.php` — starter section (medical)
+- `template-parts/sections/section-enroll-form.php` — starter section (medical)
+- `template-parts/sections/section-contact-form.php` — starter section (replaced by GF)
+- `template-parts/sections/section-contact-info.php` — starter section (replaced)
+- `template-parts/sections/section-services.php` — starter section
+- `template-parts/sections/section-faq-preview.php` — starter section (replaced by homepage process+FAQ)
+- `global-templates/dark-mode-toggle.php` — starter dark mode (disabled)
+- `inc/dark-mode.php` — starter dark mode (disabled, not loaded)
+- `inc/customizer-about.php` — starter about customizer (legacy, still loaded)
+- `inc/customizer-footer.php` — starter footer customizer (legacy, still loaded)
+- `src/sass/theme/_dark-mode.scss` — dark mode SCSS (compiled but inert — `data-bs-theme` forced to `light`)
+- `src/sass/theme/_woocommerce.scss` — WooCommerce SCSS (compiled but no WC installed in V1)
