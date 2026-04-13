@@ -94,14 +94,14 @@ if ( ! function_exists( 'bmg_get_gallery_projects' ) ) {
 				'vehicle'     => 'Mixed Fleet — Ford, RAM, Chevy',
 				'category'    => 'fleet',
 				'description' => __( 'Bedliner + undercoating rotation program. One PM, one invoice per cycle, consistent fleet appearance.', 'bmg-theme' ),
-				'image'       => '',
+				'image'       => '/wp-content/uploads/2026/04/galleryt-img-MixedFleet.webp',
 			),
 			array(
 				'title'       => __( '2024 Ford Transit — Commercial Upfit', 'bmg-theme' ),
 				'vehicle'     => '2024 Ford Transit 250',
 				'category'    => 'fleet',
 				'description' => __( 'Interior shelving, spray-on cargo liner, ladder rack, and commercial lighting. Fleet-qualified install.', 'bmg-theme' ),
-				'image'       => '',
+				'image'       => '/wp-content/uploads/2026/04/galleryt-img-2024FordTransit250.webp',
 			),
 
 			// ---- Wheels & Tires ----
@@ -110,14 +110,14 @@ if ( ! function_exists( 'bmg_get_gallery_projects' ) ) {
 				'vehicle'     => '2021 Toyota 4Runner TRD Pro',
 				'category'    => 'wheels-tires',
 				'description' => __( 'Method 305 NV wheels with BFGoodrich KO3 all-terrain tires. Mounted, balanced, and aligned in-house.', 'bmg-theme' ),
-				'image'       => '',
+				'image'       => '/wp-content/uploads/2026/04/galleryt-img-2021Toyota4RunnerTRD.webp',
 			),
 			array(
 				'title'       => __( '2023 Jeep Wrangler — Beadlock Upgrade', 'bmg-theme' ),
 				'vehicle'     => '2023 Jeep Wrangler Rubicon 392',
 				'category'    => 'wheels-tires',
 				'description' => __( 'Method 703 beadlock wheels with BFGoodrich KM3 mud-terrain tires. Trail-ready.', 'bmg-theme' ),
-				'image'       => '',
+				'image'       => '/wp-content/uploads/2026/04/galleryt-img-2023JeepWranglerRubicon.webp',
 			),
 		);
 	}
